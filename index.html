@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Pngjs-image : Native PNG manipulation library">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Pngjs-image</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/yahoo/pngjs-image">View on GitHub</a>
+
+          <h1 id="project_title">Pngjs-image</h1>
+          <h2 id="project_tagline">Native PNG manipulation library</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/yahoo/pngjs-image/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/yahoo/pngjs-image/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="pngjs-image" class="anchor" href="#pngjs-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>PNGjs-Image</h1>
+
+<p>Native PNG image manipulation</p>
+
+<p><a href="http://travis-ci.org/yahoo/pngjs-image"><img src="https://secure.travis-ci.org/yahoo/pngjs-image.png" alt="Build Status"></a>
+<a href="http://badge.fury.io/js/pngjs-image"><img src="https://badge.fury.io/js/pngjs-image.svg" alt="npm version"></a></p>
+
+<p><a href="https://nodei.co/npm/pngjs-image/"><img src="https://nodei.co/npm/pngjs-image.png?downloads=true" alt="NPM"></a></p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li>
+<a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#static-methods">Static-Methods</a></li>
+<li>
+<a href="#instance-methods">Instance-Methods</a>
+
+<ul>
+<li><a href="#pixel-manipulation">Pixel manipulation</a></li>
+<li><a href="#pixel-conversion">Pixel conversion</a></li>
+</ul>
+</li>
+<li><a href="#filters">Filters</a></li>
+</ul>
+</li>
+<li><a href="#api-documentation">API-Documentation</a></li>
+<li><a href="#tests">Tests</a></li>
+<li><a href="#third-party-libraries">Third-party libraries</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Install this module with the following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm install pngjs-image
+</pre></div>
+
+<p>Add the module to your <code>package.json</code> dependencies:</p>
+
+<div class="highlight highlight-shell"><pre>npm install --save pngjs-image
+</pre></div>
+
+<p>Add the module to your <code>package.json</code> dev-dependencies:</p>
+
+<div class="highlight highlight-shell"><pre>npm install --save-dev pngjs-image
+</pre></div>
+
+<p>Require the module in your source-code:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">PNGImage</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pngjs-image'</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p><strong>Example:</strong> Creating a new image</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">PNGImage</span><span class="p">.</span><span class="nx">createImage</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+
+<span class="c1">// Get width and height</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getWidth</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getHeight</span><span class="p">());</span>
+
+<span class="c1">// Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)</span>
+<span class="nx">image</span><span class="p">.</span><span class="nx">setAt</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">{</span> <span class="nx">red</span><span class="o">:</span><span class="mi">255</span><span class="p">,</span> <span class="nx">green</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="nx">blue</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="nx">alpha</span><span class="o">:</span><span class="mi">100</span> <span class="p">});</span>
+
+<span class="c1">// Get index of coordinate in the image buffer</span>
+<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">getIndex</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+
+<span class="c1">// Print the red color value</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getRed</span><span class="p">(</span><span class="nx">index</span><span class="p">));</span>
+
+<span class="c1">// Get low level image object with buffer from the 'pngjs' package</span>
+<span class="kd">var</span> <span class="nx">pngjs</span> <span class="o">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">getImage</span><span class="p">();</span>
+
+<span class="nx">image</span><span class="p">.</span><span class="nx">writeImage</span><span class="p">(</span><span class="s1">'path/to/file'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Written to the file'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<p><strong>Example:</strong> Loading an image</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">PNGImage</span><span class="p">.</span><span class="nx">readImage</span><span class="p">(</span><span class="s1">'path/to/file'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// Get width and height</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getWidth</span><span class="p">());</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getHeight</span><span class="p">());</span>
+
+    <span class="c1">// Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)</span>
+    <span class="nx">image</span><span class="p">.</span><span class="nx">setAt</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">{</span> <span class="nx">red</span><span class="o">:</span><span class="mi">255</span><span class="p">,</span> <span class="nx">green</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="nx">blue</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="nx">alpha</span><span class="o">:</span><span class="mi">100</span> <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a id="static-methods" class="anchor" href="#static-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Static-Methods</h3>
+
+<ul>
+<li>
+<code>&lt;PNGImage&gt; = PNGImage.addFilter(key, fn)</code> Adds the <code>fn</code> filter with identifier <code>key</code> to the filter-list</li>
+<li>
+<code>&lt;PNGImage&gt; = PNGImage.createImage(width, height)</code> Creates an image with the given size</li>
+<li>
+<code>&lt;PNGImage&gt; = PNGImage.copyImage(image)</code> Copies an image into a new container</li>
+<li>
+<code>&lt;PNGImage&gt; = PNGImage.readImage(path, fn)</code> Loads an image from the filesystem, calling the <code>fn</code> function when done</li>
+<li>
+<code>&lt;PNGImage&gt; = PNGImage.loadImage(blob, fn)</code> Loads an image from memory, calling the <code>fn</code> function when done</li>
+</ul>
+
+<h3>
+<a id="instance-methods" class="anchor" href="#instance-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instance-Methods</h3>
+
+<ul>
+<li>
+<code>&lt;pngjs&gt; = image.getImage()</code> Gets the <code>pngjs</code> instance</li>
+<li>
+<code>&lt;Buffer&gt; = image.getBlob()</code> Gets the data as a buffer object</li>
+<li>
+<code>&lt;int&gt; = image.getWidth()</code> Gets the width of the image</li>
+<li>
+<code>&lt;int&gt; = image.getHeight()</code> Gets the height of the image</li>
+<li>
+<code>image.clip(x, y, width, height)</code> Clips the current image; the dimensions have to be smaller than the original image</li>
+<li>
+<code>image.fillRect(x, y, width, height, color)</code> Fills the rectangle with the supplied color</li>
+<li>
+<code>image.applyFilters(filters, returnResult)</code> Applies a list of filters to the image</li>
+<li>
+<code>&lt;int&gt; = image.getIndex(x, y)</code> Converts the x and y coordinates to the sequential index of the image buffer</li>
+<li>
+<code>image.writeImage(path, fn)</code> Writes the image to the filesystem and calling the <code>fn</code> function when done</li>
+<li>
+<code>image.toBlob(fn)</code> Exports data to a buffer and calling the <code>fn</code> function when done</li>
+</ul>
+
+<h4>
+<a id="pixel-manipulation" class="anchor" href="#pixel-manipulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pixel manipulation</h4>
+
+<ul>
+<li>
+<code>&lt;uint32&gt; = image.getAtIndex(idx)</code> Gets complete 32-bit pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getAt(x, y)</code> Gets complete 32-bit pixel at the x and y coordinate</li>
+<li>
+<code>&lt;uint32&gt; = image.getPixel(x, y)</code> Gets complete 32-bit pixel at the x and y coordinate</li>
+<li>
+<code>image.setAtIndex(idx, color)</code> Sets a specific color at the index. A color left-off will not be modified.</li>
+<li>
+<code>image.setAt(x, y, color)</code> Sets a specific color at the x and y coordinate. A color left-off will not be modified.</li>
+<li>
+<code>image.setPixel(x, y, color)</code> Sets a specific color at the x and y coordinate. A color left-off will not be modified.</li>
+<li>
+<code>&lt;uint32&gt; = image.getColorAtIndex(idx)</code> Gets the color components of the pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getColor(x, y)</code> Gets the color components of the pixel at the x and y coordinate</li>
+<li>
+<code>&lt;uint8&gt; = image.getRed(idx)</code> Gets the red intensity at an index</li>
+<li>
+<code>image.setRed(idx, value, opacity)</code> Sets the red intensity at an index</li>
+<li>
+<code>&lt;uint8&gt; = image.getGreen(idx)</code> Gets the green intensity at an index</li>
+<li>
+<code>image.setGreen(idx, value, opacity)</code> Sets the green intensity at an index</li>
+<li>
+<code>&lt;uint8&gt; = image.getBlue(idx)</code> Gets the blue intensity at an index</li>
+<li>
+<code>image.setBlue(idx, value, opacity)</code> Sets the blue intensity at an index</li>
+<li>
+<code>&lt;uint8&gt; = image.getAlpha(idx)</code> Gets the alpha intensity at an index</li>
+<li>
+<code>image.setAlpha(idx, value, opacity)</code> Sets the alpha intensity at an index</li>
+</ul>
+
+<h4>
+<a id="pixel-conversion" class="anchor" href="#pixel-conversion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pixel conversion</h4>
+
+<ul>
+<li>
+<code>&lt;uint32&gt; = image.getBlurPixelAt(idx, funcName)</code> Gets the blurred color of a pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getYIQAtIndex(idx)</code> Gets the YIQ-value of a pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getYIQ(x, y)</code> Gets the YIQ-value of a pixel at the x and y coordinate</li>
+<li>
+<code>&lt;uint32&gt; = image.getLumaAtIndex(idx)</code> Gets the luma of a pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getLuma(x, y)</code> Gets the luma of a pixel at the x and y coordinate</li>
+<li>
+<code>&lt;uint32&gt; = image.getSepiaAtIndex(idx)</code> Gets the sepia-color of a pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getSepia(x, y)</code> Gets the sepia-color of a pixel at the x and y coordinate</li>
+<li>
+<code>&lt;uint32&gt; = image.getLuminosityAtIndex(idx)</code> Gets the luminosity of a pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getLuminosity(x, y)</code> Gets the luminosity of a pixel at the x and y coordinate</li>
+<li>
+<code>&lt;uint32&gt; = image.getLightnessAtIndex(idx)</code> Gets the lightness of a pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getLightness(x, y)</code> Gets the lightness of a pixel at the x and y coordinate</li>
+<li>
+<code>&lt;uint32&gt; = image.getGrayScaleAtIndex(idx)</code> Gets the grayscale-value of a pixel at index <code>idx</code>
+</li>
+<li>
+<code>&lt;uint32&gt; = image.getGrayScale(x, y)</code> Gets the grayscale-value of a pixel at the x and y coordinate</li>
+</ul>
+
+<h3>
+<a id="filters" class="anchor" href="#filters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filters</h3>
+
+<p>Following filters can be applied to an image:</p>
+
+<ul>
+<li>blur</li>
+<li>grayScale</li>
+<li>lightness</li>
+<li>luma</li>
+<li>luminosity</li>
+<li>sepia</li>
+</ul>
+
+<h2>
+<a id="api-documentation" class="anchor" href="#api-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>API-Documentation</h2>
+
+<p>Generate the documentation with following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm run docs
+</pre></div>
+
+<p>The documentation will be generated in the <code>docs</code> folder of the module root.</p>
+
+<h2>
+<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<p>Run the tests with the following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm run <span class="nb">test</span>
+</pre></div>
+
+<p>The code-coverage will be written to the <code>coverage</code> folder in the module root.</p>
+
+<h2>
+<a id="third-party-libraries" class="anchor" href="#third-party-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third-party libraries</h2>
+
+<p>The following third-party libraries are used by this module:</p>
+
+<h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<ul>
+<li>pngjs: <a href="https://github.com/niegowski/node-pngjs">https://github.com/niegowski/node-pngjs</a>
+</li>
+<li>stream-buffers: <a href="https://github.com/samcday/node-stream-buffer">https://github.com/samcday/node-stream-buffer</a>
+</li>
+<li>underscore: <a href="http://underscorejs.org">http://underscorejs.org</a>
+</li>
+</ul>
+
+<h3>
+<a id="dev-dependencies" class="anchor" href="#dev-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dev-Dependencies</h3>
+
+<ul>
+<li>chai: <a href="http://chaijs.com">http://chaijs.com</a>
+</li>
+<li>istanbul: <a href="https://github.com/gotwarlost/istanbul">https://github.com/gotwarlost/istanbul</a>
+</li>
+<li>mocha: <a href="https://github.com/visionmedia/mocha">https://github.com/visionmedia/mocha</a>
+</li>
+<li>yuidocjs: <a href="https://github.com/yui/yuidoc">https://github.com/yui/yuidoc</a>
+</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License</p>
+
+<p>Copyright 2014 Yahoo Inc.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Pngjs-image maintained by <a href="https://github.com/yahoo">yahoo</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-56408730-5");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
