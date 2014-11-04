@@ -1,0 +1,1575 @@
+{
+    "project": {
+        "name": "pngjs-image",
+        "description": "Native PNG image manipulation",
+        "version": "0.9.3"
+    },
+    "files": {
+        "lib/filters/blur.js": {
+            "name": "lib/filters/blur.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/filters/grayScale.js": {
+            "name": "lib/filters/grayScale.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/filters/lightness.js": {
+            "name": "lib/filters/lightness.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/filters/luma.js": {
+            "name": "lib/filters/luma.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/filters/luminosity.js": {
+            "name": "lib/filters/luminosity.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/filters/sepia.js": {
+            "name": "lib/filters/sepia.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/conversion.js": {
+            "name": "lib/conversion.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/filters.js": {
+            "name": "lib/filters.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/pixel.js": {
+            "name": "lib/pixel.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "index.js": {
+            "name": "index.js",
+            "modules": {},
+            "classes": {
+                "PNGImage": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "PNGImage": {
+            "name": "PNGImage",
+            "shortname": "PNGImage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "index.js",
+            "line": 15,
+            "description": "PNGjs-image class",
+            "type": "{object}",
+            "params": [
+                {
+                    "name": "image",
+                    "description": "png-js object",
+                    "type": "PNG"
+                }
+            ],
+            "is_constructor": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/filters/blur.js",
+            "line": 4,
+            "description": "Blur filter",
+            "itemtype": "method",
+            "name": "blur-filter",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "destination",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "funcName",
+                            "description": "",
+                            "type": "String",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/filters/grayScale.js",
+            "line": 4,
+            "description": "Gray-scale filter",
+            "itemtype": "method",
+            "name": "gray-scale filter",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "destination",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/filters/lightness.js",
+            "line": 4,
+            "description": "Lightness filter",
+            "itemtype": "method",
+            "name": "lightness filter",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "destination",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/filters/luma.js",
+            "line": 4,
+            "description": "Luma filter",
+            "itemtype": "method",
+            "name": "luma filter",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "destination",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/filters/luminosity.js",
+            "line": 4,
+            "description": "Luminosity filter",
+            "itemtype": "method",
+            "name": "luminosity filter",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "destination",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/filters/sepia.js",
+            "line": 4,
+            "description": "Sepia filter",
+            "itemtype": "method",
+            "name": "sepia filter",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "destination",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 12,
+            "description": "Gets the blurred value of a pixel with a gray-scale function",
+            "itemtype": "method",
+            "name": "getBlurPixelAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index",
+                    "type": "Int"
+                },
+                {
+                    "name": "funcName",
+                    "description": "Gray-scale function",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 75,
+            "description": "Gets the blur-value of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "getBlurPixel",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "funcName",
+                    "description": "Gray-scale function",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "blur-value",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 90,
+            "description": "Gets the YIQ-value of a pixel at a specific index\nThe values for RGB correspond afterwards to YIQ respectively.",
+            "itemtype": "method",
+            "name": "getYIQAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "YIQ-value",
+                "type": "Object"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 115,
+            "description": "Gets the YIQ-value of a pixel at a specific coordinate\nThe values for RGB correspond afterwards to YIQ respectively.",
+            "itemtype": "method",
+            "name": "getYIQ",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "YIQ-value",
+                "type": "Object"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 130,
+            "description": "Gets the luma of a pixel at a specific index",
+            "itemtype": "method",
+            "name": "getLumaAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "YIQ-value",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 141,
+            "description": "Gets the luma of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "getLuma",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "YIQ-value",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 154,
+            "description": "Gets the sepia of a pixel at a specific index",
+            "itemtype": "method",
+            "name": "getSepiaAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Color",
+                "type": "Object"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 177,
+            "description": "Gets the sepia of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "getSepia",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Color",
+                "type": "Object"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 190,
+            "description": "Gets the luminosity of a pixel at a specific index",
+            "itemtype": "method",
+            "name": "getLuminosityAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Luminosity",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 201,
+            "description": "Gets the luminosity of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "getLuminosity",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Luminosity",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 215,
+            "description": "Gets the lightness of a pixel at a specific index",
+            "itemtype": "method",
+            "name": "getLightnessAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Lightness",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 230,
+            "description": "Gets the lightness of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "getLightness",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Lightness",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 244,
+            "description": "Gets the average of a pixel at a specific index",
+            "itemtype": "method",
+            "name": "getGrayScaleAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Average",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/conversion.js",
+            "line": 255,
+            "description": "Gets the average of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "getGrayScale",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Average",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/filters.js",
+            "line": 12,
+            "description": "Generates a filter function by doing common tasks to abstract this away from the actual filter functions",
+            "itemtype": "method",
+            "name": "generateFilter",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Function"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/filters.js",
+            "line": 22,
+            "description": "Creates a destination image",
+            "itemtype": "method",
+            "name": "",
+            "params": [
+                {
+                    "name": "image",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "needsCopy",
+                            "description": "",
+                            "type": "Object",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 12,
+            "description": "Gets the color of a pixel at a specific index",
+            "itemtype": "method",
+            "name": "getPixel",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Color",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 23,
+            "description": "Gets the color of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "getAt",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Color",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 36,
+            "description": "Gets the color of a pixel at a specific coordinate\nAlias for getAt",
+            "itemtype": "method",
+            "name": "getPixel",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Color",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 50,
+            "description": "Sets the color of a pixel at a specific index",
+            "itemtype": "method",
+            "name": "setAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "red",
+                            "description": "Red value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "green",
+                            "description": "Green value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "blue",
+                            "description": "Blue value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "alpha",
+                            "description": "Alpha value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "Opacity of color",
+                            "type": "Number",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 69,
+            "description": "Sets the color of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "setAt",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "red",
+                            "description": "Red value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "green",
+                            "description": "Green value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "blue",
+                            "description": "Blue value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "alpha",
+                            "description": "Alpha value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "Opacity of color",
+                            "type": "Number",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 87,
+            "description": "Sets the color of a pixel at a specific coordinate\nAlias for setAt",
+            "itemtype": "method",
+            "name": "setPixel",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "red",
+                            "description": "Red value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "green",
+                            "description": "Green value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "blue",
+                            "description": "Blue value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "alpha",
+                            "description": "Alpha value for pixel",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "Opacity of color",
+                            "type": "Number",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 106,
+            "description": "Gets the color of a pixel at a specific index",
+            "itemtype": "method",
+            "name": "getColorAtIndex",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Color",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 117,
+            "description": "Gets the color of a pixel at a specific coordinate",
+            "itemtype": "method",
+            "name": "getColor",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Color",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 131,
+            "description": "Calculates the final color value for opacity",
+            "itemtype": "method",
+            "name": "_calculateColorValue",
+            "params": [
+                {
+                    "name": "originalValue",
+                    "description": "",
+                    "type": "Int"
+                },
+                {
+                    "name": "paintValue",
+                    "description": "",
+                    "type": "Int"
+                },
+                {
+                    "name": "opacity",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 156,
+            "description": "Get the red value of a pixel",
+            "itemtype": "method",
+            "name": "getRed",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 167,
+            "description": "Set the red value of a pixel",
+            "itemtype": "method",
+            "name": "setRed",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "value",
+                    "description": "Value for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "opacity",
+                    "description": "Opacity of value set",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 180,
+            "description": "Get the green value of a pixel",
+            "itemtype": "method",
+            "name": "getGreen",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 191,
+            "description": "Set the green value of a pixel",
+            "itemtype": "method",
+            "name": "setGreen",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "value",
+                    "description": "Value for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "opacity",
+                    "description": "Opacity of value set",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 204,
+            "description": "Get the blue value of a pixel",
+            "itemtype": "method",
+            "name": "getBlue",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 215,
+            "description": "Set the blue value of a pixel",
+            "itemtype": "method",
+            "name": "setBlue",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "value",
+                    "description": "Value for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "opacity",
+                    "description": "Opacity of value set",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 228,
+            "description": "Get the alpha value of a pixel",
+            "itemtype": "method",
+            "name": "getAlpha",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 239,
+            "description": "Set the alpha value of a pixel",
+            "itemtype": "method",
+            "name": "setAlpha",
+            "params": [
+                {
+                    "name": "idx",
+                    "description": "Index of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "value",
+                    "description": "Value for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "opacity",
+                    "description": "Opacity of value set",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 252,
+            "description": "Sets the value of a pixel",
+            "itemtype": "method",
+            "name": "_getValue",
+            "params": [
+                {
+                    "name": "offset",
+                    "description": "Offset of a value",
+                    "type": "Int"
+                },
+                {
+                    "name": "colorOffset",
+                    "description": "Offset of a color",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/pixel.js",
+            "line": 265,
+            "description": "Sets the value of a pixel",
+            "itemtype": "method",
+            "name": "_setValue",
+            "params": [
+                {
+                    "name": "offset",
+                    "description": "Offset of a value",
+                    "type": "Int"
+                },
+                {
+                    "name": "colorOffset",
+                    "description": "Offset of a color",
+                    "type": "Int"
+                },
+                {
+                    "name": "value",
+                    "description": "Value for pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "opacity",
+                    "description": "Opacity of value set",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 29,
+            "description": "Project version",
+            "itemtype": "property",
+            "name": "version",
+            "static": 1,
+            "type": "{string}",
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 39,
+            "description": "Filter dictionary",
+            "itemtype": "property",
+            "name": "filters",
+            "static": 1,
+            "type": "{object}",
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 48,
+            "description": "Sets a filter to the filter list",
+            "itemtype": "method",
+            "name": "setFilter",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 64,
+            "description": "Creates an image by dimensions",
+            "static": 1,
+            "itemtype": "method",
+            "name": "createImage",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "",
+                    "type": "Int"
+                },
+                {
+                    "name": "height",
+                    "description": "",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 81,
+            "description": "Copies an already existing image",
+            "static": 1,
+            "itemtype": "method",
+            "name": "copyImage",
+            "params": [
+                {
+                    "name": "image",
+                    "description": "",
+                    "type": "PNGImage"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 95,
+            "description": "Reads an image from the filesystem",
+            "static": 1,
+            "itemtype": "method",
+            "name": "readImage",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 121,
+            "description": "Loads an image from a blob",
+            "static": 1,
+            "itemtype": "method",
+            "name": "loadImage",
+            "params": [
+                {
+                    "name": "blob",
+                    "description": "",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 147,
+            "description": "Log method that can be overwritten to modify the logging behavior",
+            "static": 1,
+            "itemtype": "method",
+            "name": "log",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 160,
+            "description": "Gets the original png-js object",
+            "itemtype": "method",
+            "name": "getImage",
+            "return": {
+                "description": "",
+                "type": "PNG"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 170,
+            "description": "Gets the image as a blob",
+            "itemtype": "method",
+            "name": "getBlob",
+            "return": {
+                "description": "",
+                "type": "Buffer"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 181,
+            "description": "Gets the width of the image",
+            "itemtype": "method",
+            "name": "getWidth",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 191,
+            "description": "Gets the height of the image",
+            "itemtype": "method",
+            "name": "getHeight",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 202,
+            "description": "Clips the current image by modifying it in-place",
+            "itemtype": "method",
+            "name": "clip",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Starting x-coordinate",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Starting y-coordinate",
+                    "type": "Int"
+                },
+                {
+                    "name": "width",
+                    "description": "Width of area relative to starting coordinate",
+                    "type": "Int"
+                },
+                {
+                    "name": "height",
+                    "description": "Height of area relative to starting coordinate",
+                    "type": "Int"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 231,
+            "description": "Fills an area with the specified color",
+            "itemtype": "method",
+            "name": "fillRect",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "Starting x-coordinate",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Starting y-coordinate",
+                    "type": "Int"
+                },
+                {
+                    "name": "width",
+                    "description": "Width of area relative to starting coordinate",
+                    "type": "Int"
+                },
+                {
+                    "name": "height",
+                    "description": "Height of area relative to starting coordinate",
+                    "type": "Int"
+                },
+                {
+                    "name": "color",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "red",
+                            "description": "Red channel of color to set",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "green",
+                            "description": "Green channel of color to set",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "blue",
+                            "description": "Blue channel of color to set",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "alpha",
+                            "description": "Alpha channel for color to set",
+                            "type": "Int",
+                            "optional": true
+                        },
+                        {
+                            "name": "opacity",
+                            "description": "Opacity of color",
+                            "type": "Float",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 260,
+            "description": "Applies a list of filters to the image",
+            "itemtype": "method",
+            "name": "applyFilters",
+            "params": [
+                {
+                    "name": "filters",
+                    "description": "Names of filters in sequence `{key:<string>, options:<object>}`",
+                    "type": "String|object|object[]"
+                },
+                {
+                    "name": "returnResult",
+                    "description": "",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 319,
+            "description": "Gets index of a specific coordinate",
+            "itemtype": "method",
+            "name": "getIndex",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "X-coordinate of pixel",
+                    "type": "Int"
+                },
+                {
+                    "name": "y",
+                    "description": "Y-coordinate of pixel",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Index of pixel",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 332,
+            "description": "Writes the image to the filesystem",
+            "itemtype": "method",
+            "name": "writeImage",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "Path to file",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "Callback",
+                    "type": "Function"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 352,
+            "description": "Writes the image to a buffer",
+            "itemtype": "method",
+            "name": "toBlob",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "Callback",
+                    "type": "Function"
+                }
+            ],
+            "class": "PNGImage"
+        }
+    ],
+    "warnings": []
+}
