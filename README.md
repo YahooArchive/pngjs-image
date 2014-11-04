@@ -4,6 +4,26 @@ PNGjs-Image
 Native PNG image manipulation
 
 
+[![Build Status](https://secure.travis-ci.org/yahoo/pngjs-image.png)](http://travis-ci.org/yahoo/pngjs-image)
+[![npm version](https://badge.fury.io/js/pngjs-image.svg)](http://badge.fury.io/js/pngjs-image)
+
+[![NPM](https://nodei.co/npm/pngjs-image.png?downloads=true)](https://nodei.co/npm/pngjs-image/)
+
+
+**Table of Contents**
+* [Installation](#installation)
+* [Usage](#usage)
+    * [Static-Methods](#static-methods)
+    * [Instance-Methods](#instance-methods)
+        * [Pixel manipulation](#pixel-manipulation)
+        * [Pixel conversion](#pixel-conversion)
+    * [Filters](#filters)
+* [API-Documentation](#api-documentation)
+* [Tests](#tests)
+* [Third-party libraries](#third-party-libraries)
+* [License](#license)
+
+
 ##Installation
 
 Install this module with the following command:
