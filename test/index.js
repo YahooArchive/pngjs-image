@@ -275,9 +275,9 @@ describe('Instance', function () {
 
                     try {
                         if (fs.existsSync(path)) {
-                            contentsActual = fs.readFileSync(path);
-                            contentsExpected = fs.readFileSync(__dirname + '/test.png');
-                            expect(JSON.stringify(contentsActual)).to.be.equal(JSON.stringify(contentsExpected));
+                            contentsActual = fs.readFileSync(path).toString();
+                            contentsExpected = fs.readFileSync(__dirname + '/test.png').toString();
+                            expect(contentsActual).to.be.equal(contentsExpected);
                         }
 
                         done();
@@ -299,8 +299,8 @@ describe('Instance', function () {
                 } else {
 
                     try {
-                        contentsExpected = fs.readFileSync(__dirname + '/test.png');
-                        expect(JSON.stringify(contentsActual)).to.be.equal(JSON.stringify(contentsExpected));
+                        contentsExpected = fs.readFileSync(__dirname + '/test.png').toString();
+                        expect(contentsActual.toString()).to.be.equal(contentsExpected);
 
                         done();
                     } catch (err) {
