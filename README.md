@@ -10,6 +10,11 @@ Native PNG image manipulation
 [![NPM](https://nodei.co/npm/pngjs-image.png?downloads=true)](https://nodei.co/npm/pngjs-image/)
 
 
+[API-Documentation](http://yahoo.github.io/pngjs-image/docs/)
+
+[Coverage Report](http://yahoo.github.io/pngjs-image/coverage/lcov-report/)
+
+
 **Table of Contents**
 * [Installation](#installation)
 * [Usage](#usage)
