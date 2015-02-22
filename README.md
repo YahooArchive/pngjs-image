@@ -8,6 +8,7 @@ Native PNG image manipulation
 [![npm version](https://badge.fury.io/js/pngjs-image.svg)](http://badge.fury.io/js/pngjs-image)
 
 [![NPM](https://nodei.co/npm/pngjs-image.png?downloads=true)](https://nodei.co/npm/pngjs-image/)
+[![NPM](https://nodei.co/npm-dl/pngjs-image.png?months=3&height=2)](https://nodei.co/npm/pngjs-image/)
 
 
 [API-Documentation](http://yahoo.github.io/pngjs-image/docs/)
@@ -178,6 +179,7 @@ The following third-party libraries are used by this module:
 
 ###Dev-Dependencies
 * chai: http://chaijs.com
+* coveralls: https://github.com/cainus/node-coveralls
 * istanbul: https://github.com/gotwarlost/istanbul
 * mocha: https://github.com/visionmedia/mocha
 * yuidocjs: https://github.com/yui/yuidoc
