@@ -1,38 +1,41 @@
 {
-  "name": "pngjs-image",
-  "version": "0.9.3",
-  "description": "Native PNG image manipulation",
-  "license": "MIT",
-  "main": "index.js",
-  "homepage": "https://github.com/yahoo/pngjs-image",
-  "bugs": "https://github.com/yahoo/pngjs-image/issues",
-  "author": {
-    "name": "Marcel Erz",
-    "email": "erz@yahoo-inc.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yahoo/pngjs-image.git"
-  },
-  "keywords": [
-    "PNG",
-    "image",
-    "manipulation"
-  ],
-  "scripts": {
-    "test": "istanbul cover -- _mocha --reporter spec",
-    "docs": "yuidoc ."
-  },
-  "dependencies": {
-    "pngjs": "0.4.0",
-    "stream-buffers": "1.0.1",
-    "underscore": "1.7.0"
-  },
-  "devDependencies": {
-    "chai": "1.9.1",
-    "coveralls": "2.11.2",
-    "istanbul": "0.3.2",
-    "mocha": "1.21.4",
-    "yuidocjs": "0.3.50"
-  }
+	"name": "pngjs-image",
+	"version": "0.10.0",
+	"description": "Native PNG image manipulation",
+	"license": "MIT",
+	"main": "index.js",
+	"homepage": "https://github.com/yahoo/pngjs-image",
+	"bugs": "https://github.com/yahoo/pngjs-image/issues",
+	"author": {
+		"name": "Marcel Erz",
+		"email": "erz@yahoo-inc.com",
+		"url": "http://www.marcelerz.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/yahoo/pngjs-image.git"
+	},
+	"keywords": [
+		"PNG",
+		"image",
+		"manipulation"
+	],
+	"scripts": {
+		"test": "istanbul cover -- _mocha --reporter spec",
+		"docs": "yuidoc ."
+	},
+	"dependencies": {
+		"pngjs": "0.4.0",
+		"stream-buffers": "1.0.1",
+		"underscore": "1.7.0"
+	},
+	"devDependencies": {
+		"chai": "1.9.2",
+		"coveralls": "2.11.2",
+		"istanbul": "0.3.2",
+		"mocha": "1.21.4",
+		"sinon": "1.12.2",
+		"sinon-chai": "2.7.0",
+		"yuidocjs": "0.3.50"
+	}
 }
