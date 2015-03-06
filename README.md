@@ -3,18 +3,20 @@ PNGjs-Image
 
 Native PNG image manipulation
 
+[![Build Status](https://img.shields.io/travis/yahoo/pngjs-image.svg)](http://travis-ci.org/yahoo/pngjs-image)
+[![Coveralls Coverage](https://img.shields.io/coveralls/yahoo/pngjs-image.svg)](https://coveralls.io/r/yahoo/pngjs-image)
+[![Code Climate Grade](https://img.shields.io/codeclimate/github/yahoo/pngjs-image.svg)](https://codeclimate.com/github/yahoo/pngjs-image)
 
-[![Build Status](https://secure.travis-ci.org/yahoo/pngjs-image.png)](http://travis-ci.org/yahoo/pngjs-image)
-[![npm version](https://badge.fury.io/js/pngjs-image.svg)](http://badge.fury.io/js/pngjs-image)
+[![NPM version](https://badge.fury.io/js/pngjs-image.svg)](https://www.npmjs.com/package/pngjs-image)
+[![NPM License](https://img.shields.io/npm/l/pngjs-image.svg)](https://www.npmjs.com/package/pngjs-image)
 
-[![NPM](https://nodei.co/npm/pngjs-image.png?downloads=true)](https://nodei.co/npm/pngjs-image/)
-[![NPM](https://nodei.co/npm-dl/pngjs-image.png?months=3&height=2)](https://nodei.co/npm/pngjs-image/)
+[![NPM](https://nodei.co/npm/pngjs-image.png?downloads=true&stars=true)](https://www.npmjs.com/package/pngjs-image)
+[![NPM](https://nodei.co/npm-dl/pngjs-image.png?months=3&height=2)](https://www.npmjs.com/package/pngjs-image)
 
+[![Coverage Report](https://img.shields.io/badge/Coverage_Report-Available-blue.svg)](http://yahoo.github.io/pngjs-image/coverage/lcov-report/)
+[![API Documentation](https://img.shields.io/badge/API_Documentation-Available-blue.svg)](http://yahoo.github.io/pngjs-image/docs/)
 
-[API-Documentation](http://yahoo.github.io/pngjs-image/docs/)
-
-[Coverage Report](http://yahoo.github.io/pngjs-image/coverage/lcov-report/)
-
+[![Gitter Support](https://img.shields.io/badge/Support-Gitter_IM-yellow.svg)](https://gitter.im/preceptorjs/support)
 
 **Table of Contents**
 * [Installation](#installation)
