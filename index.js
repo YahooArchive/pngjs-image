@@ -103,13 +103,15 @@ PNGImage.readImage = function (filename, fn) {
 	fn = fn || function () {
 	};
 
-	fs.createReadStream(filename).pipe(image).once('parsed', function () {
+	fs.createReadStream(filename).once('error', function(err) {
+		fn(err, undefined);
+	}).pipe(image).once('parsed', function () {
 		image.removeListener('error', fn);
 		fn(undefined, resultImage);
 	}).once('error', function (err) {
 		image.removeListener('parsed', fn);
 		fn(err, resultImage);
-	});
+	}).pipe(image);
 
 	return resultImage;
 };

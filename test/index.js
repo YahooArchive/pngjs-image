@@ -339,6 +339,13 @@ describe('Instance', function () {
 			}.bind(this));
 		});
 
+		it('should error on non-existent image', function (done) {
+			PNGImage.readImage(__dirname + '/nonexistent.png', function (err, image) {
+				expect(err).to.not.be.undefined;
+				done();
+			});
+		});
+
 		it('should load an image', function (done) {
 
 			var contents = fs.readFileSync(__dirname + '/test.png');
