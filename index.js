@@ -142,18 +142,17 @@ PNGImage.loadImage = function (blob, fn) {
 	return resultImage;
 };
 
-/**
- * Log method that can be overwritten to modify the logging behavior
- *
- * @static
- * @method log
- * @param {string} text
- */
-PNGImage.log = function (text) {
-	// Nothing yet; Overwrite this when needed
-};
-
 PNGImage.prototype = {
+	/**
+ 	* Log method that can be overwritten to modify the logging behavior
+ 	*
+ 	* @static
+ 	* @method log
+ 	* @param {string} text
+ 	*/
+	log: function(){
+		return console.log	
+	},
 
 	/**
 	 * Gets the original png-js object
