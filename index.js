@@ -18,8 +18,8 @@ var fs            = require('fs'), _ = require('underscore'),
  */
 function PNGImage (image) {
 	image.on('error', function (err) {
-		this.log(err.message);
-	}.bind(this));
+		PNGImage.log(err.message);
+	});
 	this._image = image;
 }
 
