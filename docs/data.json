@@ -2,7 +2,7 @@
     "project": {
         "name": "pngjs-image",
         "description": "Native PNG image manipulation",
-        "version": "0.9.3"
+        "version": "0.10.0"
     },
     "files": {
         "lib/filters/blur.js": {
@@ -89,7 +89,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "index.js",
-            "line": 15,
+            "line": 12,
             "description": "PNGjs-image class",
             "type": "{object}",
             "params": [
@@ -301,7 +301,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 75,
+            "line": 76,
             "description": "Gets the blur-value of a pixel at a specific coordinate",
             "itemtype": "method",
             "name": "getBlurPixel",
@@ -331,7 +331,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 90,
+            "line": 91,
             "description": "Gets the YIQ-value of a pixel at a specific index\nThe values for RGB correspond afterwards to YIQ respectively.",
             "itemtype": "method",
             "name": "getYIQAtIndex",
@@ -350,7 +350,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 115,
+            "line": 119,
             "description": "Gets the YIQ-value of a pixel at a specific coordinate\nThe values for RGB correspond afterwards to YIQ respectively.",
             "itemtype": "method",
             "name": "getYIQ",
@@ -374,7 +374,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 130,
+            "line": 134,
             "description": "Gets the luma of a pixel at a specific index",
             "itemtype": "method",
             "name": "getLumaAtIndex",
@@ -393,7 +393,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 141,
+            "line": 145,
             "description": "Gets the luma of a pixel at a specific coordinate",
             "itemtype": "method",
             "name": "getLuma",
@@ -417,7 +417,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 154,
+            "line": 158,
             "description": "Gets the sepia of a pixel at a specific index",
             "itemtype": "method",
             "name": "getSepiaAtIndex",
@@ -436,7 +436,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 177,
+            "line": 181,
             "description": "Gets the sepia of a pixel at a specific coordinate",
             "itemtype": "method",
             "name": "getSepia",
@@ -460,7 +460,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 190,
+            "line": 194,
             "description": "Gets the luminosity of a pixel at a specific index",
             "itemtype": "method",
             "name": "getLuminosityAtIndex",
@@ -479,7 +479,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 201,
+            "line": 205,
             "description": "Gets the luminosity of a pixel at a specific coordinate",
             "itemtype": "method",
             "name": "getLuminosity",
@@ -503,7 +503,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 215,
+            "line": 219,
             "description": "Gets the lightness of a pixel at a specific index",
             "itemtype": "method",
             "name": "getLightnessAtIndex",
@@ -522,7 +522,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 230,
+            "line": 234,
             "description": "Gets the lightness of a pixel at a specific coordinate",
             "itemtype": "method",
             "name": "getLightness",
@@ -546,7 +546,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 244,
+            "line": 248,
             "description": "Gets the average of a pixel at a specific index",
             "itemtype": "method",
             "name": "getGrayScaleAtIndex",
@@ -565,7 +565,7 @@
         },
         {
             "file": "lib/conversion.js",
-            "line": 255,
+            "line": 259,
             "description": "Gets the average of a pixel at a specific coordinate",
             "itemtype": "method",
             "name": "getGrayScale",
@@ -951,7 +951,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 156,
+            "line": 155,
             "description": "Get the red value of a pixel",
             "itemtype": "method",
             "name": "getRed",
@@ -970,7 +970,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 167,
+            "line": 166,
             "description": "Set the red value of a pixel",
             "itemtype": "method",
             "name": "setRed",
@@ -996,7 +996,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 180,
+            "line": 179,
             "description": "Get the green value of a pixel",
             "itemtype": "method",
             "name": "getGreen",
@@ -1015,7 +1015,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 191,
+            "line": 190,
             "description": "Set the green value of a pixel",
             "itemtype": "method",
             "name": "setGreen",
@@ -1041,7 +1041,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 204,
+            "line": 203,
             "description": "Get the blue value of a pixel",
             "itemtype": "method",
             "name": "getBlue",
@@ -1060,7 +1060,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 215,
+            "line": 214,
             "description": "Set the blue value of a pixel",
             "itemtype": "method",
             "name": "setBlue",
@@ -1086,7 +1086,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 228,
+            "line": 227,
             "description": "Get the alpha value of a pixel",
             "itemtype": "method",
             "name": "getAlpha",
@@ -1105,7 +1105,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 239,
+            "line": 238,
             "description": "Set the alpha value of a pixel",
             "itemtype": "method",
             "name": "setAlpha",
@@ -1131,7 +1131,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 252,
+            "line": 251,
             "description": "Sets the value of a pixel",
             "itemtype": "method",
             "name": "_getValue",
@@ -1157,7 +1157,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 265,
+            "line": 264,
             "description": "Sets the value of a pixel",
             "itemtype": "method",
             "name": "_setValue",
@@ -1190,7 +1190,7 @@
         },
         {
             "file": "index.js",
-            "line": 29,
+            "line": 26,
             "description": "Project version",
             "itemtype": "property",
             "name": "version",
@@ -1200,7 +1200,7 @@
         },
         {
             "file": "index.js",
-            "line": 39,
+            "line": 36,
             "description": "Filter dictionary",
             "itemtype": "property",
             "name": "filters",
@@ -1210,7 +1210,7 @@
         },
         {
             "file": "index.js",
-            "line": 48,
+            "line": 45,
             "description": "Sets a filter to the filter list",
             "itemtype": "method",
             "name": "setFilter",
@@ -1231,7 +1231,7 @@
         },
         {
             "file": "index.js",
-            "line": 64,
+            "line": 61,
             "description": "Creates an image by dimensions",
             "static": 1,
             "itemtype": "method",
@@ -1256,7 +1256,7 @@
         },
         {
             "file": "index.js",
-            "line": 81,
+            "line": 78,
             "description": "Copies an already existing image",
             "static": 1,
             "itemtype": "method",
@@ -1276,7 +1276,7 @@
         },
         {
             "file": "index.js",
-            "line": 95,
+            "line": 92,
             "description": "Reads an image from the filesystem",
             "static": 1,
             "itemtype": "method",
@@ -1301,7 +1301,7 @@
         },
         {
             "file": "index.js",
-            "line": 121,
+            "line": 120,
             "description": "Loads an image from a blob",
             "static": 1,
             "itemtype": "method",
@@ -1326,7 +1326,7 @@
         },
         {
             "file": "index.js",
-            "line": 147,
+            "line": 146,
             "description": "Log method that can be overwritten to modify the logging behavior",
             "static": 1,
             "itemtype": "method",
@@ -1342,7 +1342,7 @@
         },
         {
             "file": "index.js",
-            "line": 160,
+            "line": 159,
             "description": "Gets the original png-js object",
             "itemtype": "method",
             "name": "getImage",
@@ -1354,7 +1354,7 @@
         },
         {
             "file": "index.js",
-            "line": 170,
+            "line": 169,
             "description": "Gets the image as a blob",
             "itemtype": "method",
             "name": "getBlob",
@@ -1366,7 +1366,7 @@
         },
         {
             "file": "index.js",
-            "line": 181,
+            "line": 180,
             "description": "Gets the width of the image",
             "itemtype": "method",
             "name": "getWidth",
@@ -1378,7 +1378,7 @@
         },
         {
             "file": "index.js",
-            "line": 191,
+            "line": 190,
             "description": "Gets the height of the image",
             "itemtype": "method",
             "name": "getHeight",
@@ -1390,7 +1390,7 @@
         },
         {
             "file": "index.js",
-            "line": 202,
+            "line": 201,
             "description": "Clips the current image by modifying it in-place",
             "itemtype": "method",
             "name": "clip",
@@ -1420,7 +1420,7 @@
         },
         {
             "file": "index.js",
-            "line": 231,
+            "line": 229,
             "description": "Fills an area with the specified color",
             "itemtype": "method",
             "name": "fillRect",
@@ -1487,7 +1487,7 @@
         },
         {
             "file": "index.js",
-            "line": 260,
+            "line": 261,
             "description": "Applies a list of filters to the image",
             "itemtype": "method",
             "name": "applyFilters",
@@ -1513,7 +1513,7 @@
         },
         {
             "file": "index.js",
-            "line": 319,
+            "line": 320,
             "description": "Gets index of a specific coordinate",
             "itemtype": "method",
             "name": "getIndex",
@@ -1537,7 +1537,7 @@
         },
         {
             "file": "index.js",
-            "line": 332,
+            "line": 333,
             "description": "Writes the image to the filesystem",
             "itemtype": "method",
             "name": "writeImage",
@@ -1557,7 +1557,7 @@
         },
         {
             "file": "index.js",
-            "line": 352,
+            "line": 353,
             "description": "Writes the image to a buffer",
             "itemtype": "method",
             "name": "toBlob",

@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">pngjs-image/index.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">89.8% <small>(88 / 98)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">89.9% <small>(89 / 99)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">76.67% <small>(23 / 30)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">73.53% <small>(25 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">69.7% <small>(23 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">70.59% <small>(24 / 34)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">89.8% <small>(88 / 98)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">89.9% <small>(89 / 99)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -623,14 +623,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">91</span>
+<span class="cline-any cline-yes">93</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">91</span>
+<span class="cline-any cline-yes">93</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -709,12 +706,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -722,7 +721,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -830,9 +829,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5</span>
-<span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -852,6 +851,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -968,7 +969,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -994,19 +994,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Copyright 2014, Yahoo! Inc.
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 &nbsp;
 var fs = require('fs'),
-    _ = require('underscore'),
-&nbsp;
-    PNG = require('pngjs').PNG,
-&nbsp;
-    pixel = require('./lib/pixel'),
-    conversion = require('./lib/conversion'),
-    filters = require('./lib/filters'),
-&nbsp;
-    streamBuffers = require("stream-buffers");
+	_ = require('underscore'),
+	PNG = require('pngjs').PNG,
+	pixel = require('./lib/pixel'),
+	conversion = require('./lib/conversion'),
+	filters = require('./lib/filters'),
+	streamBuffers = require("stream-buffers");
 &nbsp;
 /**
  * PNGjs-image class
@@ -1015,11 +1012,11 @@ var fs = require('fs'),
  * @param {PNG} image png-js object
  * @constructor
  */
-function PNGImage(image) {
-    image.on('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
-<span class="cstat-no" title="statement not covered" >        this.log(err.message);</span>
-    }.bind(this));
-    this._image = image;
+function PNGImage (image) {
+	image.on('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >		PNGImage.log(err.message);</span>
+	});
+	this._image = image;
 }
 &nbsp;
 /**
@@ -1049,11 +1046,11 @@ PNGImage.filters = {};
  * @param {function} [fn]
  */
 PNGImage.setFilter = function (key, fn) {
-    if (fn) {
-        this.filters[key] = fn;
-    } else {
-        delete this.filters[key];
-    }
+	if (fn) {
+		this.filters[key] = fn;
+	} else {
+		delete this.filters[key];
+	}
 };
 &nbsp;
 &nbsp;
@@ -1067,11 +1064,11 @@ PNGImage.setFilter = function (key, fn) {
  * @return {PNGImage}
  */
 PNGImage.createImage = function (width, height) {
-    var image = new PNG({
-        width: width,
-        height: height
-    });
-    return new PNGImage(image);
+	var image = new PNG({
+		width: width,
+		height: height
+	});
+	return new PNGImage(image);
 };
 &nbsp;
 /**
@@ -1083,9 +1080,9 @@ PNGImage.createImage = function (width, height) {
  * @return {PNGImage}
  */
 PNGImage.copyImage = function (image) {
-    var newImage = this.createImage(image.getWidth(), image.getHeight());
-    image.getImage().bitblt(newImage.getImage(), 0, 0, image.getWidth(), image.getHeight(), 0, 0);
-    return newImage;
+	var newImage = this.createImage(image.getWidth(), image.getHeight());
+	image.getImage().bitblt(newImage.getImage(), 0, 0, image.getWidth(), image.getHeight(), 0, 0);
+	return newImage;
 };
 &nbsp;
 /**
@@ -1098,20 +1095,22 @@ PNGImage.copyImage = function (image) {
  * @return {PNGImage}
  */
 PNGImage.readImage = function (filename, fn) {
-    var image = new PNG(),
-        resultImage = new PNGImage(image);
+	var image = new PNG(),
+		resultImage = new PNGImage(image);
 &nbsp;
-    fn = fn || <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span>};</span>
+	fn = fn || <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span>};</span>
 &nbsp;
-    fs.createReadStream(filename).pipe(image).once('parsed', function () {
-        image.removeListener('error', fn);
-        fn(undefined, resultImage);
-    }).once('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
-<span class="cstat-no" title="statement not covered" >        image.removeListener('parsed', fn);</span>
-<span class="cstat-no" title="statement not covered" >        fn(err, resultImage);</span>
-    });
+	fs.createReadStream(filename).once('error', function(err) {
+		fn(err, undefined);
+	}).pipe(image).once('parsed', function () {
+		image.removeListener('error', fn);
+		fn(undefined, resultImage);
+	}).once('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >		image.removeListener('parsed', fn);</span>
+<span class="cstat-no" title="statement not covered" >		fn(err, resultImage);</span>
+	}).pipe(image);
 &nbsp;
-    return resultImage;
+	return resultImage;
 };
 &nbsp;
 /**
@@ -1124,20 +1123,20 @@ PNGImage.readImage = function (filename, fn) {
  * @return {PNGImage}
  */
 PNGImage.loadImage = function (blob, fn) {
-    var image = new PNG(),
-        resultImage = new PNGImage(image);
+	var image = new PNG(),
+		resultImage = new PNGImage(image);
 &nbsp;
-    fn = fn || <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span>};</span>
+	fn = fn || <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span>};</span>
 &nbsp;
-    image.once('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
-<span class="cstat-no" title="statement not covered" >      fn(err, resultImage);</span>
-    });
-    image.parse(blob, function () {
-        image.removeListener('error', fn);
-        fn(undefined, resultImage);
-    });
+	image.once('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >		fn(err, resultImage);</span>
+	});
+	image.parse(blob, function () {
+		image.removeListener('error', fn);
+		fn(undefined, resultImage);
+	});
 &nbsp;
-    return resultImage;
+	return resultImage;
 };
 &nbsp;
 /**
@@ -1148,226 +1147,227 @@ PNGImage.loadImage = function (blob, fn) {
  * @param {string} text
  */
 PNGImage.log = <span class="fstat-no" title="function not covered" >function (text) {</span>
-    // Nothing yet; Overwrite this when needed
+	// Nothing yet; Overwrite this when needed
 };
 &nbsp;
 PNGImage.prototype = {
 &nbsp;
-    /**
-     * Gets the original png-js object
-     *
-     * @method getImage
-     * @return {PNG}
-     */
-    getImage: function () {
-        return this._image;
-    },
+	/**
+	 * Gets the original png-js object
+	 *
+	 * @method getImage
+	 * @return {PNG}
+	 */
+	getImage: function () {
+		return this._image;
+	},
 &nbsp;
-    /**
-     * Gets the image as a blob
-     *
-     * @method getBlob
-     * @return {Buffer}
-     */
-    getBlob: function () {
-        return this._image.data;
-    },
-&nbsp;
-&nbsp;
-    /**
-     * Gets the width of the image
-     *
-     * @method getWidth
-     * @return {int}
-     */
-    getWidth: function () {
-        return this._image.width;
-    },
-&nbsp;
-    /**
-     * Gets the height of the image
-     *
-     * @method getHeight
-     * @return {int}
-     */
-    getHeight: function () {
-        return this._image.height;
-    },
+	/**
+	 * Gets the image as a blob
+	 *
+	 * @method getBlob
+	 * @return {Buffer}
+	 */
+	getBlob: function () {
+		return this._image.data;
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Clips the current image by modifying it in-place
-     *
-     * @method clip
-     * @param {int} x Starting x-coordinate
-     * @param {int} y Starting y-coordinate
-     * @param {int} width Width of area relative to starting coordinate
-     * @param {int} height Height of area relative to starting coordinate
-     */
-    clip: function (x, y, width, height) {
+	/**
+	 * Gets the width of the image
+	 *
+	 * @method getWidth
+	 * @return {int}
+	 */
+	getWidth: function () {
+		return this._image.width;
+	},
 &nbsp;
-        var image;
-&nbsp;
-        width = Math.min(width, this.getWidth() - x);
-        height = Math.min(height, this.getHeight() - y);
-&nbsp;
-        <span class="missing-if-branch" title="if path not taken" >I</span>if ((width &lt; 0) || (height &lt; 0)) {
-<span class="cstat-no" title="statement not covered" >            throw new Error('Width and height cannot be negative.');</span>
-        }
-&nbsp;
-        image = new PNG({
-            width: width,
-            height: height
-        });
-&nbsp;
-        this._image.bitblt(image, x, y, width, height, 0, 0);
-        this._image = image;
-    },
-&nbsp;
-    /**
-     * Fills an area with the specified color
-     *
-     * @method fillRect
-     * @param {int} x Starting x-coordinate
-     * @param {int} y Starting y-coordinate
-     * @param {int} width Width of area relative to starting coordinate
-     * @param {int} height Height of area relative to starting coordinate
-     * @param {object} color
-     * @param {int} [color.red] Red channel of color to set
-     * @param {int} [color.green] Green channel of color to set
-     * @param {int} [color.blue] Blue channel of color to set
-     * @param {int} [color.alpha] Alpha channel for color to set
-     * @param {float} [color.opacity] Opacity of color
-     */
-    fillRect: function (x, y, width, height, color) {
-        var i, iLen = x + width,
-            j, jLen = y + height,
-            index;
-&nbsp;
-        for (i = x; i &lt; iLen; i++) {
-            for (j = y; j &lt; jLen; j++) {
-                index = this.getIndex(i, j);
-                this.setAtIndex(index, color);
-            }
-        }
-    },
+	/**
+	 * Gets the height of the image
+	 *
+	 * @method getHeight
+	 * @return {int}
+	 */
+	getHeight: function () {
+		return this._image.height;
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Applies a list of filters to the image
-     *
-     * @method applyFilters
-     * @param {string|object|object[]} filters Names of filters in sequence `{key:&lt;string&gt;, options:&lt;object&gt;}`
-     * @param {boolean} [returnResult=false]
-     * @return {PNGImage}
-     */
-    applyFilters: function (filters, returnResult) {
+	/**
+	 * Clips the current image by modifying it in-place
+	 *
+	 * @method clip
+	 * @param {int} x Starting x-coordinate
+	 * @param {int} y Starting y-coordinate
+	 * @param {int} width Width of area relative to starting coordinate
+	 * @param {int} height Height of area relative to starting coordinate
+	 */
+	clip: function (x, y, width, height) {
 &nbsp;
-        var image,
-            newFilters;
+		var image;
 &nbsp;
-        // Convert to array
-        if (_.isString(filters)) {
-            filters = [filters];
-        } else if (!_.isArray(filters) &amp;&amp; _.isObject(filters)) {
-            filters = [filters];
-        }
+		width = Math.min(width, this.getWidth() - x);
+		height = Math.min(height, this.getHeight() - y);
 &nbsp;
-        // Format array as needed by the function
-        newFilters = [];
-        _.each(filters, function (filter) {
+		<span class="missing-if-branch" title="if path not taken" >I</span>if ((width &lt; 0) || (height &lt; 0)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Width and height cannot be negative.');</span>
+		}
 &nbsp;
-            if (_.isString(filter)) {
-                newFilters.push({ key: filter, options: {} });
+		image = new PNG({
+			width: width, height: height
+		});
 &nbsp;
-            } else if (_.isObject(filter)) {
-                newFilters.push(filter);
-            }
-        });
-        filters = newFilters;
+		this._image.bitblt(image, x, y, width, height, 0, 0);
+		this._image = image;
+	},
 &nbsp;
-        // Process filters
-        image = this;
-        _.each(filters, function (filter) {
+	/**
+	 * Fills an area with the specified color
+	 *
+	 * @method fillRect
+	 * @param {int} x Starting x-coordinate
+	 * @param {int} y Starting y-coordinate
+	 * @param {int} width Width of area relative to starting coordinate
+	 * @param {int} height Height of area relative to starting coordinate
+	 * @param {object} color
+	 * @param {int} [color.red] Red channel of color to set
+	 * @param {int} [color.green] Green channel of color to set
+	 * @param {int} [color.blue] Blue channel of color to set
+	 * @param {int} [color.alpha] Alpha channel for color to set
+	 * @param {float} [color.opacity] Opacity of color
+	 */
+	fillRect: function (x, y, width, height, color) {
 &nbsp;
-            var currentFilter = PNGImage.filters[filter.key];
+		var i,
+			iLen = x + width,
+			j,
+			jLen = y + height,
+			index;
 &nbsp;
-            <span class="missing-if-branch" title="if path not taken" >I</span>if (!currentFilter) {
-<span class="cstat-no" title="statement not covered" >                throw new Error('Unknown filter ' + filter.key);</span>
-            }
-&nbsp;
-            filter.options = filter.options || <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
-            filter.options.needsCopy = !!returnResult;
-&nbsp;
-            image = currentFilter(this, filter.options);
-&nbsp;
-        }, this);
-&nbsp;
-        // Overwrite current image, or just returning it
-        if (!returnResult) {
-            this._image = image.getImage();
-        }
-&nbsp;
-        return image;
-    },
-&nbsp;
-&nbsp;
-    /**
-     * Gets index of a specific coordinate
-     *
-     * @method getIndex
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} Index of pixel
-     */
-    getIndex: function (x, y) {
-        return (this.getWidth() * y) + x;
-    },
+		for (i = x; i &lt; iLen; i++) {
+			for (j = y; j &lt; jLen; j++) {
+				index = this.getIndex(i, j);
+				this.setAtIndex(index, color);
+			}
+		}
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Writes the image to the filesystem
-     *
-     * @method writeImage
-     * @param {string} filename Path to file
-     * @param {function} fn Callback
-     */
-    writeImage: function (filename, fn) {
+	/**
+	 * Applies a list of filters to the image
+	 *
+	 * @method applyFilters
+	 * @param {string|object|object[]} filters Names of filters in sequence `{key:&lt;string&gt;, options:&lt;object&gt;}`
+	 * @param {boolean} [returnResult=false]
+	 * @return {PNGImage}
+	 */
+	applyFilters: function (filters, returnResult) {
 &nbsp;
-        fn = fn || <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span>};</span>
+		var image,
+			newFilters;
 &nbsp;
-        this._image.pack().pipe(fs.createWriteStream(filename)).once('close', function () {
-            this._image.removeListener('error', fn);
-            fn(undefined, this);
-        }.bind(this)).once('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
-<span class="cstat-no" title="statement not covered" >            this._image.removeListener('close', fn);</span>
-<span class="cstat-no" title="statement not covered" >            fn(err, this);</span>
-        }.bind(this));
-    },
+		// Convert to array
+		if (_.isString(filters)) {
+			filters = [filters];
+		} else if (!_.isArray(filters) &amp;&amp; _.isObject(filters)) {
+			filters = [filters];
+		}
 &nbsp;
-    /**
-     * Writes the image to a buffer
-     *
-     * @method toBlob
-     * @param {function} fn Callback
-     */
-    toBlob: function (fn) {
+		// Format array as needed by the function
+		newFilters = [];
+		(filters || <span class="branch-1 cbranch-no" title="branch not covered" >[])</span>.forEach(function (filter) {
 &nbsp;
-        var writeBuffer = new streamBuffers.WritableStreamBuffer({
-            initialSize: (100 * 1024),
-            incrementAmount: (10 * 1024)
-        });
+			if (_.isString(filter)) {
+				newFilters.push({key: filter, options: {}});
 &nbsp;
-        fn = fn || <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span>};</span>
+			} else if (_.isObject(filter)) {
+				newFilters.push(filter);
+			}
+		});
+		filters = newFilters;
 &nbsp;
-        this._image.pack().pipe(writeBuffer).once('close', function () {
-            this._image.removeListener('error', fn);
-            fn(undefined, writeBuffer.getContents());
-        }.bind(this)).once('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
-<span class="cstat-no" title="statement not covered" >            this._image.removeListener('close', fn);</span>
-<span class="cstat-no" title="statement not covered" >            fn(err);</span>
-        }.bind(this));
-    }
+		// Process filters
+		image = this;
+		(filters || <span class="branch-1 cbranch-no" title="branch not covered" >[])</span>.forEach(function (filter) {
+&nbsp;
+			var currentFilter = PNGImage.filters[filter.key];
+&nbsp;
+			<span class="missing-if-branch" title="if path not taken" >I</span>if (!currentFilter) {
+<span class="cstat-no" title="statement not covered" >				throw new Error('Unknown filter ' + filter.key);</span>
+			}
+&nbsp;
+			filter.options = filter.options || <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
+			filter.options.needsCopy = !!returnResult;
+&nbsp;
+			image = currentFilter(this, filter.options);
+&nbsp;
+		}.bind(this));
+&nbsp;
+		// Overwrite current image, or just returning it
+		if (!returnResult) {
+			this._image = image.getImage();
+		}
+&nbsp;
+		return image;
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Gets index of a specific coordinate
+	 *
+	 * @method getIndex
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} Index of pixel
+	 */
+	getIndex: function (x, y) {
+		return (this.getWidth() * y) + x;
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Writes the image to the filesystem
+	 *
+	 * @method writeImage
+	 * @param {string} filename Path to file
+	 * @param {function} fn Callback
+	 */
+	writeImage: function (filename, fn) {
+&nbsp;
+		fn = fn || <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span>};</span>
+&nbsp;
+		this._image.pack().pipe(fs.createWriteStream(filename)).once('close', function () {
+			this._image.removeListener('error', fn);
+			fn(undefined, this);
+		}.bind(this)).once('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >			this._image.removeListener('close', fn);</span>
+<span class="cstat-no" title="statement not covered" >			fn(err, this);</span>
+		}.bind(this));
+	},
+&nbsp;
+	/**
+	 * Writes the image to a buffer
+	 *
+	 * @method toBlob
+	 * @param {function} fn Callback
+	 */
+	toBlob: function (fn) {
+&nbsp;
+		var writeBuffer = new streamBuffers.WritableStreamBuffer({
+			initialSize: (100 * 1024), incrementAmount: (10 * 1024)
+		});
+&nbsp;
+		fn = fn || <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span>};</span>
+&nbsp;
+		this._image.pack().pipe(writeBuffer).once('close', function () {
+			this._image.removeListener('error', fn);
+			fn(undefined, writeBuffer.getContents());
+		}.bind(this)).once('error', <span class="fstat-no" title="function not covered" >function (err) {</span>
+<span class="cstat-no" title="statement not covered" >			this._image.removeListener('close', fn);</span>
+<span class="cstat-no" title="statement not covered" >			fn(err);</span>
+		}.bind(this));
+	}
 };
 PNGImage.prototype.constructor = PNGImage;
 &nbsp;
@@ -1378,8 +1378,8 @@ _.extend(PNGImage.prototype, conversion);
 &nbsp;
 &nbsp;
 // Adds all standard filters
-_.each(_.keys(filters), function (key) {
-    PNGImage.setFilter(key, filters[key]);
+_.keys(filters).forEach(function (key) {
+	PNGImage.setFilter(key, filters[key]);
 });
 &nbsp;
 module.exports = PNGImage;
@@ -1388,7 +1388,7 @@ module.exports = PNGImage;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 04 2014 12:52:17 GMT-0800 (PST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Mar 28 2015 17:46:08 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../prettify.js"></script>

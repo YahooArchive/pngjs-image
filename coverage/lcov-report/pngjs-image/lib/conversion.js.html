@@ -482,7 +482,12 @@
 264
 265
 266
-267</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+267
+268
+269
+270
+271
+272</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -492,6 +497,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -580,7 +586,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -748,7 +757,8 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Copyright 2014 Yahoo! Inc.
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Copyright 2014-2015 Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 &nbsp;
 /**
@@ -759,267 +769,272 @@
  */
 module.exports = {
 &nbsp;
-    /**
-     * Gets the blurred value of a pixel with a gray-scale function
-     *
-     * @method getBlurPixelAtIndex
-     * @param {int} idx Index
-     * @param {string} [funcName] Gray-scale function
-     * @return {int}
-     */
-    getBlurPixelAtIndex: function (idx, funcName) {
-        var colors = 0,
-            colorCounter = 0,
-            fn,
-            width = this._image.width,
-            height = this._image.height,
-            dim = width * height,
-            spaceOnRight,
-            spaceOnLeft,
-            spaceOnTop,
-            spaceOnBottom;
+	/**
+	 * Gets the blurred value of a pixel with a gray-scale function
+	 *
+	 * @method getBlurPixelAtIndex
+	 * @param {int} idx Index
+	 * @param {string} [funcName] Gray-scale function
+	 * @return {int}
+	 */
+	getBlurPixelAtIndex: function (idx, funcName) {
 &nbsp;
-        funcName = funcName || "getLuminosityAtIndex";
+		var colors = 0,
+			colorCounter = 0,
+			fn,
+			width = this._image.width,
+			height = this._image.height,
+			dim = width * height,
+			spaceOnRight,
+			spaceOnLeft,
+			spaceOnTop,
+			spaceOnBottom;
 &nbsp;
-        fn = function (idx) {
-            colors += this[funcName](idx);
-            colorCounter++;
-        }.bind(this);
+		funcName = funcName || "getLuminosityAtIndex";
 &nbsp;
-        spaceOnRight = (idx % width &lt; width - 1);
-        spaceOnLeft = (idx % width &gt; 0);
-        spaceOnTop = (idx &gt;= width);
-        spaceOnBottom = (idx &lt;= dim - width);
+		fn = function (idx) {
+			colors += this[funcName](idx);
+			colorCounter++;
+		}.bind(this);
 &nbsp;
-        if (spaceOnTop) {
-            if (spaceOnLeft) {
-                fn(idx - this._image.width - 1);
-            }
-            fn(idx - this._image.width);
-            if (spaceOnRight) {
-                fn(idx - this._image.width + 1);
-            }
-        }
+		spaceOnRight = (idx % width &lt; width - 1);
+		spaceOnLeft = (idx % width &gt; 0);
+		spaceOnTop = (idx &gt;= width);
+		spaceOnBottom = (idx &lt;= dim - width);
 &nbsp;
-        if (spaceOnLeft) {
-            fn(idx - 1);
-        }
-        fn(idx);
-        if (spaceOnRight) {
-            fn(idx + 1);
-        }
+		if (spaceOnTop) {
+			if (spaceOnLeft) {
+				fn(idx - this._image.width - 1);
+			}
+			fn(idx - this._image.width);
+			if (spaceOnRight) {
+				fn(idx - this._image.width + 1);
+			}
+		}
 &nbsp;
-        if (spaceOnBottom) {
-            if (spaceOnLeft) {
-                fn(idx + this._image.width - 1);
-            }
-            fn(idx + this._image.width);
-            if (spaceOnRight) {
-                fn(idx + this._image.width + 1);
-            }
-        }
+		if (spaceOnLeft) {
+			fn(idx - 1);
+		}
+		fn(idx);
+		if (spaceOnRight) {
+			fn(idx + 1);
+		}
 &nbsp;
-        return Math.floor(colors / colorCounter);
-    },
+		if (spaceOnBottom) {
+			if (spaceOnLeft) {
+				fn(idx + this._image.width - 1);
+			}
+			fn(idx + this._image.width);
+			if (spaceOnRight) {
+				fn(idx + this._image.width + 1);
+			}
+		}
 &nbsp;
-    /**
-     * Gets the blur-value of a pixel at a specific coordinate
-     *
-     * @method getBlurPixel
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @param {string} [funcName] Gray-scale function
-     * @return {int} blur-value
-     */
-    getBlurPixel: function (x, y, funcName) {
-        var idx = this.getIndex(x, y);
-        return this.getBlurPixelAtIndex(idx, funcName);
-    },
+		return Math.floor(colors / colorCounter);
+	},
 &nbsp;
-&nbsp;
-    /**
-     * Gets the YIQ-value of a pixel at a specific index
-     * The values for RGB correspond afterwards to YIQ respectively.
-     *
-     * @method getYIQAtIndex
-     * @param {int} idx Index of pixel
-     * @return {object} YIQ-value
-     */
-    getYIQAtIndex: function (idx) {
-        var r = this.getRed(idx),
-            g = this.getGreen(idx),
-            b = this.getBlue(idx),
-            y, i, q;
-&nbsp;
-        y = this.getLumaAtIndex(idx);
-        i = Math.floor((0.595716 * r) - (0.274453 * g) - (0.321263 * b));
-        q = Math.floor((0.211456 * r) - (0.522591 * g) + (0.311135 * b));
-&nbsp;
-        y = y &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: (y &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: y);
-        i = i &lt; 0 ? 0 : (<span class="branch-1 cbranch-no" title="branch not covered" >i &gt; 255 ? 255 : i)</span>;
-        q = q &lt; 0 ? 0 : (q &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: q);
-&nbsp;
-        return { y:y, i:i, q:q };
-    },
-&nbsp;
-    /**
-     * Gets the YIQ-value of a pixel at a specific coordinate
-     * The values for RGB correspond afterwards to YIQ respectively.
-     *
-     * @method getYIQ
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {object} YIQ-value
-     */
-    getYIQ: function (x, y) {
-        var idx = this.getIndex(x, y);
-        return this.getYIQAtIndex(idx);
-    },
+	/**
+	 * Gets the blur-value of a pixel at a specific coordinate
+	 *
+	 * @method getBlurPixel
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @param {string} [funcName] Gray-scale function
+	 * @return {int} blur-value
+	 */
+	getBlurPixel: function (x, y, funcName) {
+		var idx = this.getIndex(x, y);
+		return this.getBlurPixelAtIndex(idx, funcName);
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Gets the luma of a pixel at a specific index
-     *
-     * @method getLumaAtIndex
-     * @param {int} idx Index of pixel
-     * @return {int} YIQ-value
-     */
-    getLumaAtIndex: function (idx) {
-        return Math.floor((0.299 * this.getRed(idx)) + (0.587 * this.getGreen(idx)) + (0.114 * this.getBlue(idx)));
-    },
+	/**
+	 * Gets the YIQ-value of a pixel at a specific index
+	 * The values for RGB correspond afterwards to YIQ respectively.
+	 *
+	 * @method getYIQAtIndex
+	 * @param {int} idx Index of pixel
+	 * @return {object} YIQ-value
+	 */
+	getYIQAtIndex: function (idx) {
 &nbsp;
-    /**
-     * Gets the luma of a pixel at a specific coordinate
-     *
-     * @method getLuma
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} YIQ-value
-     */
-    getLuma: function (x, y) {
-        var idx = this.getIndex(x, y);
-        return this.getLumaAtIndex(idx);
-    },
+		var r = this.getRed(idx),
+			g = this.getGreen(idx),
+			b = this.getBlue(idx),
+			y,
+			i,
+			q;
 &nbsp;
-    /**
-     * Gets the sepia of a pixel at a specific index
-     *
-     * @method getSepiaAtIndex
-     * @param {int} idx Index of pixel
-     * @return {object} Color
-     */
-    getSepiaAtIndex: function (idx) {
-        var r = this.getRed(idx),
-            g = this.getGreen(idx),
-            b = this.getBlue(idx);
+		y = this.getLumaAtIndex(idx);
+		i = Math.floor((0.595716 * r) - (0.274453 * g) - (0.321263 * b));
+		q = Math.floor((0.211456 * r) - (0.522591 * g) + (0.311135 * b));
 &nbsp;
-        r = Math.floor((0.393 * r) + (0.769 * g) + (0.189 * b));
-        g = Math.floor((0.349 * r) + (0.686 * g) + (0.168 * b));
-        b = Math.floor((0.272 * r) + (0.534 * g) + (0.131 * b));
+		y = y &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: (y &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: y);
+		i = i &lt; 0 ? 0 : (<span class="branch-1 cbranch-no" title="branch not covered" >i &gt; 255 ? 255 : i)</span>;
+		q = q &lt; 0 ? 0 : (q &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: q);
 &nbsp;
-        r = r &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: (r &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: r);
-        g = g &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: (g &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: g);
-        b = b &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: (b &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: b);
+		return {y: y, i: i, q: q};
+	},
 &nbsp;
-        return { red:r, green:g, blue:b };
-    },
-&nbsp;
-    /**
-     * Gets the sepia of a pixel at a specific coordinate
-     *
-     * @method getSepia
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {object} Color
-     */
-    getSepia: function (x, y) {
-        return this.getSepiaAtIndex(this.getIndex(x, y));
-    },
+	/**
+	 * Gets the YIQ-value of a pixel at a specific coordinate
+	 * The values for RGB correspond afterwards to YIQ respectively.
+	 *
+	 * @method getYIQ
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {object} YIQ-value
+	 */
+	getYIQ: function (x, y) {
+		var idx = this.getIndex(x, y);
+		return this.getYIQAtIndex(idx);
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Gets the luminosity of a pixel at a specific index
-     *
-     * @method getLuminosityAtIndex
-     * @param {int} idx Index of pixel
-     * @return {int} Luminosity
-     */
-    getLuminosityAtIndex: function (idx) {
-        return Math.floor((0.2126 * this.getRed(idx)) + (0.7152 * this.getGreen(idx)) + (0.0722 * this.getBlue(idx)));
-    },
+	/**
+	 * Gets the luma of a pixel at a specific index
+	 *
+	 * @method getLumaAtIndex
+	 * @param {int} idx Index of pixel
+	 * @return {int} YIQ-value
+	 */
+	getLumaAtIndex: function (idx) {
+		return Math.floor((0.299 * this.getRed(idx)) + (0.587 * this.getGreen(idx)) + (0.114 * this.getBlue(idx)));
+	},
 &nbsp;
-    /**
-     * Gets the luminosity of a pixel at a specific coordinate
-     *
-     * @method getLuminosity
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} Luminosity
-     */
-    getLuminosity: function (x, y) {
-        var idx = this.getIndex(x, y);
-        return this.getLuminosityAtIndex(idx);
-    },
+	/**
+	 * Gets the luma of a pixel at a specific coordinate
+	 *
+	 * @method getLuma
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} YIQ-value
+	 */
+	getLuma: function (x, y) {
+		var idx = this.getIndex(x, y);
+		return this.getLumaAtIndex(idx);
+	},
+&nbsp;
+	/**
+	 * Gets the sepia of a pixel at a specific index
+	 *
+	 * @method getSepiaAtIndex
+	 * @param {int} idx Index of pixel
+	 * @return {object} Color
+	 */
+	getSepiaAtIndex: function (idx) {
+		var r = this.getRed(idx),
+			g = this.getGreen(idx),
+			b = this.getBlue(idx);
+&nbsp;
+		r = Math.floor((0.393 * r) + (0.769 * g) + (0.189 * b));
+		g = Math.floor((0.349 * r) + (0.686 * g) + (0.168 * b));
+		b = Math.floor((0.272 * r) + (0.534 * g) + (0.131 * b));
+&nbsp;
+		r = r &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: (r &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: r);
+		g = g &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: (g &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: g);
+		b = b &lt; 0 ? <span class="branch-0 cbranch-no" title="branch not covered" >0 </span>: (b &gt; 255 ? <span class="branch-0 cbranch-no" title="branch not covered" >255 </span>: b);
+&nbsp;
+		return {red: r, green: g, blue: b};
+	},
+&nbsp;
+	/**
+	 * Gets the sepia of a pixel at a specific coordinate
+	 *
+	 * @method getSepia
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {object} Color
+	 */
+	getSepia: function (x, y) {
+		return this.getSepiaAtIndex(this.getIndex(x, y));
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Gets the lightness of a pixel at a specific index
-     *
-     * @method getLightnessAtIndex
-     * @param {int} idx Index of pixel
-     * @return {int} Lightness
-     */
-    getLightnessAtIndex: function (idx) {
-        var r = this.getRed(idx),
-            g = this.getGreen(idx),
-            b = this.getBlue(idx);
+	/**
+	 * Gets the luminosity of a pixel at a specific index
+	 *
+	 * @method getLuminosityAtIndex
+	 * @param {int} idx Index of pixel
+	 * @return {int} Luminosity
+	 */
+	getLuminosityAtIndex: function (idx) {
+		return Math.floor((0.2126 * this.getRed(idx)) + (0.7152 * this.getGreen(idx)) + (0.0722 * this.getBlue(idx)));
+	},
 &nbsp;
-        return Math.floor((Math.max(r, g, b) + Math.min(r, g, b)) / 2);
-    },
-&nbsp;
-    /**
-     * Gets the lightness of a pixel at a specific coordinate
-     *
-     * @method getLightness
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} Lightness
-     */
-    getLightness: function (x, y) {
-        var idx = this.getIndex(x, y);
-        return this.getLightnessAtIndex(idx);
-    },
+	/**
+	 * Gets the luminosity of a pixel at a specific coordinate
+	 *
+	 * @method getLuminosity
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} Luminosity
+	 */
+	getLuminosity: function (x, y) {
+		var idx = this.getIndex(x, y);
+		return this.getLuminosityAtIndex(idx);
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Gets the average of a pixel at a specific index
-     *
-     * @method getGrayScaleAtIndex
-     * @param {int} idx Index of pixel
-     * @return {int} Average
-     */
-    getGrayScaleAtIndex: function (idx) {
-        return Math.floor((this.getRed(idx) + this.getGreen(idx) + this.getBlue(idx)) / 3);
-    },
+	/**
+	 * Gets the lightness of a pixel at a specific index
+	 *
+	 * @method getLightnessAtIndex
+	 * @param {int} idx Index of pixel
+	 * @return {int} Lightness
+	 */
+	getLightnessAtIndex: function (idx) {
+		var r = this.getRed(idx),
+			g = this.getGreen(idx),
+			b = this.getBlue(idx);
 &nbsp;
-    /**
-     * Gets the average of a pixel at a specific coordinate
-     *
-     * @method getGrayScale
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} Average
-     */
-    getGrayScale: function (x, y) {
-        var idx = this.getIndex(x, y);
-        return this.getGrayScaleAtIndex(idx);
-    }
-};</pre></td></tr>
+		return Math.floor((Math.max(r, g, b) + Math.min(r, g, b)) / 2);
+	},
+&nbsp;
+	/**
+	 * Gets the lightness of a pixel at a specific coordinate
+	 *
+	 * @method getLightness
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} Lightness
+	 */
+	getLightness: function (x, y) {
+		var idx = this.getIndex(x, y);
+		return this.getLightnessAtIndex(idx);
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Gets the average of a pixel at a specific index
+	 *
+	 * @method getGrayScaleAtIndex
+	 * @param {int} idx Index of pixel
+	 * @return {int} Average
+	 */
+	getGrayScaleAtIndex: function (idx) {
+		return Math.floor((this.getRed(idx) + this.getGreen(idx) + this.getBlue(idx)) / 3);
+	},
+&nbsp;
+	/**
+	 * Gets the average of a pixel at a specific coordinate
+	 *
+	 * @method getGrayScale
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} Average
+	 */
+	getGrayScale: function (x, y) {
+		var idx = this.getIndex(x, y);
+		return this.getGrayScaleAtIndex(idx);
+	}
+};
+&nbsp;</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 04 2014 12:52:17 GMT-0800 (PST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Mar 28 2015 17:46:08 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>

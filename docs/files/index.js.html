@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.9.3</em>
+            <em>API Docs for: 0.10.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -86,19 +86,16 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-// Copyright 2014, Yahoo! Inc.
+// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var fs = require(&#x27;fs&#x27;),
-    _ = require(&#x27;underscore&#x27;),
-
-    PNG = require(&#x27;pngjs&#x27;).PNG,
-
-    pixel = require(&#x27;./lib/pixel&#x27;),
-    conversion = require(&#x27;./lib/conversion&#x27;),
-    filters = require(&#x27;./lib/filters&#x27;),
-
-    streamBuffers = require(&quot;stream-buffers&quot;);
+	_ = require(&#x27;underscore&#x27;),
+	PNG = require(&#x27;pngjs&#x27;).PNG,
+	pixel = require(&#x27;./lib/pixel&#x27;),
+	conversion = require(&#x27;./lib/conversion&#x27;),
+	filters = require(&#x27;./lib/filters&#x27;),
+	streamBuffers = require(&quot;stream-buffers&quot;);
 
 /**
  * PNGjs-image class
@@ -107,11 +104,11 @@ var fs = require(&#x27;fs&#x27;),
  * @param {PNG} image png-js object
  * @constructor
  */
-function PNGImage(image) {
-    image.on(&#x27;error&#x27;, function (err) {
-        this.log(err.message);
-    }.bind(this));
-    this._image = image;
+function PNGImage (image) {
+	image.on(&#x27;error&#x27;, function (err) {
+		PNGImage.log(err.message);
+	});
+	this._image = image;
 }
 
 /**
@@ -141,11 +138,11 @@ PNGImage.filters = {};
  * @param {function} [fn]
  */
 PNGImage.setFilter = function (key, fn) {
-    if (fn) {
-        this.filters[key] = fn;
-    } else {
-        delete this.filters[key];
-    }
+	if (fn) {
+		this.filters[key] = fn;
+	} else {
+		delete this.filters[key];
+	}
 };
 
 
@@ -159,11 +156,11 @@ PNGImage.setFilter = function (key, fn) {
  * @return {PNGImage}
  */
 PNGImage.createImage = function (width, height) {
-    var image = new PNG({
-        width: width,
-        height: height
-    });
-    return new PNGImage(image);
+	var image = new PNG({
+		width: width,
+		height: height
+	});
+	return new PNGImage(image);
 };
 
 /**
@@ -175,9 +172,9 @@ PNGImage.createImage = function (width, height) {
  * @return {PNGImage}
  */
 PNGImage.copyImage = function (image) {
-    var newImage = this.createImage(image.getWidth(), image.getHeight());
-    image.getImage().bitblt(newImage.getImage(), 0, 0, image.getWidth(), image.getHeight(), 0, 0);
-    return newImage;
+	var newImage = this.createImage(image.getWidth(), image.getHeight());
+	image.getImage().bitblt(newImage.getImage(), 0, 0, image.getWidth(), image.getHeight(), 0, 0);
+	return newImage;
 };
 
 /**
@@ -190,20 +187,22 @@ PNGImage.copyImage = function (image) {
  * @return {PNGImage}
  */
 PNGImage.readImage = function (filename, fn) {
-    var image = new PNG(),
-        resultImage = new PNGImage(image);
+	var image = new PNG(),
+		resultImage = new PNGImage(image);
 
-    fn = fn || function () {};
+	fn = fn || function () {};
 
-    fs.createReadStream(filename).pipe(image).once(&#x27;parsed&#x27;, function () {
-        image.removeListener(&#x27;error&#x27;, fn);
-        fn(undefined, resultImage);
-    }).once(&#x27;error&#x27;, function (err) {
-        image.removeListener(&#x27;parsed&#x27;, fn);
-        fn(err, resultImage);
-    });
+	fs.createReadStream(filename).once(&#x27;error&#x27;, function(err) {
+		fn(err, undefined);
+	}).pipe(image).once(&#x27;parsed&#x27;, function () {
+		image.removeListener(&#x27;error&#x27;, fn);
+		fn(undefined, resultImage);
+	}).once(&#x27;error&#x27;, function (err) {
+		image.removeListener(&#x27;parsed&#x27;, fn);
+		fn(err, resultImage);
+	}).pipe(image);
 
-    return resultImage;
+	return resultImage;
 };
 
 /**
@@ -216,20 +215,20 @@ PNGImage.readImage = function (filename, fn) {
  * @return {PNGImage}
  */
 PNGImage.loadImage = function (blob, fn) {
-    var image = new PNG(),
-        resultImage = new PNGImage(image);
+	var image = new PNG(),
+		resultImage = new PNGImage(image);
 
-    fn = fn || function () {};
+	fn = fn || function () {};
 
-    image.once(&#x27;error&#x27;, function (err) {
-      fn(err, resultImage);
-    });
-    image.parse(blob, function () {
-        image.removeListener(&#x27;error&#x27;, fn);
-        fn(undefined, resultImage);
-    });
+	image.once(&#x27;error&#x27;, function (err) {
+		fn(err, resultImage);
+	});
+	image.parse(blob, function () {
+		image.removeListener(&#x27;error&#x27;, fn);
+		fn(undefined, resultImage);
+	});
 
-    return resultImage;
+	return resultImage;
 };
 
 /**
@@ -240,226 +239,227 @@ PNGImage.loadImage = function (blob, fn) {
  * @param {string} text
  */
 PNGImage.log = function (text) {
-    // Nothing yet; Overwrite this when needed
+	// Nothing yet; Overwrite this when needed
 };
 
 PNGImage.prototype = {
 
-    /**
-     * Gets the original png-js object
-     *
-     * @method getImage
-     * @return {PNG}
-     */
-    getImage: function () {
-        return this._image;
-    },
+	/**
+	 * Gets the original png-js object
+	 *
+	 * @method getImage
+	 * @return {PNG}
+	 */
+	getImage: function () {
+		return this._image;
+	},
 
-    /**
-     * Gets the image as a blob
-     *
-     * @method getBlob
-     * @return {Buffer}
-     */
-    getBlob: function () {
-        return this._image.data;
-    },
-
-
-    /**
-     * Gets the width of the image
-     *
-     * @method getWidth
-     * @return {int}
-     */
-    getWidth: function () {
-        return this._image.width;
-    },
-
-    /**
-     * Gets the height of the image
-     *
-     * @method getHeight
-     * @return {int}
-     */
-    getHeight: function () {
-        return this._image.height;
-    },
+	/**
+	 * Gets the image as a blob
+	 *
+	 * @method getBlob
+	 * @return {Buffer}
+	 */
+	getBlob: function () {
+		return this._image.data;
+	},
 
 
-    /**
-     * Clips the current image by modifying it in-place
-     *
-     * @method clip
-     * @param {int} x Starting x-coordinate
-     * @param {int} y Starting y-coordinate
-     * @param {int} width Width of area relative to starting coordinate
-     * @param {int} height Height of area relative to starting coordinate
-     */
-    clip: function (x, y, width, height) {
+	/**
+	 * Gets the width of the image
+	 *
+	 * @method getWidth
+	 * @return {int}
+	 */
+	getWidth: function () {
+		return this._image.width;
+	},
 
-        var image;
-
-        width = Math.min(width, this.getWidth() - x);
-        height = Math.min(height, this.getHeight() - y);
-
-        if ((width &lt; 0) || (height &lt; 0)) {
-            throw new Error(&#x27;Width and height cannot be negative.&#x27;);
-        }
-
-        image = new PNG({
-            width: width,
-            height: height
-        });
-
-        this._image.bitblt(image, x, y, width, height, 0, 0);
-        this._image = image;
-    },
-
-    /**
-     * Fills an area with the specified color
-     *
-     * @method fillRect
-     * @param {int} x Starting x-coordinate
-     * @param {int} y Starting y-coordinate
-     * @param {int} width Width of area relative to starting coordinate
-     * @param {int} height Height of area relative to starting coordinate
-     * @param {object} color
-     * @param {int} [color.red] Red channel of color to set
-     * @param {int} [color.green] Green channel of color to set
-     * @param {int} [color.blue] Blue channel of color to set
-     * @param {int} [color.alpha] Alpha channel for color to set
-     * @param {float} [color.opacity] Opacity of color
-     */
-    fillRect: function (x, y, width, height, color) {
-        var i, iLen = x + width,
-            j, jLen = y + height,
-            index;
-
-        for (i = x; i &lt; iLen; i++) {
-            for (j = y; j &lt; jLen; j++) {
-                index = this.getIndex(i, j);
-                this.setAtIndex(index, color);
-            }
-        }
-    },
+	/**
+	 * Gets the height of the image
+	 *
+	 * @method getHeight
+	 * @return {int}
+	 */
+	getHeight: function () {
+		return this._image.height;
+	},
 
 
-    /**
-     * Applies a list of filters to the image
-     *
-     * @method applyFilters
-     * @param {string|object|object[]} filters Names of filters in sequence &#x60;{key:&lt;string&gt;, options:&lt;object&gt;}&#x60;
-     * @param {boolean} [returnResult=false]
-     * @return {PNGImage}
-     */
-    applyFilters: function (filters, returnResult) {
+	/**
+	 * Clips the current image by modifying it in-place
+	 *
+	 * @method clip
+	 * @param {int} x Starting x-coordinate
+	 * @param {int} y Starting y-coordinate
+	 * @param {int} width Width of area relative to starting coordinate
+	 * @param {int} height Height of area relative to starting coordinate
+	 */
+	clip: function (x, y, width, height) {
 
-        var image,
-            newFilters;
+		var image;
 
-        // Convert to array
-        if (_.isString(filters)) {
-            filters = [filters];
-        } else if (!_.isArray(filters) &amp;&amp; _.isObject(filters)) {
-            filters = [filters];
-        }
+		width = Math.min(width, this.getWidth() - x);
+		height = Math.min(height, this.getHeight() - y);
 
-        // Format array as needed by the function
-        newFilters = [];
-        _.each(filters, function (filter) {
+		if ((width &lt; 0) || (height &lt; 0)) {
+			throw new Error(&#x27;Width and height cannot be negative.&#x27;);
+		}
 
-            if (_.isString(filter)) {
-                newFilters.push({ key: filter, options: {} });
+		image = new PNG({
+			width: width, height: height
+		});
 
-            } else if (_.isObject(filter)) {
-                newFilters.push(filter);
-            }
-        });
-        filters = newFilters;
+		this._image.bitblt(image, x, y, width, height, 0, 0);
+		this._image = image;
+	},
 
-        // Process filters
-        image = this;
-        _.each(filters, function (filter) {
+	/**
+	 * Fills an area with the specified color
+	 *
+	 * @method fillRect
+	 * @param {int} x Starting x-coordinate
+	 * @param {int} y Starting y-coordinate
+	 * @param {int} width Width of area relative to starting coordinate
+	 * @param {int} height Height of area relative to starting coordinate
+	 * @param {object} color
+	 * @param {int} [color.red] Red channel of color to set
+	 * @param {int} [color.green] Green channel of color to set
+	 * @param {int} [color.blue] Blue channel of color to set
+	 * @param {int} [color.alpha] Alpha channel for color to set
+	 * @param {float} [color.opacity] Opacity of color
+	 */
+	fillRect: function (x, y, width, height, color) {
 
-            var currentFilter = PNGImage.filters[filter.key];
+		var i,
+			iLen = x + width,
+			j,
+			jLen = y + height,
+			index;
 
-            if (!currentFilter) {
-                throw new Error(&#x27;Unknown filter &#x27; + filter.key);
-            }
-
-            filter.options = filter.options || {};
-            filter.options.needsCopy = !!returnResult;
-
-            image = currentFilter(this, filter.options);
-
-        }, this);
-
-        // Overwrite current image, or just returning it
-        if (!returnResult) {
-            this._image = image.getImage();
-        }
-
-        return image;
-    },
-
-
-    /**
-     * Gets index of a specific coordinate
-     *
-     * @method getIndex
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} Index of pixel
-     */
-    getIndex: function (x, y) {
-        return (this.getWidth() * y) + x;
-    },
+		for (i = x; i &lt; iLen; i++) {
+			for (j = y; j &lt; jLen; j++) {
+				index = this.getIndex(i, j);
+				this.setAtIndex(index, color);
+			}
+		}
+	},
 
 
-    /**
-     * Writes the image to the filesystem
-     *
-     * @method writeImage
-     * @param {string} filename Path to file
-     * @param {function} fn Callback
-     */
-    writeImage: function (filename, fn) {
+	/**
+	 * Applies a list of filters to the image
+	 *
+	 * @method applyFilters
+	 * @param {string|object|object[]} filters Names of filters in sequence &#x60;{key:&lt;string&gt;, options:&lt;object&gt;}&#x60;
+	 * @param {boolean} [returnResult=false]
+	 * @return {PNGImage}
+	 */
+	applyFilters: function (filters, returnResult) {
 
-        fn = fn || function () {};
+		var image,
+			newFilters;
 
-        this._image.pack().pipe(fs.createWriteStream(filename)).once(&#x27;close&#x27;, function () {
-            this._image.removeListener(&#x27;error&#x27;, fn);
-            fn(undefined, this);
-        }.bind(this)).once(&#x27;error&#x27;, function (err) {
-            this._image.removeListener(&#x27;close&#x27;, fn);
-            fn(err, this);
-        }.bind(this));
-    },
+		// Convert to array
+		if (_.isString(filters)) {
+			filters = [filters];
+		} else if (!_.isArray(filters) &amp;&amp; _.isObject(filters)) {
+			filters = [filters];
+		}
 
-    /**
-     * Writes the image to a buffer
-     *
-     * @method toBlob
-     * @param {function} fn Callback
-     */
-    toBlob: function (fn) {
+		// Format array as needed by the function
+		newFilters = [];
+		(filters || []).forEach(function (filter) {
 
-        var writeBuffer = new streamBuffers.WritableStreamBuffer({
-            initialSize: (100 * 1024),
-            incrementAmount: (10 * 1024)
-        });
+			if (_.isString(filter)) {
+				newFilters.push({key: filter, options: {}});
 
-        fn = fn || function () {};
+			} else if (_.isObject(filter)) {
+				newFilters.push(filter);
+			}
+		});
+		filters = newFilters;
 
-        this._image.pack().pipe(writeBuffer).once(&#x27;close&#x27;, function () {
-            this._image.removeListener(&#x27;error&#x27;, fn);
-            fn(undefined, writeBuffer.getContents());
-        }.bind(this)).once(&#x27;error&#x27;, function (err) {
-            this._image.removeListener(&#x27;close&#x27;, fn);
-            fn(err);
-        }.bind(this));
-    }
+		// Process filters
+		image = this;
+		(filters || []).forEach(function (filter) {
+
+			var currentFilter = PNGImage.filters[filter.key];
+
+			if (!currentFilter) {
+				throw new Error(&#x27;Unknown filter &#x27; + filter.key);
+			}
+
+			filter.options = filter.options || {};
+			filter.options.needsCopy = !!returnResult;
+
+			image = currentFilter(this, filter.options);
+
+		}.bind(this));
+
+		// Overwrite current image, or just returning it
+		if (!returnResult) {
+			this._image = image.getImage();
+		}
+
+		return image;
+	},
+
+
+	/**
+	 * Gets index of a specific coordinate
+	 *
+	 * @method getIndex
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} Index of pixel
+	 */
+	getIndex: function (x, y) {
+		return (this.getWidth() * y) + x;
+	},
+
+
+	/**
+	 * Writes the image to the filesystem
+	 *
+	 * @method writeImage
+	 * @param {string} filename Path to file
+	 * @param {function} fn Callback
+	 */
+	writeImage: function (filename, fn) {
+
+		fn = fn || function () {};
+
+		this._image.pack().pipe(fs.createWriteStream(filename)).once(&#x27;close&#x27;, function () {
+			this._image.removeListener(&#x27;error&#x27;, fn);
+			fn(undefined, this);
+		}.bind(this)).once(&#x27;error&#x27;, function (err) {
+			this._image.removeListener(&#x27;close&#x27;, fn);
+			fn(err, this);
+		}.bind(this));
+	},
+
+	/**
+	 * Writes the image to a buffer
+	 *
+	 * @method toBlob
+	 * @param {function} fn Callback
+	 */
+	toBlob: function (fn) {
+
+		var writeBuffer = new streamBuffers.WritableStreamBuffer({
+			initialSize: (100 * 1024), incrementAmount: (10 * 1024)
+		});
+
+		fn = fn || function () {};
+
+		this._image.pack().pipe(writeBuffer).once(&#x27;close&#x27;, function () {
+			this._image.removeListener(&#x27;error&#x27;, fn);
+			fn(undefined, writeBuffer.getContents());
+		}.bind(this)).once(&#x27;error&#x27;, function (err) {
+			this._image.removeListener(&#x27;close&#x27;, fn);
+			fn(err);
+		}.bind(this));
+	}
 };
 PNGImage.prototype.constructor = PNGImage;
 
@@ -470,8 +470,8 @@ _.extend(PNGImage.prototype, conversion);
 
 
 // Adds all standard filters
-_.each(_.keys(filters), function (key) {
-    PNGImage.setFilter(key, filters[key]);
+_.keys(filters).forEach(function (key) {
+	PNGImage.setFilter(key, filters[key]);
 });
 
 module.exports = PNGImage;

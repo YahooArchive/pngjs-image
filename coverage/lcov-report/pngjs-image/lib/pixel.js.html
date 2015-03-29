@@ -638,7 +638,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">401</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">401</span>
 <span class="cline-any cline-yes">387</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -772,7 +771,8 @@
 <span class="cline-any cline-yes">395</span>
 <span class="cline-any cline-yes">395</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Copyright 2014 Yahoo! Inc.
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Copyright 2014-2015 Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 &nbsp;
 /**
@@ -783,279 +783,279 @@
  */
 module.exports = {
 &nbsp;
-    /**
-     * Gets the color of a pixel at a specific index
-     *
-     * @method getPixel
-     * @param {int} idx Index of pixel
-     * @return {int} Color
-     */
-    getAtIndex: function (idx) {
-        return this.getColorAtIndex(idx) | (this.getAlpha(idx) &lt;&lt; 24);
-    },
+	/**
+	 * Gets the color of a pixel at a specific index
+	 *
+	 * @method getPixel
+	 * @param {int} idx Index of pixel
+	 * @return {int} Color
+	 */
+	getAtIndex: function (idx) {
+		return this.getColorAtIndex(idx) | (this.getAlpha(idx) &lt;&lt; 24);
+	},
 &nbsp;
-    /**
-     * Gets the color of a pixel at a specific coordinate
-     *
-     * @method getAt
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} Color
-     */
-    getAt: function (x, y) {
-        var idx = this.getIndex(x, y);
-        return this.getAtIndex(idx);
-    },
+	/**
+	 * Gets the color of a pixel at a specific coordinate
+	 *
+	 * @method getAt
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} Color
+	 */
+	getAt: function (x, y) {
+		var idx = this.getIndex(x, y);
+		return this.getAtIndex(idx);
+	},
 &nbsp;
-    /**
-     * Gets the color of a pixel at a specific coordinate
-     * Alias for getAt
-     *
-     * @method getPixel
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} Color
-     */
-    getPixel: function (x, y) {
-        return this.getAt(x, y);
-    },
-&nbsp;
-&nbsp;
-    /**
-     * Sets the color of a pixel at a specific index
-     *
-     * @method setAtIndex
-     * @param {int} idx Index of pixel
-     * @param {object} color
-     * @param {int} [color.red] Red value for pixel
-     * @param {int} [color.green] Green value for pixel
-     * @param {int} [color.blue] Blue value for pixel
-     * @param {int} [color.alpha] Alpha value for pixel
-     * @param {number} [color.opacity] Opacity of color
-     */
-    setAtIndex: function (idx, color) {
-        if (color.red !== undefined) this.setRed(idx, color.red, color.opacity);
-        if (color.green !== undefined) this.setGreen(idx, color.green, color.opacity);
-        if (color.blue !== undefined) this.setBlue(idx, color.blue, color.opacity);
-        if (color.alpha !== undefined) this.setAlpha(idx, color.alpha, color.opacity);
-    },
-&nbsp;
-    /**
-     * Sets the color of a pixel at a specific coordinate
-     *
-     * @method setAt
-     * @param {int} x X-coordinate for pixel
-     * @param {int} y Y-coordinate for pixel
-     * @param {object} color
-     * @param {int} [color.red] Red value for pixel
-     * @param {int} [color.green] Green value for pixel
-     * @param {int} [color.blue] Blue value for pixel
-     * @param {int} [color.alpha] Alpha value for pixel
-     * @param {number} [color.opacity] Opacity of color
-     */
-    setAt: function (x, y, color) {
-        var idx = this.getIndex(x, y);
-        this.setAtIndex(idx, color);
-    },
-&nbsp;
-    /**
-     * Sets the color of a pixel at a specific coordinate
-     * Alias for setAt
-     *
-     * @method setPixel
-     * @param {int} x X-coordinate for pixel
-     * @param {int} y Y-coordinate for pixel
-     * @param {object} color
-     * @param {int} [color.red] Red value for pixel
-     * @param {int} [color.green] Green value for pixel
-     * @param {int} [color.blue] Blue value for pixel
-     * @param {int} [color.alpha] Alpha value for pixel
-     * @param {number} [color.opacity] Opacity of color
-     */
-    setPixel: function (x, y, color) {
-        this.setAt(x, y, color);
-    },
+	/**
+	 * Gets the color of a pixel at a specific coordinate
+	 * Alias for getAt
+	 *
+	 * @method getPixel
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} Color
+	 */
+	getPixel: function (x, y) {
+		return this.getAt(x, y);
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Gets the color of a pixel at a specific index
-     *
-     * @method getColorAtIndex
-     * @param {int} idx Index of pixel
-     * @return {int} Color
-     */
-    getColorAtIndex: function (idx) {
-        return this.getRed(idx) | (this.getGreen(idx) &lt;&lt; 8) | (this.getBlue(idx) &lt;&lt; 16);
-    },
+	/**
+	 * Sets the color of a pixel at a specific index
+	 *
+	 * @method setAtIndex
+	 * @param {int} idx Index of pixel
+	 * @param {object} color
+	 * @param {int} [color.red] Red value for pixel
+	 * @param {int} [color.green] Green value for pixel
+	 * @param {int} [color.blue] Blue value for pixel
+	 * @param {int} [color.alpha] Alpha value for pixel
+	 * @param {number} [color.opacity] Opacity of color
+	 */
+	setAtIndex: function (idx, color) {
+		if (color.red !== undefined) this.setRed(idx, color.red, color.opacity);
+		if (color.green !== undefined) this.setGreen(idx, color.green, color.opacity);
+		if (color.blue !== undefined) this.setBlue(idx, color.blue, color.opacity);
+		if (color.alpha !== undefined) this.setAlpha(idx, color.alpha, color.opacity);
+	},
 &nbsp;
-    /**
-     * Gets the color of a pixel at a specific coordinate
-     *
-     * @method getColor
-     * @param {int} x X-coordinate of pixel
-     * @param {int} y Y-coordinate of pixel
-     * @return {int} Color
-     */
-    getColor: function (x, y) {
-        var idx = this.getIndex(x, y);
-        return this.getColorAtIndex(idx);
-    },
+	/**
+	 * Sets the color of a pixel at a specific coordinate
+	 *
+	 * @method setAt
+	 * @param {int} x X-coordinate for pixel
+	 * @param {int} y Y-coordinate for pixel
+	 * @param {object} color
+	 * @param {int} [color.red] Red value for pixel
+	 * @param {int} [color.green] Green value for pixel
+	 * @param {int} [color.blue] Blue value for pixel
+	 * @param {int} [color.alpha] Alpha value for pixel
+	 * @param {number} [color.opacity] Opacity of color
+	 */
+	setAt: function (x, y, color) {
+		var idx = this.getIndex(x, y);
+		this.setAtIndex(idx, color);
+	},
 &nbsp;
-&nbsp;
-    /**
-     * Calculates the final color value for opacity
-     *
-     * @method _calculateColorValue
-     * @param {int} originalValue
-     * @param {int} paintValue
-     * @param {number} [opacity]
-     * @return {int}
-     * @private
-     */
-    _calculateColorValue: function (originalValue, paintValue, opacity) {
-&nbsp;
-        var originalPart,
-            paintPart;
-&nbsp;
-        if (opacity === undefined) {
-            return paintValue;
-        } else {
-            originalPart = originalValue * (1 - opacity);
-            paintPart = (paintValue * opacity);
-&nbsp;
-            return Math.floor(originalPart + paintPart);
-        }
-    },
-&nbsp;
-    /**
-     * Get the red value of a pixel
-     *
-     * @method getRed
-     * @param {int} idx Index of pixel
-     * @return {int}
-     */
-    getRed: function (idx) {
-        return this._getValue(idx &lt;&lt; 2, 0);
-    },
-&nbsp;
-    /**
-     * Set the red value of a pixel
-     *
-     * @method setRed
-     * @param {int} idx Index of pixel
-     * @param {int} value Value for pixel
-     * @param {number} [opacity] Opacity of value set
-     */
-    setRed: function (idx, value, opacity) {
-        this._setValue(idx &lt;&lt; 2, 0, value, opacity);
-    },
+	/**
+	 * Sets the color of a pixel at a specific coordinate
+	 * Alias for setAt
+	 *
+	 * @method setPixel
+	 * @param {int} x X-coordinate for pixel
+	 * @param {int} y Y-coordinate for pixel
+	 * @param {object} color
+	 * @param {int} [color.red] Red value for pixel
+	 * @param {int} [color.green] Green value for pixel
+	 * @param {int} [color.blue] Blue value for pixel
+	 * @param {int} [color.alpha] Alpha value for pixel
+	 * @param {number} [color.opacity] Opacity of color
+	 */
+	setPixel: function (x, y, color) {
+		this.setAt(x, y, color);
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Get the green value of a pixel
-     *
-     * @method getGreen
-     * @param {int} idx Index of pixel
-     * @return {int}
-     */
-    getGreen: function (idx) {
-        return this._getValue(idx &lt;&lt; 2, 1);
-    },
+	/**
+	 * Gets the color of a pixel at a specific index
+	 *
+	 * @method getColorAtIndex
+	 * @param {int} idx Index of pixel
+	 * @return {int} Color
+	 */
+	getColorAtIndex: function (idx) {
+		return this.getRed(idx) | (this.getGreen(idx) &lt;&lt; 8) | (this.getBlue(idx) &lt;&lt; 16);
+	},
 &nbsp;
-    /**
-     * Set the green value of a pixel
-     *
-     * @method setGreen
-     * @param {int} idx Index of pixel
-     * @param {int} value Value for pixel
-     * @param {number} [opacity] Opacity of value set
-     */
-    setGreen: function (idx, value, opacity) {
-        this._setValue(idx &lt;&lt; 2, 1, value, opacity);
-    },
-&nbsp;
-&nbsp;
-    /**
-     * Get the blue value of a pixel
-     *
-     * @method getBlue
-     * @param {int} idx Index of pixel
-     * @return {int}
-     */
-    getBlue: function (idx) {
-        return this._getValue(idx &lt;&lt; 2, 2);
-    },
-&nbsp;
-    /**
-     * Set the blue value of a pixel
-     *
-     * @method setBlue
-     * @param {int} idx Index of pixel
-     * @param {int} value Value for pixel
-     * @param {number} [opacity] Opacity of value set
-     */
-    setBlue: function (idx, value, opacity) {
-        this._setValue(idx &lt;&lt; 2, 2, value, opacity);
-    },
+	/**
+	 * Gets the color of a pixel at a specific coordinate
+	 *
+	 * @method getColor
+	 * @param {int} x X-coordinate of pixel
+	 * @param {int} y Y-coordinate of pixel
+	 * @return {int} Color
+	 */
+	getColor: function (x, y) {
+		var idx = this.getIndex(x, y);
+		return this.getColorAtIndex(idx);
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Get the alpha value of a pixel
-     *
-     * @method getAlpha
-     * @param {int} idx Index of pixel
-     * @return {int}
-     */
-    getAlpha: function (idx) {
-        return this._getValue(idx &lt;&lt; 2, 3);
-    },
+	/**
+	 * Calculates the final color value for opacity
+	 *
+	 * @method _calculateColorValue
+	 * @param {int} originalValue
+	 * @param {int} paintValue
+	 * @param {number} [opacity]
+	 * @return {int}
+	 * @private
+	 */
+	_calculateColorValue: function (originalValue, paintValue, opacity) {
 &nbsp;
-    /**
-     * Set the alpha value of a pixel
-     *
-     * @method setAlpha
-     * @param {int} idx Index of pixel
-     * @param {int} value Value for pixel
-     * @param {number} [opacity] Opacity of value set
-     */
-    setAlpha: function (idx, value, opacity) {
-        this._setValue(idx &lt;&lt; 2, 3, value, opacity);
-    },
+		var originalPart, paintPart;
+&nbsp;
+		if (opacity === undefined) {
+			return paintValue;
+		} else {
+			originalPart = originalValue * (1 - opacity);
+			paintPart = (paintValue * opacity);
+&nbsp;
+			return Math.floor(originalPart + paintPart);
+		}
+	},
+&nbsp;
+	/**
+	 * Get the red value of a pixel
+	 *
+	 * @method getRed
+	 * @param {int} idx Index of pixel
+	 * @return {int}
+	 */
+	getRed: function (idx) {
+		return this._getValue(idx &lt;&lt; 2, 0);
+	},
+&nbsp;
+	/**
+	 * Set the red value of a pixel
+	 *
+	 * @method setRed
+	 * @param {int} idx Index of pixel
+	 * @param {int} value Value for pixel
+	 * @param {number} [opacity] Opacity of value set
+	 */
+	setRed: function (idx, value, opacity) {
+		this._setValue(idx &lt;&lt; 2, 0, value, opacity);
+	},
 &nbsp;
 &nbsp;
-    /**
-     * Sets the value of a pixel
-     *
-     * @method _getValue
-     * @param {int} offset Offset of a value
-     * @param {int} colorOffset Offset of a color
-     * @return {int}
-     * @private
-     */
-    _getValue: function (offset, colorOffset) {
-        return this._image.data[offset + colorOffset];
-    },
+	/**
+	 * Get the green value of a pixel
+	 *
+	 * @method getGreen
+	 * @param {int} idx Index of pixel
+	 * @return {int}
+	 */
+	getGreen: function (idx) {
+		return this._getValue(idx &lt;&lt; 2, 1);
+	},
 &nbsp;
-    /**
-     * Sets the value of a pixel
-     *
-     * @method _setValue
-     * @param {int} offset Offset of a value
-     * @param {int} colorOffset Offset of a color
-     * @param {int} value Value for pixel
-     * @param {number} [opacity] Opacity of value set
-     * @private
-     */
-    _setValue: function (offset, colorOffset, value, opacity) {
-        var previousValue = this._getValue(offset, colorOffset);
-        this._image.data[offset + colorOffset] = this._calculateColorValue(previousValue, value, opacity);
-    }
-};</pre></td></tr>
+	/**
+	 * Set the green value of a pixel
+	 *
+	 * @method setGreen
+	 * @param {int} idx Index of pixel
+	 * @param {int} value Value for pixel
+	 * @param {number} [opacity] Opacity of value set
+	 */
+	setGreen: function (idx, value, opacity) {
+		this._setValue(idx &lt;&lt; 2, 1, value, opacity);
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Get the blue value of a pixel
+	 *
+	 * @method getBlue
+	 * @param {int} idx Index of pixel
+	 * @return {int}
+	 */
+	getBlue: function (idx) {
+		return this._getValue(idx &lt;&lt; 2, 2);
+	},
+&nbsp;
+	/**
+	 * Set the blue value of a pixel
+	 *
+	 * @method setBlue
+	 * @param {int} idx Index of pixel
+	 * @param {int} value Value for pixel
+	 * @param {number} [opacity] Opacity of value set
+	 */
+	setBlue: function (idx, value, opacity) {
+		this._setValue(idx &lt;&lt; 2, 2, value, opacity);
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Get the alpha value of a pixel
+	 *
+	 * @method getAlpha
+	 * @param {int} idx Index of pixel
+	 * @return {int}
+	 */
+	getAlpha: function (idx) {
+		return this._getValue(idx &lt;&lt; 2, 3);
+	},
+&nbsp;
+	/**
+	 * Set the alpha value of a pixel
+	 *
+	 * @method setAlpha
+	 * @param {int} idx Index of pixel
+	 * @param {int} value Value for pixel
+	 * @param {number} [opacity] Opacity of value set
+	 */
+	setAlpha: function (idx, value, opacity) {
+		this._setValue(idx &lt;&lt; 2, 3, value, opacity);
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Sets the value of a pixel
+	 *
+	 * @method _getValue
+	 * @param {int} offset Offset of a value
+	 * @param {int} colorOffset Offset of a color
+	 * @return {int}
+	 * @private
+	 */
+	_getValue: function (offset, colorOffset) {
+		return this._image.data[offset + colorOffset];
+	},
+&nbsp;
+	/**
+	 * Sets the value of a pixel
+	 *
+	 * @method _setValue
+	 * @param {int} offset Offset of a value
+	 * @param {int} colorOffset Offset of a color
+	 * @param {int} value Value for pixel
+	 * @param {number} [opacity] Opacity of value set
+	 * @private
+	 */
+	_setValue: function (offset, colorOffset, value, opacity) {
+		var previousValue = this._getValue(offset, colorOffset);
+		this._image.data[offset + colorOffset] = this._calculateColorValue(previousValue, value, opacity);
+	}
+};
+&nbsp;</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 04 2014 12:52:17 GMT-0800 (PST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Mar 28 2015 17:46:08 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>
