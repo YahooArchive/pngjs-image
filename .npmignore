@@ -10,5 +10,4 @@ docs/
 examples/
 screwdriver/
 Makefile
-.idea
-docs/
+.idea/

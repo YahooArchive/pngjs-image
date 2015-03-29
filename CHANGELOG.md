@@ -2,6 +2,7 @@ CHANGELOG
 =========
 
 v0.10.0 
+* General cleanup
 * Add support for Node 0.12
 * Add support for IO.js
 

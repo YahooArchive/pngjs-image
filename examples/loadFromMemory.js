@@ -1,7 +1,8 @@
-// Copyright 2014, Yahoo! Inc.
+// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-var PNGImage = require('../index'), fs = require('fs');
+var PNGImage = require('../index'),
+	fs = require('fs');
 
 var blob = fs.readFileSync(__dirname + '/squirrel.png');
 

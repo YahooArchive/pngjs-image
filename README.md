@@ -181,6 +181,7 @@ The following third-party libraries are used by this module:
 
 ###Dev-Dependencies
 * chai: http://chaijs.com
+* codeclimate-test-reporter: https://github.com/codeclimate/javascript-test-reporter
 * coveralls: https://github.com/cainus/node-coveralls
 * istanbul: https://github.com/gotwarlost/istanbul
 * mocha: https://github.com/visionmedia/mocha
@@ -190,4 +191,4 @@ The following third-party libraries are used by this module:
 
 The MIT License
 
-Copyright 2014 Yahoo Inc.
+Copyright 2014-2015 Yahoo Inc.

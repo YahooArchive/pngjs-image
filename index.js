@@ -1,12 +1,12 @@
-// Copyright 2014, Yahoo! Inc.
+// Copyright 2014-2015, Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-var fs            = require('fs'), _ = require('underscore'),
-
-	PNG           = require('pngjs').PNG,
-
-	pixel         = require('./lib/pixel'), conversion = require('./lib/conversion'), filters = require('./lib/filters'),
-
+var fs = require('fs'),
+	_ = require('underscore'),
+	PNG = require('pngjs').PNG,
+	pixel = require('./lib/pixel'),
+	conversion = require('./lib/conversion'),
+	filters = require('./lib/filters'),
 	streamBuffers = require("stream-buffers");
 
 /**
@@ -69,7 +69,8 @@ PNGImage.setFilter = function (key, fn) {
  */
 PNGImage.createImage = function (width, height) {
 	var image = new PNG({
-		width: width, height: height
+		width: width,
+		height: height
 	});
 	return new PNGImage(image);
 };
@@ -98,10 +99,10 @@ PNGImage.copyImage = function (image) {
  * @return {PNGImage}
  */
 PNGImage.readImage = function (filename, fn) {
-	var image = new PNG(), resultImage = new PNGImage(image);
+	var image = new PNG(),
+		resultImage = new PNGImage(image);
 
-	fn = fn || function () {
-	};
+	fn = fn || function () {};
 
 	fs.createReadStream(filename).once('error', function(err) {
 		fn(err, undefined);
@@ -126,10 +127,10 @@ PNGImage.readImage = function (filename, fn) {
  * @return {PNGImage}
  */
 PNGImage.loadImage = function (blob, fn) {
-	var image = new PNG(), resultImage = new PNGImage(image);
+	var image = new PNG(),
+		resultImage = new PNGImage(image);
 
-	fn = fn || function () {
-	};
+	fn = fn || function () {};
 
 	image.once('error', function (err) {
 		fn(err, resultImage);
@@ -241,7 +242,12 @@ PNGImage.prototype = {
 	 * @param {float} [color.opacity] Opacity of color
 	 */
 	fillRect: function (x, y, width, height, color) {
-		var i, iLen = x + width, j, jLen = y + height, index;
+
+		var i,
+			iLen = x + width,
+			j,
+			jLen = y + height,
+			index;
 
 		for (i = x; i < iLen; i++) {
 			for (j = y; j < jLen; j++) {
@@ -262,7 +268,8 @@ PNGImage.prototype = {
 	 */
 	applyFilters: function (filters, returnResult) {
 
-		var image, newFilters;
+		var image,
+			newFilters;
 
 		// Convert to array
 		if (_.isString(filters)) {
@@ -273,7 +280,7 @@ PNGImage.prototype = {
 
 		// Format array as needed by the function
 		newFilters = [];
-		_.each(filters, function (filter) {
+		(filters || []).forEach(function (filter) {
 
 			if (_.isString(filter)) {
 				newFilters.push({key: filter, options: {}});
@@ -286,7 +293,7 @@ PNGImage.prototype = {
 
 		// Process filters
 		image = this;
-		_.each(filters, function (filter) {
+		(filters || []).forEach(function (filter) {
 
 			var currentFilter = PNGImage.filters[filter.key];
 
@@ -299,7 +306,7 @@ PNGImage.prototype = {
 
 			image = currentFilter(this, filter.options);
 
-		}, this);
+		}.bind(this));
 
 		// Overwrite current image, or just returning it
 		if (!returnResult) {
@@ -332,8 +339,7 @@ PNGImage.prototype = {
 	 */
 	writeImage: function (filename, fn) {
 
-		fn = fn || function () {
-		};
+		fn = fn || function () {};
 
 		this._image.pack().pipe(fs.createWriteStream(filename)).once('close', function () {
 			this._image.removeListener('error', fn);
@@ -356,8 +362,7 @@ PNGImage.prototype = {
 			initialSize: (100 * 1024), incrementAmount: (10 * 1024)
 		});
 
-		fn = fn || function () {
-		};
+		fn = fn || function () {};
 
 		this._image.pack().pipe(writeBuffer).once('close', function () {
 			this._image.removeListener('error', fn);
@@ -377,7 +382,7 @@ _.extend(PNGImage.prototype, conversion);
 
 
 // Adds all standard filters
-_.each(_.keys(filters), function (key) {
+_.keys(filters).forEach(function (key) {
 	PNGImage.setFilter(key, filters[key]);
 });
 
