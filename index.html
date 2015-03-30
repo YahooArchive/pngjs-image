@@ -36,14 +36,20 @@
 
 <p>Native PNG image manipulation</p>
 
-<p><a href="http://travis-ci.org/yahoo/pngjs-image"><img src="https://secure.travis-ci.org/yahoo/pngjs-image.png" alt="Build Status"></a>
-<a href="http://badge.fury.io/js/pngjs-image"><img src="https://badge.fury.io/js/pngjs-image.svg" alt="npm version"></a></p>
+<p><a href="http://travis-ci.org/yahoo/pngjs-image"><img src="https://img.shields.io/travis/yahoo/pngjs-image.svg" alt="Build Status"></a>
+<a href="https://coveralls.io/r/yahoo/pngjs-image"><img src="https://img.shields.io/coveralls/yahoo/pngjs-image.svg" alt="Coveralls Coverage"></a>
+<a href="https://codeclimate.com/github/yahoo/pngjs-image"><img src="https://img.shields.io/codeclimate/github/yahoo/pngjs-image.svg" alt="Code Climate Grade"></a></p>
 
-<p><a href="https://nodei.co/npm/pngjs-image/"><img src="https://nodei.co/npm/pngjs-image.png?downloads=true" alt="NPM"></a></p>
+<p><a href="https://www.npmjs.com/package/pngjs-image"><img src="https://badge.fury.io/js/pngjs-image.svg" alt="NPM version"></a>
+<a href="https://www.npmjs.com/package/pngjs-image"><img src="https://img.shields.io/npm/l/pngjs-image.svg" alt="NPM License"></a></p>
 
-<p><a href="http://yahoo.github.io/pngjs-image/docs/">API-Documentation</a></p>
+<p><a href="https://www.npmjs.com/package/pngjs-image"><img src="https://nodei.co/npm/pngjs-image.png?downloads=true&amp;stars=true" alt="NPM"></a>
+<a href="https://www.npmjs.com/package/pngjs-image"><img src="https://nodei.co/npm-dl/pngjs-image.png?months=3&amp;height=2" alt="NPM"></a></p>
 
-<p><a href="http://yahoo.github.io/pngjs-image/coverage/lcov-report/">Coverage Report</a></p>
+<p><a href="http://yahoo.github.io/pngjs-image/coverage/lcov-report/"><img src="https://img.shields.io/badge/Coverage_Report-Available-blue.svg" alt="Coverage Report"></a>
+<a href="http://yahoo.github.io/pngjs-image/docs/"><img src="https://img.shields.io/badge/API_Documentation-Available-blue.svg" alt="API Documentation"></a></p>
+
+<p><a href="https://gitter.im/preceptorjs/support"><img src="https://img.shields.io/badge/Support-Gitter_IM-yellow.svg" alt="Gitter Support"></a></p>
 
 <p><strong>Table of Contents</strong></p>
 
@@ -76,64 +82,58 @@
 
 <p>Install this module with the following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm install pngjs-image
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm install pngjs-image</pre></div>
 
 <p>Add the module to your <code>package.json</code> dependencies:</p>
 
-<div class="highlight highlight-shell"><pre>npm install --save pngjs-image
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm install --save pngjs-image</pre></div>
 
 <p>Add the module to your <code>package.json</code> dev-dependencies:</p>
 
-<div class="highlight highlight-shell"><pre>npm install --save-dev pngjs-image
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm install --save-dev pngjs-image</pre></div>
 
 <p>Require the module in your source-code:</p>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">PNGImage</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'pngjs-image'</span><span class="p">);</span>
-</pre></div>
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> PNGImage <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>pngjs-image<span class="pl-pds">'</span></span>);</pre></div>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p><strong>Example:</strong> Creating a new image</p>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">PNGImage</span><span class="p">.</span><span class="nx">createImage</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> image <span class="pl-k">=</span> PNGImage.createImage(<span class="pl-c1">100</span>, <span class="pl-c1">300</span>);
 
-<span class="c1">// Get width and height</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getWidth</span><span class="p">());</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getHeight</span><span class="p">());</span>
+<span class="pl-c">// Get width and height</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(image.getWidth());
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(image.getHeight());
 
-<span class="c1">// Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)</span>
-<span class="nx">image</span><span class="p">.</span><span class="nx">setAt</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">{</span> <span class="nx">red</span><span class="o">:</span><span class="mi">255</span><span class="p">,</span> <span class="nx">green</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="nx">blue</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="nx">alpha</span><span class="o">:</span><span class="mi">100</span> <span class="p">});</span>
+<span class="pl-c">// Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)</span>
+image.setAt(<span class="pl-c1">20</span>, <span class="pl-c1">30</span>, { red<span class="pl-k">:</span><span class="pl-c1">255</span>, green<span class="pl-k">:</span><span class="pl-c1">0</span>, blue<span class="pl-k">:</span><span class="pl-c1">0</span>, alpha<span class="pl-k">:</span><span class="pl-c1">100</span> });
 
-<span class="c1">// Get index of coordinate in the image buffer</span>
-<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">getIndex</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">);</span>
+<span class="pl-c">// Get index of coordinate in the image buffer</span>
+<span class="pl-k">var</span> index <span class="pl-k">=</span> image.getIndex(<span class="pl-c1">20</span>, <span class="pl-c1">30</span>);
 
-<span class="c1">// Print the red color value</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getRed</span><span class="p">(</span><span class="nx">index</span><span class="p">));</span>
+<span class="pl-c">// Print the red color value</span>
+<span class="pl-en">console</span><span class="pl-c1">.log</span>(image.getRed(index));
 
-<span class="c1">// Get low level image object with buffer from the 'pngjs' package</span>
-<span class="kd">var</span> <span class="nx">pngjs</span> <span class="o">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">getImage</span><span class="p">();</span>
+<span class="pl-c">// Get low level image object with buffer from the 'pngjs' package</span>
+<span class="pl-k">var</span> pngjs <span class="pl-k">=</span> image.getImage();
 
-<span class="nx">image</span><span class="p">.</span><span class="nx">writeImage</span><span class="p">(</span><span class="s1">'path/to/file'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Written to the file'</span><span class="p">);</span>
-<span class="p">});</span>
-</pre></div>
+image.writeImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>Written to the file<span class="pl-pds">'</span></span>);
+});</pre></div>
 
 <p><strong>Example:</strong> Loading an image</p>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">PNGImage</span><span class="p">.</span><span class="nx">readImage</span><span class="p">(</span><span class="s1">'path/to/file'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> image <span class="pl-k">=</span> PNGImage.readImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
 
-    <span class="c1">// Get width and height</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getWidth</span><span class="p">());</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">getHeight</span><span class="p">());</span>
+    <span class="pl-c">// Get width and height</span>
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(image.getWidth());
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(image.getHeight());
 
-    <span class="c1">// Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)</span>
-    <span class="nx">image</span><span class="p">.</span><span class="nx">setAt</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">{</span> <span class="nx">red</span><span class="o">:</span><span class="mi">255</span><span class="p">,</span> <span class="nx">green</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="nx">blue</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="nx">alpha</span><span class="o">:</span><span class="mi">100</span> <span class="p">});</span>
-<span class="p">});</span>
-</pre></div>
+    <span class="pl-c">// Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)</span>
+    image.setAt(<span class="pl-c1">20</span>, <span class="pl-c1">30</span>, { red<span class="pl-k">:</span><span class="pl-c1">255</span>, green<span class="pl-k">:</span><span class="pl-c1">0</span>, blue<span class="pl-k">:</span><span class="pl-c1">0</span>, alpha<span class="pl-k">:</span><span class="pl-c1">100</span> });
+});</pre></div>
 
 <h3>
 <a id="static-methods" class="anchor" href="#static-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Static-Methods</h3>
@@ -275,8 +275,7 @@
 
 <p>Generate the documentation with following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm run docs
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm run docs</pre></div>
 
 <p>The documentation will be generated in the <code>docs</code> folder of the module root.</p>
 
@@ -285,8 +284,7 @@
 
 <p>Run the tests with the following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm run <span class="nb">test</span>
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm run <span class="pl-c1">test</span></pre></div>
 
 <p>The code-coverage will be written to the <code>coverage</code> folder in the module root.</p>
 
@@ -313,9 +311,17 @@
 <ul>
 <li>chai: <a href="http://chaijs.com">http://chaijs.com</a>
 </li>
+<li>coveralls: <a href="https://github.com/cainus/node-coveralls">https://github.com/cainus/node-coveralls</a>
+</li>
+<li>codeclimate-test-reporter: <a href="https://github.com/codeclimate/javascript-test-reporter">https://github.com/codeclimate/javascript-test-reporter</a>
+</li>
 <li>istanbul: <a href="https://github.com/gotwarlost/istanbul">https://github.com/gotwarlost/istanbul</a>
 </li>
 <li>mocha: <a href="https://github.com/visionmedia/mocha">https://github.com/visionmedia/mocha</a>
+</li>
+<li>sinon: <a href="http://sinonjs.org">http://sinonjs.org</a>
+</li>
+<li>sinon-chai: <a href="https://github.com/domenic/sinon-chai">https://github.com/domenic/sinon-chai</a>
 </li>
 <li>yuidocjs: <a href="https://github.com/yui/yuidoc">https://github.com/yui/yuidoc</a>
 </li>
@@ -326,7 +332,7 @@
 
 <p>The MIT License</p>
 
-<p>Copyright 2014 Yahoo Inc.</p>
+<p>Copyright 2014-2015 Yahoo Inc.</p>
       </section>
     </div>
 
@@ -334,7 +340,7 @@
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">Pngjs-image maintained by <a href="https://github.com/yahoo">yahoo</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 
