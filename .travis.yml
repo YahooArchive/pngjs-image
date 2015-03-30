@@ -15,7 +15,7 @@ script:
 
 after_script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-  - CODECLIMATE_REPO_TOKEN=46b538e32a131ea7637cbbc30f08237cef088467c9b9ec25419a961962fa96b3 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info
+  - CODECLIMATE_REPO_TOKEN=f3feeb7586e2840f6baf8f244008a4377321263909236a4b9dceee67f4f1b773 ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < ./coverage/lcov.info
 
 notifications:
   webhooks:
