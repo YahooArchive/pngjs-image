@@ -378,9 +378,13 @@ PNGImage.prototype = {
 	},
 
 	writeImageSync: function (filename) {
+		fs.writeFileSync(filename, this.toBlobSync());
+	},
+
+	toBlobSync: function () {
 		var encoder = new Encoder(this.getWidth(), this.getHeight(), this.getBlob(), 0);
 
-		fs.writeFileSync(filename, encoder.encode());
+		return encoder.encode();
 	},
 
 	/**
