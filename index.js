@@ -9,6 +9,9 @@ var fs = require('fs'),
 	filters = require('./lib/filters'),
 	streamBuffers = require("stream-buffers");
 
+var Decoder = require('./lib/png/decoder');
+var Encoder = require('./lib/png/encoder');
+
 /**
  * PNGjs-image class
  *
@@ -141,6 +144,30 @@ PNGImage.loadImage = function (blob, fn) {
 	});
 
 	return resultImage;
+};
+
+
+/**
+ * Loads an image synchronously from a blob
+ *
+ * @static
+ * @method loadImageSync
+ * @param {Buffer} blob
+ * @return {PNGImage}
+ */
+PNGImage.loadImageSync = function (blob) {
+	var decoder = new Decoder(blob, 0);
+	var result = decoder.decode();
+	var headerChunk = decoder.getHeaderChunk();
+	var width = headerChunk.getWidth();
+	var height = headerChunk.getHeight();
+
+	var image = new PNG({
+		width: width,
+		height: height
+	});
+	result.copy(image.data, 0, 0, result.length);
+	return new PNGImage(image);
 };
 
 /**
@@ -348,6 +375,16 @@ PNGImage.prototype = {
 			this._image.removeListener('close', fn);
 			fn(err, this);
 		}.bind(this));
+	},
+
+	writeImageSync: function (filename) {
+		fs.writeFileSync(filename, this.toBlobSync());
+	},
+
+	toBlobSync: function () {
+		var encoder = new Encoder(this.getWidth(), this.getHeight(), this.getBlob(), 0);
+
+		return encoder.encode();
 	},
 
 	/**
