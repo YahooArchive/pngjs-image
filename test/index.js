@@ -379,7 +379,7 @@ describe('Instance', function () {
 			});
 
 			it('should return value from second index', function () {
-				expect(this.instance._getValue(3, 0)).to.be.equal(this.blob[3]);
+				expect(this.instance._getValue(3, 0)).to.be.equal(this.blob[3 << 2]);
 			});
 
 			it('should set the value of first index', function () {
@@ -389,7 +389,7 @@ describe('Instance', function () {
 
 			it('should set the value of second index', function () {
 				this.instance._setValue(4, 2, 47);
-				expect(this.blob[6]).to.be.equal(47);
+				expect(this.blob[(4 << 2) + 2]).to.be.equal(47);
 			});
 
 			it('should set the value with opacity', function () {
