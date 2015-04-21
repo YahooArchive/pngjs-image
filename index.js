@@ -124,6 +124,19 @@ PNGImage.readImage = function (filename, fn) {
 };
 
 /**
+ * Reads an image from the filesystem synchronously
+ *
+ * @static
+ * @method readImageSync
+ * @param {string} filename
+ * @return {PNGImage}
+ */
+PNGImage.readImageSync = function (filename) {
+	return this.loadImageSync(fs.readFileSync(filename));
+};
+
+
+/**
  * Loads an image from a blob
  *
  * @static
