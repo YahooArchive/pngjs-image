@@ -175,6 +175,7 @@ The code-coverage will be written to the ```coverage``` folder in the module roo
 The following third-party libraries are used by this module:
 
 ###Dependencies
+* pako: https://github.com/nodeca/pako
 * pngjs: https://github.com/niegowski/node-pngjs
 * stream-buffers: https://github.com/samcday/node-stream-buffer
 * underscore: http://underscorejs.org

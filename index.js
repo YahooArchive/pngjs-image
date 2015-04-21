@@ -17,6 +17,7 @@ var Encoder = require('./lib/png/encoder');
  * PNGjs-image class
  *
  * @class PNGImage
+ * @submodule Core
  * @param {PNG} image png-js object
  * @constructor
  */
