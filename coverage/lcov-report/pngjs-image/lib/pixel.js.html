@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">pngjs-image/lib/pixel.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">100% <small>(36 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">90.48% <small>(38 / 42)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">91.67% <small>(11 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Functions: <span class="metric">100% <small>(19 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">100% <small>(32 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">89.47% <small>(34 / 38)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -494,7 +494,17 @@
 276
 277
 278
-279</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -560,6 +570,13 @@
 <span class="cline-any cline-yes">37</span>
 <span class="cline-any cline-yes">37</span>
 <span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-yes">37</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -755,6 +772,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1127</span>
+<span class="cline-any cline-yes">1127</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -769,6 +787,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">395</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">395</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -826,7 +846,7 @@ module.exports = {
 	 *
 	 * @method setAtIndex
 	 * @param {int} idx Index of pixel
-	 * @param {object} color
+	 * @param {object|int} color
 	 * @param {int} [color.red] Red value for pixel
 	 * @param {int} [color.green] Green value for pixel
 	 * @param {int} [color.blue] Blue value for pixel
@@ -834,10 +854,17 @@ module.exports = {
 	 * @param {number} [color.opacity] Opacity of color
 	 */
 	setAtIndex: function (idx, color) {
-		if (color.red !== undefined) this.setRed(idx, color.red, color.opacity);
-		if (color.green !== undefined) this.setGreen(idx, color.green, color.opacity);
-		if (color.blue !== undefined) this.setBlue(idx, color.blue, color.opacity);
-		if (color.alpha !== undefined) this.setAlpha(idx, color.alpha, color.opacity);
+		<span class="missing-if-branch" title="else path not taken" >E</span>if (typeof color === 'object') {
+			if (color.red !== undefined) this.setRed(idx, color.red, color.opacity);
+			if (color.green !== undefined) this.setGreen(idx, color.green, color.opacity);
+			if (color.blue !== undefined) this.setBlue(idx, color.blue, color.opacity);
+			if (color.alpha !== undefined) this.setAlpha(idx, color.alpha, color.opacity);
+		} else {
+<span class="cstat-no" title="statement not covered" >			this.setRed(idx, color &amp; 0xff);</span>
+<span class="cstat-no" title="statement not covered" >			this.setGreen(idx, (color &amp; 0xff00) &gt;&gt; 8);</span>
+<span class="cstat-no" title="statement not covered" >			this.setBlue(idx, (color &amp; 0xff0000) &gt;&gt; 16);</span>
+<span class="cstat-no" title="statement not covered" >			this.setAlpha(idx, (color &amp; 0xff000000) &gt;&gt; 24);</span>
+		}
 	},
 &nbsp;
 	/**
@@ -934,7 +961,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getRed: function (idx) {
-		return this._getValue(idx &lt;&lt; 2, 0);
+		return this._getValue(idx, 0);
 	},
 &nbsp;
 	/**
@@ -946,7 +973,7 @@ module.exports = {
 	 * @param {number} [opacity] Opacity of value set
 	 */
 	setRed: function (idx, value, opacity) {
-		this._setValue(idx &lt;&lt; 2, 0, value, opacity);
+		this._setValue(idx, 0, value, opacity);
 	},
 &nbsp;
 &nbsp;
@@ -958,7 +985,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getGreen: function (idx) {
-		return this._getValue(idx &lt;&lt; 2, 1);
+		return this._getValue(idx, 1);
 	},
 &nbsp;
 	/**
@@ -970,7 +997,7 @@ module.exports = {
 	 * @param {number} [opacity] Opacity of value set
 	 */
 	setGreen: function (idx, value, opacity) {
-		this._setValue(idx &lt;&lt; 2, 1, value, opacity);
+		this._setValue(idx, 1, value, opacity);
 	},
 &nbsp;
 &nbsp;
@@ -982,7 +1009,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getBlue: function (idx) {
-		return this._getValue(idx &lt;&lt; 2, 2);
+		return this._getValue(idx, 2);
 	},
 &nbsp;
 	/**
@@ -994,7 +1021,7 @@ module.exports = {
 	 * @param {number} [opacity] Opacity of value set
 	 */
 	setBlue: function (idx, value, opacity) {
-		this._setValue(idx &lt;&lt; 2, 2, value, opacity);
+		this._setValue(idx, 2, value, opacity);
 	},
 &nbsp;
 &nbsp;
@@ -1006,7 +1033,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getAlpha: function (idx) {
-		return this._getValue(idx &lt;&lt; 2, 3);
+		return this._getValue(idx, 3);
 	},
 &nbsp;
 	/**
@@ -1018,7 +1045,7 @@ module.exports = {
 	 * @param {number} [opacity] Opacity of value set
 	 */
 	setAlpha: function (idx, value, opacity) {
-		this._setValue(idx &lt;&lt; 2, 3, value, opacity);
+		this._setValue(idx, 3, value, opacity);
 	},
 &nbsp;
 &nbsp;
@@ -1032,7 +1059,8 @@ module.exports = {
 	 * @private
 	 */
 	_getValue: function (offset, colorOffset) {
-		return this._image.data[offset + colorOffset];
+		var localOffset = offset &lt;&lt; 2;
+		return this._image.data[localOffset + colorOffset];
 	},
 &nbsp;
 	/**
@@ -1046,8 +1074,10 @@ module.exports = {
 	 * @private
 	 */
 	_setValue: function (offset, colorOffset, value, opacity) {
-		var previousValue = this._getValue(offset, colorOffset);
-		this._image.data[offset + colorOffset] = this._calculateColorValue(previousValue, value, opacity);
+		var previousValue = this._getValue(offset, colorOffset),
+			localOffset = offset &lt;&lt; 2;
+&nbsp;
+		this._image.data[localOffset + colorOffset] = this._calculateColorValue(previousValue, value, opacity);
 	}
 };
 &nbsp;</pre></td></tr>
@@ -1055,7 +1085,7 @@ module.exports = {
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Mar 29 2015 19:33:59 GMT-0700 (PDT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 20 2015 22:25:43 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../prettify.js"></script>

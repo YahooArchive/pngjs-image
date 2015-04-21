@@ -2,7 +2,7 @@
     "project": {
         "name": "pngjs-image",
         "description": "Native PNG image manipulation",
-        "version": "0.10.0"
+        "version": "0.11.1"
     },
     "files": {
         "lib/filters/blur.js": {
@@ -47,6 +47,153 @@
             "fors": {},
             "namespaces": {}
         },
+        "lib/png/chunks/IDAT.js": {
+            "name": "lib/png/chunks/IDAT.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/IEND.js": {
+            "name": "lib/png/chunks/IEND.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/IHDR.js": {
+            "name": "lib/png/chunks/IHDR.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/PLTE.js": {
+            "name": "lib/png/chunks/PLTE.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/bKGD.js": {
+            "name": "lib/png/chunks/bKGD.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/cHRM.js": {
+            "name": "lib/png/chunks/cHRM.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/gAMA.js": {
+            "name": "lib/png/chunks/gAMA.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/hIST.js": {
+            "name": "lib/png/chunks/hIST.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/iCCP.js": {
+            "name": "lib/png/chunks/iCCP.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/iTXt.js": {
+            "name": "lib/png/chunks/iTXt.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/pHYs.js": {
+            "name": "lib/png/chunks/pHYs.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/sBIT.js": {
+            "name": "lib/png/chunks/sBIT.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/sPLT.js": {
+            "name": "lib/png/chunks/sPLT.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/sRGB.js": {
+            "name": "lib/png/chunks/sRGB.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/tEXt.js": {
+            "name": "lib/png/chunks/tEXt.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/tIME.js": {
+            "name": "lib/png/chunks/tIME.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/tRNS.js": {
+            "name": "lib/png/chunks/tRNS.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunks/zTXt.js": {
+            "name": "lib/png/chunks/zTXt.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/chunk.js": {
+            "name": "lib/png/chunk.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/decoder.js": {
+            "name": "lib/png/decoder.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/png/encoder.js": {
+            "name": "lib/png/encoder.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
         "lib/conversion.js": {
             "name": "lib/conversion.js",
             "modules": {},
@@ -56,6 +203,13 @@
         },
         "lib/filters.js": {
             "name": "lib/filters.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/modify.js": {
+            "name": "lib/modify.js",
             "modules": {},
             "classes": {},
             "fors": {},
@@ -89,7 +243,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "index.js",
-            "line": 12,
+            "line": 16,
             "description": "PNGjs-image class",
             "type": "{object}",
             "params": [
@@ -268,6 +422,1241 @@
                     "name": "options",
                     "description": "",
                     "type": "Object"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IDAT.js",
+            "line": 5,
+            "description": "Makes sure that all required information is available before parsing",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IDAT.js",
+            "line": 21,
+            "description": "Decoding of chunk data",
+            "itemtype": "method",
+            "name": "decode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should parsing be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IEND.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 7,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 27,
+            "description": "Decoding of chunk data",
+            "itemtype": "method",
+            "name": "decode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 48,
+            "description": "Validates all decoded data",
+            "itemtype": "method",
+            "name": "postDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 117,
+            "description": "Gets the width of the image",
+            "itemtype": "method",
+            "name": "getWidth",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 127,
+            "description": "Gets the height of the image",
+            "itemtype": "method",
+            "name": "getHeight",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 138,
+            "description": "Gets the bit-depth of the image data",
+            "itemtype": "method",
+            "name": "getBitDepth",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 148,
+            "description": "Gets the color-type of the image data",
+            "itemtype": "method",
+            "name": "getColorType",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 158,
+            "description": "Gets the compression method of the image data",
+            "itemtype": "method",
+            "name": "getCompressionMethod",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 168,
+            "description": "Gets the filter method of the image data",
+            "itemtype": "method",
+            "name": "getFilterMethod",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 178,
+            "description": "Gets the interlace method of the image data",
+            "itemtype": "method",
+            "name": "getInterlaceMethod",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 189,
+            "description": "Does image have a color palette?",
+            "itemtype": "method",
+            "name": "hasPalette",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 199,
+            "description": "Is image in color?",
+            "itemtype": "method",
+            "name": "isColor",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 209,
+            "description": "Does image have an alpha-chanel?",
+            "itemtype": "method",
+            "name": "hasAlphaChannel",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 220,
+            "description": "Determines bytes per pixel",
+            "itemtype": "method",
+            "name": "getBytesPerPixel",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 231,
+            "description": "Gets the number of samples for the color-type",
+            "itemtype": "method",
+            "name": "getSamples",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 241,
+            "description": "Gets the sample-depth for the color-type",
+            "itemtype": "method",
+            "name": "getSampleDepth",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 251,
+            "description": "Determines the scan-line length",
+            "itemtype": "method",
+            "name": "getScanLineLength",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 261,
+            "description": "Gets the size of the image in bytes during edit-mode",
+            "itemtype": "method",
+            "name": "getImageSizeInBytes",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 271,
+            "description": "Gets the number of bytes in a pixel for images in edit-mode",
+            "itemtype": "method",
+            "name": "getImageBytesPerPixel",
+            "return": {
+                "description": "",
+                "type": "Int"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 282,
+            "description": "Is the image of color-type \"Grayscale\"?",
+            "itemtype": "method",
+            "name": "isColorTypeGreyScale",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 292,
+            "description": "Is the image of color-type \"True-color\"?",
+            "itemtype": "method",
+            "name": "isColorTypeTrueColor",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 302,
+            "description": "Is the image of color-type \"Indexed-color\"?",
+            "itemtype": "method",
+            "name": "isColorTypeIndexedColor",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 312,
+            "description": "Is the image of color-type \"Grayscale with alpha channel\"?",
+            "itemtype": "method",
+            "name": "isColorTypeGreyScaleWithAlpha",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/IHDR.js",
+            "line": 322,
+            "description": "Is the image of color-type \"True-color with alpha channel\"?",
+            "itemtype": "method",
+            "name": "isColorTypeTrueColorWithAlpha",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/PLTE.js",
+            "line": 5,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/PLTE.js",
+            "line": 44,
+            "description": "Decoding of chunk data",
+            "itemtype": "method",
+            "name": "decode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should parsing be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/PLTE.js",
+            "line": 59,
+            "description": "Gets the color at",
+            "params": [
+                {
+                    "name": "index",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "}",
+                "type": "R: *, g: *, b: *"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/PLTE.js",
+            "line": 80,
+            "description": "Converts the input data to an image",
+            "params": [
+                {
+                    "name": "input",
+                    "description": "Input data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "inputOffset",
+                    "description": "Offset in input data",
+                    "type": "Int"
+                },
+                {
+                    "name": "image",
+                    "description": "Image data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "imageOffset",
+                    "description": "Offset in image data",
+                    "type": "Int"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/bKGD.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/cHRM.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/gAMA.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/hIST.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/iCCP.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/iTXt.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/pHYs.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/sBIT.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/sPLT.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/sRGB.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/tEXt.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/tIME.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/tRNS.js",
+            "line": 7,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/tRNS.js",
+            "line": 36,
+            "description": "Decoding of chunk data",
+            "itemtype": "method",
+            "name": "decode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should parsing be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/tRNS.js",
+            "line": 79,
+            "description": "Get all colors",
+            "return": {
+                "description": "",
+                "type": "Array|*"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/tRNS.js",
+            "line": 88,
+            "description": "Processes image data after reading",
+            "itemtype": "method",
+            "name": "processInput",
+            "params": [
+                {
+                    "name": "image",
+                    "description": "Image data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "imageOffset",
+                    "description": "Offset in image data",
+                    "type": "Int"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunks/zTXt.js",
+            "line": 3,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preDecode",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunk.js",
+            "line": 12,
+            "description": "Defines chunk to be known/unknown",
+            "itemtype": "method",
+            "name": "isUnknown",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunk.js",
+            "line": 67,
+            "description": "Makes sure that all required information is available before decoding",
+            "itemtype": "method",
+            "name": "preParse",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunk.js",
+            "line": 80,
+            "description": "Decoding of chunk data",
+            "itemtype": "method",
+            "name": "parse",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/chunk.js",
+            "line": 93,
+            "description": "Validates all decoded data",
+            "itemtype": "method",
+            "name": "postParse",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Chunk data",
+                    "type": "Buffer"
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset in chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "length",
+                    "description": "Length of chunk data",
+                    "type": "Int"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/decoder.js",
+            "line": 21,
+            "description": "Decodes the supplied data",
+            "itemtype": "method",
+            "name": "decode",
+            "params": [
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/decoder.js",
+            "line": 113,
+            "description": "Reads the next chunk in the data",
+            "itemtype": "method",
+            "name": "decodeChunk",
+            "params": [
+                {
+                    "name": "input",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "Chunk read",
+                "type": "Chunk"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/decoder.js",
+            "line": 168,
+            "description": "Add a new decoded chunk to the chunk-list",
+            "itemtype": "method",
+            "name": "_addChunk",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "Type of chunk",
+                    "type": "String"
+                },
+                {
+                    "name": "chunk",
+                    "description": "Decoded chunk",
+                    "type": "Chunk"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/decoder.js",
+            "line": 208,
+            "description": "Verifies the decoded data",
+            "itemtype": "method",
+            "name": "postDecode",
+            "params": [
+                {
+                    "name": "strict",
+                    "description": "Should decoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/encoder.js",
+            "line": 23,
+            "description": "Encodes the supplied data",
+            "itemtype": "method",
+            "name": "encode",
+            "params": [
+                {
+                    "name": "strict",
+                    "description": "Should encoding be strict?",
+                    "type": "Boolean"
+                }
+            ],
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/png/encoder.js",
+            "line": 102,
+            "description": "Add a new encoded chunk to the chunk-list",
+            "itemtype": "method",
+            "name": "_addChunk",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "Type of chunk",
+                    "type": "String"
+                },
+                {
+                    "name": "chunk",
+                    "description": "Encoded chunk",
+                    "type": "Chunk"
                 }
             ],
             "access": "private",
@@ -642,6 +2031,30 @@
             "class": "PNGImage"
         },
         {
+            "file": "lib/modify.js",
+            "line": 12,
+            "description": "Rotates the current image 90 degree counter-clockwise",
+            "itemtype": "method",
+            "name": "rotateCCW",
+            "return": {
+                "description": "Rotated image",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "lib/modify.js",
+            "line": 34,
+            "description": "Rotates the current image 90 degree clockwise",
+            "itemtype": "method",
+            "name": "rotateCW",
+            "return": {
+                "description": "Rotated image",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
             "file": "lib/pixel.js",
             "line": 12,
             "description": "Gets the color of a pixel at a specific index",
@@ -723,7 +2136,7 @@
                 {
                     "name": "color",
                     "description": "",
-                    "type": "Object",
+                    "type": "Object|int",
                     "props": [
                         {
                             "name": "red",
@@ -762,7 +2175,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 69,
+            "line": 76,
             "description": "Sets the color of a pixel at a specific coordinate",
             "itemtype": "method",
             "name": "setAt",
@@ -819,7 +2232,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 87,
+            "line": 94,
             "description": "Sets the color of a pixel at a specific coordinate\nAlias for setAt",
             "itemtype": "method",
             "name": "setPixel",
@@ -876,7 +2289,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 106,
+            "line": 113,
             "description": "Gets the color of a pixel at a specific index",
             "itemtype": "method",
             "name": "getColorAtIndex",
@@ -895,7 +2308,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 117,
+            "line": 124,
             "description": "Gets the color of a pixel at a specific coordinate",
             "itemtype": "method",
             "name": "getColor",
@@ -919,7 +2332,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 131,
+            "line": 138,
             "description": "Calculates the final color value for opacity",
             "itemtype": "method",
             "name": "_calculateColorValue",
@@ -951,7 +2364,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 155,
+            "line": 162,
             "description": "Get the red value of a pixel",
             "itemtype": "method",
             "name": "getRed",
@@ -970,7 +2383,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 166,
+            "line": 173,
             "description": "Set the red value of a pixel",
             "itemtype": "method",
             "name": "setRed",
@@ -996,7 +2409,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 179,
+            "line": 186,
             "description": "Get the green value of a pixel",
             "itemtype": "method",
             "name": "getGreen",
@@ -1015,7 +2428,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 190,
+            "line": 197,
             "description": "Set the green value of a pixel",
             "itemtype": "method",
             "name": "setGreen",
@@ -1041,7 +2454,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 203,
+            "line": 210,
             "description": "Get the blue value of a pixel",
             "itemtype": "method",
             "name": "getBlue",
@@ -1060,7 +2473,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 214,
+            "line": 221,
             "description": "Set the blue value of a pixel",
             "itemtype": "method",
             "name": "setBlue",
@@ -1086,7 +2499,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 227,
+            "line": 234,
             "description": "Get the alpha value of a pixel",
             "itemtype": "method",
             "name": "getAlpha",
@@ -1105,7 +2518,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 238,
+            "line": 245,
             "description": "Set the alpha value of a pixel",
             "itemtype": "method",
             "name": "setAlpha",
@@ -1131,7 +2544,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 251,
+            "line": 258,
             "description": "Sets the value of a pixel",
             "itemtype": "method",
             "name": "_getValue",
@@ -1157,7 +2570,7 @@
         },
         {
             "file": "lib/pixel.js",
-            "line": 264,
+            "line": 272,
             "description": "Sets the value of a pixel",
             "itemtype": "method",
             "name": "_setValue",
@@ -1190,7 +2603,7 @@
         },
         {
             "file": "index.js",
-            "line": 26,
+            "line": 30,
             "description": "Project version",
             "itemtype": "property",
             "name": "version",
@@ -1200,7 +2613,7 @@
         },
         {
             "file": "index.js",
-            "line": 36,
+            "line": 40,
             "description": "Filter dictionary",
             "itemtype": "property",
             "name": "filters",
@@ -1210,7 +2623,7 @@
         },
         {
             "file": "index.js",
-            "line": 45,
+            "line": 49,
             "description": "Sets a filter to the filter list",
             "itemtype": "method",
             "name": "setFilter",
@@ -1231,7 +2644,7 @@
         },
         {
             "file": "index.js",
-            "line": 61,
+            "line": 65,
             "description": "Creates an image by dimensions",
             "static": 1,
             "itemtype": "method",
@@ -1256,7 +2669,7 @@
         },
         {
             "file": "index.js",
-            "line": 78,
+            "line": 83,
             "description": "Copies an already existing image",
             "static": 1,
             "itemtype": "method",
@@ -1276,7 +2689,7 @@
         },
         {
             "file": "index.js",
-            "line": 92,
+            "line": 98,
             "description": "Reads an image from the filesystem",
             "static": 1,
             "itemtype": "method",
@@ -1301,7 +2714,27 @@
         },
         {
             "file": "index.js",
-            "line": 120,
+            "line": 126,
+            "description": "Reads an image from the filesystem synchronously",
+            "static": 1,
+            "itemtype": "method",
+            "name": "readImageSync",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 139,
             "description": "Loads an image from a blob",
             "static": 1,
             "itemtype": "method",
@@ -1326,7 +2759,27 @@
         },
         {
             "file": "index.js",
-            "line": 146,
+            "line": 166,
+            "description": "Loads an image synchronously from a blob",
+            "static": 1,
+            "itemtype": "method",
+            "name": "loadImageSync",
+            "params": [
+                {
+                    "name": "blob",
+                    "description": "",
+                    "type": "Buffer"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "PNGImage"
+            },
+            "class": "PNGImage"
+        },
+        {
+            "file": "index.js",
+            "line": 189,
             "description": "Log method that can be overwritten to modify the logging behavior",
             "static": 1,
             "itemtype": "method",
@@ -1342,7 +2795,7 @@
         },
         {
             "file": "index.js",
-            "line": 159,
+            "line": 202,
             "description": "Gets the original png-js object",
             "itemtype": "method",
             "name": "getImage",
@@ -1354,7 +2807,7 @@
         },
         {
             "file": "index.js",
-            "line": 169,
+            "line": 212,
             "description": "Gets the image as a blob",
             "itemtype": "method",
             "name": "getBlob",
@@ -1366,7 +2819,7 @@
         },
         {
             "file": "index.js",
-            "line": 180,
+            "line": 223,
             "description": "Gets the width of the image",
             "itemtype": "method",
             "name": "getWidth",
@@ -1378,7 +2831,7 @@
         },
         {
             "file": "index.js",
-            "line": 190,
+            "line": 233,
             "description": "Gets the height of the image",
             "itemtype": "method",
             "name": "getHeight",
@@ -1390,7 +2843,7 @@
         },
         {
             "file": "index.js",
-            "line": 201,
+            "line": 244,
             "description": "Clips the current image by modifying it in-place",
             "itemtype": "method",
             "name": "clip",
@@ -1420,7 +2873,7 @@
         },
         {
             "file": "index.js",
-            "line": 229,
+            "line": 272,
             "description": "Fills an area with the specified color",
             "itemtype": "method",
             "name": "fillRect",
@@ -1487,7 +2940,7 @@
         },
         {
             "file": "index.js",
-            "line": 261,
+            "line": 304,
             "description": "Applies a list of filters to the image",
             "itemtype": "method",
             "name": "applyFilters",
@@ -1513,7 +2966,7 @@
         },
         {
             "file": "index.js",
-            "line": 320,
+            "line": 363,
             "description": "Gets index of a specific coordinate",
             "itemtype": "method",
             "name": "getIndex",
@@ -1537,7 +2990,7 @@
         },
         {
             "file": "index.js",
-            "line": 333,
+            "line": 376,
             "description": "Writes the image to the filesystem",
             "itemtype": "method",
             "name": "writeImage",
@@ -1557,7 +3010,7 @@
         },
         {
             "file": "index.js",
-            "line": 353,
+            "line": 406,
             "description": "Writes the image to a buffer",
             "itemtype": "method",
             "name": "toBlob",
@@ -1571,5 +3024,26 @@
             "class": "PNGImage"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/png/chunks/PLTE.js:59"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " lib/png/chunks/tRNS.js:79"
+        },
+        {
+            "message": "Missing item type\nGets the color at",
+            "line": " lib/png/chunks/PLTE.js:59"
+        },
+        {
+            "message": "Missing item type\nConverts the input data to an image",
+            "line": " lib/png/chunks/PLTE.js:80"
+        },
+        {
+            "message": "Missing item type\nGet all colors",
+            "line": " lib/png/chunks/tRNS.js:79"
+        }
+    ]
 }

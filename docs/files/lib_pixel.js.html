@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.10.0</em>
+            <em>API Docs for: 0.11.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -140,7 +140,7 @@ module.exports = {
 	 *
 	 * @method setAtIndex
 	 * @param {int} idx Index of pixel
-	 * @param {object} color
+	 * @param {object|int} color
 	 * @param {int} [color.red] Red value for pixel
 	 * @param {int} [color.green] Green value for pixel
 	 * @param {int} [color.blue] Blue value for pixel
@@ -148,10 +148,17 @@ module.exports = {
 	 * @param {number} [color.opacity] Opacity of color
 	 */
 	setAtIndex: function (idx, color) {
-		if (color.red !== undefined) this.setRed(idx, color.red, color.opacity);
-		if (color.green !== undefined) this.setGreen(idx, color.green, color.opacity);
-		if (color.blue !== undefined) this.setBlue(idx, color.blue, color.opacity);
-		if (color.alpha !== undefined) this.setAlpha(idx, color.alpha, color.opacity);
+		if (typeof color === &#x27;object&#x27;) {
+			if (color.red !== undefined) this.setRed(idx, color.red, color.opacity);
+			if (color.green !== undefined) this.setGreen(idx, color.green, color.opacity);
+			if (color.blue !== undefined) this.setBlue(idx, color.blue, color.opacity);
+			if (color.alpha !== undefined) this.setAlpha(idx, color.alpha, color.opacity);
+		} else {
+			this.setRed(idx, color &amp; 0xff);
+			this.setGreen(idx, (color &amp; 0xff00) &gt;&gt; 8);
+			this.setBlue(idx, (color &amp; 0xff0000) &gt;&gt; 16);
+			this.setAlpha(idx, (color &amp; 0xff000000) &gt;&gt; 24);
+		}
 	},
 
 	/**
@@ -248,7 +255,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getRed: function (idx) {
-		return this._getValue(idx &lt;&lt; 2, 0);
+		return this._getValue(idx, 0);
 	},
 
 	/**
@@ -260,7 +267,7 @@ module.exports = {
 	 * @param {number} [opacity] Opacity of value set
 	 */
 	setRed: function (idx, value, opacity) {
-		this._setValue(idx &lt;&lt; 2, 0, value, opacity);
+		this._setValue(idx, 0, value, opacity);
 	},
 
 
@@ -272,7 +279,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getGreen: function (idx) {
-		return this._getValue(idx &lt;&lt; 2, 1);
+		return this._getValue(idx, 1);
 	},
 
 	/**
@@ -284,7 +291,7 @@ module.exports = {
 	 * @param {number} [opacity] Opacity of value set
 	 */
 	setGreen: function (idx, value, opacity) {
-		this._setValue(idx &lt;&lt; 2, 1, value, opacity);
+		this._setValue(idx, 1, value, opacity);
 	},
 
 
@@ -296,7 +303,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getBlue: function (idx) {
-		return this._getValue(idx &lt;&lt; 2, 2);
+		return this._getValue(idx, 2);
 	},
 
 	/**
@@ -308,7 +315,7 @@ module.exports = {
 	 * @param {number} [opacity] Opacity of value set
 	 */
 	setBlue: function (idx, value, opacity) {
-		this._setValue(idx &lt;&lt; 2, 2, value, opacity);
+		this._setValue(idx, 2, value, opacity);
 	},
 
 
@@ -320,7 +327,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getAlpha: function (idx) {
-		return this._getValue(idx &lt;&lt; 2, 3);
+		return this._getValue(idx, 3);
 	},
 
 	/**
@@ -332,7 +339,7 @@ module.exports = {
 	 * @param {number} [opacity] Opacity of value set
 	 */
 	setAlpha: function (idx, value, opacity) {
-		this._setValue(idx &lt;&lt; 2, 3, value, opacity);
+		this._setValue(idx, 3, value, opacity);
 	},
 
 
@@ -346,7 +353,8 @@ module.exports = {
 	 * @private
 	 */
 	_getValue: function (offset, colorOffset) {
-		return this._image.data[offset + colorOffset];
+		var localOffset = offset &lt;&lt; 2;
+		return this._image.data[localOffset + colorOffset];
 	},
 
 	/**
@@ -360,8 +368,10 @@ module.exports = {
 	 * @private
 	 */
 	_setValue: function (offset, colorOffset, value, opacity) {
-		var previousValue = this._getValue(offset, colorOffset);
-		this._image.data[offset + colorOffset] = this._calculateColorValue(previousValue, value, opacity);
+		var previousValue = this._getValue(offset, colorOffset),
+			localOffset = offset &lt;&lt; 2;
+
+		this._image.data[localOffset + colorOffset] = this._calculateColorValue(previousValue, value, opacity);
 	}
 };
 

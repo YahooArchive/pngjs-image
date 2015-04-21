@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.10.0</em>
+            <em>API Docs for: 0.11.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -93,9 +93,13 @@ var fs = require(&#x27;fs&#x27;),
 	_ = require(&#x27;underscore&#x27;),
 	PNG = require(&#x27;pngjs&#x27;).PNG,
 	pixel = require(&#x27;./lib/pixel&#x27;),
+	modify = require(&#x27;./lib/modify&#x27;),
 	conversion = require(&#x27;./lib/conversion&#x27;),
 	filters = require(&#x27;./lib/filters&#x27;),
 	streamBuffers = require(&quot;stream-buffers&quot;);
+
+var Decoder = require(&#x27;./lib/png/decoder&#x27;);
+var Encoder = require(&#x27;./lib/png/encoder&#x27;);
 
 /**
  * PNGjs-image class
@@ -163,6 +167,7 @@ PNGImage.createImage = function (width, height) {
 	return new PNGImage(image);
 };
 
+
 /**
  * Copies an already existing image
  *
@@ -176,6 +181,7 @@ PNGImage.copyImage = function (image) {
 	image.getImage().bitblt(newImage.getImage(), 0, 0, image.getWidth(), image.getHeight(), 0, 0);
 	return newImage;
 };
+
 
 /**
  * Reads an image from the filesystem
@@ -206,6 +212,19 @@ PNGImage.readImage = function (filename, fn) {
 };
 
 /**
+ * Reads an image from the filesystem synchronously
+ *
+ * @static
+ * @method readImageSync
+ * @param {string} filename
+ * @return {PNGImage}
+ */
+PNGImage.readImageSync = function (filename) {
+	return this.loadImageSync(fs.readFileSync(filename));
+};
+
+
+/**
  * Loads an image from a blob
  *
  * @static
@@ -229,6 +248,30 @@ PNGImage.loadImage = function (blob, fn) {
 	});
 
 	return resultImage;
+};
+
+
+/**
+ * Loads an image synchronously from a blob
+ *
+ * @static
+ * @method loadImageSync
+ * @param {Buffer} blob
+ * @return {PNGImage}
+ */
+PNGImage.loadImageSync = function (blob) {
+	var decoder = new Decoder(blob, 0);
+	var result = decoder.decode();
+	var headerChunk = decoder.getHeaderChunk();
+	var width = headerChunk.getWidth();
+	var height = headerChunk.getHeight();
+
+	var image = new PNG({
+		width: width,
+		height: height
+	});
+	result.copy(image.data, 0, 0, result.length);
+	return new PNGImage(image);
 };
 
 /**
@@ -438,6 +481,16 @@ PNGImage.prototype = {
 		}.bind(this));
 	},
 
+	writeImageSync: function (filename) {
+		fs.writeFileSync(filename, this.toBlobSync());
+	},
+
+	toBlobSync: function () {
+		var encoder = new Encoder(this.getWidth(), this.getHeight(), this.getBlob(), 0);
+
+		return encoder.encode();
+	},
+
 	/**
 	 * Writes the image to a buffer
 	 *
@@ -466,6 +519,7 @@ PNGImage.prototype.constructor = PNGImage;
 
 // Add standard methods to the prototype
 _.extend(PNGImage.prototype, pixel);
+_.extend(PNGImage.prototype, modify);
 _.extend(PNGImage.prototype, conversion);
 
 
