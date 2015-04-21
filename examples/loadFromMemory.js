@@ -25,7 +25,7 @@ var image = PNGImage.loadImage(blob, function (err, image) {
 		red: 0, green: 0, blue: 0, alpha: 255
 	});
 
-	console.log('modified!');
+	console.log('Modified!');
 
 	// Export it
 	image.writeImage(__dirname + '/export.png', function (err) {

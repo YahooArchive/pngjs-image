@@ -5,6 +5,7 @@ var fs = require('fs'),
 	_ = require('underscore'),
 	PNG = require('pngjs').PNG,
 	pixel = require('./lib/pixel'),
+	modify = require('./lib/modify'),
 	conversion = require('./lib/conversion'),
 	filters = require('./lib/filters'),
 	streamBuffers = require("stream-buffers");
@@ -78,6 +79,7 @@ PNGImage.createImage = function (width, height) {
 	return new PNGImage(image);
 };
 
+
 /**
  * Copies an already existing image
  *
@@ -91,6 +93,7 @@ PNGImage.copyImage = function (image) {
 	image.getImage().bitblt(newImage.getImage(), 0, 0, image.getWidth(), image.getHeight(), 0, 0);
 	return newImage;
 };
+
 
 /**
  * Reads an image from the filesystem
@@ -415,6 +418,7 @@ PNGImage.prototype.constructor = PNGImage;
 
 // Add standard methods to the prototype
 _.extend(PNGImage.prototype, pixel);
+_.extend(PNGImage.prototype, modify);
 _.extend(PNGImage.prototype, conversion);
 
 
