@@ -1,6 +1,6 @@
 {
   "name": "pngjs-image",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Native PNG image manipulation",
   "license": "MIT",
   "main": "index.js",

@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+v0.11.1 - 04/20/15
+* Add rotateCW/rotateCCW methods
+* Add experimental feature
+  * Add synchronous PNG loader (readImageSync)
+
 v0.11.0 - 04/19/15
 * Add experimental features:
   * Add PNG decoder supporting true-color (+alpha) and index-color (with palette); supports auxiliary chunk tRNS
