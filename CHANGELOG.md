@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+v0.11.2 - 04/21/15
+* Bugfix for decoder: filter-revert from previous-line
+
 v0.11.1 - 04/20/15
 * Add rotateCW/rotateCCW methods
 * Add experimental feature
