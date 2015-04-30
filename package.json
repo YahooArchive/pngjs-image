@@ -27,6 +27,7 @@
     "docs": "yuidoc ."
   },
   "dependencies": {
+    "iconv-lite": "^0.4.8",
     "pako": "^0.2.6",
     "pngjs": "0.4.0",
     "stream-buffers": "1.0.1",
