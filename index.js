@@ -173,7 +173,7 @@ PNGImage.loadImage = function (blob, fn) {
  * @return {PNGImage}
  */
 PNGImage.loadImageSync = function (blob) {
-	var decoder = new Decoder(blob, 0);
+	var decoder = new Decoder(blob, false);
 	var result = decoder.decode();
 	var headerChunk = decoder.getHeaderChunk();
 	var width = headerChunk.getWidth();
