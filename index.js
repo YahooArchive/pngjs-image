@@ -173,17 +173,23 @@ PNGImage.loadImage = function (blob, fn) {
  * @return {PNGImage}
  */
 PNGImage.loadImageSync = function (blob) {
-	var decoder = new Decoder(blob, false);
-	var result = decoder.decode();
-	var headerChunk = decoder.getHeaderChunk();
-	var width = headerChunk.getWidth();
-	var height = headerChunk.getHeight();
+	var decoder,
+		data,
+		headerChunk,
+		width, height;
+
+	decoder = new Decoder();
+	data = decoder.decode(blob, { strict: false });
+
+	headerChunk = decoder.getHeaderChunk();
+	width = headerChunk.getWidth();
+	height = headerChunk.getHeight();
 
 	var image = new PNG({
 		width: width,
 		height: height
 	});
-	result.copy(image.data, 0, 0, result.length);
+	data.copy(image.data, 0, 0, data.length);
 	return new PNGImage(image);
 };
 
@@ -398,10 +404,9 @@ PNGImage.prototype = {
 		fs.writeFileSync(filename, this.toBlobSync());
 	},
 
-	toBlobSync: function () {
-		var encoder = new Encoder(this.getWidth(), this.getHeight(), this.getBlob(), 0);
-
-		return encoder.encode();
+	toBlobSync: function (options) {
+		var encoder = new Encoder();
+		return encoder.encode(this.getBlob(), this.getWidth(), this.getHeight(), options);
 	},
 
 	/**
