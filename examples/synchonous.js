@@ -12,6 +12,6 @@ image.fillRect(17, 10, 15, 20, {
 
 console.log('Modified!');
 
-image.writeImageSync(__dirname + '/eye_ouput.png');
+image.writeImageSync(__dirname + '/eye_output.png');
 
 console.log('Done');
