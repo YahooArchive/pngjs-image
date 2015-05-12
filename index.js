@@ -446,4 +446,17 @@ _.keys(filters).forEach(function (key) {
 	PNGImage.setFilter(key, filters[key]);
 });
 
+/**
+ * Instruments the node environment so that PNG files can be loaded through require calls
+ *
+ * @static
+ * @method instrument
+ */
+PNGImage.instrument = function () {
+	require.extensions['.png'] = function(module, filename) {
+		var image = PNGImage.readImageSync(filename);
+		module.exports = image;
+	};
+};
+
 module.exports = PNGImage;
