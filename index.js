@@ -459,4 +459,7 @@ PNGImage.instrument = function () {
 	};
 };
 
+PNGImage.Decoder = Decoder;
+PNGImage.Encoder = Encoder;
+
 module.exports = PNGImage;
