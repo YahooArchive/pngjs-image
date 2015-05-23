@@ -1,6 +1,6 @@
 {
   "name": "pngjs-image",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "description": "Native PNG image manipulation",
   "license": "MIT",
   "main": "index.js",
@@ -30,6 +30,7 @@
     "iconv-lite": "^0.4.8",
     "pako": "^0.2.6",
     "pngjs": "0.4.0",
+    "request": "^2.55.0",
     "stream-buffers": "1.0.1",
     "underscore": "1.7.0"
   },

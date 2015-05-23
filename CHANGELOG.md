@@ -1,14 +1,16 @@
 CHANGELOG
 =========
 
-v0.11.4
+v0.11.5
 * Refactor decoder - fully dynamic
 * Complete encoder - also fully dynamic
 * Add support for custom chunks
 * Add instrumentation for require
 
-v0.11.3 - 05/23/15
+v0.11.4 - 05/23/15
 * Add simple url support for readImage
+
+v0.11.3 - 05/23/15
 
 v0.11.2 - 04/21/15
 * Bugfix for decoder: filter-revert from previous-line
