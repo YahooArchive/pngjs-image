@@ -75,14 +75,16 @@ console.log(image.getRed(index));
 // Get low level image object with buffer from the 'pngjs' package
 var pngjs = image.getImage();
 
-image.writeImage('path/to/file', function () {
+image.writeImage('path/to/file', function (err) {
+    if (err) throw err;
     console.log('Written to the file');
 });
 ```
 
 **Example:** Loading an image
 ```javascript
-var image = PNGImage.readImage('path/to/file', function () {
+PNGImage.readImage('path/to/file', function (err, image) {
+    if (err) throw err;
 
     // Get width and height
     console.log(image.getWidth());
@@ -93,12 +95,21 @@ var image = PNGImage.readImage('path/to/file', function () {
 });
 ```
 
+**Example:** Loading an image from an url
+```javascript
+PNGImage.readImage('https://s.yimg.com/rz/l/yahoo_en-US_f_p_142x37_2x.png', function (err, image) {
+    if (err) throw err;
+
+    // The image is in the 'image' variable if everything went well
+});
+```
+
 ###Static-Methods
 * ```<PNGImage> = PNGImage.addFilter(key, fn)``` Adds the ```fn``` filter with identifier ```key``` to the filter-list
 * ```<PNGImage> = PNGImage.createImage(width, height)``` Creates an image with the given size
 * ```<PNGImage> = PNGImage.copyImage(image)``` Copies an image into a new container
-* ```<PNGImage> = PNGImage.readImage(path, fn)``` Loads an image from the filesystem, calling the ```fn``` function when done
-* ```<PNGImage> = PNGImage.loadImage(blob, fn)``` Loads an image from memory, calling the ```fn``` function when done
+* ```PNGImage.readImage(path, fn)``` Loads an image from the file or url, calling the ```fn``` function when done
+* ```PNGImage.loadImage(blob, fn)``` Loads an image from memory, calling the ```fn``` function when done
 
 ###Instance-Methods
 * ```<pngjs> = image.getImage()``` Gets the ```pngjs``` instance
@@ -179,6 +190,7 @@ The following third-party libraries are used by this module:
 * pngjs: https://github.com/niegowski/node-pngjs
 * stream-buffers: https://github.com/samcday/node-stream-buffer
 * underscore: http://underscorejs.org
+* request: https://github.com/request/request
 
 ###Dev-Dependencies
 * chai: http://chaijs.com
