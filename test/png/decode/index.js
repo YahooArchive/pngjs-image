@@ -3,6 +3,30 @@
 
 describe('Decode', function () {
 
+	// Basic decoding
+	require('./basic');
+
+	// Filters
+	require('./filter');
+
+	// Interlace
+	require('./interlace');
+
+	// Sizes
+	require('./sizes');
+
+	// Chunk ordering
+	require('./ordering');
+
+	// Compression
+	require('./compression');
+
+	// Palette
+	require('./palette');
+
 	// Ancillary chunks
 	require('./ancillary');
+
+	// Corrupted files
+	require('./corrupt');
 });
