@@ -7,5 +7,5 @@ describe('PNGjs-image', function () {
 	require('./tests');
 
 	// PNG encoder/decoder related tests
-	//require('./png');
+	require('./png');
 });
