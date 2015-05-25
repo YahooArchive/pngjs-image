@@ -1,7 +1,7 @@
 PNGjs-Image
 ===========
 
-Native PNG image manipulation
+JavaScript-based PNG image encoder, decoder, and manipulater
 
 [![Build Status](https://img.shields.io/travis/yahoo/pngjs-image.svg)](http://travis-ci.org/yahoo/pngjs-image)
 [![Coveralls Coverage](https://img.shields.io/coveralls/yahoo/pngjs-image.svg)](https://coveralls.io/r/yahoo/pngjs-image)
