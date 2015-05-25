@@ -122,7 +122,7 @@ describe('Background', function () {
 					resourceFile: 'bgbn4a08', // black background
 					imageCheck: true,
 
-					chunkTypes: ['gAMA'],
+					chunkTypes: ['gAMA', 'bKGD'],
 
 					headerCheck: true,
 					width: 32,
@@ -152,7 +152,7 @@ describe('Background', function () {
 					resourceFile: 'bggn4a16', // gray background
 					imageCheck: true,
 
-					chunkTypes: ['gAMA'],
+					chunkTypes: ['gAMA', 'bKGD'],
 
 					headerCheck: true,
 					width: 32,
@@ -185,7 +185,7 @@ describe('Background', function () {
 					resourceFile: 'bgwn6a08', // white background
 					imageCheck: true,
 
-					chunkTypes: ['gAMA'],
+					chunkTypes: ['gAMA', 'bKGD'],
 
 					headerCheck: true,
 					width: 32,
@@ -215,7 +215,7 @@ describe('Background', function () {
 					resourceFile: 'bgyn6a16', // yellow background
 					imageCheck: true,
 
-					chunkTypes: ['gAMA'],
+					chunkTypes: ['gAMA', 'bKGD'],
 
 					headerCheck: true,
 					width: 32,

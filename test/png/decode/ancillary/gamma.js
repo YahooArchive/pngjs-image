@@ -1,24 +1,482 @@
 // Copyright 2015 Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-//g03n0g16 - grayscale, file-gamma = 0.35
-//g03n2c08 - color, file-gamma = 0.35
-//g03n3p04 - paletted, file-gamma = 0.35
-//g04n0g16 - grayscale, file-gamma = 0.45
-//g04n2c08 - color, file-gamma = 0.45
-//g04n3p04 - paletted, file-gamma = 0.45
-//g05n0g16 - grayscale, file-gamma = 0.55
-//g05n2c08 - color, file-gamma = 0.55
-//g05n3p04 - paletted, file-gamma = 0.55
-//g07n0g16 - grayscale, file-gamma = 0.70
-//g07n2c08 - color, file-gamma = 0.70
-//g07n3p04 - paletted, file-gamma = 0.70
-//g10n0g16 - grayscale, file-gamma = 1.00
-//g10n2c08 - color, file-gamma = 1.00
-//g10n3p04 - paletted, file-gamma = 1.00
-//g25n0g16 - grayscale, file-gamma = 2.50
-//g25n2c08 - color, file-gamma = 2.50
-//g25n3p04 - paletted, file-gamma = 2.50
+var testGen = require('../../testGen');
+var expect = require('chai').expect;
+
 describe('Gamma', function () {
 
+	describe('0.35', function () {
+
+		before(function () {
+			this.gamma = 0.35;
+		});
+
+		describe('GrayScale', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g03n0g16',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 16,
+				colorType: 0,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('True-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g03n2c08',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 8,
+				colorType: 2,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('Indexed-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g03n3p04',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 4,
+				colorType: 3,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+	});
+
+	describe('0.45', function () {
+
+		before(function () {
+			this.gamma = 0.45;
+		});
+
+		describe('GrayScale', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g04n0g16',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 16,
+				colorType: 0,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('True-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g04n2c08',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 8,
+				colorType: 2,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('Indexed-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g04n3p04',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 4,
+				colorType: 3,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+	});
+
+	describe('0.55', function () {
+
+		before(function () {
+			this.gamma = 0.55;
+		});
+
+		describe('GrayScale', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g05n0g16',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 16,
+				colorType: 0,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('True-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g05n2c08',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 8,
+				colorType: 2,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('Indexed-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g05n3p04',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 4,
+				colorType: 3,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+	});
+
+	describe('0.70', function () {
+
+		before(function () {
+			this.gamma = 0.70;
+		});
+
+		describe('GrayScale', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g07n0g16',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 16,
+				colorType: 0,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('True-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g07n2c08',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 8,
+				colorType: 2,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('Indexed-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g07n3p04',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 4,
+				colorType: 3,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+	});
+
+	describe('1.00', function () {
+
+		before(function () {
+			this.gamma = 1.00;
+		});
+
+		describe('GrayScale', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g10n0g16',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 16,
+				colorType: 0,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('True-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g10n2c08',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 8,
+				colorType: 2,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('Indexed-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g10n3p04',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 4,
+				colorType: 3,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+	});
+
+	describe('2.50', function () {
+
+		before(function () {
+			this.gamma = 2.50;
+		});
+
+		describe('GrayScale', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g25n0g16',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 16,
+				colorType: 0,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('True-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g25n2c08',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 8,
+				colorType: 2,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+
+		describe('Indexed-Color', function () {
+
+			testGen.addTests({
+				resourceGroup: ['ancillary', 'gamma'],
+				resourceFile: 'g25n3p04',
+				imageCheck: true,
+
+				chunkTypes: ['gAMA'],
+
+				headerCheck: true,
+				width: 32,
+				height: 32,
+				bitDepth: 4,
+				colorType: 3,
+				filter: 0,
+				compression: 0,
+				interlace: 0
+			});
+
+			it('should have gamma', function () {
+				expect(this.data.gamma).to.be.equal(this.gamma);
+			});
+		});
+	});
 });

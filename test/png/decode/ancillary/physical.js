@@ -1,10 +1,140 @@
 // Copyright 2015 Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-//cdfn2c08 - physical pixel dimensions, 8x32 flat pixels
-//cdhn2c08 - physical pixel dimensions, 32x8 high pixels
-//cdsn2c08 - physical pixel dimensions, 8x8 square pixels
-//cdun2c08 - physical pixel dimensions, 1000 pixels per 1 meter
+var testGen = require('../../testGen');
+var expect = require('chai').expect;
+
 describe('Physical Dimensions', function () {
 
+	describe('8x32 flat pixels', function () {
+
+		testGen.addTests({
+			resourceGroup: ['ancillary', 'physical'],
+			resourceFile: 'cdfn2c08',
+			imageCheck: true,
+
+			chunkTypes: ['gAMA', 'pHYs', 'sBIT'],
+
+			headerCheck: true,
+			width: 8,
+			height: 32,
+			bitDepth: 8,
+			colorType: 2,
+			filter: 0,
+			compression: 0,
+			interlace: 0
+		});
+
+		it('should have physical data', function () {
+			expect(this.data.volatile && this.data.volatile.physical).to.be.not.undefined;
+		});
+
+		it('should have unit', function () {
+			expect(this.data.volatile && this.data.volatile.physical.unit).to.be.equal(0);
+		});
+
+		it('should have extend', function () {
+			expect(this.data.volatile && this.data.volatile.physical.xPixelPerUnit).to.be.equal(1);
+			expect(this.data.volatile && this.data.volatile.physical.yPixelPerUnit).to.be.equal(4);
+		});
+	});
+
+	describe('32x8 high pixels', function () {
+
+		testGen.addTests({
+			resourceGroup: ['ancillary', 'physical'],
+			resourceFile: 'cdhn2c08',
+			imageCheck: true,
+
+			chunkTypes: ['gAMA', 'pHYs', 'sBIT'],
+
+			headerCheck: true,
+			width: 32,
+			height: 8,
+			bitDepth: 8,
+			colorType: 2,
+			filter: 0,
+			compression: 0,
+			interlace: 0
+		});
+
+		it('should have physical data', function () {
+			expect(this.data.volatile && this.data.volatile.physical).to.be.not.undefined;
+		});
+
+		it('should have unit', function () {
+			expect(this.data.volatile && this.data.volatile.physical.unit).to.be.equal(0);
+		});
+
+		it('should have extend', function () {
+			expect(this.data.volatile && this.data.volatile.physical.xPixelPerUnit).to.be.equal(4);
+			expect(this.data.volatile && this.data.volatile.physical.yPixelPerUnit).to.be.equal(1);
+		});
+	});
+
+	describe('8x8 square pixels', function () {
+
+		testGen.addTests({
+			resourceGroup: ['ancillary', 'physical'],
+			resourceFile: 'cdsn2c08',
+			imageCheck: true,
+
+			chunkTypes: ['gAMA', 'pHYs', 'sBIT'],
+
+			headerCheck: true,
+			width: 8,
+			height: 8,
+			bitDepth: 8,
+			colorType: 2,
+			filter: 0,
+			compression: 0,
+			interlace: 0
+		});
+
+		it('should have physical data', function () {
+			expect(this.data.volatile && this.data.volatile.physical).to.be.not.undefined;
+		});
+
+		it('should have unit', function () {
+			expect(this.data.volatile && this.data.volatile.physical.unit).to.be.equal(0);
+		});
+
+		it('should have extend', function () {
+			expect(this.data.volatile && this.data.volatile.physical.xPixelPerUnit).to.be.equal(1);
+			expect(this.data.volatile && this.data.volatile.physical.yPixelPerUnit).to.be.equal(1);
+		});
+	});
+
+	describe('1000 pixels per meter', function () {
+
+		testGen.addTests({
+			resourceGroup: ['ancillary', 'physical'],
+			resourceFile: 'cdun2c08',
+			imageCheck: true,
+
+			chunkTypes: ['gAMA', 'pHYs', 'sBIT'],
+
+			headerCheck: true,
+			width: 32,
+			height: 32,
+			bitDepth: 8,
+			colorType: 2,
+			filter: 0,
+			compression: 0,
+			interlace: 0
+		});
+
+		it('should have physical data', function () {
+			expect(this.data.volatile && this.data.volatile.physical).to.be.not.undefined;
+		});
+
+		it('should have unit', function () {
+			expect(this.data.volatile && this.data.volatile.physical.unit).to.be.equal(1);
+		});
+
+		it('should have extend', function () {
+			expect(this.data.volatile && this.data.volatile.physical.xPixelPerUnit).to.be.equal(1000);
+			expect(this.data.volatile && this.data.volatile.physical.yPixelPerUnit).to.be.equal(1000);
+		});
+	});
 });
