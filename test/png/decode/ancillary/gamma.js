@@ -12,12 +12,13 @@ describe('Gamma', function () {
 			this.gamma = 0.35;
 		});
 
-		describe('GrayScale', function () {
+		describe('GrayScale with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g03n0g16',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -36,12 +37,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('True-Color', function () {
+		describe('True-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g03n2c08',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -60,12 +62,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('Indexed-Color', function () {
+		describe('Indexed-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g03n3p04',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -91,12 +94,13 @@ describe('Gamma', function () {
 			this.gamma = 0.45;
 		});
 
-		describe('GrayScale', function () {
+		describe('GrayScale with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g04n0g16',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -139,12 +143,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('Indexed-Color', function () {
+		describe('Indexed-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g04n3p04',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -170,12 +175,13 @@ describe('Gamma', function () {
 			this.gamma = 0.55;
 		});
 
-		describe('GrayScale', function () {
+		describe('GrayScale with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g05n0g16',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -194,12 +200,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('True-Color', function () {
+		describe('True-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g05n2c08',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -273,12 +280,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('True-Color', function () {
+		describe('True-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g07n2c08',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -297,12 +305,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('Indexed-Color', function () {
+		describe('Indexed-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g07n3p04',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -376,12 +385,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('Indexed-Color', function () {
+		describe('Indexed-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g10n3p04',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -407,12 +417,13 @@ describe('Gamma', function () {
 			this.gamma = 2.50;
 		});
 
-		describe('GrayScale', function () {
+		describe('GrayScale with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g25n0g16',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -431,12 +442,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('True-Color', function () {
+		describe('True-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g25n2c08',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
@@ -455,12 +467,13 @@ describe('Gamma', function () {
 			});
 		});
 
-		describe('Indexed-Color', function () {
+		describe('Indexed-Color with Gamma', function () {
 
 			testGen.addTests({
 				resourceGroup: ['ancillary', 'gamma'],
 				resourceFile: 'g25n3p04',
 				imageCheck: true,
+				decodeOptions: { gamma: true },
 
 				chunkTypes: ['gAMA'],
 
