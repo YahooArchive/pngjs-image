@@ -24,13 +24,16 @@ before(function () {
 		return completePath;
 	};
 
-	this.decode = function (path) {
+	this.decode = function (path, options) {
+
+		options = options || {};
+		options.strict = true;
 
 		this.blob = fs.readFileSync(path);
 
 		this.decoder = new Decoder();
 
-		this.image = this.decoder.decode(this.blob, { strict: true });
+		this.image = this.decoder.decode(this.blob, options);
 		this.data = this.decoder.getChunkData();
 		this.chunks = this.decoder.getChunks();
 	};

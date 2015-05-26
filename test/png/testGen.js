@@ -10,6 +10,7 @@ module.exports = {
 	 * @param {object} options
 	 * @param {string} options.resourceGroup
 	 * @param {string} options.resourceFile
+	 * @param {object} [options.decodeOptions]
 	 * @param {string[]} [options.chunkTypes]
 	 * @param {boolean} [options.imageCheck=false]
 	 * @param {boolean} [options.headerCheck=false]
@@ -28,7 +29,7 @@ module.exports = {
 		});
 
 		it('should decode', function () {
-			this.decode(this.file);
+			this.decode(this.file, options.decodeOptions);
 		});
 
 		it('should have mandatory chunks', function () {
