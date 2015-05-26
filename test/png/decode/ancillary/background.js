@@ -121,6 +121,7 @@ describe('Background', function () {
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgbn4a08', // black background
 					imageCheck: true,
+					decodeOptions: { background: true },
 
 					chunkTypes: ['gAMA', 'bKGD'],
 
@@ -214,6 +215,7 @@ describe('Background', function () {
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgyn6a16', // yellow background
 					imageCheck: true,
+					decodeOptions: { background: true },
 
 					chunkTypes: ['gAMA', 'bKGD'],
 
