@@ -1,40 +1,28 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Pngjs-image : Native PNG manipulation library">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Pngjs-image</title>
+    <meta charset="UTF-8">
+    <title>Pngjs-image by yahoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Pngjs-image</h1>
+      <h2 class="project-tagline">Native PNG manipulation library</h2>
+      <a href="https://github.com/yahoo/pngjs-image" class="btn">View on GitHub</a>
+      <a href="https://github.com/yahoo/pngjs-image/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/yahoo/pngjs-image/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/yahoo/pngjs-image">View on GitHub</a>
-
-          <h1 id="project_title">Pngjs-image</h1>
-          <h2 id="project_tagline">Native PNG manipulation library</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/yahoo/pngjs-image/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/yahoo/pngjs-image/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="pngjs-image" class="anchor" href="#pngjs-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>PNGjs-Image</h1>
 
-<p>Native PNG image manipulation</p>
+<p>JavaScript-based PNG image encoder, decoder, and manipulater</p>
 
 <p><a href="http://travis-ci.org/yahoo/pngjs-image"><img src="https://img.shields.io/travis/yahoo/pngjs-image.svg" alt="Build Status"></a>
 <a href="https://coveralls.io/r/yahoo/pngjs-image"><img src="https://img.shields.io/coveralls/yahoo/pngjs-image.svg" alt="Coveralls Coverage"></a>
@@ -119,13 +107,15 @@ image.setAt(<span class="pl-c1">20</span>, <span class="pl-c1">30</span>, { red<
 <span class="pl-c">// Get low level image object with buffer from the 'pngjs' package</span>
 <span class="pl-k">var</span> pngjs <span class="pl-k">=</span> image.getImage();
 
-image.writeImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+image.writeImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">err</span>) {
+    <span class="pl-k">if</span> (err) <span class="pl-k">throw</span> err;
     <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-s"><span class="pl-pds">'</span>Written to the file<span class="pl-pds">'</span></span>);
 });</pre></div>
 
 <p><strong>Example:</strong> Loading an image</p>
 
-<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> image <span class="pl-k">=</span> PNGImage.readImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> () {
+<div class="highlight highlight-javascript"><pre>PNGImage.readImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">image</span>) {
+    <span class="pl-k">if</span> (err) <span class="pl-k">throw</span> err;
 
     <span class="pl-c">// Get width and height</span>
     <span class="pl-en">console</span><span class="pl-c1">.log</span>(image.getWidth());
@@ -133,6 +123,14 @@ image.writeImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<sp
 
     <span class="pl-c">// Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)</span>
     image.setAt(<span class="pl-c1">20</span>, <span class="pl-c1">30</span>, { red<span class="pl-k">:</span><span class="pl-c1">255</span>, green<span class="pl-k">:</span><span class="pl-c1">0</span>, blue<span class="pl-k">:</span><span class="pl-c1">0</span>, alpha<span class="pl-k">:</span><span class="pl-c1">100</span> });
+});</pre></div>
+
+<p><strong>Example:</strong> Loading an image from an url</p>
+
+<div class="highlight highlight-javascript"><pre>PNGImage.readImage(<span class="pl-s"><span class="pl-pds">'</span>https://s.yimg.com/rz/l/yahoo_en-US_f_p_142x37_2x.png<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">err</span>, <span class="pl-smi">image</span>) {
+    <span class="pl-k">if</span> (err) <span class="pl-k">throw</span> err;
+
+    <span class="pl-c">// The image is in the 'image' variable if everything went well</span>
 });</pre></div>
 
 <h3>
@@ -146,9 +144,9 @@ image.writeImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<sp
 <li>
 <code>&lt;PNGImage&gt; = PNGImage.copyImage(image)</code> Copies an image into a new container</li>
 <li>
-<code>&lt;PNGImage&gt; = PNGImage.readImage(path, fn)</code> Loads an image from the filesystem, calling the <code>fn</code> function when done</li>
+<code>PNGImage.readImage(path, fn)</code> Loads an image from the file or url, calling the <code>fn</code> function when done</li>
 <li>
-<code>&lt;PNGImage&gt; = PNGImage.loadImage(blob, fn)</code> Loads an image from memory, calling the <code>fn</code> function when done</li>
+<code>PNGImage.loadImage(blob, fn)</code> Loads an image from memory, calling the <code>fn</code> function when done</li>
 </ul>
 
 <h3>
@@ -297,11 +295,15 @@ image.writeImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<sp
 <a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h3>
 
 <ul>
+<li>pako: <a href="https://github.com/nodeca/pako">https://github.com/nodeca/pako</a>
+</li>
 <li>pngjs: <a href="https://github.com/niegowski/node-pngjs">https://github.com/niegowski/node-pngjs</a>
 </li>
 <li>stream-buffers: <a href="https://github.com/samcday/node-stream-buffer">https://github.com/samcday/node-stream-buffer</a>
 </li>
 <li>underscore: <a href="http://underscorejs.org">http://underscorejs.org</a>
+</li>
+<li>request: <a href="https://github.com/request/request">https://github.com/request/request</a>
 </li>
 </ul>
 
@@ -333,18 +335,16 @@ image.writeImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<sp
 <p>The MIT License</p>
 
 <p>Copyright 2014-2015 Yahoo Inc.</p>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Pngjs-image maintained by <a href="https://github.com/yahoo">yahoo</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/yahoo/pngjs-image">Pngjs-image</a> is maintained by <a href="https://github.com/yahoo">yahoo</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-              <script type="text/javascript">
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -355,6 +355,6 @@ image.writeImage(<span class="pl-s"><span class="pl-pds">'</span>path/to/file<sp
             } catch(err) {}
           </script>
 
-
   </body>
 </html>
+
