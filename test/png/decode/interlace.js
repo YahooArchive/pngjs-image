@@ -1,10 +1,6 @@
 // Copyright 2015 Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-//basi3p01 - 1 bit (2 color) paletted
-//basi3p02 - 2 bit (4 color) paletted
-//basi3p04 - 4 bit (16 color) paletted
-//basi3p08 - 8 bit (256 color) paletted
 var testGen = require('../testGen');
 
 describe('Interlace', function () {
