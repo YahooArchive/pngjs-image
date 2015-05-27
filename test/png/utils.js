@@ -38,11 +38,11 @@ before(function () {
 		this.chunks = this.decoder.getChunks();
 	};
 
-	this.encode = function (path, buffer, width, height) {
+	this.encode = function (path, buffer, width, height, options) {
 
 		this.encoder = new Encoder();
 
-		this.encodedBlob = this.encoder.encode(buffer, width, height);
+		this.encodedBlob = this.encoder.encode(buffer, width, height, options);
 
 		fs.writeFileSync(path, this.encodedBlob);
 	};

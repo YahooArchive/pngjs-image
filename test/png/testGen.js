@@ -128,5 +128,54 @@ module.exports = {
 				}
 			});
 		}
+	},
+
+	/**
+	 * @class tests
+	 * @method addEncodeTests
+	 * @param {object} options
+	 * @param {string} options.resourceGroup
+	 * @param {string} options.resourceFile
+	 * @param {int} options.width=32
+	 * @param {int} options.height=32
+	 * @param {boolean} [options.expectFailure]
+	 * @param {string} [options.expectMessage]
+	 * @param {object} [options.encodeOptions]
+	 * @param {boolean} [options.imageCheck=false]
+	 */
+	addEncodeTests: function (options) {
+
+		before(function () {
+			this.file = this.resource(options.resourceGroup, options.resourceFile + '.raw');
+			this.finalFile = this.resource(options.resourceGroup, options.resourceFile + '_trueColor.png');
+			this.outputFile = this.resource(options.resourceGroup, options.resourceFile + '_out.png');
+
+			this.image = fs.readFileSync(this.file);
+		});
+
+		it('should encode', function () {
+
+			try {
+				this.encode(this.outputFile, this.image, options.width, options.height, options.encodeOptions);
+			} catch (err) {
+				if (options.expectFailure) {
+					if (options.expectMessage != err.message) {
+						throw new Error('Error message was not expected: ' + err.message);
+					}
+				} else {
+					throw err;
+				}
+			}
+		});
+
+		if (!options.expectFailure) {
+
+			if (options.imageCheck) {
+				it('should load the image buffer', function () {
+					var buffer = fs.readFileSync(this.outputFile);
+					this.compareToFile(buffer, this.finalFile);
+				});
+			}
+		}
 	}
 };
