@@ -10,7 +10,7 @@ describe('Palette', function () {
 
 	describe('True-Color', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: 'palette',
 			resourceFile: 'pp0n2c16', // six-cube palette-chunk in true-color image
 			imageCheck: true,
@@ -27,7 +27,7 @@ describe('Palette', function () {
 
 	describe('True-Color with Alpha', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: 'palette',
 			resourceFile: 'pp0n6a08', // six-cube palette-chunk in true-color+alpha image
 			imageCheck: true,

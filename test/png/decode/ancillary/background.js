@@ -12,7 +12,7 @@ describe('Background', function () {
 
 			describe('8-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgai4a08',
 					imageCheck: true,
@@ -36,7 +36,7 @@ describe('Background', function () {
 
 			describe('16-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgai4a16',
 					imageCheck: true,
@@ -63,7 +63,7 @@ describe('Background', function () {
 
 			describe('8-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgan6a08',
 					imageCheck: true,
@@ -87,7 +87,7 @@ describe('Background', function () {
 
 			describe('16-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgan6a16',
 					imageCheck: true,
@@ -117,7 +117,7 @@ describe('Background', function () {
 
 			describe('8-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgbn4a08', // black background
 					imageCheck: true,
@@ -148,7 +148,7 @@ describe('Background', function () {
 
 			describe('16-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bggn4a16', // gray background
 					imageCheck: true,
@@ -181,7 +181,7 @@ describe('Background', function () {
 
 			describe('8-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgwn6a08', // white background
 					imageCheck: true,
@@ -211,7 +211,7 @@ describe('Background', function () {
 
 			describe('16-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'background'],
 					resourceFile: 'bgyn6a16', // yellow background
 					imageCheck: true,

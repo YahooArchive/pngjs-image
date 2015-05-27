@@ -8,7 +8,7 @@ describe('Modification Time', function () {
 
 	describe('01-Jan-2000 12:34:56', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'time'],
 			resourceFile: 'cm0n0g04',
 			imageCheck: true,
@@ -37,7 +37,7 @@ describe('Modification Time', function () {
 
 	describe('01-jan-1970 00:00:00', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'time'],
 			resourceFile: 'cm7n0g04',
 			imageCheck: true,
@@ -66,7 +66,7 @@ describe('Modification Time', function () {
 
 	describe('31-dec-1999 23:59:59', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'time'],
 			resourceFile: 'cm9n0g04',
 			imageCheck: true,

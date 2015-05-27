@@ -10,7 +10,7 @@ describe('Corrupted files', function () {
 	describe('Signature', function () {
 
 		describe('Signature byte 1 MSBit reset to zero', function () {
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'corrupt',
 				resourceFile: 'xs2n0g01',
 				expectFailure: true,
@@ -19,7 +19,7 @@ describe('Corrupted files', function () {
 		});
 
 		describe('Signature byte 2 is a "Q"', function () {
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'corrupt',
 				resourceFile: 'xs1n0g01',
 				expectFailure: true,
@@ -28,7 +28,7 @@ describe('Corrupted files', function () {
 		});
 
 		describe('Signature byte 4 lowercase', function () {
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'corrupt',
 				resourceFile: 'xs4n0g01',
 				expectFailure: true,
@@ -37,7 +37,7 @@ describe('Corrupted files', function () {
 		});
 
 		describe('7th byte a space instead of control-Z', function () {
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'corrupt',
 				resourceFile: 'xs7n0g01',
 				expectFailure: true,
@@ -46,7 +46,7 @@ describe('Corrupted files', function () {
 		});
 
 		describe('added cr bytes', function () {
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'corrupt',
 				resourceFile: 'xcrn0g04',
 				expectFailure: true,
@@ -55,7 +55,7 @@ describe('Corrupted files', function () {
 		});
 
 		describe('added lf bytes', function () {
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'corrupt',
 				resourceFile: 'xlfn0g04',
 				expectFailure: true,
@@ -69,7 +69,7 @@ describe('Corrupted files', function () {
 		describe('Color-Type', function () {
 
 			describe('1', function () {
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: 'corrupt',
 					resourceFile: 'xc1n0g08',
 					expectFailure: true,
@@ -78,7 +78,7 @@ describe('Corrupted files', function () {
 			});
 
 			describe('9', function () {
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: 'corrupt',
 					resourceFile: 'xc9n2c08',
 					expectFailure: true,
@@ -90,7 +90,7 @@ describe('Corrupted files', function () {
 		describe('Bit-Depth', function () {
 
 			describe('0', function () {
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: 'corrupt',
 					resourceFile: 'xd0n2c08',
 					expectFailure: true,
@@ -99,7 +99,7 @@ describe('Corrupted files', function () {
 			});
 
 			describe('3', function () {
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: 'corrupt',
 					resourceFile: 'xd3n2c08',
 					expectFailure: true,
@@ -108,7 +108,7 @@ describe('Corrupted files', function () {
 			});
 
 			describe('99', function () {
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: 'corrupt',
 					resourceFile: 'xd9n2c08',
 					expectFailure: true,
@@ -121,7 +121,7 @@ describe('Corrupted files', function () {
 	describe('Data', function () {
 
 		describe('Missing IDAT', function () {
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'corrupt',
 				resourceFile: 'xdtn0g01',
 				expectFailure: true,

@@ -8,7 +8,7 @@ describe('Text', function () {
 
 	describe('No Textual Data', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'text'],
 			resourceFile: 'ct0n0g04',
 			imageCheck: true,
@@ -36,7 +36,7 @@ describe('Text', function () {
 
 	describe('With Textual Data', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'text'],
 			resourceFile: 'ct1n0g04',
 			imageCheck: true,
@@ -89,7 +89,7 @@ describe('Text', function () {
 
 	describe('With Compressed Textual Data', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'text'],
 			resourceFile: 'ctzn0g04',
 			imageCheck: true,

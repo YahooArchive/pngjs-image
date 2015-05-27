@@ -9,7 +9,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's01i3p01',
 				imageCheck: true,
@@ -27,7 +27,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's01n3p01',
 				imageCheck: true,
@@ -48,7 +48,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's02i3p01',
 				imageCheck: true,
@@ -66,7 +66,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's02n3p01',
 				imageCheck: true,
@@ -87,7 +87,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's03i3p01',
 				imageCheck: true,
@@ -105,7 +105,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's03n3p01',
 				imageCheck: true,
@@ -126,7 +126,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's04i3p01',
 				imageCheck: true,
@@ -144,7 +144,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's04n3p01',
 				imageCheck: true,
@@ -165,7 +165,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's05i3p02',
 				imageCheck: true,
@@ -183,7 +183,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's05n3p02',
 				imageCheck: true,
@@ -204,7 +204,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's06i3p02',
 				imageCheck: true,
@@ -222,7 +222,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's06n3p02',
 				imageCheck: true,
@@ -243,7 +243,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's07i3p02',
 				imageCheck: true,
@@ -261,7 +261,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's07n3p02',
 				imageCheck: true,
@@ -282,7 +282,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's08i3p02',
 				imageCheck: true,
@@ -300,7 +300,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's08n3p02',
 				imageCheck: true,
@@ -321,7 +321,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's09i3p02',
 				imageCheck: true,
@@ -339,7 +339,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's09n3p02',
 				imageCheck: true,
@@ -360,7 +360,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's32i3p04',
 				imageCheck: true,
@@ -378,7 +378,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's32n3p04',
 				imageCheck: true,
@@ -399,7 +399,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's33i3p04',
 				imageCheck: true,
@@ -417,7 +417,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's33n3p04',
 				imageCheck: true,
@@ -438,7 +438,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's34i3p04',
 				imageCheck: true,
@@ -456,7 +456,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's34n3p04',
 				imageCheck: true,
@@ -477,7 +477,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's35i3p04',
 				imageCheck: true,
@@ -495,7 +495,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's35n3p04',
 				imageCheck: true,
@@ -516,7 +516,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's36i3p04',
 				imageCheck: true,
@@ -534,7 +534,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's36n3p04',
 				imageCheck: true,
@@ -555,7 +555,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's37i3p04',
 				imageCheck: true,
@@ -573,7 +573,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's37n3p04',
 				imageCheck: true,
@@ -594,7 +594,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's38i3p04',
 				imageCheck: true,
@@ -612,7 +612,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's38n3p04',
 				imageCheck: true,
@@ -633,7 +633,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's39i3p04',
 				imageCheck: true,
@@ -651,7 +651,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's39n3p04',
 				imageCheck: true,
@@ -672,7 +672,7 @@ describe('Sizes', function () {
 
 		describe('Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's40i3p04',
 				imageCheck: true,
@@ -690,7 +690,7 @@ describe('Sizes', function () {
 
 		describe('Not Interlaced', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'sizes',
 				resourceFile: 's40n3p04',
 				imageCheck: true,

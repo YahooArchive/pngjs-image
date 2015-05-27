@@ -8,7 +8,7 @@ describe('Histogram', function () {
 
 	describe('15 colors', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'histogram'],
 			resourceFile: 'ch1n3p04',
 			imageCheck: true,
@@ -47,7 +47,7 @@ describe('Histogram', function () {
 
 	describe('256 colors', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'histogram'],
 			resourceFile: 'ch2n3p08',
 			imageCheck: true,

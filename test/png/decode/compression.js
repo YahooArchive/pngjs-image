@@ -7,7 +7,7 @@ describe('Compression', function () {
 
 	describe('Level 0 - none', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: 'compression',
 			resourceFile: 'z00n2c08', // color, no interlacing, compression level 0 (none)
 			imageCheck: true,
@@ -18,7 +18,7 @@ describe('Compression', function () {
 
 	describe('Level 3', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: 'compression',
 			resourceFile: 'z03n2c08', // color, no interlacing, compression level 3
 			imageCheck: true,
@@ -29,7 +29,7 @@ describe('Compression', function () {
 
 	describe('Level 6 - default', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: 'compression',
 			resourceFile: 'z06n2c08', // color, no interlacing, compression level 6 (default)
 			imageCheck: true,
@@ -40,7 +40,7 @@ describe('Compression', function () {
 
 	describe('Level 9 - maximum', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: 'compression',
 			resourceFile: 'z09n2c08', // color, no interlacing, compression level 9 (maximum)
 			imageCheck: true,

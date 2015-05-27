@@ -8,7 +8,7 @@ describe('Physical Dimensions', function () {
 
 	describe('8x32 flat pixels', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'physical'],
 			resourceFile: 'cdfn2c08',
 			imageCheck: true,
@@ -41,7 +41,7 @@ describe('Physical Dimensions', function () {
 
 	describe('32x8 high pixels', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'physical'],
 			resourceFile: 'cdhn2c08',
 			imageCheck: true,
@@ -74,7 +74,7 @@ describe('Physical Dimensions', function () {
 
 	describe('8x8 square pixels', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'physical'],
 			resourceFile: 'cdsn2c08',
 			imageCheck: true,
@@ -107,7 +107,7 @@ describe('Physical Dimensions', function () {
 
 	describe('1000 pixels per meter', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'physical'],
 			resourceFile: 'cdun2c08',
 			imageCheck: true,

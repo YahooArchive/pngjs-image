@@ -9,7 +9,7 @@ describe('Ordering', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'ordering',
 				resourceFile: 'oi1n0g16', // grayscale
 				imageCheck: true,
@@ -24,7 +24,7 @@ describe('Ordering', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'ordering',
 				resourceFile: 'oi1n2c16', // color
 				imageCheck: true,
@@ -42,7 +42,7 @@ describe('Ordering', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'ordering',
 				resourceFile: 'oi2n0g16', // grayscale
 				imageCheck: true,
@@ -57,7 +57,7 @@ describe('Ordering', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'ordering',
 				resourceFile: 'oi2n2c16', // color
 				imageCheck: true,
@@ -75,7 +75,7 @@ describe('Ordering', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'ordering',
 				resourceFile: 'oi4n0g16', // grayscale
 				imageCheck: true,
@@ -90,7 +90,7 @@ describe('Ordering', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'ordering',
 				resourceFile: 'oi4n2c16', // color
 				imageCheck: true,
@@ -108,7 +108,7 @@ describe('Ordering', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'ordering',
 				resourceFile: 'oi9n0g16', // grayscale
 				imageCheck: true,
@@ -123,7 +123,7 @@ describe('Ordering', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'ordering',
 				resourceFile: 'oi9n2c16', // color
 				imageCheck: true,

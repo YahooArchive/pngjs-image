@@ -9,7 +9,7 @@ describe('Filter', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f00n0g08', // grayscale, no interlacing
 				imageCheck: true,
@@ -25,7 +25,7 @@ describe('Filter', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f00n2c08', // color, no interlacing
 				imageCheck: true,
@@ -44,7 +44,7 @@ describe('Filter', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f01n0g08', // grayscale, no interlacing
 				imageCheck: true,
@@ -60,7 +60,7 @@ describe('Filter', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f01n2c08', // color, no interlacing
 				imageCheck: true,
@@ -79,7 +79,7 @@ describe('Filter', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f02n0g08', // grayscale, no interlacing
 				imageCheck: true,
@@ -95,7 +95,7 @@ describe('Filter', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f02n2c08', // color, no interlacing
 				imageCheck: true,
@@ -114,7 +114,7 @@ describe('Filter', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f03n0g08', // grayscale, no interlacing
 				imageCheck: true,
@@ -130,7 +130,7 @@ describe('Filter', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f03n2c08', // color, no interlacing
 				imageCheck: true,
@@ -149,7 +149,7 @@ describe('Filter', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f04n0g08', // grayscale, no interlacing
 				imageCheck: true,
@@ -165,7 +165,7 @@ describe('Filter', function () {
 
 		describe('Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'filter',
 				resourceFile: 'f04n2c08', // color, no interlacing
 				imageCheck: true,
@@ -182,7 +182,7 @@ describe('Filter', function () {
 
 	describe('All Filters', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: 'filter',
 			resourceFile: 'f99n0g04', // bit-depth 4, filter changing per scanline
 			imageCheck: true,

@@ -8,7 +8,7 @@ describe('Chroma', function () {
 
 	describe('True-Color', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'chroma'],
 			resourceFile: 'ccwn2c08',
 			imageCheck: true,
@@ -48,7 +48,7 @@ describe('Chroma', function () {
 
 	describe('Indexed-Color', function () {
 
-		testGen.addTests({
+		testGen.addDecodeTests({
 			resourceGroup: ['ancillary', 'chroma'],
 			resourceFile: 'ccwn3p08',
 			imageCheck: true,

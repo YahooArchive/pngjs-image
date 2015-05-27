@@ -6,7 +6,7 @@ module.exports = {
 
 	/**
 	 * @class tests
-	 * @method addTests
+	 * @method addDecodeTests
 	 * @param {object} options
 	 * @param {string} options.resourceGroup
 	 * @param {string} options.resourceFile
@@ -24,7 +24,7 @@ module.exports = {
 	 * @param {int} [options.compression=0]
 	 * @param {int} [options.interlace=0]
 	 */
-	addTests: function (options) {
+	addDecodeTests: function (options) {
 
 		before(function () {
 			this.file = this.resource(options.resourceGroup, options.resourceFile + '.png');

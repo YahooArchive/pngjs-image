@@ -13,7 +13,7 @@ describe('Interlace', function () {
 
 		describe('1-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi0g01', // black & white
 				imageCheck: true,
@@ -33,7 +33,7 @@ describe('Interlace', function () {
 
 		describe('2-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi0g02', // 2 bit (4 level) grayscale
 				imageCheck: true,
@@ -53,7 +53,7 @@ describe('Interlace', function () {
 
 		describe('4-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi0g04', // 4 bit (16 level) grayscale
 				imageCheck: true,
@@ -73,7 +73,7 @@ describe('Interlace', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi0g08', // 8 bit (256 level) grayscale
 				imageCheck: true,
@@ -93,7 +93,7 @@ describe('Interlace', function () {
 
 		describe('16-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi0g16', // 16 bit (64k level) grayscale
 				imageCheck: true,
@@ -116,7 +116,7 @@ describe('Interlace', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi4a08', // 8 bit grayscale + 8 bit alpha-channel
 				imageCheck: true,
@@ -136,7 +136,7 @@ describe('Interlace', function () {
 
 		describe('16-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi4a16', // 16 bit grayscale + 16 bit alpha-channel
 				imageCheck: true,
@@ -159,7 +159,7 @@ describe('Interlace', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi2c08', // 3x8 bits rgb color
 				imageCheck: true,
@@ -179,7 +179,7 @@ describe('Interlace', function () {
 
 		describe('16-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi2c16', // 3x16 bits rgb color
 				imageCheck: true,
@@ -202,7 +202,7 @@ describe('Interlace', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi6a08', // 3x8 bits rgb color + 8 bit alpha-channel
 				imageCheck: true,
@@ -222,7 +222,7 @@ describe('Interlace', function () {
 
 		describe('16-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi6a16', // 3x16 bits rgb color + 16 bit alpha-channel
 				imageCheck: true,
@@ -245,7 +245,7 @@ describe('Interlace', function () {
 
 		describe('1-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi3p01', // 1 bit (2 color) paletted
 				imageCheck: true,
@@ -265,7 +265,7 @@ describe('Interlace', function () {
 
 		describe('2-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi3p02', // 2 bit (4 color) paletted
 				imageCheck: true,
@@ -285,7 +285,7 @@ describe('Interlace', function () {
 
 		describe('4-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi3p04', // 4 bit (16 color) paletted
 				imageCheck: true,
@@ -305,7 +305,7 @@ describe('Interlace', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'interlace',
 				resourceFile: 'basi3p08', // 8 bit (256 color) paletted
 				imageCheck: true,

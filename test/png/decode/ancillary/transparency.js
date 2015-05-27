@@ -10,7 +10,7 @@ describe('Transparency', function () {
 
 		describe('GrayScale', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: ['ancillary', 'transparency'],
 				resourceFile: 'tp0n0g08',
 				imageCheck: true,
@@ -30,7 +30,7 @@ describe('Transparency', function () {
 
 		describe('True-Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: ['ancillary', 'transparency'],
 				resourceFile: 'tp0n2c08',
 				imageCheck: true,
@@ -50,7 +50,7 @@ describe('Transparency', function () {
 
 		describe('Indexed-Color', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: ['ancillary', 'transparency'],
 				resourceFile: 'tp0n3p08',
 				imageCheck: true,
@@ -75,7 +75,7 @@ describe('Transparency', function () {
 
 			describe('4-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbbn0g04',
 					imageCheck: true,
@@ -95,7 +95,7 @@ describe('Transparency', function () {
 
 			describe('16-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbwn0g16',
 					imageCheck: true,
@@ -118,7 +118,7 @@ describe('Transparency', function () {
 
 			describe('8-bit', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbrn2c08',
 					imageCheck: true,
@@ -138,7 +138,7 @@ describe('Transparency', function () {
 
 			describe('16-bit - Use no background', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbbn2c16',
 					imageCheck: true,
@@ -158,7 +158,7 @@ describe('Transparency', function () {
 
 			describe('16-bit - Use background', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbgn2c16',
 					imageCheck: true,
@@ -182,7 +182,7 @@ describe('Transparency', function () {
 
 			describe('8-bit - Use no background', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbbn3p08',
 					imageCheck: true,
@@ -202,7 +202,7 @@ describe('Transparency', function () {
 
 			describe('8-bit - Use background - Gray', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbgn3p08',
 					imageCheck: true,
@@ -223,7 +223,7 @@ describe('Transparency', function () {
 
 			describe('8-bit - Use background - White', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbwn3p08',
 					imageCheck: true,
@@ -244,7 +244,7 @@ describe('Transparency', function () {
 
 			describe('8-bit - Use background - No Transparency', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tbyn3p08',
 					imageCheck: true,
@@ -265,7 +265,7 @@ describe('Transparency', function () {
 
 			describe('8-bit - No background', function () {
 
-				testGen.addTests({
+				testGen.addDecodeTests({
 					resourceGroup: ['ancillary', 'transparency'],
 					resourceFile: 'tp1n3p08',
 					imageCheck: true,
@@ -289,7 +289,7 @@ describe('Transparency', function () {
 
 		describe('2-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: ['ancillary', 'transparency'],
 				resourceFile: 'tm3n3p02',
 				imageCheck: true,

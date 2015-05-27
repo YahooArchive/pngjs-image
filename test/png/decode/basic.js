@@ -9,7 +9,7 @@ describe('Basic decoding', function () {
 
 		describe('1-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn0g01', // black & white
 				imageCheck: true,
@@ -29,7 +29,7 @@ describe('Basic decoding', function () {
 
 		describe('2-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn0g02', // 2 bit (4 level) grayscale
 				imageCheck: true,
@@ -50,7 +50,7 @@ describe('Basic decoding', function () {
 
 		describe('4-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn0g04', // 4 bit (16 level) grayscale
 				imageCheck: true,
@@ -70,7 +70,7 @@ describe('Basic decoding', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn0g08', // 8 bit (256 level) grayscale
 				imageCheck: true,
@@ -90,7 +90,7 @@ describe('Basic decoding', function () {
 
 		describe('16-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn0g16', // 16 bit (64k level) grayscale
 				imageCheck: true,
@@ -113,7 +113,7 @@ describe('Basic decoding', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn4a08', // 8 bit grayscale + 8 bit alpha-channel
 				imageCheck: true,
@@ -133,7 +133,7 @@ describe('Basic decoding', function () {
 
 		describe('16-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn4a16', // 16 bit grayscale + 16 bit alpha-channel
 				imageCheck: true,
@@ -156,7 +156,7 @@ describe('Basic decoding', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn2c08', // 3x8 bits rgb color
 				imageCheck: true,
@@ -176,7 +176,7 @@ describe('Basic decoding', function () {
 
 		describe('16-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn2c16', // 3x16 bits rgb color
 				imageCheck: true,
@@ -199,7 +199,7 @@ describe('Basic decoding', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn6a08', // 3x8 bits rgb color + 8 bit alpha-channel
 				imageCheck: true,
@@ -219,7 +219,7 @@ describe('Basic decoding', function () {
 
 		describe('16-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn6a16', // 3x16 bits rgb color + 16 bit alpha-channel
 				imageCheck: true,
@@ -242,7 +242,7 @@ describe('Basic decoding', function () {
 
 		describe('1-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn3p01', // 1 bit (2 color) paletted
 				imageCheck: true,
@@ -262,7 +262,7 @@ describe('Basic decoding', function () {
 
 		describe('2-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn3p02', // 2 bit (4 color) paletted
 				imageCheck: true,
@@ -282,7 +282,7 @@ describe('Basic decoding', function () {
 
 		describe('4-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn3p04', // 4 bit (16 color) paletted
 				imageCheck: true,
@@ -302,7 +302,7 @@ describe('Basic decoding', function () {
 
 		describe('8-bit', function () {
 
-			testGen.addTests({
+			testGen.addDecodeTests({
 				resourceGroup: 'basic',
 				resourceFile: 'basn3p08', // black & white
 				imageCheck: true,
