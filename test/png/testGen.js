@@ -149,7 +149,7 @@ module.exports = {
 
 		before(function () {
 			this.file = this.resource(options.resourceGroup, options.resourceFile + '.raw');
-			this.finalFile = this.resource((options.outputGroup || options.resourceGroup), (options.outputFile || options.resourceFile) + '_trueColor.png');
+			this.finalFile = this.resource((options.outputGroup || options.resourceGroup), (options.outputFile || options.resourceFile) + '_enc.png');
 			this.outputFile = this.resource((options.outputGroup || options.resourceGroup), (options.outputFile || options.resourceFile) + '_out.png');
 
 			this.image = fs.readFileSync(this.file);
