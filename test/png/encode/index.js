@@ -15,4 +15,7 @@ describe('Encode', function () {
 			height: 32
 		});
 	});
+
+	require('./ancillary');
+
 });
