@@ -136,6 +136,8 @@ module.exports = {
 	 * @param {object} options
 	 * @param {string} options.resourceGroup
 	 * @param {string} options.resourceFile
+	 * @param {string} [options.outputGroup]
+	 * @param {string} [options.outputFile]
 	 * @param {int} options.width=32
 	 * @param {int} options.height=32
 	 * @param {boolean} [options.expectFailure]
@@ -147,8 +149,8 @@ module.exports = {
 
 		before(function () {
 			this.file = this.resource(options.resourceGroup, options.resourceFile + '.raw');
-			this.finalFile = this.resource(options.resourceGroup, options.resourceFile + '_trueColor.png');
-			this.outputFile = this.resource(options.resourceGroup, options.resourceFile + '_out.png');
+			this.finalFile = this.resource((options.outputGroup || options.resourceGroup), (options.outputFile || options.resourceFile) + '_trueColor.png');
+			this.outputFile = this.resource((options.outputGroup || options.resourceGroup), (options.outputFile || options.resourceFile) + '_out.png');
 
 			this.image = fs.readFileSync(this.file);
 		});
