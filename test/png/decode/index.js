@@ -27,6 +27,9 @@ describe('Decode', function () {
 	// Ancillary chunks
 	require('./ancillary');
 
+	// Custom chunks
+	require('./custom');
+
 	// Corrupted files
 	require('./corrupt');
 });

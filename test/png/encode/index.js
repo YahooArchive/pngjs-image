@@ -17,5 +17,6 @@ describe('Encode', function () {
 	});
 
 	require('./ancillary');
+	require('./custom');
 
 });
