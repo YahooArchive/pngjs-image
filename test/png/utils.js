@@ -51,12 +51,17 @@ before(function () {
 
 		var compareToBuffer = fs.readFileSync(path);
 
-		if (compareToBuffer.length != buffer.length) {
+		this.compareBuffer(buffer, compareToBuffer);
+	};
+
+	this.compareBuffer = function (buffer1, buffer2) {
+
+		if (buffer1.length != buffer2.length) {
 			throw new Error('Buffer have different sizes.');
 		}
 
-		for(var i = 0; i < buffer.length; i++) {
-			if (buffer[i] != compareToBuffer[i]) {
+		for(var i = 0; i < buffer2.length; i++) {
+			if (buffer2[i] != buffer1[i]) {
 				throw new Error('Buffers are different.');
 			}
 		}
