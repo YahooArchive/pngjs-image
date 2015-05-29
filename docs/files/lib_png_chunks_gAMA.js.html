@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -155,31 +191,194 @@
 // Copyright 2015 Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
+var BufferedStream = require(&#x27;../utils/bufferedStream&#x27;);
+
 /**
  * @class gAMA
  * @module PNG
  * @submodule PNGChunks
+ *
+ * Options:
+ * - gamma {boolean} - Should this chunk be applied to the image? (default: false)
  */
 module.exports = {
 
 	/**
-	 * Makes sure that all required information is available before decoding
+	 * Gets the sequence
 	 *
-	 * @method preDecode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
+	 * @method getSequence
+	 * @return {int}
 	 */
-	preDecode: function (data, offset, length, strict) {
+	getSequence: function () {
+		return 190;
+	},
 
-		if (!this.getFirstChunk(&#x27;IHDR&#x27;, false) === null) {
-			throw new Error(&#x27;Chunk &#x27; + this.getType() + &#x27; requires the IHDR chunk.&#x27;);
-		}
 
-		if (this.getFirstChunk(this.getType(), false) !== null) {
+	/**
+	 * Gets the gamma value
+	 *
+	 * @method getGamma
+	 * @return {float}
+	 */
+	getGamma: function () {
+		return this._gamma || 1;
+	},
+
+	/**
+	 * Sets the gamma value
+	 *
+	 * @method setGamma
+	 * @param {float} value
+	 */
+	setGamma: function (value) {
+		this._gamma = value;
+	},
+
+
+	/**
+	 * Parsing of chunk data
+	 *
+	 * Phase 1
+	 *
+	 * @method parse
+	 * @param {BufferedStream} stream Data stream
+	 * @param {int} length Length of chunk data
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	parse: function (stream, length, strict, options) {
+
+		// Validation
+		if (strict &amp;&amp; (this.getFirstChunk(this.getType(), false) !== null)) {
 			throw new Error(&#x27;Only one &#x27; + this.getType() + &#x27; is allowed in the data.&#x27;);
 		}
+
+		if ((strict &amp;&amp; (length !== 4)) || (length &lt; 4)) {
+			throw new Error(&#x27;The length of chunk &#x27; + this.getType() + &#x27; should be 4, but got &#x27; + length + &#x27;.&#x27;);
+		}
+
+		this.setGamma(stream.readUInt32BE() / 100000);
+	},
+
+	/**
+	 * Decoding of chunk data after image complete
+	 *
+	 * Phase 4
+	 *
+	 * @method finalizeDecode
+	 * @param {Buffer} image
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 * @param {boolean} [options.gamma=false] Apply gamma?
+	 * @return {Buffer}
+	 */
+	finalizeDecode: function (image, strict, options) {
+
+		var i, len,
+			imageStream, outputStream,
+			r, g, b, a,
+			reciprocalGamma;
+
+		if (options.gamma) {
+
+			reciprocalGamma = 1 / this.getGamma();
+
+			imageStream = new BufferedStream(image, false);
+
+			outputStream = new BufferedStream(image, false); // use same buffer
+			outputStream.writeOffset = 0;
+
+			// Convert an index color image to true-color image
+			for (i = 0, len = image.length; i &lt; len; i += 4) {
+
+				r = imageStream.readUInt8();
+				g = imageStream.readUInt8();
+				b = imageStream.readUInt8();
+				a = imageStream.readUInt8();
+
+				if (r !== 0 &amp;&amp; r !== 255) {
+					r = Math.pow(r / 255, reciprocalGamma) * 255;
+				}
+				if (g !== 0 &amp;&amp; g !== 255) {
+					g = Math.pow(g / 255, reciprocalGamma) * 255;
+				}
+				if (b !== 0 &amp;&amp; b !== 255) {
+					b = Math.pow(b / 255, reciprocalGamma) * 255;
+				}
+
+				outputStream.writeUInt8(r);
+				outputStream.writeUInt8(g);
+				outputStream.writeUInt8(b);
+				outputStream.writeUInt8(a);
+			}
+		}
+
+		return image;
+	},
+
+	/**
+	 * Gathers chunk-data from decoded chunks
+	 *
+	 * Phase 5
+	 *
+	 * @static
+	 * @method decodeData
+	 * @param {object} data Data-object that will be used to export values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	decodeData: function (data, strict, options) {
+
+		var chunks = this.getChunksByType(this.getType());
+
+		if (!chunks) {
+			return ;
+		}
+
+		if (strict &amp;&amp; (chunks.length !== 1)) {
+			throw new Error(&#x27;Not more than one chunk allowed for &#x27; + this.getType() + &#x27;.&#x27;);
+		}
+
+		data.volatile = data.volatile || {};
+		data.volatile.gamma = chunks[0].getGamma();
+	},
+
+
+	/**
+	 * Returns a list of chunks to be added to the data-stream
+	 *
+	 * Phase 1
+	 *
+	 * @static
+	 * @method encodeData
+	 * @param {Buffer} image Image data
+	 * @param {object} data Object that will be used to import data to the chunk
+	 * @return {Chunk[]} List of chunks to encode
+	 */
+	encodeData: function (image, data) {
+
+		if (data.gamma) {
+
+			var chunk = this.createChunk(this.getType(), this.getChunks());
+
+			chunk.setGamma(data.gamma);
+
+			return [chunk];
+		} else {
+			return [];
+		}
+	},
+
+	/**
+	 * Composing of chunk data
+	 *
+	 * Phase 4
+	 *
+	 * @method compose
+	 * @param {BufferedStream} stream Data stream
+	 */
+	compose: function (stream) {
+		stream.writeUInt32BE(this.getGamma() * 100000);
 	}
 };
 

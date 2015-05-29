@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -201,7 +237,53 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_preDecode">preDecode</a>
+                                <a href="#method_compose">compose</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_decodeData">decodeData</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_encodeData">encodeData</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getDate">getDate</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getSequence">getSequence</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_parse">parse</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setDate">setDate</a>
 
                                 
                                 
@@ -223,8 +305,98 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_preDecode" class="method item">
-    <h3 class="name"><code>preDecode</code></h3>
+                    <div id="method_compose" class="method item">
+    <h3 class="name"><code>compose</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>stream</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_tIME.js.html#l130"><code>lib&#x2F;png&#x2F;chunks&#x2F;tIME.js:130</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Composing of chunk data</p>
+<p>Phase 4</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">stream</code>
+                        <span class="type"><a href="../classes/BufferedStream.html" class="crosslink">BufferedStream</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Data stream</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_decodeData" class="method item">
+    <h3 class="name"><code>decodeData</code></h3>
 
     
         <div class="args">
@@ -238,19 +410,13 @@
             
                 <li class="arg">
                     
-                        <code>offset</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>length</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
                         <code>strict</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>options</code>
                     
                 </li>
             
@@ -258,6 +424,327 @@
         </div>
     
 
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_tIME.js.html#l77"><code>lib&#x2F;png&#x2F;chunks&#x2F;tIME.js:77</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gathers chunk-data from decoded chunks</p>
+<p>Phase 5</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">data</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Data-object that will be used to export values</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">strict</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Should parsing be strict?</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">options</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Decoding options</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_encodeData" class="method item">
+    <h3 class="name"><code>encodeData</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>image</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Chunk.html" class="crosslink">Chunk[]</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_tIME.js.html#l105"><code>lib&#x2F;png&#x2F;chunks&#x2F;tIME.js:105</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a list of chunks to be added to the data-stream</p>
+<p>Phase 1</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">image</code>
+                        <span class="type">Buffer</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Image data</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">data</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Object that will be used to import data to the chunk</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Chunk.html" class="crosslink">Chunk[]</a></span>:
+                    
+                    <p>List of chunks to encode</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getDate" class="method item">
+    <h3 class="name"><code>getDate</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date" class="crosslink external" target="_blank">Date</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_tIME.js.html#l22"><code>lib&#x2F;png&#x2F;chunks&#x2F;tIME.js:22</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the date</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date" class="crosslink external" target="_blank">Date</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getSequence" class="method item">
+    <h3 class="name"><code>getSequence</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
     
 
     
@@ -294,7 +781,103 @@
     </div>
 
     <div class="description">
-        <p>Makes sure that all required information is available before decoding</p>
+        <p>Gets the sequence</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_parse" class="method item">
+    <h3 class="name"><code>parse</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>stream</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>length</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>strict</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>options</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_tIME.js.html#l43"><code>lib&#x2F;png&#x2F;chunks&#x2F;tIME.js:43</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Parsing of chunk data</p>
+<p>Phase 1</p>
 
     </div>
 
@@ -306,30 +889,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">data</code>
-                        <span class="type">Buffer</span>
+                        <code class="param-name">stream</code>
+                        <span class="type"><a href="../classes/BufferedStream.html" class="crosslink">BufferedStream</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Chunk data</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">offset</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Offset in chunk data</p>
+                        <p>Data stream</p>
 
                     </div>
 
@@ -361,8 +928,112 @@
                     
 
                     <div class="param-description">
-                        <p>Should decoding be strict?</p>
+                        <p>Should parsing be strict?</p>
 
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">options</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Decoding options</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setDate" class="method item">
+    <h3 class="name"><code>setDate</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>date</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_tIME.js.html#l32"><code>lib&#x2F;png&#x2F;chunks&#x2F;tIME.js:32</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the date</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">date</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date" class="crosslink external" target="_blank">Date</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
                     </div>
 
                     

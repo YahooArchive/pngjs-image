@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/png/processor/filter.js - pngjs-image</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="pngjs-image"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.11.5</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
+            
+                <li><a href="../classes/cHRM.html">cHRM</a></li>
+            
+                <li><a href="../classes/Chunk.html">Chunk</a></li>
+            
+                <li><a href="../classes/chunkUtils.html">chunkUtils</a></li>
+            
+                <li><a href="../classes/Compressor.html">Compressor</a></li>
+            
+                <li><a href="../classes/constants.html">constants</a></li>
+            
+                <li><a href="../classes/CRC.html">CRC</a></li>
+            
+                <li><a href="../classes/Decoder.html">Decoder</a></li>
+            
+                <li><a href="../classes/Encoder.html">Encoder</a></li>
+            
+                <li><a href="../classes/Filter.html">Filter</a></li>
+            
+                <li><a href="../classes/gAMA.html">gAMA</a></li>
+            
+                <li><a href="../classes/hIST.html">hIST</a></li>
+            
+                <li><a href="../classes/iCCP.html">iCCP</a></li>
+            
+                <li><a href="../classes/IDAT.html">IDAT</a></li>
+            
+                <li><a href="../classes/IEND.html">IEND</a></li>
+            
+                <li><a href="../classes/IHDR.html">IHDR</a></li>
+            
+                <li><a href="../classes/Interlace.html">Interlace</a></li>
+            
+                <li><a href="../classes/iTXt.html">iTXt</a></li>
+            
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
+                <li><a href="../classes/pHYs.html">pHYs</a></li>
+            
+                <li><a href="../classes/PLTE.html">PLTE</a></li>
+            
+                <li><a href="../classes/PNGImage.html">PNGImage</a></li>
+            
+                <li><a href="../classes/sBIT.html">sBIT</a></li>
+            
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
+            
+                <li><a href="../classes/sPLT.html">sPLT</a></li>
+            
+                <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
+            
+                <li><a href="../classes/tEXt.html">tEXt</a></li>
+            
+                <li><a href="../classes/tIME.html">tIME</a></li>
+            
+                <li><a href="../classes/tRNS.html">tRNS</a></li>
+            
+                <li><a href="../classes/utils.html">utils</a></li>
+            
+                <li><a href="../classes/zTXt.html">zTXt</a></li>
+            
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/Core.html">Core</a></li>
+            
+                <li><a href="../modules/PNG.html">PNG</a></li>
+            
+                <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
+            
+                <li><a href="../modules/PNGCore.html">PNGCore</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: lib/png/processor/filter.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+// Copyright 2015 Yahoo! Inc.
+// Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
+
+var Interlace = require(&#x27;./interlace&#x27;);
+
+/**
+ * @class Filter
+ * @module PNG
+ * @submodule PNGCore
+ * @param {Chunk} headerChunk Header chunk of data stream
+ * @constructor
+ */
+var Filter = function (headerChunk) {
+	this._headerChunk = headerChunk;
+};
+
+
+/**
+ * Gets the header chunk
+ *
+ * @method getHeaderChunk
+ * @return {Chunk}
+ */
+Filter.prototype.getHeaderChunk = function () {
+	return this._headerChunk;
+};
+
+
+/**
+ * Applies filters to the data
+ *
+ * @method filter
+ * @param {Buffer} image
+ * @return {Buffer}
+ */
+Filter.prototype.filter = function (image) {
+	return this._filter(image);
+};
+
+/**
+ * Applies filters to the data
+ *
+ * @method _filter
+ * @param {Buffer} image
+ * @return {Buffer}
+ * @private
+ */
+Filter.prototype._filter = function (image) {
+
+	var input,
+		output,
+		headerChunk = this.getHeaderChunk(),
+		width = headerChunk.getWidth(),
+		height = headerChunk.getHeight(),
+		bytesPerPixel = headerChunk.getImageBytesPerPixel();
+
+	input = {
+		data: image,
+		offset: 0,
+		previousLineOffset: null,
+		width: width,
+		height: height,
+		bytesPerPixel: bytesPerPixel,
+		bytesPerPosition: Math.max(1, bytesPerPixel),
+		scanLineLength: width * bytesPerPixel // TODO: Is this right?
+	};
+	output = {
+		previousLineOffset: null,
+		data: new Buffer((width * height * input.bytesPerPixel) + height), // Add height-times filter-type byte
+		//TODO: Resolution is not right anymore - see decoder
+		offset: 0
+	};
+
+	for (var y = 0; y &lt; height; y++) {
+		//TODO: Find a better way than just use the simplest
+		this._filterNone(input, output);
+		input.previousLineOffset = input.offset;
+		input.offset += input.scanLineLength;
+		output.offset += input.scanLineLength + 1;
+	}
+
+	return output.data;
+};
+
+/**
+ * Applies no filter at all - this is just a pass-through
+ *
+ * @method _filterNone
+ * @param {object} input Input data
+ * @param {object} output Output data
+ * @private
+ */
+Filter.prototype._filterNone = function (input, output) {
+	output.data[output.offset] = 0;
+	input.data.copy(output.data, output.offset + 1, input.offset, input.offset + input.scanLineLength);
+};
+
+/**
+ * Applies the Sub filter
+ *
+ * @method _filterSub
+ * @param {object} input Input data
+ * @param {object} output Output data
+ * @private
+ */
+Filter.prototype._filterSub = function (input, output) {
+	output.data[output.offset] = 1;
+	for (var x = 0; x &lt; input.scanLineLength; x++) {
+		output.data[output.offset + x + 1] = Math.abs(this._getPixel(input, x) - this._getLeftPixel(input, x));
+	}
+};
+
+/**
+ * Applies the Up filter
+ *
+ * @method _filterUp
+ * @param {object} input Input data
+ * @param {object} output Output data
+ * @private
+ */
+Filter.prototype._filterUp = function (input, output) {
+	output.data[output.offset] = 2;
+	for (var x = 0; x &lt; input.scanLineLength; x++) {
+		output.data[output.offset + x + 1] = Math.abs(this._getPixel(input, x) - this._getTopPixel(input, x));
+	}
+};
+
+/**
+ * Applies the Average filter
+ *
+ * @method _filterAverage
+ * @param {object} input Input data
+ * @param {object} output Output data
+ * @private
+ */
+Filter.prototype._filterAverage = function (input, output) {
+	output.data[output.offset] = 3;
+	for (var x = 0; x &lt; input.scanLineLength; x++) {
+		output.data[output.offset + x + 1] = Math.abs(this._getPixel(input, x) - Math.floor((this._getLeftPixel(input, x) + this._getTopPixel(input, x)) / 2));
+	}
+};
+
+/**
+ * Applies the Paeth filter
+ *
+ * @method _filterPaeth
+ * @param {object} input Input data
+ * @param {object} output Output data
+ * @private
+ */
+Filter.prototype._filterPaeth = function (input, output) {
+	output.data[output.offset] = 4;
+	for (var x = 0; x &lt; input.scanLineLength; x++) {
+		output.data[output.offset + x + 1] = Math.abs(
+			this._getPixel(input, x) - this._paethPredictor(
+				this._getLeftPixel(input, x),
+				this._getTopPixel(input, x),
+				this._getTopLeftPixel(input, x)
+			)
+		);
+	}
+};
+
+
+/**
+ * Reverses all filters
+ *
+ * @method reverse
+ * @param {Buffer} image
+ * @return {Buffer} Reversed data
+ */
+Filter.prototype.reverse = function (image) {
+
+	var headerChunk = this.getHeaderChunk(),
+		interlace = new Interlace(headerChunk),
+
+		bytesPerPixel = headerChunk.getBytesPerPixel(),
+		bytesPerPosition = Math.max(1, bytesPerPixel),
+
+		outputData,
+		length = 0,
+		info = {};
+
+	// Determine required size of buffer
+	interlace.processPasses(function (width, height, scanLineLength) {
+		length += scanLineLength * height;
+	});
+
+	outputData = new Buffer(length);
+
+	// Process each interlace pass (or only one for non-interlaced images)
+	interlace.processPasses(function (width, height, scanLineLength) {
+
+		info = {
+			inputData: image,
+			inputOffset: info.inputOffset || 0,
+
+			outputData: outputData,
+			outputOffset: info.outputOffset || 0,
+
+			bytesPerPosition: bytesPerPosition,
+
+			scanLineLength: scanLineLength,
+			scanLines: height,
+
+			previousLineOffset: null
+		};
+
+		this._reverse(info);
+
+	}.bind(this));
+
+	return outputData;
+};
+
+/**
+ * Reverses all filters
+ *
+ * @method _reverse
+ * @param {object} info
+ * @private
+ */
+Filter.prototype._reverse = function (info) {
+
+	var filterType,
+		filterMapping;
+
+	// Reverse mapping for filter-types
+	filterMapping = {
+		0: this._reverseNone,
+		1: this._reverseSub,
+		2: this._reverseUp,
+		3: this._reverseAverage,
+		4: this._reversePaeth
+	};
+
+	// Run through all scanlines
+	for (var y = 0; y &lt; info.scanLines; y++) {
+
+		// Determine filter-type
+		filterType = info.inputData[info.inputOffset]; info.inputOffset++;
+		if ((filterType &lt; 0) || (filterType &gt; 4)) {
+			throw new Error(&#x27;Filter: Unknown filter-type &#x27; + filterType);
+		}
+
+		// Reverse per filter-type
+		filterMapping[filterType].call(this, info);
+
+		info.previousLineOffset = info.outputOffset;
+		info.inputOffset += info.scanLineLength;
+		info.outputOffset += info.scanLineLength;
+	}
+};
+
+
+/**
+ * Reverses nothing at all - this is just a pass-through
+ *
+ * @method _reverseNone
+ * @param {object} info
+ * @private
+ */
+Filter.prototype._reverseNone = function (info) {
+	info.inputData.copy(info.outputData, info.outputOffset, info.inputOffset, info.inputOffset + info.scanLineLength);
+};
+
+/**
+ * Reverses the Sub filter
+ *
+ * @method _reverseSub
+ * @param {object} info
+ * @private
+ */
+Filter.prototype._reverseSub = function (info) {
+	for (var x = 0; x &lt; info.scanLineLength; x++) {
+		info.outputData[info.outputOffset + x] = (this._getPixel(info, x) + this._getLeftPixel(info, x)) &amp; 0xff;
+	}
+};
+
+/**
+ * Reverses the Up filter
+ *
+ * @method _reverseUp
+ * @param {object} info
+ * @private
+ */
+Filter.prototype._reverseUp = function (info) {
+	for (var x = 0; x &lt; info.scanLineLength; x++) {
+		info.outputData[info.outputOffset + x] = (this._getPixel(info, x) + this._getTopPixel(info, x)) &amp; 0xff;
+	}
+};
+
+/**
+ * Reverses the Average filter
+ *
+ * @method _reverseAverage
+ * @param {object} info
+ * @private
+ */
+Filter.prototype._reverseAverage = function (info) {
+	for (var x = 0; x &lt; info.scanLineLength; x++) {
+		info.outputData[info.outputOffset + x] = (this._getPixel(info, x) + Math.floor((this._getLeftPixel(info, x) + this._getTopPixel(info, x)) / 2)) &amp; 0xff;
+	}
+};
+
+/**
+ * Reverses the Paeth filter
+ *
+ * @method _reversePaeth
+ * @param {object} info
+ * @private
+ */
+Filter.prototype._reversePaeth = function (info) {
+	for (var x = 0; x &lt; info.scanLineLength; x++) {
+		info.outputData[info.outputOffset + x] =
+			this._getPixel(info, x) + this._paethPredictor(
+				this._getLeftPixel(info, x),
+				this._getTopPixel(info, x),
+				this._getTopLeftPixel(info, x)
+			) &amp; 0xff;
+	}
+};
+
+
+/**
+ * Paeth-predictor algorithm
+ *
+ * @method _paethPredictor
+ * @param {int} left Left pixel
+ * @param {int} top Top pixel
+ * @param {int} topLeft Top-left pixel
+ * @return {int} Result of algorithm
+ * @private
+ */
+Filter.prototype._paethPredictor = function (left, top, topLeft) {
+
+	var p = left + top - topLeft,
+		pLeft = Math.abs(p - left),
+		pTop = Math.abs(p - top),
+		pTopLeft = Math.abs(p - topLeft);
+
+	if ((pLeft &lt;= pTop) &amp;&amp; (pLeft &lt;= pTopLeft)) {
+		return left;
+
+	} else if (pTop &lt;= pTopLeft) {
+		return top;
+
+	} else {
+		return topLeft;
+	}
+};
+
+
+/**
+ * Gets the current pixel
+ *
+ * @method _getPixel
+ * @param {object} info
+ * @param {int} x X-coordinate in current scanline
+ * @return {int}
+ * @private
+ */
+Filter.prototype._getPixel = function (info, x) {
+	return info.inputData[info.inputOffset + x];
+};
+
+/**
+ * Gets the pixel at the left from the current pixel
+ *
+ * @method _getLeftPixel
+ * @param {object} info
+ * @param {int} x X-coordinate in current scanline
+ * @return {int}
+ * @private
+ */
+Filter.prototype._getLeftPixel = function (info, x) {
+	return (x &lt; info.bytesPerPosition) ? 0 : info.outputData[info.outputOffset + x - info.bytesPerPosition];
+};
+
+/**
+ * Gets the pixel at the top from the current pixel
+ *
+ * @method _getTopPixel
+ * @param {object} info
+ * @param {int} x X-coordinate in current scanline
+ * @return {int}
+ * @private
+ */
+Filter.prototype._getTopPixel = function (info, x) {
+	return (info.previousLineOffset === null) ? 0: info.outputData[info.previousLineOffset + x];
+};
+
+/**
+ * Gets the pixel at the top-left from the current pixel
+ *
+ * @method _getTopLeftPixel
+ * @param {object} info
+ * @param {int} x X-coordinate in current scanline
+ * @return {int}
+ * @private
+ */
+Filter.prototype._getTopLeftPixel = function (info, x) {
+	return ((info.previousLineOffset === null) || (x &lt; info.bytesPerPosition)) ? 0 : info.outputData[info.previousLineOffset + x - info.bytesPerPosition];
+};
+
+module.exports = Filter;
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

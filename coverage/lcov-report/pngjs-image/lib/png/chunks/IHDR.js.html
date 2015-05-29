@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header low">
+<div class="header high">
     <h1>Code coverage report for <span class="entity">pngjs-image/lib/png/chunks/IHDR.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">3.03% <small>(2 / 66)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">82.74% <small>(139 / 168)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">0% <small>(0 / 46)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">68.83% <small>(53 / 77)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">0% <small>(0 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">83.33% <small>(40 / 48)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">3.33% <small>(2 / 60)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">82.74% <small>(139 / 168)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -555,11 +555,470 @@
 337
 338
 339
-340</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -576,16 +1035,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">949</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -596,19 +1046,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">825</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">180</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">180</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -619,62 +1070,117 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">825</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">180</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">180</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2539</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">180</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">177</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">661</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">177</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">175</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">175</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">175</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">175</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">175</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -685,9 +1191,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">790</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -696,8 +1200,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">175</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">175</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -707,8 +1214,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2461</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -717,8 +1224,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">947</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -727,8 +1234,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">945</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -737,8 +1244,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">450</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -747,9 +1254,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1534</span>
+<span class="cline-any cline-yes">1534</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -758,8 +1266,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">764</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -768,59 +1276,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1626</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -851,6 +1308,85 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1384</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">346</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">346</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">346</span>
+<span class="cline-any cline-yes">92</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">254</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -871,7 +1407,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">480</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -892,6 +1428,370 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">156</span>
+<span class="cline-any cline-yes">156</span>
+<span class="cline-any cline-yes">156</span>
+<span class="cline-any cline-yes">153</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">151</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">479</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-yes">479</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">150</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Copyright 2015 Yahoo! Inc.
@@ -899,7 +1799,16 @@
 &nbsp;
 // IHDR - Image header
 &nbsp;
-var colorTypes = require('../constants').colorTypes;
+var colorTypes = require('../utils/constants').colorTypes;
+&nbsp;
+var BufferedStream = require('../utils/bufferedStream');
+&nbsp;
+var Compressor = require('../processor/compressor');
+var Filter = require('../processor/filter');
+var Interlace = require('../processor/interlace');
+var Parser = require('../processor/parser');
+var Normalizer = require('../processor/normalizer');
+var Scaler = require('../processor/scaler');
 &nbsp;
 /**
  * @class IHDR
@@ -909,112 +1818,13 @@ var colorTypes = require('../constants').colorTypes;
 module.exports = {
 &nbsp;
 	/**
-	 * Makes sure that all required information is available before decoding
+	 * Gets the sequence
 	 *
-	 * @method preDecode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
+	 * @method getSequence
+	 * @return {int}
 	 */
-	preDecode: <span class="fstat-no" title="function not covered" >function (data, offset, length, strict) {</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >		if (length !== 13) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Invalid length of header. Length: ' + length);</span>
-		}
-&nbsp;
-<span class="cstat-no" title="statement not covered" >		if (this.getFirstChunk(this.getType(), false) !== null) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Only one ' + this.getType() + ' is allowed in the data.');</span>
-		}
-	},
-&nbsp;
-	/**
-	 * Decoding of chunk data
-	 *
-	 * @method decode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
-	 */
-	decode: <span class="fstat-no" title="function not covered" >function (data, offset, length, strict) {</span>
-<span class="cstat-no" title="statement not covered" >		var position = offset;</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >		this._width = data.readUInt32BE(position); <span class="cstat-no" title="statement not covered" ></span>position += 4;</span>
-<span class="cstat-no" title="statement not covered" >		this._height = data.readUInt32BE(position); <span class="cstat-no" title="statement not covered" ></span>position += 4;</span>
-<span class="cstat-no" title="statement not covered" >		this._bitDepth = data.readUInt8(position); <span class="cstat-no" title="statement not covered" ></span>position++;</span>
-<span class="cstat-no" title="statement not covered" >		this._colorType = data.readUInt8(position); <span class="cstat-no" title="statement not covered" ></span>position++;</span>
-<span class="cstat-no" title="statement not covered" >		this._compressionMethod = data.readUInt8(position); <span class="cstat-no" title="statement not covered" ></span>position++;</span>
-<span class="cstat-no" title="statement not covered" >		this._filterMethod = data.readUInt8(position); <span class="cstat-no" title="statement not covered" ></span>position++;</span>
-<span class="cstat-no" title="statement not covered" >		this._interlaceMethod = data.readUInt8(position);</span>
-	},
-&nbsp;
-	/**
-	 * Validates all decoded data
-	 *
-	 * @method postDecode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
-	 */
-	postDecode: <span class="fstat-no" title="function not covered" >function (data, offset, length, strict) {</span>
-&nbsp;
-		// Check valid width and height
-<span class="cstat-no" title="statement not covered" >		if (this._width === 0) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Width cannot be zero.');</span>
-		}
-<span class="cstat-no" title="statement not covered" >		if (this._height === 0) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Height cannot be zero.');</span>
-		}
-&nbsp;
-		// Check valid bit-depths
-<span class="cstat-no" title="statement not covered" >		if ([1, 2, 4, 8, 16].indexOf(this._bitDepth) === -1) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unknown bit-depth of ' + this._bitDepth + '.');</span>
-		}
-&nbsp;
-		// Check valid color-types
-<span class="cstat-no" title="statement not covered" >		if ([</span>
-				colorTypes.GREY_SCALE,
-				colorTypes.TRUE_COLOR,
-				colorTypes.INDEXED_COLOR,
-				colorTypes.GREY_SCALE_ALPHA,
-				colorTypes.TRUE_COLOR_ALPHA
-			].indexOf(this._colorType) === -1) {
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unknown color-type ' + this._colorType + '.');</span>
-		}
-&nbsp;
-		// Check bit-depth and color-types
-<span class="cstat-no" title="statement not covered" >		if ((this._colorType === colorTypes.GREY_SCALE) &amp;&amp; ([1, 2, 4, 8, 16].indexOf(this._bitDepth) === -1)) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for GrayScale images.');</span>
-		}
-<span class="cstat-no" title="statement not covered" >		if ((this._colorType === colorTypes.TRUE_COLOR) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for TrueColor images.');</span>
-		}
-<span class="cstat-no" title="statement not covered" >		if ((this._colorType === colorTypes.INDEXED_COLOR) &amp;&amp; ([1, 2, 4, 8].indexOf(this._bitDepth) === -1)) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for Indexed-color images.');</span>
-		}
-<span class="cstat-no" title="statement not covered" >		if ((this._colorType === colorTypes.GREY_SCALE_ALPHA) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for GrayScale with alpha-channel images.');</span>
-		}
-<span class="cstat-no" title="statement not covered" >		if ((this._colorType === colorTypes.TRUE_COLOR_ALPHA) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for TrueColor with alpha-channel images.');</span>
-		}
-&nbsp;
-		// Check valid compression method
-<span class="cstat-no" title="statement not covered" >		if (this._compressionMethod !== 0) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported compression method with identifier ' +  this._compressionMethod + '.');</span>
-		}
-&nbsp;
-		// Check valid filter method
-<span class="cstat-no" title="statement not covered" >		if (this._filterMethod !== 0) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported filter method with identifier ' +  this._filterMethod + '.');</span>
-		}
-&nbsp;
-		// Check valid interlace method
-<span class="cstat-no" title="statement not covered" >		if ([0, 1].indexOf(this._interlaceMethod) === -1) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported interlace method with identifier ' +  this._interlaceMethod + '.');</span>
-		}
+	getSequence: function () {
+		return 0;
 	},
 &nbsp;
 &nbsp;
@@ -1024,9 +1834,23 @@ module.exports = {
 	 * @method getWidth
 	 * @return {int}
 	 */
-	getWidth: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this._width;</span>
+	getWidth: function () {
+		return this._width;
 	},
+&nbsp;
+	/**
+	 * Sets the width of the image
+	 *
+	 * @method setWidth
+	 * @param {int} width
+	 */
+	setWidth: function (width) {
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (width &lt;= 0) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Width has to be greater than zero.');</span>
+		}
+		this._width = width;
+	},
+&nbsp;
 &nbsp;
 	/**
 	 * Gets the height of the image
@@ -1034,8 +1858,21 @@ module.exports = {
 	 * @method getHeight
 	 * @return {int}
 	 */
-	getHeight: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this._height;</span>
+	getHeight: function () {
+		return this._height;
+	},
+&nbsp;
+	/**
+	 * Sets the height of the image
+	 *
+	 * @method setHeight
+	 * @param {int} height
+	 */
+	setHeight: function (height) {
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (height &lt;= 0) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Height has to be greater than zero.');</span>
+		}
+		this._height = height;
 	},
 &nbsp;
 &nbsp;
@@ -1045,9 +1882,23 @@ module.exports = {
 	 * @method getBitDepth
 	 * @return {int}
 	 */
-	getBitDepth: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this._bitDepth;</span>
+	getBitDepth: function () {
+		return this._bitDepth;
 	},
+&nbsp;
+	/**
+	 * Sets the bit-depth of the image data
+	 *
+	 * @method setBitDepth
+	 * @param {int} bitDepth
+	 */
+	setBitDepth: function (bitDepth) {
+		if ([1, 2, 4, 8, 16].indexOf(bitDepth) === -1) {
+			throw new Error('Unknown bit-depth of ' + bitDepth + '.');
+		}
+		this._bitDepth = bitDepth;
+	},
+&nbsp;
 &nbsp;
 	/**
 	 * Gets the color-type of the image data
@@ -1055,9 +1906,24 @@ module.exports = {
 	 * @method getColorType
 	 * @return {int}
 	 */
-	getColorType: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this._colorType;</span>
+	getColorType: function () {
+		return this._colorType;
 	},
+&nbsp;
+	/**
+	 * Sets the color-type of the image data
+	 *
+	 * @method setColorType
+	 * @param {int} colorType
+	 */
+	setColorType: function (colorType) {
+		if ([colorTypes.GREY_SCALE, colorTypes.TRUE_COLOR, colorTypes.INDEXED_COLOR,
+				colorTypes.GREY_SCALE_ALPHA, colorTypes.TRUE_COLOR_ALPHA].indexOf(colorType) === -1) {
+			throw new Error('Unknown color-type ' + colorType + '.');
+		}
+		this._colorType = colorType;
+	},
+&nbsp;
 &nbsp;
 	/**
 	 * Gets the compression method of the image data
@@ -1065,9 +1931,23 @@ module.exports = {
 	 * @method getCompressionMethod
 	 * @return {int}
 	 */
-	getCompressionMethod: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this._compressionMethod;</span>
+	getCompressionMethod: function () {
+		return this._compressionMethod;
 	},
+&nbsp;
+	/**
+	 * Sets the compression method of the image data
+	 *
+	 * @method setCompressionMethod
+	 * @param {int} method
+	 */
+	setCompressionMethod: function (method) {
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (method !== 0) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Unsupported compression method with identifier ' +  method + '.');</span>
+		}
+		this._compressionMethod = method;
+	},
+&nbsp;
 &nbsp;
 	/**
 	 * Gets the filter method of the image data
@@ -1075,9 +1955,23 @@ module.exports = {
 	 * @method getFilterMethod
 	 * @return {int}
 	 */
-	getFilterMethod: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this._filterMethod;</span>
+	getFilterMethod: function () {
+		return this._filterMethod;
 	},
+&nbsp;
+	/**
+	 * Sets the filter method of the image data
+	 *
+	 * @method setFilterMethod
+	 * @param {int} method
+	 */
+	setFilterMethod: function (method) {
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (method !== 0) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Unsupported filter method with identifier ' +  method + '.');</span>
+		}
+		this._filterMethod = method;
+	},
+&nbsp;
 &nbsp;
 	/**
 	 * Gets the interlace method of the image data
@@ -1085,19 +1979,32 @@ module.exports = {
 	 * @method getInterlaceMethod
 	 * @return {int}
 	 */
-	getInterlaceMethod: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this._interlaceMethod;</span>
+	getInterlaceMethod: function () {
+		return this._interlaceMethod;
+	},
+&nbsp;
+	/**
+	 * Sets the interlace method of the image data
+	 *
+	 * @method setInterlaceMethod
+	 * @param {int} method
+	 */
+	setInterlaceMethod: function (method) {
+		<span class="missing-if-branch" title="if path not taken" >I</span>if ([0, 1].indexOf(method) === -1) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Unsupported interlace method with identifier ' +  method + '.');</span>
+		}
+		this._interlaceMethod = method;
 	},
 &nbsp;
 &nbsp;
 	/**
-	 * Does image have a color palette?
+	 * Does image have a an indexed color palette?
 	 *
-	 * @method hasPalette
+	 * @method hasIndexedColor
 	 * @return {boolean}
 	 */
-	hasPalette: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return ((this._colorType &amp; 1) === 1);</span>
+	hasIndexedColor: function () {
+		return ((this._colorType &amp; 1) === 1);
 	},
 &nbsp;
 	/**
@@ -1106,8 +2013,8 @@ module.exports = {
 	 * @method isColor
 	 * @return {boolean}
 	 */
-	isColor: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return ((this._colorType &amp; 2) === 2);</span>
+	isColor: function () {
+		return ((this._colorType &amp; 2) === 2);
 	},
 &nbsp;
 	/**
@@ -1116,8 +2023,18 @@ module.exports = {
 	 * @method hasAlphaChannel
 	 * @return {boolean}
 	 */
-	hasAlphaChannel: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return ((this._colorType &amp; 4) === 4);</span>
+	hasAlphaChannel: function () {
+		return ((this._colorType &amp; 4) === 4);
+	},
+&nbsp;
+	/**
+	 * Is the image interlaced?
+	 *
+	 * @method isInterlaced
+	 * @return {boolean}
+	 */
+	isInterlaced: function () {
+		return this.getInterlaceMethod() !== 0;
 	},
 &nbsp;
 &nbsp;
@@ -1127,9 +2044,9 @@ module.exports = {
 	 * @method getBytesPerPixel
 	 * @return {int}
 	 */
-	getBytesPerPixel: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		var bitDepth = Math.max(8, this.getBitDepth()); </span>// Lower than 8 will be rounded up
-<span class="cstat-no" title="statement not covered" >		return (bitDepth / 8) * this.getSamples();</span>
+	getBytesPerPixel: function () {
+		var bitDepth = this.getBitDepth();
+		return (bitDepth / 8) * this.getUnprocessedSamples();
 	},
 &nbsp;
 	/**
@@ -1138,8 +2055,18 @@ module.exports = {
 	 * @method getSamples
 	 * @return {int}
 	 */
-	getSamples: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this.hasPalette() ? 1 : (this.isColor() ? 3 : 1) + (this.hasAlphaChannel() ? 1 : 0);</span>
+	getSamples: function () {
+		return this.hasIndexedColor() ? <span class="branch-0 cbranch-no" title="branch not covered" >3 </span>: (this.isColor() ? 3 : 1) + (this.hasAlphaChannel() ? 1 : 0);
+	},
+&nbsp;
+	/**
+	 * Gets the number of samples for the color-type (unprocessed - palette not applied yet)
+	 *
+	 * @method getUnprocessedSamples
+	 * @return {int}
+	 */
+	getUnprocessedSamples: function () {
+		return this.hasIndexedColor() ? 1 : this.getSamples();
 	},
 &nbsp;
 	/**
@@ -1149,7 +2076,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getSampleDepth: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this.hasPalette() ? 8 : this.getBitDepth();</span>
+<span class="cstat-no" title="statement not covered" >		return this.hasIndexedColor() ? 8 : this.getBitDepth();</span>
 	},
 &nbsp;
 	/**
@@ -1159,7 +2086,66 @@ module.exports = {
 	 * @return {int}
 	 */
 	getScanLineLength: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this.getBytesPerPixel() * this.getWidth();</span>
+<span class="cstat-no" title="statement not covered" >		return this.getScanLineLengthForWidth(this.getWidth());</span>
+	},
+&nbsp;
+	/**
+	 * Determines the scan-line length for a specified width
+	 *
+	 * @method getScanLineLengthForWidth
+	 * @param {int} width
+	 * @return {int}
+	 */
+	getScanLineLengthForWidth: function (width) {
+		return this.getBytesPerPixel() * width;
+	},
+&nbsp;
+	/**
+	 * Determines if the data requires padding for scanlines
+	 *
+	 * @method hasScanLinePadding
+	 * @return {boolean}
+	 */
+	hasScanLinePadding: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >		return this.hasScanLinePaddingWithWidth(this.getWidth());</span>
+	},
+&nbsp;
+	/**
+	 * Determines if the data requires padding for scanlines
+	 *
+	 * @method hasScanLinePaddingWithWidth
+	 * @param {int} width
+	 * @return {boolean}
+	 */
+	hasScanLinePaddingWithWidth: function (width) {
+		var scanLineLength = this.getScanLineLengthForWidth(width);
+&nbsp;
+		return (scanLineLength != Math.ceil(scanLineLength));
+	},
+&nbsp;
+	/**
+	 * Determines position of scanline pixel
+	 *
+	 * @method scanLinePaddingAt
+	 * @return {int}
+	 */
+	scanLinePaddingAt: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >		return this.scanLineWithWidthPaddingAt(this.getWidth());</span>
+	},
+&nbsp;
+	/**
+	 * Determines position of scanline pixel with width
+	 *
+	 * @method scanLinePaddingAt
+	 * @param {int} width
+	 * @return {int}
+	 */
+	scanLineWithWidthPaddingAt: function (width) {
+		if (this.hasScanLinePaddingWithWidth(width)) {
+			return this.getUnprocessedSamples() * width;
+		} else {
+			return null;
+		}
 	},
 &nbsp;
 	/**
@@ -1168,18 +2154,18 @@ module.exports = {
 	 * @method getImageSizeInBytes
 	 * @return {int}
 	 */
-	getImageSizeInBytes: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this.getWidth() * this.getHeight() * this.getImageBytesPerPixel();</span>
+	getImageSizeInBytes: function () {
+		return this.getWidth() * this.getHeight() * this.getImageBytesPerPixel();
 	},
 &nbsp;
 	/**
-	 * Gets the number of bytes in a pixel for images in edit-mode
+	 * Gets the number of bytes in a pixel for images after scaling
 	 *
 	 * @method getImageBytesPerPixel
 	 * @return {int}
 	 */
-	getImageBytesPerPixel: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return 4;</span>
+	getImageBytesPerPixel: function () {
+		return 4; // This is the working bpp for PNGjs-image
 	},
 &nbsp;
 &nbsp;
@@ -1209,8 +2195,8 @@ module.exports = {
 	 * @method isColorTypeIndexedColor
 	 * @return {boolean}
 	 */
-	isColorTypeIndexedColor: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >		return this.getColorType() === colorTypes.INDEXED_COLOR;</span>
+	isColorTypeIndexedColor: function () {
+		return this.getColorType() === colorTypes.INDEXED_COLOR;
 	},
 &nbsp;
 	/**
@@ -1231,6 +2217,370 @@ module.exports = {
 	 */
 	isColorTypeTrueColorWithAlpha: <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >		return this.getColorType() === colorTypes.TRUE_COLOR_ALPHA;</span>
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Parsing of chunk data
+	 *
+	 * Phase 1
+	 *
+	 * @method parse
+	 * @param {BufferedStream} stream Data stream
+	 * @param {int} length Length of chunk data
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	parse: function (stream, length, strict, options) {
+&nbsp;
+		// Validation
+		<span class="missing-if-branch" title="if path not taken" >I</span>if ((strict &amp;&amp; (length !== 13)) || (length &lt; 13)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Invalid length of header. Length: ' + length);</span>
+		}
+&nbsp;
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (strict &amp;&amp; (this.getFirstChunk(this.getType(), false) !== null)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Only one ' + this.getType() + ' is allowed in the data.');</span>
+		}
+&nbsp;
+		// Read and set values (+ validation)
+		this.setWidth(stream.readUInt32BE());
+		this.setHeight(stream.readUInt32BE());
+		this.setBitDepth(stream.readUInt8());
+		this.setColorType(stream.readUInt8());
+		this.setCompressionMethod(stream.readUInt8());
+		this.setFilterMethod(stream.readUInt8());
+		this.setInterlaceMethod(stream.readUInt8());
+&nbsp;
+		// Check bit-depth and color-types combination
+		<span class="missing-if-branch" title="if path not taken" >I</span>if ((this._colorType === colorTypes.GREY_SCALE) &amp;&amp; ([1, 2, 4, 8, 16].indexOf(this._bitDepth) === -1)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for GrayScale images.');</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if ((this._colorType === colorTypes.TRUE_COLOR) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for TrueColor images.');</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if ((this._colorType === colorTypes.INDEXED_COLOR) &amp;&amp; ([1, 2, 4, 8].indexOf(this._bitDepth) === -1)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for Indexed-color images.');</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if ((this._colorType === colorTypes.GREY_SCALE_ALPHA) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for GrayScale with alpha-channel images.');</span>
+		}
+		<span class="missing-if-branch" title="if path not taken" >I</span>if ((this._colorType === colorTypes.TRUE_COLOR_ALPHA) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Header error: Unsupported bit-depth for TrueColor with alpha-channel images.');</span>
+		}
+	},
+&nbsp;
+	/**
+	 * Decoding of chunk data before scaling
+	 *
+	 * Phase 2
+	 *
+	 * @method decode
+	 * @param {int[]} values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 * @return {int[]}
+	 */
+	decode: function (values, strict, options) {
+&nbsp;
+		var compressor,
+			filter,
+			parser,
+			normalizer,
+			localValues,
+			image;
+&nbsp;
+		// Combine all data chunks
+		image = this._combine();
+&nbsp;
+		// Decompress
+		compressor = new Compressor();
+		image = compressor.decompress(image);
+&nbsp;
+		// Run through filters
+		filter = new Filter(this);
+		image = filter.reverse(image);
+&nbsp;
+		// Parses scanlines
+		parser = new Parser(this);
+		localValues = parser.decode(image);
+&nbsp;
+		// Normalizes color values
+		normalizer = new Normalizer(this);
+		localValues = normalizer.decode(localValues);
+&nbsp;
+		// Ignoring the incoming values - this is the first chunk creating these
+		return localValues;
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Decoding of chunk data after scaling
+	 *
+	 * Phase 3
+	 *
+	 * @method postDecode
+	 * @param {int[]} values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 * @return {Buffer}
+	 */
+	postDecode: function (values, strict, options) {
+&nbsp;
+		var scaler, interlace, image;
+&nbsp;
+		scaler = new Scaler(this);
+		image = scaler.decode(values);
+&nbsp;
+		// Run through interlace method
+		interlace = new Interlace(this);
+		image = interlace.reverse(image);
+&nbsp;
+		return image;
+	},
+&nbsp;
+	/**
+	 * Gathers chunk-data from decoded chunks
+	 *
+	 * Phase 5
+	 *
+	 * @static
+	 * @method decodeData
+	 * @param {object} data Data-object that will be used to export values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	decodeData: function (data, strict, options) {
+&nbsp;
+		var chunks = this.getChunksByType(this.getType());
+&nbsp;
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (!chunks) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Cannot find header.');</span>
+		}
+&nbsp;
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (strict &amp;&amp; (chunks.length !== 1)) {
+<span class="cstat-no" title="statement not covered" >			throw new Error('Not more than one chunk allowed for ' + this.getType() + '.');</span>
+		}
+&nbsp;
+		data.volatile = data.volatile || {};
+		data.volatile.header = {
+			width: chunks[0].getWidth(),
+			height: chunks[0].getHeight(),
+			bitDepth: chunks[0].getBitDepth(),
+			colorType: chunks[0].getColorType(),
+			compression: chunks[0].getCompressionMethod(),
+			filter: chunks[0].getFilterMethod(),
+			interlace: chunks[0].getInterlaceMethod()
+		};
+	},
+&nbsp;
+	/**
+	 * Combines all IDAT chunks into on buffer
+	 *
+	 * @method _combine
+	 * @return {Buffer}
+	 * @private
+	 */
+	_combine: function () {
+&nbsp;
+		var totalLength = 0,
+			dataChunks = this.getChunksByType('IDAT', true),
+			combinedStream;
+&nbsp;
+		// Determine length
+		dataChunks.forEach(function (dataChunk) {
+			totalLength += dataChunk.getStream().length;
+		});
+&nbsp;
+		// Combine all the blobs
+		combinedStream = new BufferedStream(null, null, totalLength);
+		dataChunks.forEach(function (dataChunk) {
+			combinedStream.writeBufferedStream(dataChunk.getStream());
+		});
+&nbsp;
+		return combinedStream.toBuffer(true);
+	},
+&nbsp;
+&nbsp;
+	/**
+	 * Returns a list of chunks to be added to the data-stream
+	 *
+	 * Phase 1
+	 *
+	 * @static
+	 * @method encodeData
+	 * @param {Buffer} image Image data
+	 * @param {object} data Object that will be used to import data to the chunk
+	 * @return {Chunk[]} List of chunks to encode
+	 */
+	encodeData: function (image, data) {
+&nbsp;
+		var chunk = this.createChunk(this.getType(), this.getChunks());
+&nbsp;
+		chunk.setWidth(data.header.width);
+		chunk.setHeight(data.header.height);
+		chunk.setBitDepth(data.header.bitDepth);
+		chunk.setColorType(data.header.colorType);
+		chunk.setCompressionMethod(data.header.compression);
+		chunk.setFilterMethod(data.header.filter);
+		chunk.setInterlaceMethod(data.header.interlace);
+&nbsp;
+		return [chunk];
+	},
+&nbsp;
+	/**
+	 * Before encoding of chunk data
+	 *
+	 * Phase 2
+	 *
+	 * Note:
+	 * Use this method to gather image-data before scaling.
+	 *
+	 * @method preEncode
+	 * @param {Buffer} image
+	 * @return {Buffer}
+	 */
+	preEncode: function (image) {
+&nbsp;
+		var imageStream, scaledStream, reducedStream, withdrawnStream,
+			interlace;
+&nbsp;
+		// Run through interlace method
+		interlace = new Interlace(this);
+		image = interlace.interlace(image, 0);
+&nbsp;
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (this.isColorTypeIndexedColor()) {
+			// We expect the PLTE chunk to do the work
+<span class="cstat-no" title="statement not covered" >			return image;</span>
+		}
+&nbsp;
+		//TODO refactor like in decode
+		//TODO: Padding
+&nbsp;
+		imageStream = new BufferedStream(image, false);
+&nbsp;
+		// Add alpha channel if needed
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (!this.hasAlphaChannel()) {
+<span class="cstat-no" title="statement not covered" >			withdrawnStream = new BufferedStream(null, null, imageStream.length * 0.75);</span>
+			//scale.withdraw(imageStream, withdrawnStream, 4);
+		} else {
+			withdrawnStream = imageStream; // Nothing to do
+		}
+&nbsp;
+		// Channel spreading - Grayscale to color
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (!this.isColor()) {
+<span class="cstat-no" title="statement not covered" >			reducedStream = new BufferedStream(null, null, withdrawnStream.length / 3);</span>
+			//scale.reduce(withdrawnStream, reducedStream, 3);
+		} else {
+			reducedStream = withdrawnStream; // Nothing to do
+		}
+&nbsp;
+		// Do some scaling
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (this.getBitDepth() === 1) {
+<span class="cstat-no" title="statement not covered" >			scaledStream = new BufferedStream(null, null, reducedStream.length / 8);</span>
+			//scale.scale8to1bit(reducedStream, scaledStream);
+&nbsp;
+		} else <span class="missing-if-branch" title="if path not taken" >I</span>if (this.getBitDepth() === 2) {
+<span class="cstat-no" title="statement not covered" >			scaledStream = new BufferedStream(null, null, reducedStream.length / 4);</span>
+			//scale.scale8to2bit(reducedStream, scaledStream);
+&nbsp;
+		} else <span class="missing-if-branch" title="if path not taken" >I</span>if (this.getBitDepth() === 4) {
+<span class="cstat-no" title="statement not covered" >			scaledStream = new BufferedStream(null, null, reducedStream.length / 2);</span>
+			//scale.scale8to4bit(reducedStream, scaledStream);
+&nbsp;
+		} else <span class="missing-if-branch" title="if path not taken" >I</span>if (this.getBitDepth() === 16) {
+<span class="cstat-no" title="statement not covered" >			scaledStream = new BufferedStream(null, null, reducedStream.length * 2);</span>
+			//scale.scale8to16bit(reducedStream, scaledStream);
+&nbsp;
+		} else {
+			scaledStream = reducedStream; // Nothing to do
+		}
+&nbsp;
+		return scaledStream.toBuffer(true);
+	},
+&nbsp;
+	/**
+	 * Encoding of chunk data
+	 *
+	 * Phase 3
+	 *
+	 * Note:
+	 * Use this method to add data to the image after scaling.
+	 *
+	 * @method encode
+	 * @param {Buffer} image
+	 * @return {Buffer}
+	 */
+	encode: function (image) {
+&nbsp;
+		var compressor,
+			filter;
+&nbsp;
+		// Run through filters
+		filter = new Filter(this);
+		image = filter.filter(image, 0);
+&nbsp;
+		// Compress
+		compressor = new Compressor();
+		image = compressor.compress(image);
+&nbsp;
+		// Combine all data chunks
+		this._separate(image);
+&nbsp;
+		// Finished since this is the last chunk
+		return null;
+	},
+&nbsp;
+	/**
+	 * Composing of chunk data
+	 *
+	 * Phase 4
+	 *
+	 * @method compose
+	 * @param {BufferedStream} stream Data stream
+	 */
+	compose: function (stream) {
+		stream.writeUInt32BE(this.getWidth());
+		stream.writeUInt32BE(this.getHeight());
+		stream.writeUInt8(this.getBitDepth());
+		stream.writeUInt8(this.getColorType());
+		stream.writeUInt8(this.getCompressionMethod());
+		stream.writeUInt8(this.getFilterMethod());
+		stream.writeUInt8(this.getInterlaceMethod());
+	},
+&nbsp;
+	/**
+	 * Separates buffer into multiple IDAT
+	 *
+	 * @method _separate
+	 * @param {Buffer} buffer
+	 * @private
+	 */
+	_separate: function (buffer) {
+&nbsp;
+		var chunkLength = 8192,
+			chunkQuantity = Math.ceil(buffer.length / chunkLength),
+&nbsp;
+			Chunk = require('../chunk'),
+			chunk,
+&nbsp;
+			stream = new BufferedStream(buffer),
+&nbsp;
+			lastChunkLength, i;
+&nbsp;
+		for (i = 0; i &lt; chunkQuantity; i++) {
+&nbsp;
+			chunk = new Chunk('IDAT', this._chunks);
+&nbsp;
+			lastChunkLength = Math.min(stream.length, chunkLength);
+&nbsp;
+			chunk.setStream(stream.slice(0, lastChunkLength));
+			stream.readOffset += lastChunkLength;
+&nbsp;
+			// Set sequence relative to other data chunks
+			chunk._sequence = chunk.getSequence() + (i / chunkQuantity);
+&nbsp;
+			this.addChunk(chunk);
+		}
 	}
 };
 &nbsp;</pre></td></tr>
@@ -1238,7 +2588,7 @@ module.exports = {
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 20 2015 22:52:45 GMT-0700 (PDT)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 29 2015 01:17:49 GMT-0700 (PDT)</div>
 </div>
 
 <script src="../../../../prettify.js"></script>

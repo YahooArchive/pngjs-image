@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -163,23 +199,318 @@
 module.exports = {
 
 	/**
-	 * Makes sure that all required information is available before decoding
+	 * Gets the sequence
 	 *
-	 * @method preDecode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
+	 * @method getSequence
+	 * @return {int}
 	 */
-	preDecode: function (data, offset, length, strict) {
+	getSequence: function () {
+		return 200;
+	},
 
-		if (!this.getFirstChunk(&#x27;IHDR&#x27;, false) === null) {
-			throw new Error(&#x27;Chunk &#x27; + this.getType() + &#x27; requires the IHDR chunk.&#x27;);
-		}
 
-		if (this.getFirstChunk(this.getType(), false) !== null) {
+	/**
+	 * Gets the white-point x value
+	 *
+	 * @method getWhitePointX
+	 * @return {float}
+	 */
+	getWhitePointX: function () {
+		return this._whitePointX || 1;
+	},
+
+	/**
+	 * Sets the white-point x value
+	 *
+	 * @method setWhitePointX
+	 * @param {float} value
+	 */
+	setWhitePointX: function (value) {
+		this._whitePointX = value;
+	},
+
+
+	/**
+	 * Gets the white-point y value
+	 *
+	 * @method getWhitePointY
+	 * @return {float}
+	 */
+	getWhitePointY: function () {
+		return this._whitePointY || 1;
+	},
+
+	/**
+	 * Sets the white-point y value
+	 *
+	 * @method setWhitePointY
+	 * @param {float} value
+	 */
+	setWhitePointY: function (value) {
+		this._whitePointY = value;
+	},
+
+
+	/**
+	 * Gets the red x value
+	 *
+	 * @method getRedX
+	 * @return {float}
+	 */
+	getRedX: function () {
+		return this._redX || 1;
+	},
+
+	/**
+	 * Sets the red x value
+	 *
+	 * @method setRedX
+	 * @param {float} value
+	 */
+	setRedX: function (value) {
+		this._redX = value;
+	},
+
+
+	/**
+	 * Gets the red y value
+	 *
+	 * @method getRedY
+	 * @return {float}
+	 */
+	getRedY: function () {
+		return this._redY || 1;
+	},
+
+	/**
+	 * Sets the red y value
+	 *
+	 * @method setRedY
+	 * @param {float} value
+	 */
+	setRedY: function (value) {
+		this._redY = value;
+	},
+
+
+	/**
+	 * Gets the green x value
+	 *
+	 * @method getGreenX
+	 * @return {float}
+	 */
+	getGreenX: function () {
+		return this._greenX || 1;
+	},
+
+	/**
+	 * Sets the green x value
+	 *
+	 * @method setGreenX
+	 * @param {float} value
+	 */
+	setGreenX: function (value) {
+		this._greenX = value;
+	},
+
+
+	/**
+	 * Gets the green y value
+	 *
+	 * @method getGreenY
+	 * @return {float}
+	 */
+	getGreenY: function () {
+		return this._greenY || 1;
+	},
+
+	/**
+	 * Sets the green y value
+	 *
+	 * @method setGreenY
+	 * @param {float} value
+	 */
+	setGreenY: function (value) {
+		this._greenY = value;
+	},
+
+
+	/**
+	 * Gets the blue x value
+	 *
+	 * @method getBlueX
+	 * @return {float}
+	 */
+	getBlueX: function () {
+		return this._blueX || 1;
+	},
+
+	/**
+	 * Sets the blue x value
+	 *
+	 * @method setBlueX
+	 * @param {float} value
+	 */
+	setBlueX: function (value) {
+		this._blueX = value;
+	},
+
+
+	/**
+	 * Gets the blue y value
+	 *
+	 * @method getBlueY
+	 * @return {float}
+	 */
+	getBlueY: function () {
+		return this._blueY || 1;
+	},
+
+	/**
+	 * Sets the blue y value
+	 *
+	 * @method setBlueY
+	 * @param {float} value
+	 */
+	setBlueY: function (value) {
+		this._blueY = value;
+	},
+
+
+	/**
+	 * Parsing of chunk data
+	 *
+	 * Phase 1
+	 *
+	 * @method parse
+	 * @param {BufferedStream} stream Data stream
+	 * @param {int} length Length of chunk data
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	parse: function (stream, length, strict, options) {
+
+		// Validation
+		if (strict &amp;&amp; (this.getFirstChunk(this.getType(), false) !== null)) {
 			throw new Error(&#x27;Only one &#x27; + this.getType() + &#x27; is allowed in the data.&#x27;);
 		}
+
+		if ((strict &amp;&amp; (length !== 32)) || (length &lt; 32)) {
+			throw new Error(&#x27;The &#x27; + this.getType() + &#x27; chunk requires a length of 32 but got &#x27; + length + &#x27;.&#x27;);
+		}
+
+		this.setWhitePointX(stream.readUInt32BE() / 100000);
+		this.setWhitePointY(stream.readUInt32BE() / 100000);
+		this.setRedX(stream.readUInt32BE() / 100000);
+		this.setRedY(stream.readUInt32BE() / 100000);
+		this.setGreenX(stream.readUInt32BE() / 100000);
+		this.setGreenY(stream.readUInt32BE() / 100000);
+		this.setBlueX(stream.readUInt32BE() / 100000);
+		this.setBlueY(stream.readUInt32BE() / 100000);
+	},
+
+	/**
+	 * Gathers chunk-data from decoded chunks
+	 *
+	 * Phase 5
+	 *
+	 * @static
+	 * @method decodeData
+	 * @param {object} data Data-object that will be used to export values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	decodeData: function (data, strict, options) {
+
+		var chunks = this.getChunksByType(this.getType());
+
+		if (!chunks) {
+			return ;
+		}
+
+		if (strict &amp;&amp; (chunks.length !== 1)) {
+			throw new Error(&#x27;Not more than one chunk allowed for &#x27; + this.getType() + &#x27;.&#x27;);
+		}
+
+		data.volatile = data.volatile || {};
+		data.volatile.chromaticities = {
+			whitePointX: chunks[0].getWhitePointX(),
+			whitePointY: chunks[0].getWhitePointY(),
+			redX: chunks[0].getRedX(),
+			redY: chunks[0].getRedY(),
+			greenX: chunks[0].getGreenX(),
+			greenY: chunks[0].getGreenY(),
+			blueX: chunks[0].getBlueX(),
+			blueY: chunks[0].getBlueY()
+		};
+	},
+
+
+	/**
+	 * Returns a list of chunks to be added to the data-stream
+	 *
+	 * Phase 1
+	 *
+	 * @static
+	 * @method encodeData
+	 * @param {Buffer} image Image data
+	 * @param {object} data Object that will be used to import data to the chunk
+	 * @return {Chunk[]} List of chunks to encode
+	 */
+	encodeData: function (image, data) {
+
+		if (data.chromaticities) {
+
+			var chunk = this.createChunk(this.getType(), this.getChunks());
+
+			if (data.chromaticities.whitePointX !== undefined) {
+				chunk.setWhitePointX(data.chromaticities.whitePointX);
+			}
+			if (data.chromaticities.whitePointY !== undefined) {
+				chunk.setWhitePointY(data.chromaticities.whitePointY);
+			}
+			if (data.chromaticities.redX !== undefined) {
+				chunk.setRedX(data.chromaticities.redX);
+			}
+			if (data.chromaticities.redY !== undefined) {
+				chunk.setRedY(data.chromaticities.redY);
+			}
+			if (data.chromaticities.greenX !== undefined) {
+				chunk.setGreenX(data.chromaticities.greenX);
+			}
+			if (data.chromaticities.greenY !== undefined) {
+				chunk.setGreenY(data.chromaticities.greenY);
+			}
+			if (data.chromaticities.blueX !== undefined) {
+				chunk.setBlueX(data.chromaticities.blueX);
+			}
+			if (data.chromaticities.blueY !== undefined) {
+				chunk.setBlueY(data.chromaticities.blueY);
+			}
+
+			return [chunk];
+		} else {
+			return [];
+		}
+	},
+
+	/**
+	 * Composing of chunk data
+	 *
+	 * Phase 4
+	 *
+	 * @method compose
+	 * @param {BufferedStream} stream Data stream
+	 */
+	compose: function (stream) {
+		stream.writeUInt32BE(this.getWhitePointX() * 100000);
+		stream.writeUInt32BE(this.getWhitePointY() * 100000);
+		stream.writeUInt32BE(this.getRedX() * 100000);
+		stream.writeUInt32BE(this.getRedY() * 100000);
+		stream.writeUInt32BE(this.getGreenX() * 100000);
+		stream.writeUInt32BE(this.getGreenY() * 100000);
+		stream.writeUInt32BE(this.getBlueX() * 100000);
+		stream.writeUInt32BE(this.getBlueY() * 100000);
 	}
 };
 

@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -155,132 +191,172 @@
 // Copyright 2015 Yahoo! Inc.
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
-var CRC = require(&#x27;./crc&#x27;);
 var Chunk = require(&#x27;./chunk&#x27;);
-var Compressor = require(&#x27;./compressor&#x27;);
-var Filter = require(&#x27;./filter&#x27;);
-var Interlace = require(&#x27;./interlace&#x27;);
 
-var utils = require(&#x27;./utils&#x27;);
+var CRC = require(&#x27;./processor/crc&#x27;);
+
+var BufferedStream = require(&#x27;./utils/bufferedStream&#x27;);
+var utils = require(&#x27;./utils/utils&#x27;);
+var constants = require(&#x27;./utils/constants&#x27;);
+
 var path = require(&#x27;path&#x27;);
 
-var constants = require(&#x27;./constants&#x27;);
 
 /**
  * @class Encoder
  * @module PNG
  * @submodule PNGCore
- * @param width
- * @param height
- * @param data
- * @param offset
+ * @extends chunkUtils
  * @constructor
  */
-var Encoder = function (width, height, data, offset) {
-	this._width = width;
-	this._height = height;
-	this._data = data;
-	this._offset = offset || 0;
-
+var Encoder = function () {
 	this._chunks = {};
+	this._chunkData = {};
 
-	utils.loadModule(path.join(__dirname, &#x27;chunkUtils.js&#x27;), this);
+	utils.loadModule(path.join(__dirname, &#x27;utils&#x27;, &#x27;chunkUtils.js&#x27;), this);
 };
+
+
+/**
+ * Gets the data supplied by each chunk
+ *
+ * @method getChunkData
+ * @return {object}
+ */
+Encoder.prototype.getChunkData = function () {
+	return this._chunkData;
+};
+
 
 /**
  * Encodes the supplied data
  *
  * @method encode
- * @param {boolean} strict Should encoding be strict?
+ * @param {Buffer} image Image data
+ * @param {int} width Width of image
+ * @param {int} height Height of image
+ * @param {object} [options] Optimization options
  */
-Encoder.prototype.encode = function (strict) {
+Encoder.prototype.encode = function (image, width, height, options) {
 
-	var i, offset, chunk, data, compressor, filter, interlace,
-		signature = constants.signature,
-		sizeLeft, currentSize,
-		dataOffset,
-		outputData, crc, crcOffset;
+	var i, len,
+		stream,
+		buffer = image,
+		signature = constants.signature;
+
+	this._chunks = {};
+	this._chunkData = options || {};
+
+	// Use optimization to figure out what format to safe in
+	this._optimize(buffer, width, height, this._chunkData);
+
+	// Run through all chunks-types (not chunks) to gather chunks
+	// Phase 1 - Forward
+	this.applyWithSortedChunks(function (chunk) {
+
+		// Figure out which chunks we need for the image
+		var chunks = Chunk.encodeTypeData(chunk.getType(), image, this._chunkData, this._chunks);
+
+		// Add all returned chunks
+		chunks.forEach(function (chunk) {
+			this.addChunk(chunk);
+		}.bind(this));
+
+	}.bind(this), false);
+
+	// Run through all chunks before scaling
+	// Phase 2 - Backward
+	this.applyWithSortedChunks(function (chunk) {
+		buffer = chunk.preEncode(buffer);
+	}, true, true);
 
 
-	// Run through interlace method
-	interlace = new Interlace(null, this._data, this._offset);
-	data = interlace.interlace();
+	// Run through all chunks after scaling
+	// Phase 3 - Backward
+	this.applyWithSortedChunks(function (chunk) {
+		buffer = chunk.encode(buffer);
+	}, true, true);
 
-	// Run through filters
-	filter = new Filter(null, data);
-	data = filter.filter(this._width, this._height, 4);
-
-	// Decompress
-	compressor = new Compressor();
-	data = compressor.compress(data);
-
-	outputData = new Buffer(8 + (12 + 13) + (Math.floor(data.length / 8192) * (8192 + 12)) + (data.length % 8192) + 12 + 12);
 
 	// Write signature
-	for(i = 0, offset = 0; i &lt; signature.length; i++, offset++) {
-		outputData.writeUInt8(signature[i], i);
+	stream = new BufferedStream();
+	for(i = 0, len = signature.length; i &lt; len; i++) {
+		stream.writeUInt8(signature[i], i);
 	}
 
-	// Write header
-	outputData.writeUInt32BE(13, offset); offset += 4;
-	crcOffset = offset;
-	outputData.writeUInt32BE(constants.typeToId[&#x27;IHDR&#x27;], offset); offset += 4;
-	outputData.writeUInt32BE(this._width, offset); offset += 4;
-	outputData.writeUInt32BE(this._height, offset); offset += 4;
-	outputData.writeUInt8(8, offset); offset++;
-	outputData.writeUInt8(6, offset); offset++;
-	outputData.writeUInt8(0, offset); offset++;
-	outputData.writeUInt8(0, offset); offset++;
-	outputData.writeUInt8(0, offset); offset++;
-	crc = new CRC();
-	crc.write(outputData, crcOffset, offset - crcOffset);
-	outputData.writeInt32BE(crc.getValue(), offset); offset += 4;
+	// Write all chunks
+	// Phase 4 - Forward - Write order
+	this.applyWithSortedChunks(function (chunk) {
+		this._encodeChunk(stream, chunk);
+	}.bind(this), true, false);
 
-	dataOffset = 0;
-	sizeLeft = data.length;
-	while(sizeLeft &gt; 0) {
-		currentSize = Math.min(8192, data.length - dataOffset);
-
-		outputData.writeUInt32BE(currentSize, offset); offset += 4;
-		crcOffset = offset;
-		outputData.writeUInt32BE(constants.typeToId[&#x27;IDAT&#x27;], offset); offset += 4;
-
-		data.copy(outputData, offset, dataOffset, dataOffset + currentSize); offset += currentSize;
-
-		crc = new CRC();
-		crc.write(outputData, crcOffset, offset - crcOffset);
-		outputData.writeInt32BE(crc.getValue(), offset); offset += 4;
-
-		sizeLeft -= 8192;
-		dataOffset += 8192;
-	}
-
-	// Write end
-	outputData.writeUInt32BE(0, offset); offset += 4;
-	crcOffset = offset;
-	outputData.writeUInt32BE(constants.typeToId[&#x27;IEND&#x27;], offset); offset += 4;
-	crc = new CRC();
-	crc.write(outputData, crcOffset, offset - crcOffset);
-	outputData.writeInt32BE(crc.getValue(), offset); offset += 4;
-
-	return outputData;
+	return stream.toBuffer(false);
 };
 
 /**
- * Add a new encoded chunk to the chunk-list
+ * Encodes one chunk to the data stream
  *
- * @method _addChunk
- * @param {string} type Type of chunk
- * @param {Chunk} chunk Encoded chunk
+ * @method _encodeChunk
+ * @param {BufferedStream} stream Data stream
+ * @param {Chunk} chunk Chunk that should be serialized to the stream
  * @private
  */
-Encoder.prototype._addChunk = function (type, chunk) {
+Encoder.prototype._encodeChunk = function (stream, chunk) {
 
-	if (!this._chunks[type]) {
-		this._chunks[type] = [];
+	var crc,
+		buffer,
+		crcStartOffset, lengthOffset,
+		chunkLength;
+
+	// Write empty length for now
+	lengthOffset = stream.writeOffset;
+	stream.writeUInt32BE(0);
+
+	// Write type but remember the start of it for CRC
+	crcStartOffset = stream.writeOffset;
+	if (chunk.getInternalType) {
+		stream.writeASCIIString(chunk.getInternalType());
+	} else {
+		stream.writeASCIIString(chunk.getType());
 	}
 
-	this._chunks[type].push(chunk);
+	// Get the chunk-data and how much was written to the stream
+	stream.writeCounter = 0;
+	chunk.compose(stream);
+	chunkLength = stream.writeCounter;
+
+	// Calculate and write CRC
+	buffer = stream.toBuffer(true);
+	crc = new CRC();
+	crc.write(buffer, crcStartOffset, chunkLength + 4); // Add chunk-type
+	stream.writeInt32BE(crc.getValue());
+
+	// Overwrite length
+	buffer.writeUInt32BE(chunkLength, lengthOffset);
+};
+
+/**
+ *
+ * @method _optimize
+ * @param {Buffer} image Image data
+ * @param {int} width Width of image
+ * @param {int} height Height of image
+ * @param {object} data Object that holds all the data that should be encoded
+ * @private
+ */
+Encoder.prototype._optimize = function (image, width, height, data) {
+
+	// Setup header data
+	data.header = data.header || {};
+	data.header.width = width;
+	data.header.height = height;
+
+	// Default configuration
+	data.header.bitDepth = 8;
+	data.header.colorType = 6; // True-color
+	data.header.compression = 0; // Deflate
+	data.header.filter = 0; // Default
+	data.header.interlace = 0; // Default - non-streaming
 };
 
 module.exports = Encoder;

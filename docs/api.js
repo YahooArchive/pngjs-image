@@ -1,6 +1,7 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
+        "BufferedStream",
         "CRC",
         "Chunk",
         "Compressor",
@@ -11,9 +12,11 @@ YUI.add("yuidoc-meta", function(Y) {
         "IEND",
         "IHDR",
         "Interlace",
+        "Normalizer",
         "PLTE",
         "PNGImage",
-        "Scale",
+        "Scaler",
+        "Scanline Parser",
         "bKGD",
         "cHRM",
         "chunkUtils",
@@ -22,20 +25,26 @@ YUI.add("yuidoc-meta", function(Y) {
         "hIST",
         "iCCP",
         "iTXt",
+        "jsOn",
         "pHYs",
         "sBIT",
         "sPLT",
         "sRGB",
+        "stRT",
         "tEXt",
         "tIME",
         "tRNS",
         "utils",
-        "zTXt"
+        "zTXt",
+        "zzZz"
     ],
     "modules": [
         "Core",
         "PNG",
         "PNGChunks",
+        "PNGChunks\n\nOptions:\n- background {boolean} - Should this chunk be applied to the image? (default: false)",
+        "PNGChunks\n\nOptions:\n- gamma {boolean} - Should this chunk be applied to the image? (default: false)",
+        "PNGChunks\n\nOptions:\n- transparent {boolean} - Should this chunk be applied to the image? (default: true)",
         "PNGCore"
     ],
     "allModules": [
@@ -51,6 +60,18 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "PNGChunks",
             "name": "PNGChunks"
+        },
+        {
+            "displayName": "PNGChunks\n\nOptions:\n- background {boolean} - Should this chunk be applied to the image? (default: false)",
+            "name": "PNGChunks\n\nOptions:\n- background {boolean} - Should this chunk be applied to the image? (default: false)"
+        },
+        {
+            "displayName": "PNGChunks\n\nOptions:\n- gamma {boolean} - Should this chunk be applied to the image? (default: false)",
+            "name": "PNGChunks\n\nOptions:\n- gamma {boolean} - Should this chunk be applied to the image? (default: false)"
+        },
+        {
+            "displayName": "PNGChunks\n\nOptions:\n- transparent {boolean} - Should this chunk be applied to the image? (default: true)",
+            "name": "PNGChunks\n\nOptions:\n- transparent {boolean} - Should this chunk be applied to the image? (default: true)"
         },
         {
             "displayName": "PNGCore",

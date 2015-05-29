@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -157,6 +193,8 @@
 
 // PLTE - Palette
 
+var BufferedStream = require(&#x27;../utils/bufferedStream&#x27;);
+
 /**
  * @class PLTE
  * @module PNG
@@ -165,23 +203,91 @@
 module.exports = {
 
 	/**
-	 * Makes sure that all required information is available before decoding
+	 * Gets the sequence
 	 *
-	 * @method preDecode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
+	 * @method getSequence
+	 * @return {int}
 	 */
-	preDecode: function (data, offset, length, strict) {
+	getSequence: function () {
+		return 250;
+	},
 
-		var headerChunk;
 
-		if (!this.getFirstChunk(&#x27;IHDR&#x27;, false) === null) {
-			throw new Error(&#x27;Chunk &#x27; + this.getType() + &#x27; requires the IHDR chunk.&#x27;);
+	/**
+	 * Searches the platte to find the index of a color
+	 *
+	 * @method findColor
+	 * @param {object} color Color object with red, green, and blue components
+	 * @return {int|null}
+	 */
+	findColor: function (color) {
+
+		if (!this._lookup) {
+			this._createLookUpTable();
 		}
 
-		if (this.getFirstChunk(this.getType(), false) !== null) {
+		return this._lookup[color.red + &#x27;_&#x27; + color.green + &#x27;_&#x27; + color.blue];
+	},
+
+	/**
+	 * Creates a look-up table for faster finds
+	 *
+	 * @method _createLookUpTable
+	 * @private
+	 */
+	_createLookUpTable: function () {
+
+		var i, len,
+			lookup = {},
+			colors = this.getColors();
+
+		for (i = 0, len = colors.length; i &lt; len; i++) {
+			lookup[colors[i].red + &#x27;_&#x27; + colors[i].green + &#x27;_&#x27; + colors[i].blue] = i;
+		}
+
+		this._lookup = lookup;
+	},
+
+	/**
+	 * Gets all colors at once
+	 *
+	 * @method getColors
+	 * @return {object[]}
+	 */
+	getColors: function () {
+		return this._colors || [];
+	},
+
+	/**
+	 * Sets all colors at once
+	 *
+	 * @method setColors
+	 * @param {object[]} colors
+	 */
+	setColors: function (colors) {
+		this._colors = colors;
+		this._lookup = null;
+	},
+
+
+	/**
+	 * Parsing of chunk data
+	 *
+	 * Phase 1
+	 *
+	 * @method parse
+	 * @param {BufferedStream} stream Data stream
+	 * @param {int} length Length of chunk data
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	parse: function (stream, length, strict, options) {
+
+		var i, len,
+			colors = [];
+
+		// Validation
+		if (strict &amp;&amp; (this.getFirstChunk(this.getType(), false) !== null)) {
 			throw new Error(&#x27;Only one &#x27; + this.getType() + &#x27; is allowed in the data.&#x27;);
 		}
 
@@ -190,90 +296,204 @@ module.exports = {
 			throw new Error(&#x27;Palette length should be a multiple of 3. Length: &#x27; + length);
 		}
 
+		// Create palette
+		for (i = 0, len = length / 3; i &lt; len; i++) {
+			colors.push({
+				red: stream.readUInt8(),
+				green: stream.readUInt8(),
+				blue: stream.readUInt8()
+			});
+		}
+
+		this.setColors(colors);
+	},
+
+
+	/**
+	 * Decoding of chunk data after scaling
+	 *
+	 * Phase 3
+	 *
+	 * @method postDecode
+	 * @param {Buffer} image
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 * @return {Buffer}
+	 */
+	postDecode: function (image, strict, options) {
+
+		var i, len, index, alpha,
+			color, colors, colorsLength,
+			imageStream, outputStream,
+			headerChunk;
+
 		headerChunk = this.getHeaderChunk();
 
-		// Check for valid palette color-types
-		if (!headerChunk.hasPalette()) {
-			throw new Error(&#x27;Palette is not allowed to appear with this color-type: &#x27; + headerChunk.getColorType());
+		// Check if image requires a palette or if the colors are suggested
+		if (!headerChunk.hasIndexedColor()) {
+			return image; // Ignore these since they are not needed
 		}
 
-		// Make sure palette is big enough
-		if (Math.pow(2, headerChunk.getBitDepth()) &gt; (length / 3)) {
-			throw new Error(&#x27;Bit-depth greater than the size of the palette.&#x27;);
-		}
-	},
+		colors = this._colors;
+		colorsLength = colors.length;
+		imageStream = new BufferedStream(image, false);
 
-	/**
-	 * Decoding of chunk data
-	 *
-	 * @method decode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should parsing be strict?
-	 */
-	decode: function (data, offset, length, strict) {
-		this._palette = new Buffer(length);
-		data.copy(this._palette, 0, offset, offset + length);
-	},
+		outputStream = new BufferedStream(image, false); // use same buffer
+		outputStream.writeOffset = 0;
 
-
-	/**
-	 * Gets the color at
-	 * @param index
-	 * @returns {{r: *, g: *, b: *}}
-	 */
-	getColor: function (index) {
-		var internalIndex = index * 3,
-			data = this._palette;
-
-		if (internalIndex + 3 &gt; this._palette.length) {
-			throw new Error(&#x27;Palette index of &#x27; + index + &#x27; is out of bounds.&#x27;);
-		}
-
-		return {
-			r: data.readUInt8(internalIndex),
-			g: data.readUInt8(internalIndex + 1),
-			b: data.readUInt8(internalIndex + 2)
-		}
-	},
-
-
-	/**
-	 * Converts the input data to an image
-	 *
-	 * @param {Buffer} input Input data
-	 * @param {int} inputOffset Offset in input data
-	 * @param {Buffer} image Image data
-	 * @param {int} imageOffset Offset in image data
-	 */
-	convertToImage: function (input, inputOffset, image, imageOffset) {
-
-		var i,
-			index, internalIndex,
-			bytesPerPixel = this.getHeaderChunk().getImageBytesPerPixel(),
-			outputOffset,
-			r, g, b;
-
-		for (i = 0; i &lt; input.length; i++) {
+		// Convert an index color image to true-color image
+		for (i = 0, len = image.length; i &lt; len; i += 4) {
 
 			// Get index from input
-			index = input.readUInt8(inputOffset + i);
+			index = imageStream.readUInt8();
+			imageStream.skip(2); // Skip the next three bytes
+			alpha = imageStream.readUInt8();
+			if (index &gt;= colorsLength) {
 
-			// Lookup color in palette
-			internalIndex = index * 3;
-			if (internalIndex &gt;= this._palette.length) {
-				throw new Error(&#x27;Palette: Index of color out of bounds.&#x27;);
+				if (strict) {
+					throw new Error(&#x27;Palette: Index of color out of bounds.&#x27;);
+
+				} else {
+
+					// Use black as unknown color in non-strict mode
+					color = {
+						red: 0,
+						green: 0,
+						blue: 0
+					};
+				}
+
+			} else {
+				color = colors[index];
 			}
-			r = this._palette.readUInt8(internalIndex);
-			g = this._palette.readUInt8(internalIndex + 1);
-			b = this._palette.readUInt8(internalIndex + 2);
 
 			// Write to image
-			outputOffset = imageOffset + (i * bytesPerPixel);
-			image.writeUInt8(outputOffset, r);
-			image.writeUInt8(outputOffset + 1, g);
-			image.writeUInt8(outputOffset + 2, b);
+			outputStream.writeUInt8(color.red);
+			outputStream.writeUInt8(color.green);
+			outputStream.writeUInt8(color.blue);
+			outputStream.writeUInt8(alpha);
+		}
+
+		return outputStream.toBuffer(true);
+	},
+
+	/**
+	 * Gathers chunk-data from decoded chunks
+	 *
+	 * Phase 5
+	 *
+	 * @static
+	 * @method decodeData
+	 * @param {object} data Data-object that will be used to export values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	decodeData: function (data, strict, options) {
+
+		var chunks = this.getChunksByType(this.getType());
+
+		if (!chunks) {
+			return ;
+		}
+
+		if (strict &amp;&amp; (chunks.length !== 1)) {
+			throw new Error(&#x27;Not more than one chunk allowed for &#x27; + this.getType() + &#x27;.&#x27;);
+		}
+
+		data.volatile = data.volatile || {};
+		data.volatile.paletteColors = chunks[0].getColors();
+	},
+
+
+	/**
+	 * Returns a list of chunks to be added to the data-stream
+	 *
+	 * Phase 1
+	 *
+	 * @static
+	 * @method encodeData
+	 * @param {Buffer} image Image data
+	 * @param {object} data Object that will be used to import data to the chunk
+	 * @return {Chunk[]} List of chunks to encode
+	 */
+	encodeData: function (image, data) {
+
+		if (data.paletteColors) {
+
+			var chunk = this.createChunk(this.getType(), this.getChunks());
+
+			chunk.setColors(data.paletteColors);
+
+			return [chunk];
+		} else {
+			return [];
+		}
+	},
+
+	/**
+	 * Before encoding of chunk data
+	 *
+	 * Phase 2
+	 *
+	 * @method preEncode
+	 * @param {Buffer} image
+	 * @return {Buffer}
+	 */
+	preEncode: function (image) {
+
+		var i, len,
+			imageStream, outputStream,
+			headerChunk,
+			index, a;
+
+		// Check if image requires a palette or if the colors are suggested
+		headerChunk = this.getHeaderChunk();
+		if (!headerChunk.hasIndexedColor()) {
+			//TODO: May be give an option for using these suggested colors?
+			return image; // Ignore these since they are not needed
+		}
+
+		// Convert true-color to indexed color
+		imageStream = new BufferedStream(image, false);
+		outputStream = new BufferedStream(null, null, image.length / 4);
+
+		for (i = 0, len = image.length; i &lt; len; i += 4) {
+
+			index = this.findColor({
+				red: imageStream.readUInt8(i),
+				green: imageStream.readUInt8(i + 1),
+				blue: imageStream.readUInt8(i + 2)
+			});
+			a = imageStream.readUInt8(i + 3);
+
+			if (index === undefined) {
+				throw new Error(&#x27;Color not find color in palette.&#x27;);
+			}
+
+			// Write to image
+			outputStream.writeUInt8(index);
+		}
+
+		return outputStream.toBuffer(true);
+	},
+
+	/**
+	 * Composing of chunk data
+	 *
+	 * Phase 4
+	 *
+	 * @method compose
+	 * @param {BufferedStream} stream Data stream
+	 */
+	compose: function (stream) {
+
+		var i, len,
+			colors = this.getColors();
+
+		for (i = 0, len = colors.length; i &lt; len; i++) {
+			stream.writeUInt8(colors[i].red);
+			stream.writeUInt8(colors[i].green);
+			stream.writeUInt8(colors[i].blue);
 		}
 	}
 };

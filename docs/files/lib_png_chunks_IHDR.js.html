@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -157,7 +193,16 @@
 
 // IHDR - Image header
 
-var colorTypes = require(&#x27;../constants&#x27;).colorTypes;
+var colorTypes = require(&#x27;../utils/constants&#x27;).colorTypes;
+
+var BufferedStream = require(&#x27;../utils/bufferedStream&#x27;);
+
+var Compressor = require(&#x27;../processor/compressor&#x27;);
+var Filter = require(&#x27;../processor/filter&#x27;);
+var Interlace = require(&#x27;../processor/interlace&#x27;);
+var Parser = require(&#x27;../processor/parser&#x27;);
+var Normalizer = require(&#x27;../processor/normalizer&#x27;);
+var Scaler = require(&#x27;../processor/scaler&#x27;);
 
 /**
  * @class IHDR
@@ -167,112 +212,13 @@ var colorTypes = require(&#x27;../constants&#x27;).colorTypes;
 module.exports = {
 
 	/**
-	 * Makes sure that all required information is available before decoding
+	 * Gets the sequence
 	 *
-	 * @method preDecode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
+	 * @method getSequence
+	 * @return {int}
 	 */
-	preDecode: function (data, offset, length, strict) {
-
-		if (length !== 13) {
-			throw new Error(&#x27;Invalid length of header. Length: &#x27; + length);
-		}
-
-		if (this.getFirstChunk(this.getType(), false) !== null) {
-			throw new Error(&#x27;Only one &#x27; + this.getType() + &#x27; is allowed in the data.&#x27;);
-		}
-	},
-
-	/**
-	 * Decoding of chunk data
-	 *
-	 * @method decode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
-	 */
-	decode: function (data, offset, length, strict) {
-		var position = offset;
-
-		this._width = data.readUInt32BE(position); position += 4;
-		this._height = data.readUInt32BE(position); position += 4;
-		this._bitDepth = data.readUInt8(position); position++;
-		this._colorType = data.readUInt8(position); position++;
-		this._compressionMethod = data.readUInt8(position); position++;
-		this._filterMethod = data.readUInt8(position); position++;
-		this._interlaceMethod = data.readUInt8(position);
-	},
-
-	/**
-	 * Validates all decoded data
-	 *
-	 * @method postDecode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
-	 */
-	postDecode: function (data, offset, length, strict) {
-
-		// Check valid width and height
-		if (this._width === 0) {
-			throw new Error(&#x27;Header error: Width cannot be zero.&#x27;);
-		}
-		if (this._height === 0) {
-			throw new Error(&#x27;Header error: Height cannot be zero.&#x27;);
-		}
-
-		// Check valid bit-depths
-		if ([1, 2, 4, 8, 16].indexOf(this._bitDepth) === -1) {
-			throw new Error(&#x27;Header error: Unknown bit-depth of &#x27; + this._bitDepth + &#x27;.&#x27;);
-		}
-
-		// Check valid color-types
-		if ([
-				colorTypes.GREY_SCALE,
-				colorTypes.TRUE_COLOR,
-				colorTypes.INDEXED_COLOR,
-				colorTypes.GREY_SCALE_ALPHA,
-				colorTypes.TRUE_COLOR_ALPHA
-			].indexOf(this._colorType) === -1) {
-			throw new Error(&#x27;Header error: Unknown color-type &#x27; + this._colorType + &#x27;.&#x27;);
-		}
-
-		// Check bit-depth and color-types
-		if ((this._colorType === colorTypes.GREY_SCALE) &amp;&amp; ([1, 2, 4, 8, 16].indexOf(this._bitDepth) === -1)) {
-			throw new Error(&#x27;Header error: Unsupported bit-depth for GrayScale images.&#x27;);
-		}
-		if ((this._colorType === colorTypes.TRUE_COLOR) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
-			throw new Error(&#x27;Header error: Unsupported bit-depth for TrueColor images.&#x27;);
-		}
-		if ((this._colorType === colorTypes.INDEXED_COLOR) &amp;&amp; ([1, 2, 4, 8].indexOf(this._bitDepth) === -1)) {
-			throw new Error(&#x27;Header error: Unsupported bit-depth for Indexed-color images.&#x27;);
-		}
-		if ((this._colorType === colorTypes.GREY_SCALE_ALPHA) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
-			throw new Error(&#x27;Header error: Unsupported bit-depth for GrayScale with alpha-channel images.&#x27;);
-		}
-		if ((this._colorType === colorTypes.TRUE_COLOR_ALPHA) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
-			throw new Error(&#x27;Header error: Unsupported bit-depth for TrueColor with alpha-channel images.&#x27;);
-		}
-
-		// Check valid compression method
-		if (this._compressionMethod !== 0) {
-			throw new Error(&#x27;Header error: Unsupported compression method with identifier &#x27; +  this._compressionMethod + &#x27;.&#x27;);
-		}
-
-		// Check valid filter method
-		if (this._filterMethod !== 0) {
-			throw new Error(&#x27;Header error: Unsupported filter method with identifier &#x27; +  this._filterMethod + &#x27;.&#x27;);
-		}
-
-		// Check valid interlace method
-		if ([0, 1].indexOf(this._interlaceMethod) === -1) {
-			throw new Error(&#x27;Header error: Unsupported interlace method with identifier &#x27; +  this._interlaceMethod + &#x27;.&#x27;);
-		}
+	getSequence: function () {
+		return 0;
 	},
 
 
@@ -287,6 +233,20 @@ module.exports = {
 	},
 
 	/**
+	 * Sets the width of the image
+	 *
+	 * @method setWidth
+	 * @param {int} width
+	 */
+	setWidth: function (width) {
+		if (width &lt;= 0) {
+			throw new Error(&#x27;Width has to be greater than zero.&#x27;);
+		}
+		this._width = width;
+	},
+
+
+	/**
 	 * Gets the height of the image
 	 *
 	 * @method getHeight
@@ -294,6 +254,19 @@ module.exports = {
 	 */
 	getHeight: function () {
 		return this._height;
+	},
+
+	/**
+	 * Sets the height of the image
+	 *
+	 * @method setHeight
+	 * @param {int} height
+	 */
+	setHeight: function (height) {
+		if (height &lt;= 0) {
+			throw new Error(&#x27;Height has to be greater than zero.&#x27;);
+		}
+		this._height = height;
 	},
 
 
@@ -308,6 +281,20 @@ module.exports = {
 	},
 
 	/**
+	 * Sets the bit-depth of the image data
+	 *
+	 * @method setBitDepth
+	 * @param {int} bitDepth
+	 */
+	setBitDepth: function (bitDepth) {
+		if ([1, 2, 4, 8, 16].indexOf(bitDepth) === -1) {
+			throw new Error(&#x27;Unknown bit-depth of &#x27; + bitDepth + &#x27;.&#x27;);
+		}
+		this._bitDepth = bitDepth;
+	},
+
+
+	/**
 	 * Gets the color-type of the image data
 	 *
 	 * @method getColorType
@@ -316,6 +303,21 @@ module.exports = {
 	getColorType: function () {
 		return this._colorType;
 	},
+
+	/**
+	 * Sets the color-type of the image data
+	 *
+	 * @method setColorType
+	 * @param {int} colorType
+	 */
+	setColorType: function (colorType) {
+		if ([colorTypes.GREY_SCALE, colorTypes.TRUE_COLOR, colorTypes.INDEXED_COLOR,
+				colorTypes.GREY_SCALE_ALPHA, colorTypes.TRUE_COLOR_ALPHA].indexOf(colorType) === -1) {
+			throw new Error(&#x27;Unknown color-type &#x27; + colorType + &#x27;.&#x27;);
+		}
+		this._colorType = colorType;
+	},
+
 
 	/**
 	 * Gets the compression method of the image data
@@ -328,6 +330,20 @@ module.exports = {
 	},
 
 	/**
+	 * Sets the compression method of the image data
+	 *
+	 * @method setCompressionMethod
+	 * @param {int} method
+	 */
+	setCompressionMethod: function (method) {
+		if (method !== 0) {
+			throw new Error(&#x27;Unsupported compression method with identifier &#x27; +  method + &#x27;.&#x27;);
+		}
+		this._compressionMethod = method;
+	},
+
+
+	/**
 	 * Gets the filter method of the image data
 	 *
 	 * @method getFilterMethod
@@ -336,6 +352,20 @@ module.exports = {
 	getFilterMethod: function () {
 		return this._filterMethod;
 	},
+
+	/**
+	 * Sets the filter method of the image data
+	 *
+	 * @method setFilterMethod
+	 * @param {int} method
+	 */
+	setFilterMethod: function (method) {
+		if (method !== 0) {
+			throw new Error(&#x27;Unsupported filter method with identifier &#x27; +  method + &#x27;.&#x27;);
+		}
+		this._filterMethod = method;
+	},
+
 
 	/**
 	 * Gets the interlace method of the image data
@@ -347,14 +377,27 @@ module.exports = {
 		return this._interlaceMethod;
 	},
 
+	/**
+	 * Sets the interlace method of the image data
+	 *
+	 * @method setInterlaceMethod
+	 * @param {int} method
+	 */
+	setInterlaceMethod: function (method) {
+		if ([0, 1].indexOf(method) === -1) {
+			throw new Error(&#x27;Unsupported interlace method with identifier &#x27; +  method + &#x27;.&#x27;);
+		}
+		this._interlaceMethod = method;
+	},
+
 
 	/**
-	 * Does image have a color palette?
+	 * Does image have a an indexed color palette?
 	 *
-	 * @method hasPalette
+	 * @method hasIndexedColor
 	 * @return {boolean}
 	 */
-	hasPalette: function () {
+	hasIndexedColor: function () {
 		return ((this._colorType &amp; 1) === 1);
 	},
 
@@ -378,6 +421,16 @@ module.exports = {
 		return ((this._colorType &amp; 4) === 4);
 	},
 
+	/**
+	 * Is the image interlaced?
+	 *
+	 * @method isInterlaced
+	 * @return {boolean}
+	 */
+	isInterlaced: function () {
+		return this.getInterlaceMethod() !== 0;
+	},
+
 
 	/**
 	 * Determines bytes per pixel
@@ -386,8 +439,8 @@ module.exports = {
 	 * @return {int}
 	 */
 	getBytesPerPixel: function () {
-		var bitDepth = Math.max(8, this.getBitDepth()); // Lower than 8 will be rounded up
-		return (bitDepth / 8) * this.getSamples();
+		var bitDepth = this.getBitDepth();
+		return (bitDepth / 8) * this.getUnprocessedSamples();
 	},
 
 	/**
@@ -397,7 +450,17 @@ module.exports = {
 	 * @return {int}
 	 */
 	getSamples: function () {
-		return this.hasPalette() ? 1 : (this.isColor() ? 3 : 1) + (this.hasAlphaChannel() ? 1 : 0);
+		return this.hasIndexedColor() ? 3 : (this.isColor() ? 3 : 1) + (this.hasAlphaChannel() ? 1 : 0);
+	},
+
+	/**
+	 * Gets the number of samples for the color-type (unprocessed - palette not applied yet)
+	 *
+	 * @method getUnprocessedSamples
+	 * @return {int}
+	 */
+	getUnprocessedSamples: function () {
+		return this.hasIndexedColor() ? 1 : this.getSamples();
 	},
 
 	/**
@@ -407,7 +470,7 @@ module.exports = {
 	 * @return {int}
 	 */
 	getSampleDepth: function () {
-		return this.hasPalette() ? 8 : this.getBitDepth();
+		return this.hasIndexedColor() ? 8 : this.getBitDepth();
 	},
 
 	/**
@@ -417,7 +480,66 @@ module.exports = {
 	 * @return {int}
 	 */
 	getScanLineLength: function () {
-		return this.getBytesPerPixel() * this.getWidth();
+		return this.getScanLineLengthForWidth(this.getWidth());
+	},
+
+	/**
+	 * Determines the scan-line length for a specified width
+	 *
+	 * @method getScanLineLengthForWidth
+	 * @param {int} width
+	 * @return {int}
+	 */
+	getScanLineLengthForWidth: function (width) {
+		return this.getBytesPerPixel() * width;
+	},
+
+	/**
+	 * Determines if the data requires padding for scanlines
+	 *
+	 * @method hasScanLinePadding
+	 * @return {boolean}
+	 */
+	hasScanLinePadding: function () {
+		return this.hasScanLinePaddingWithWidth(this.getWidth());
+	},
+
+	/**
+	 * Determines if the data requires padding for scanlines
+	 *
+	 * @method hasScanLinePaddingWithWidth
+	 * @param {int} width
+	 * @return {boolean}
+	 */
+	hasScanLinePaddingWithWidth: function (width) {
+		var scanLineLength = this.getScanLineLengthForWidth(width);
+
+		return (scanLineLength != Math.ceil(scanLineLength));
+	},
+
+	/**
+	 * Determines position of scanline pixel
+	 *
+	 * @method scanLinePaddingAt
+	 * @return {int}
+	 */
+	scanLinePaddingAt: function () {
+		return this.scanLineWithWidthPaddingAt(this.getWidth());
+	},
+
+	/**
+	 * Determines position of scanline pixel with width
+	 *
+	 * @method scanLinePaddingAt
+	 * @param {int} width
+	 * @return {int}
+	 */
+	scanLineWithWidthPaddingAt: function (width) {
+		if (this.hasScanLinePaddingWithWidth(width)) {
+			return this.getUnprocessedSamples() * width;
+		} else {
+			return null;
+		}
 	},
 
 	/**
@@ -431,13 +553,13 @@ module.exports = {
 	},
 
 	/**
-	 * Gets the number of bytes in a pixel for images in edit-mode
+	 * Gets the number of bytes in a pixel for images after scaling
 	 *
 	 * @method getImageBytesPerPixel
 	 * @return {int}
 	 */
 	getImageBytesPerPixel: function () {
-		return 4;
+		return 4; // This is the working bpp for PNGjs-image
 	},
 
 
@@ -489,6 +611,370 @@ module.exports = {
 	 */
 	isColorTypeTrueColorWithAlpha: function () {
 		return this.getColorType() === colorTypes.TRUE_COLOR_ALPHA;
+	},
+
+
+	/**
+	 * Parsing of chunk data
+	 *
+	 * Phase 1
+	 *
+	 * @method parse
+	 * @param {BufferedStream} stream Data stream
+	 * @param {int} length Length of chunk data
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	parse: function (stream, length, strict, options) {
+
+		// Validation
+		if ((strict &amp;&amp; (length !== 13)) || (length &lt; 13)) {
+			throw new Error(&#x27;Invalid length of header. Length: &#x27; + length);
+		}
+
+		if (strict &amp;&amp; (this.getFirstChunk(this.getType(), false) !== null)) {
+			throw new Error(&#x27;Only one &#x27; + this.getType() + &#x27; is allowed in the data.&#x27;);
+		}
+
+		// Read and set values (+ validation)
+		this.setWidth(stream.readUInt32BE());
+		this.setHeight(stream.readUInt32BE());
+		this.setBitDepth(stream.readUInt8());
+		this.setColorType(stream.readUInt8());
+		this.setCompressionMethod(stream.readUInt8());
+		this.setFilterMethod(stream.readUInt8());
+		this.setInterlaceMethod(stream.readUInt8());
+
+		// Check bit-depth and color-types combination
+		if ((this._colorType === colorTypes.GREY_SCALE) &amp;&amp; ([1, 2, 4, 8, 16].indexOf(this._bitDepth) === -1)) {
+			throw new Error(&#x27;Header error: Unsupported bit-depth for GrayScale images.&#x27;);
+		}
+		if ((this._colorType === colorTypes.TRUE_COLOR) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
+			throw new Error(&#x27;Header error: Unsupported bit-depth for TrueColor images.&#x27;);
+		}
+		if ((this._colorType === colorTypes.INDEXED_COLOR) &amp;&amp; ([1, 2, 4, 8].indexOf(this._bitDepth) === -1)) {
+			throw new Error(&#x27;Header error: Unsupported bit-depth for Indexed-color images.&#x27;);
+		}
+		if ((this._colorType === colorTypes.GREY_SCALE_ALPHA) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
+			throw new Error(&#x27;Header error: Unsupported bit-depth for GrayScale with alpha-channel images.&#x27;);
+		}
+		if ((this._colorType === colorTypes.TRUE_COLOR_ALPHA) &amp;&amp; ([8, 16].indexOf(this._bitDepth) === -1)) {
+			throw new Error(&#x27;Header error: Unsupported bit-depth for TrueColor with alpha-channel images.&#x27;);
+		}
+	},
+
+	/**
+	 * Decoding of chunk data before scaling
+	 *
+	 * Phase 2
+	 *
+	 * @method decode
+	 * @param {int[]} values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 * @return {int[]}
+	 */
+	decode: function (values, strict, options) {
+
+		var compressor,
+			filter,
+			parser,
+			normalizer,
+			localValues,
+			image;
+
+		// Combine all data chunks
+		image = this._combine();
+
+		// Decompress
+		compressor = new Compressor();
+		image = compressor.decompress(image);
+
+		// Run through filters
+		filter = new Filter(this);
+		image = filter.reverse(image);
+
+		// Parses scanlines
+		parser = new Parser(this);
+		localValues = parser.decode(image);
+
+		// Normalizes color values
+		normalizer = new Normalizer(this);
+		localValues = normalizer.decode(localValues);
+
+		// Ignoring the incoming values - this is the first chunk creating these
+		return localValues;
+	},
+
+
+	/**
+	 * Decoding of chunk data after scaling
+	 *
+	 * Phase 3
+	 *
+	 * @method postDecode
+	 * @param {int[]} values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 * @return {Buffer}
+	 */
+	postDecode: function (values, strict, options) {
+
+		var scaler, interlace, image;
+
+		scaler = new Scaler(this);
+		image = scaler.decode(values);
+
+		// Run through interlace method
+		interlace = new Interlace(this);
+		image = interlace.reverse(image);
+
+		return image;
+	},
+
+	/**
+	 * Gathers chunk-data from decoded chunks
+	 *
+	 * Phase 5
+	 *
+	 * @static
+	 * @method decodeData
+	 * @param {object} data Data-object that will be used to export values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	decodeData: function (data, strict, options) {
+
+		var chunks = this.getChunksByType(this.getType());
+
+		if (!chunks) {
+			throw new Error(&#x27;Cannot find header.&#x27;);
+		}
+
+		if (strict &amp;&amp; (chunks.length !== 1)) {
+			throw new Error(&#x27;Not more than one chunk allowed for &#x27; + this.getType() + &#x27;.&#x27;);
+		}
+
+		data.volatile = data.volatile || {};
+		data.volatile.header = {
+			width: chunks[0].getWidth(),
+			height: chunks[0].getHeight(),
+			bitDepth: chunks[0].getBitDepth(),
+			colorType: chunks[0].getColorType(),
+			compression: chunks[0].getCompressionMethod(),
+			filter: chunks[0].getFilterMethod(),
+			interlace: chunks[0].getInterlaceMethod()
+		};
+	},
+
+	/**
+	 * Combines all IDAT chunks into on buffer
+	 *
+	 * @method _combine
+	 * @return {Buffer}
+	 * @private
+	 */
+	_combine: function () {
+
+		var totalLength = 0,
+			dataChunks = this.getChunksByType(&#x27;IDAT&#x27;, true),
+			combinedStream;
+
+		// Determine length
+		dataChunks.forEach(function (dataChunk) {
+			totalLength += dataChunk.getStream().length;
+		});
+
+		// Combine all the blobs
+		combinedStream = new BufferedStream(null, null, totalLength);
+		dataChunks.forEach(function (dataChunk) {
+			combinedStream.writeBufferedStream(dataChunk.getStream());
+		});
+
+		return combinedStream.toBuffer(true);
+	},
+
+
+	/**
+	 * Returns a list of chunks to be added to the data-stream
+	 *
+	 * Phase 1
+	 *
+	 * @static
+	 * @method encodeData
+	 * @param {Buffer} image Image data
+	 * @param {object} data Object that will be used to import data to the chunk
+	 * @return {Chunk[]} List of chunks to encode
+	 */
+	encodeData: function (image, data) {
+
+		var chunk = this.createChunk(this.getType(), this.getChunks());
+
+		chunk.setWidth(data.header.width);
+		chunk.setHeight(data.header.height);
+		chunk.setBitDepth(data.header.bitDepth);
+		chunk.setColorType(data.header.colorType);
+		chunk.setCompressionMethod(data.header.compression);
+		chunk.setFilterMethod(data.header.filter);
+		chunk.setInterlaceMethod(data.header.interlace);
+
+		return [chunk];
+	},
+
+	/**
+	 * Before encoding of chunk data
+	 *
+	 * Phase 2
+	 *
+	 * Note:
+	 * Use this method to gather image-data before scaling.
+	 *
+	 * @method preEncode
+	 * @param {Buffer} image
+	 * @return {Buffer}
+	 */
+	preEncode: function (image) {
+
+		var imageStream, scaledStream, reducedStream, withdrawnStream,
+			interlace;
+
+		// Run through interlace method
+		interlace = new Interlace(this);
+		image = interlace.interlace(image, 0);
+
+		if (this.isColorTypeIndexedColor()) {
+			// We expect the PLTE chunk to do the work
+			return image;
+		}
+
+		//TODO refactor like in decode
+		//TODO: Padding
+
+		imageStream = new BufferedStream(image, false);
+
+		// Add alpha channel if needed
+		if (!this.hasAlphaChannel()) {
+			withdrawnStream = new BufferedStream(null, null, imageStream.length * 0.75);
+			//scale.withdraw(imageStream, withdrawnStream, 4);
+		} else {
+			withdrawnStream = imageStream; // Nothing to do
+		}
+
+		// Channel spreading - Grayscale to color
+		if (!this.isColor()) {
+			reducedStream = new BufferedStream(null, null, withdrawnStream.length / 3);
+			//scale.reduce(withdrawnStream, reducedStream, 3);
+		} else {
+			reducedStream = withdrawnStream; // Nothing to do
+		}
+
+		// Do some scaling
+		if (this.getBitDepth() === 1) {
+			scaledStream = new BufferedStream(null, null, reducedStream.length / 8);
+			//scale.scale8to1bit(reducedStream, scaledStream);
+
+		} else if (this.getBitDepth() === 2) {
+			scaledStream = new BufferedStream(null, null, reducedStream.length / 4);
+			//scale.scale8to2bit(reducedStream, scaledStream);
+
+		} else if (this.getBitDepth() === 4) {
+			scaledStream = new BufferedStream(null, null, reducedStream.length / 2);
+			//scale.scale8to4bit(reducedStream, scaledStream);
+
+		} else if (this.getBitDepth() === 16) {
+			scaledStream = new BufferedStream(null, null, reducedStream.length * 2);
+			//scale.scale8to16bit(reducedStream, scaledStream);
+
+		} else {
+			scaledStream = reducedStream; // Nothing to do
+		}
+
+		return scaledStream.toBuffer(true);
+	},
+
+	/**
+	 * Encoding of chunk data
+	 *
+	 * Phase 3
+	 *
+	 * Note:
+	 * Use this method to add data to the image after scaling.
+	 *
+	 * @method encode
+	 * @param {Buffer} image
+	 * @return {Buffer}
+	 */
+	encode: function (image) {
+
+		var compressor,
+			filter;
+
+		// Run through filters
+		filter = new Filter(this);
+		image = filter.filter(image, 0);
+
+		// Compress
+		compressor = new Compressor();
+		image = compressor.compress(image);
+
+		// Combine all data chunks
+		this._separate(image);
+
+		// Finished since this is the last chunk
+		return null;
+	},
+
+	/**
+	 * Composing of chunk data
+	 *
+	 * Phase 4
+	 *
+	 * @method compose
+	 * @param {BufferedStream} stream Data stream
+	 */
+	compose: function (stream) {
+		stream.writeUInt32BE(this.getWidth());
+		stream.writeUInt32BE(this.getHeight());
+		stream.writeUInt8(this.getBitDepth());
+		stream.writeUInt8(this.getColorType());
+		stream.writeUInt8(this.getCompressionMethod());
+		stream.writeUInt8(this.getFilterMethod());
+		stream.writeUInt8(this.getInterlaceMethod());
+	},
+
+	/**
+	 * Separates buffer into multiple IDAT
+	 *
+	 * @method _separate
+	 * @param {Buffer} buffer
+	 * @private
+	 */
+	_separate: function (buffer) {
+
+		var chunkLength = 8192,
+			chunkQuantity = Math.ceil(buffer.length / chunkLength),
+
+			Chunk = require(&#x27;../chunk&#x27;),
+			chunk,
+
+			stream = new BufferedStream(buffer),
+
+			lastChunkLength, i;
+
+		for (i = 0; i &lt; chunkQuantity; i++) {
+
+			chunk = new Chunk(&#x27;IDAT&#x27;, this._chunks);
+
+			lastChunkLength = Math.min(stream.length, chunkLength);
+
+			chunk.setStream(stream.slice(0, lastChunkLength));
+			stream.readOffset += lastChunkLength;
+
+			// Set sequence relative to other data chunks
+			chunk._sequence = chunk.getSequence() + (i / chunkQuantity);
+
+			this.addChunk(chunk);
+		}
 	}
 };
 

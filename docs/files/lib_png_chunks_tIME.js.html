@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -163,23 +199,142 @@
 module.exports = {
 
 	/**
-	 * Makes sure that all required information is available before decoding
+	 * Gets the sequence
 	 *
-	 * @method preDecode
-	 * @param {Buffer} data Chunk data
-	 * @param {int} offset Offset in chunk data
-	 * @param {int} length Length of chunk data
-	 * @param {boolean} strict Should decoding be strict?
+	 * @method getSequence
+	 * @return {int}
 	 */
-	preDecode: function (data, offset, length, strict) {
+	getSequence: function () {
+		return 100;
+	},
 
-		if (!this.getFirstChunk(&#x27;IHDR&#x27;, false) === null) {
-			throw new Error(&#x27;Chunk &#x27; + this.getType() + &#x27; requires the IHDR chunk.&#x27;);
-		}
 
-		if (this.getFirstChunk(this.getType(), false) !== null) {
+	/**
+	 * Gets the date
+	 *
+	 * @method getDate
+	 * @return {Date}
+	 */
+	getDate: function () {
+		return this._date || new Date();
+	},
+
+	/**
+	 * Sets the date
+	 *
+	 * @method setDate
+	 * @param {Date} date
+	 */
+	setDate: function (date) {
+		this._date = date;
+	},
+
+
+	/**
+	 * Parsing of chunk data
+	 *
+	 * Phase 1
+	 *
+	 * @method parse
+	 * @param {BufferedStream} stream Data stream
+	 * @param {int} length Length of chunk data
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	parse: function (stream, length, strict, options) {
+
+		var year, month, day, hour, minute, second;
+
+		// Validation
+		if (strict &amp;&amp; (this.getFirstChunk(this.getType(), false) !== null)) {
 			throw new Error(&#x27;Only one &#x27; + this.getType() + &#x27; is allowed in the data.&#x27;);
 		}
+
+		if ((strict &amp;&amp; (length !== 7)) || (length &lt; 7)) {
+			throw new Error(&#x27;The length of the &#x27; + this.getType() + &#x27; chunk should be 7 but is &#x27; + length +&#x27;.&#x27;);
+		}
+
+		year = stream.readUInt16BE();
+		month = stream.readUInt8();
+		day = stream.readUInt8();
+		hour = stream.readUInt8();
+		minute = stream.readUInt8();
+		second = stream.readUInt8();
+
+		this.setDate(new Date(Date.UTC(year, month - 1, day, hour, minute, second === 60 ? 59 : second)));
+	},
+
+	/**
+	 * Gathers chunk-data from decoded chunks
+	 *
+	 * Phase 5
+	 *
+	 * @static
+	 * @method decodeData
+	 * @param {object} data Data-object that will be used to export values
+	 * @param {boolean} strict Should parsing be strict?
+	 * @param {object} options Decoding options
+	 */
+	decodeData: function (data, strict, options) {
+
+		var chunks = this.getChunksByType(this.getType());
+
+		if (!chunks) {
+			return ;
+		}
+
+		if (strict &amp;&amp; (chunks.length !== 1)) {
+			throw new Error(&#x27;Not more than one chunk allowed for &#x27; + this.getType() + &#x27;.&#x27;);
+		}
+
+		data.volatile = data.volatile || {};
+		data.volatile.modificationDate = chunks[0].getDate();
+	},
+
+
+	/**
+	 * Returns a list of chunks to be added to the data-stream
+	 *
+	 * Phase 1
+	 *
+	 * @static
+	 * @method encodeData
+	 * @param {Buffer} image Image data
+	 * @param {object} data Object that will be used to import data to the chunk
+	 * @return {Chunk[]} List of chunks to encode
+	 */
+	encodeData: function (image, data) {
+
+		if (data.modificationDate) {
+
+			var chunk = this.createChunk(this.getType(), this.getChunks());
+
+			chunk.setDate(data.modificationDate);
+
+			return [chunk];
+		} else {
+			return [];
+		}
+	},
+
+	/**
+	 * Composing of chunk data
+	 *
+	 * Phase 4
+	 *
+	 * @method compose
+	 * @param {BufferedStream} stream Data stream
+	 */
+	compose: function (stream) {
+
+		var date = this.getDate();
+
+		stream.writeUInt16BE(date.getUTCFullYear());
+		stream.writeUInt8(date.getUTCMonth() + 1);
+		stream.writeUInt8(date.getUTCDate());
+		stream.writeUInt8(date.getUTCHours());
+		stream.writeUInt8(date.getUTCMinutes());
+		stream.writeUInt8(date.getUTCSeconds());
 	}
 };
 

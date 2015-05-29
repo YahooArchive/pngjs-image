@@ -1,0 +1,1687 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for pngjs-image/lib/png/utils/bufferedStream.js</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="../../../../prettify.css">
+
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Helvetica Neue, Helvetica,Arial;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 10em;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Consolas, Menlo, Monaco, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
+            font-size: 14px;
+            -moz-tab-size: 2;
+            -o-tab-size:  2;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { text-decoration: none; color: #000; }
+        div.coverage-summary a:visited { text-decoration: none; color: #333; }
+        div.coverage-summary a:hover { text-decoration: underline; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: url("https://yui-s.yahooapis.com/3.6.0/build/datatable-sort/assets/skins/sam/sort-arrow-sprite.png") no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">pngjs-image/lib/png/utils/bufferedStream.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">87.05% <small>(121 / 139)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">71.05% <small>(27 / 38)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">74.19% <small>(23 / 31)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">87.05% <small>(121 / 139)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">pngjs-image/lib/png/utils/</a> &#187; bufferedStream.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1375</span>
+<span class="cline-any cline-yes">1375</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1375</span>
+<span class="cline-any cline-yes">1375</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1375</span>
+<span class="cline-any cline-yes">1055</span>
+<span class="cline-any cline-yes">1035</span>
+<span class="cline-any cline-yes">1035</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-yes">20</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">320</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">320</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2139</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">69527</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">48607</span>
+<span class="cline-any cline-yes">48607</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">68181</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68181</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68181</span>
+<span class="cline-any cline-yes">68181</span>
+<span class="cline-any cline-yes">68181</span>
+<span class="cline-any cline-yes">68181</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">68181</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">343278</span>
+<span class="cline-any cline-yes">343278</span>
+<span class="cline-any cline-yes">343278</span>
+<span class="cline-any cline-yes">343278</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">825527</span>
+<span class="cline-any cline-yes">825527</span>
+<span class="cline-any cline-yes">825527</span>
+<span class="cline-any cline-yes">825527</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-yes">121</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1076</span>
+<span class="cline-any cline-yes">1076</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1076</span>
+<span class="cline-any cline-yes">1076</span>
+<span class="cline-any cline-yes">1076</span>
+<span class="cline-any cline-yes">1076</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">270</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">270</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">270</span>
+<span class="cline-any cline-yes">270</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">270</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">191</span>
+<span class="cline-any cline-yes">191</span>
+<span class="cline-any cline-yes">191</span>
+<span class="cline-any cline-yes">191</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">826367</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">81</span>
+<span class="cline-any cline-yes">81</span>
+<span class="cline-any cline-yes">81</span>
+<span class="cline-any cline-yes">81</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">82</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">82</span>
+<span class="cline-any cline-yes">328</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">82</span>
+<span class="cline-any cline-yes">82</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-yes">56</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">499</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">499</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">499</span>
+<span class="cline-any cline-yes">499</span>
+<span class="cline-any cline-yes">499</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">545</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">545</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">545</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">545</span>
+<span class="cline-any cline-yes">545</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">545</span>
+<span class="cline-any cline-yes">545</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">545</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1602</span>
+<span class="cline-any cline-yes">1536</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">66</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// Copyright 2015 Yahoo! Inc.
+// Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
+&nbsp;
+/**
+ * @class BufferedStream
+ * @module PNG
+ * @submodule PNGCore
+ * @param {Buffer} [data] Data buffer
+ * @param {int|boolean} [offset=0] Offset within the data (With offset = false, they data will be taken as-is)
+ * @param {int} [length=data.length-offset] Length of the data
+ * @constructor
+ */
+var BufferedStream = function (data, offset, length) {
+&nbsp;
+	this.readOffset = 0;
+	this.writeOffset = 0;
+&nbsp;
+	this.readCounter = 0;
+	this.writeCounter = 0;
+&nbsp;
+	if (data) {
+		if (offset === false) {
+			this._data = data;
+			this.writeOffset = data.length;
+		} else {
+			this._data = new Buffer((length || (data.length - (offset || 0))) * 2);
+			this.writeBuffer(data, offset, length);
+		}
+	} else {
+		<span class="missing-if-branch" title="if path not taken" >I</span>if (length === 0) {
+<span class="cstat-no" title="statement not covered" >			this._data = new Buffer();</span>
+		} else {
+			this._data = new Buffer(length || 1024 * 500);
+		}
+	}
+};
+&nbsp;
+Object.defineProperty(BufferedStream.prototype, 'length', {
+	enumerable: false,
+	configurable: false,
+	get: function () {
+		return this.writeOffset - this.readOffset;
+	},
+	set: <span class="fstat-no" title="function not covered" >function (length) {</span>
+<span class="cstat-no" title="statement not covered" >		if (this.readOffset + length &gt; this.writeOffset) {</span>
+<span class="cstat-no" title="statement not covered" >			throw new Error('Length beyond the write pointer is not allowed.');</span>
+		}
+<span class="cstat-no" title="statement not covered" >		this.writeOffset = this.readOffset + length;</span>
+	}
+});
+&nbsp;
+/**
+ * Returns the number of bytes left before resizing
+ *
+ * @method getSpaceLeft
+ * @return {int}
+ */
+BufferedStream.prototype.getSpaceLeft = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >	return this._data.length - this.writeOffset;</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Checks if a read goes beyond the write pointer, reaching out of bounds
+ *
+ * @method _readCheck
+ * @param {int} size Size of the data that is pending to be read from the stream
+ * @private
+ */
+BufferedStream.prototype._readCheck = function (size) {
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (this.readOffset + size &gt; this.writeOffset) {
+<span class="cstat-no" title="statement not covered" >		throw new Error('Reading out of bounds.');</span>
+	}
+};
+&nbsp;
+/**
+ * Skips a number of bytes
+ *
+ * @param {int} count Number of bytes to skip
+ */
+BufferedStream.prototype.skip = function (count) {
+	this.readOffset += count;
+	this.readCounter += count;
+};
+&nbsp;
+/**
+ * @method readUInt8
+ * @param {boolean} [noAssert=false]
+ * @return {int}
+ */
+/**
+ * @method peekUInt8
+ * @param {boolean} [noAssert=false]
+ * @return {int}
+ */
+[
+	['UInt16LE', 2],
+	['UInt16BE', 2],
+	['UInt32LE', 4],
+	['UInt32BE', 4],
+	['Int8', 1],
+	['Int16LE', 2],
+	['Int16BE', 2],
+	['Int32LE', 4],
+	['Int32BE', 4],
+	['FloatLE', 4],
+	['FloatBE', 4],
+	['DoubleLE', 8],
+	['DoubleBE', 8]
+].forEach(function (fnInfo) {
+&nbsp;
+		['read', 'peek'].forEach(function (prefix) {
+			var relayedMethodName = 'read' + fnInfo[0],
+				methodName = prefix + fnInfo[0],
+				peeking = (prefix === 'peek'),
+				size = fnInfo[1];
+&nbsp;
+			BufferedStream.prototype[methodName] = function (noAssert) {
+				var value;
+&nbsp;
+				this._readCheck(size);
+&nbsp;
+				value = this._data[relayedMethodName](this.readOffset, noAssert);
+				<span class="missing-if-branch" title="else path not taken" >E</span>if (!peeking) {
+					this.readOffset += size;
+					this.readCounter += size;
+				}
+&nbsp;
+				return value;
+			}
+		});
+	});
+&nbsp;
+&nbsp;
+BufferedStream.prototype.peekUInt8 = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >	return this._data[this.readOffset];</span>
+};
+&nbsp;
+BufferedStream.prototype.readUInt8 = function () {
+	var result = this._data[this.readOffset];
+	this.readOffset++;
+	this.readCounter++;
+	return result;
+};
+&nbsp;
+BufferedStream.prototype.writeUInt8 = function (value) {
+	this._writeCheck(1);
+	this._data[this.writeOffset] = value &amp; 0xff;
+	this.writeOffset++;
+	this.writeCounter++;
+};
+&nbsp;
+&nbsp;
+//BufferedStream.prototype.peekUInt16BE = function () {
+//	return (this._data[this.readOffset] &lt;&lt; 8) | this._data[this.readOffset + 1]
+//};
+//
+//BufferedStream.prototype.readUInt16BE = function () {
+//	var result = this.peekUInt16BE();
+//	this.readOffset += 2;
+//	this.readCounter += 2;
+//	return result;
+//};
+&nbsp;
+BufferedStream.prototype.writeUInt16BE = function (value) {
+	this._writeCheck(2);
+	this._data[this.writeOffset] = (value &gt;&gt;&gt; 8) &amp; 0xff;
+	this._data[this.writeOffset + 1] = value &amp; 0xff;
+	this.writeOffset += 2;
+	this.writeCounter += 2;
+};
+&nbsp;
+&nbsp;
+//BufferedStream.prototype.peekUInt32BE = function () {
+//	return (this._data[this.readOffset] * 0x1000000) +
+//		((this._data[this.readOffset + 1] &lt;&lt; 16) |
+//		(this._data[this.readOffset + 2] &lt;&lt; 8) |
+//		this._data[this.readOffset + 3]);
+//};
+//
+//BufferedStream.prototype.readUInt32BE = function () {
+//	var result = this.peekUInt32BE();
+//	this.readOffset += 4;
+//	this.readCounter += 4;
+//	return result;
+//};
+&nbsp;
+BufferedStream.prototype.writeUInt32BE = function (value) {
+	this._writeCheck(4);
+	this._data[this.writeOffset] = (value &gt;&gt;&gt; 24) &amp; 0xff;
+	this._data[this.writeOffset + 1] = (value &gt;&gt;&gt; 16) &amp; 0xff;
+	this._data[this.writeOffset + 2] = (value &gt;&gt;&gt; 8) &amp; 0xff;
+	this._data[this.writeOffset + 3] = value &amp; 0xff;
+	this.writeOffset += 4;
+	this.writeCounter += 4;
+};
+&nbsp;
+&nbsp;
+/**
+ * Reads a string from the stream without moving the read pointer
+ *
+ * @method peekString
+ * @param {int} size Number of bytes to read from stream
+ * @param {string} [encoding='utf8'] Encoding of string
+ * @return {string}
+ */
+BufferedStream.prototype.peekString = function (size, encoding) {
+	this._readCheck(size);
+	return this._data.toString(encoding || <span class="branch-1 cbranch-no" title="branch not covered" >'utf8',</span> this.readOffset, this.readOffset + size);
+};
+&nbsp;
+/**
+ * Reads a string from the stream
+ *
+ * @method readString
+ * @param {int} size Number of bytes to read from stream
+ * @param {string} [encoding='utf8'] Encoding of string
+ * @return {string}
+ */
+BufferedStream.prototype.readString = function (size, encoding) {
+	var result = this.peekString(size, encoding);
+	this.readOffset += size;
+	this.readCounter += size;
+	return result;
+};
+&nbsp;
+&nbsp;
+/**
+ * Reads data from the stream into a buffer without moving the read pointer
+ *
+ * @method peekBuffer
+ * @param {int} size Number of bytes that should be read from the stream
+ * @returns {Buffer}
+ */
+BufferedStream.prototype.peekBuffer = function (size) {
+	var buffer;
+&nbsp;
+	this._readCheck(size);
+&nbsp;
+	buffer = new Buffer(size);
+	this._data.copy(buffer, 0, this.readOffset, this.readOffset + size);
+&nbsp;
+	return buffer;
+};
+&nbsp;
+/**
+ * Reads data from the stream into a buffer
+ *
+ * @method readBuffer
+ * @param {int} size Number of bytes that should be read from the stream
+ * @return {Buffer}
+ */
+BufferedStream.prototype.readBuffer = function (size) {
+	var buffer = this.peekBuffer(size);
+	this.readOffset += size;
+	this.readCounter += size;
+	return buffer;
+};
+&nbsp;
+&nbsp;
+/**
+ * Reads data from the stream into a buffer
+ *
+ * @method peekBufferedStream
+ * @param {BufferedStream} stream Stream to write to
+ * @param {int} size Number of bytes that should be read
+ */
+BufferedStream.prototype.peekBufferedStream = <span class="fstat-no" title="function not covered" >function (stream, size) {</span>
+<span class="cstat-no" title="statement not covered" >	stream.writeBufferedStream(this, size);</span>
+};
+&nbsp;
+/**
+ * Reads data from the stream into a buffer
+ *
+ * @method readBufferedStream
+ * @param {BufferedStream} stream Stream to write to
+ * @param {int} size Number of bytes that should be read
+ */
+BufferedStream.prototype.readBufferedStream = <span class="fstat-no" title="function not covered" >function (stream, size) {</span>
+<span class="cstat-no" title="statement not covered" >	this.peekBufferedStream(stream, size);</span>
+<span class="cstat-no" title="statement not covered" >	this.readOffset += size;</span>
+<span class="cstat-no" title="statement not covered" >	this.readCounter += size;</span>
+};
+&nbsp;
+&nbsp;
+/**
+ * Checks if a write needs a re-size
+ *
+ * @method _writeCheck
+ * @param {int} size Size that is pending to be written to the stream
+ * @private
+ */
+BufferedStream.prototype._writeCheck = function (size) {
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (this._data.length &lt; this.writeOffset + size) {
+<span class="cstat-no" title="statement not covered" >		this._resize();</span>
+	}
+};
+&nbsp;
+/**
+ * Re-sizes the internal buffer, copying all existing data into it
+ *
+ * @method _resize
+ * @private
+ */
+BufferedStream.prototype._resize = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >	var buffer = new Buffer(this._data.length * 2);</span>
+<span class="cstat-no" title="statement not covered" >	this._data.copy(buffer, 0, 0, this.writeOffset);</span>
+<span class="cstat-no" title="statement not covered" >	this._data = buffer;</span>
+};
+&nbsp;
+/**
+ * @method writeUInt8
+ * @param {boolean} [noAssert=false]
+ */
+[
+	['writeUInt16LE', 2],
+	['writeUInt32LE', 4],
+	['writeInt8', 1],
+	['writeInt16LE', 2],
+	['writeInt16BE', 2],
+	['writeInt32LE', 4],
+	['writeInt32BE', 4],
+	['writeFloatLE', 4],
+	['writeFloatBE', 4],
+	['writeDoubleLE', 8],
+	['writeDoubleBE', 8]
+].forEach(function (fnInfo) {
+		BufferedStream.prototype[fnInfo[0]] = function (value, noAssert) {
+			this._writeCheck(fnInfo[1]);
+			this._data[fnInfo[0]](value, this.writeOffset, noAssert);
+			this.writeOffset += fnInfo[1];
+			this.writeCounter += fnInfo[1];
+		}
+	});
+&nbsp;
+/**
+ * Writes a string to the stream
+ *
+ * @method writeASCIIString
+ * @param {string} text Text to write to the stream
+ */
+BufferedStream.prototype.writeASCIIString = function (text) {
+&nbsp;
+	this._writeCheck(text.length);
+&nbsp;
+	for(var i = 0, len = text.length; i &lt; len; i++) {
+		this._data.writeUInt8(text.charCodeAt(i) &amp; 0xff, this.writeOffset + i);
+	}
+	this.writeOffset += text.length;
+	this.writeCounter += text.length;
+};
+&nbsp;
+/**
+ * Writes a string to the stream
+ *
+ * @method writeString
+ * @param {string} text Text to write to the stream
+ * @param {string} [encoding='utf8'] Encoding of string
+ */
+BufferedStream.prototype.writeString = <span class="fstat-no" title="function not covered" >function (text, encoding) {</span>
+<span class="cstat-no" title="statement not covered" >	this.writeBuffer(new Buffer(text, encoding || 'utf8'));</span>
+};
+&nbsp;
+/**
+ * Writes a buffer to the stream
+ *
+ * @method writeBuffer
+ * @param {Buffer} buffer Data buffer
+ * @param {int} [offset=0] Offset within buffer
+ * @param {int} [length=buffer.length-offset] length Length of buffer
+ */
+BufferedStream.prototype.writeBuffer = function (buffer, offset, length) {
+	var localOffset = offset || 0,
+		  localLength = length || (buffer.length - localOffset);
+&nbsp;
+	this._writeCheck(localLength);
+&nbsp;
+	buffer.copy(this._data, this.writeOffset, localOffset, localOffset + localLength);
+	this.writeOffset += localLength;
+	this.writeCounter += localLength;
+};
+&nbsp;
+/**
+ * Writes a buffered stream into the stream
+ *
+ * @param {BufferedStream} stream
+ * @param {int} [length=stream.length] Length of buffered data
+ */
+BufferedStream.prototype.writeBufferedStream = function (stream, length) {
+	var len = (length || stream.length);
+&nbsp;
+	this._writeCheck(len);
+&nbsp;
+	stream._data.copy(this._data, this.writeOffset, stream.readOffset, stream.readOffset + len);
+	this.writeOffset += len;
+	this.writeCounter += len;
+};
+&nbsp;
+&nbsp;
+/**
+ * Clones the stream with the current internal state
+ *
+ * @method clone
+ * @return {BufferedStream} Cloned stream
+ */
+BufferedStream.prototype.clone = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >	return this.slice();</span>
+};
+&nbsp;
+/**
+ * Slices the stream
+ *
+ * @method slice
+ * @param {int} [start=0] Start of stream
+ * @param {int} [end=this.length] End of stream
+ * @return {BufferedStream} Sliced stream
+ */
+BufferedStream.prototype.slice = function (start, end) {
+&nbsp;
+	var stream,
+		localStart = start || 0,
+		localEnd = end || <span class="branch-1 cbranch-no" title="branch not covered" >this._data.length;</span>
+&nbsp;
+	<span class="missing-if-branch" title="if path not taken" >I</span>if (localStart &gt; localEnd) {
+<span class="cstat-no" title="statement not covered" >		throw new Error('End cannot be smaller than start.');</span>
+	}
+&nbsp;
+	stream = new BufferedStream(this._data, false);
+&nbsp;
+	stream.writeOffset = this.readOffset + localEnd;
+	stream.readOffset = this.readOffset + localStart;
+&nbsp;
+	stream.readCounter = this.readCounter;
+	stream.writeCounter = this.writeCounter;
+&nbsp;
+	return stream;
+};
+&nbsp;
+/**
+ * Converts contents to a buffer without moving the read pointer
+ *
+ * @method toBuffer
+ * @param {boolean} [noCopy=false]
+ * @return {Buffer}
+ */
+BufferedStream.prototype.toBuffer = function (noCopy) {
+	if (noCopy) {
+		return this._data;
+	} else {
+		return this.peekBuffer(this.length);
+	}
+};
+&nbsp;
+&nbsp;
+module.exports = BufferedStream;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 29 2015 01:17:49 GMT-0700 (PDT)</div>
+</div>
+
+<script src="../../../../prettify.js"></script>
+
+<script src="https://yui-s.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
+<script>
+
+    YUI().use('datatable', function (Y) {
+
+        var formatters = {
+          pct: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              try {
+                  return o.value.toFixed(2) + '%';
+              } catch (ex) { return o.value + '%'; }
+          },
+          html: function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.record.get(o.column.key + '_html');
+          }
+        },
+          defaultFormatter = function (o) {
+              o.className += o.record.get('classes')[o.column.key];
+              return o.value;
+          };
+
+        function getColumns(theadNode) {
+            var colNodes = theadNode.all('tr th'),
+                cols = [],
+                col;
+            colNodes.each(function (colNode) {
+                col = {
+                    key: colNode.getAttribute('data-col'),
+                    label: colNode.get('innerHTML') || ' ',
+                    sortable: !colNode.getAttribute('data-nosort'),
+                    className: colNode.getAttribute('class'),
+                    type: colNode.getAttribute('data-type'),
+                    allowHTML: colNode.getAttribute('data-html') === 'true' || colNode.getAttribute('data-fmt') === 'html'
+                };
+                col.formatter = formatters[colNode.getAttribute('data-fmt')] || defaultFormatter;
+                cols.push(col);
+            });
+            return cols;
+        }
+
+        function getRowData(trNode, cols) {
+            var tdNodes = trNode.all('td'),
+                    i,
+                    row = { classes: {} },
+                    node,
+                    name;
+            for (i = 0; i < cols.length; i += 1) {
+                name = cols[i].key;
+                node = tdNodes.item(i);
+                row[name] = node.getAttribute('data-value') || node.get('innerHTML');
+                row[name + '_html'] = node.get('innerHTML');
+                row.classes[name] = node.getAttribute('class');
+                //Y.log('Name: ' + name + '; Value: ' + row[name]);
+                if (cols[i].type === 'number') { row[name] = row[name] * 1; }
+            }
+            //Y.log(row);
+            return row;
+        }
+
+        function getData(tbodyNode, cols) {
+            var data = [];
+            tbodyNode.all('tr').each(function (trNode) {
+                data.push(getRowData(trNode, cols));
+            });
+            return data;
+        }
+
+        function replaceTable(node) {
+            if (!node) { return; }
+            var cols = getColumns(node.one('thead')),
+                data = getData(node.one('tbody'), cols),
+                table,
+                parent = node.get('parentNode');
+
+            table = new Y.DataTable({
+                columns: cols,
+                data: data,
+                sortBy: 'file'
+            });
+            parent.set('innerHTML', '');
+            table.render(parent);
+        }
+
+        Y.on('domready', function () {
+            replaceTable(Y.one('div.coverage-summary table'));
+            if (typeof prettyPrint === 'function') {
+                prettyPrint();
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -162,7 +198,9 @@ var fs = require(&#x27;fs&#x27;),
 	modify = require(&#x27;./lib/modify&#x27;),
 	conversion = require(&#x27;./lib/conversion&#x27;),
 	filters = require(&#x27;./lib/filters&#x27;),
-	streamBuffers = require(&quot;stream-buffers&quot;);
+	streamBuffers = require(&quot;stream-buffers&quot;),
+	MemoryStream = require(&#x27;./lib/memoryStream&#x27;),
+	request = require(&#x27;request&#x27;);
 
 var Decoder = require(&#x27;./lib/png/decoder&#x27;);
 var Encoder = require(&#x27;./lib/png/encoder&#x27;);
@@ -255,11 +293,18 @@ PNGImage.copyImage = function (image) {
  *
  * @static
  * @method readImage
- * @param {string} filename
+ * @param {string} path Url or file-path
  * @param {function} fn
  * @return {PNGImage}
  */
-PNGImage.readImage = function (filename, fn) {
+PNGImage.readImage = function (path, fn) {
+	if (path.indexOf(&#x27;http&#x27;) === 0) {
+		return this._readImageFromUrl(path, fn);
+	} else {
+		return this._readImageFromFs(path, fn);
+	}
+};
+PNGImage._readImageFromFs = function (filename, fn) {
 	var image = new PNG(),
 		resultImage = new PNGImage(image);
 
@@ -276,6 +321,36 @@ PNGImage.readImage = function (filename, fn) {
 	}).pipe(image);
 
 	return resultImage;
+};
+PNGImage._readImageFromUrl = function (url, fn) {
+
+	var stream, req;
+
+	request.head(url, function (err, res) {
+
+		var contentType = (res.headers[&#x27;content-type&#x27;] || &#x27;&#x27;).toLowerCase();
+
+		if (contentType !== &#x27;image/png&#x27;) {
+			fn(new Error(&#x27;Unsupported image format: &#x27; + contentType));
+
+		} else {
+
+			stream = new MemoryStream({size: res.headers[&#x27;content-length&#x27;]});
+			req = request(url).pipe(stream);
+
+			req.on(&#x27;error&#x27;, function (err) {
+				fn(err);
+			});
+
+			req.on(&#x27;finish&#x27;, function () {
+				var buffer = stream.getBuffer();
+
+				PNGImage.loadImage(buffer, fn);
+			});
+		}
+	});
+
+	return null; // This will be deprecated
 };
 
 /**
@@ -327,17 +402,23 @@ PNGImage.loadImage = function (blob, fn) {
  * @return {PNGImage}
  */
 PNGImage.loadImageSync = function (blob) {
-	var decoder = new Decoder(blob, 0);
-	var result = decoder.decode();
-	var headerChunk = decoder.getHeaderChunk();
-	var width = headerChunk.getWidth();
-	var height = headerChunk.getHeight();
+	var decoder,
+		data,
+		headerChunk,
+		width, height;
+
+	decoder = new Decoder();
+	data = decoder.decode(blob, { strict: false });
+
+	headerChunk = decoder.getHeaderChunk();
+	width = headerChunk.getWidth();
+	height = headerChunk.getHeight();
 
 	var image = new PNG({
 		width: width,
 		height: height
 	});
-	result.copy(image.data, 0, 0, result.length);
+	data.copy(image.data, 0, 0, data.length);
 	return new PNGImage(image);
 };
 
@@ -552,10 +633,9 @@ PNGImage.prototype = {
 		fs.writeFileSync(filename, this.toBlobSync());
 	},
 
-	toBlobSync: function () {
-		var encoder = new Encoder(this.getWidth(), this.getHeight(), this.getBlob(), 0);
-
-		return encoder.encode();
+	toBlobSync: function (options) {
+		var encoder = new Encoder();
+		return encoder.encode(this.getBlob(), this.getWidth(), this.getHeight(), options);
 	},
 
 	/**
@@ -594,6 +674,22 @@ _.extend(PNGImage.prototype, conversion);
 _.keys(filters).forEach(function (key) {
 	PNGImage.setFilter(key, filters[key]);
 });
+
+/**
+ * Instruments the node environment so that PNG files can be loaded through require calls
+ *
+ * @static
+ * @method instrument
+ */
+PNGImage.instrument = function () {
+	require.extensions[&#x27;.png&#x27;] = function(module, filename) {
+		var image = PNGImage.readImageSync(filename);
+		module.exports = image;
+	};
+};
+
+PNGImage.Decoder = Decoder;
+PNGImage.Encoder = Encoder;
 
 module.exports = PNGImage;
 

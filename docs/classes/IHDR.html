@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.11.1</em>
+            <em>API Docs for: 0.11.5</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -42,6 +42,8 @@
             <ul id="api-classes" class="apis classes">
             
                 <li><a href="../classes/bKGD.html">bKGD</a></li>
+            
+                <li><a href="../classes/BufferedStream.html">BufferedStream</a></li>
             
                 <li><a href="../classes/cHRM.html">cHRM</a></li>
             
@@ -77,6 +79,10 @@
             
                 <li><a href="../classes/iTXt.html">iTXt</a></li>
             
+                <li><a href="../classes/jsOn.html">jsOn</a></li>
+            
+                <li><a href="../classes/Normalizer.html">Normalizer</a></li>
+            
                 <li><a href="../classes/pHYs.html">pHYs</a></li>
             
                 <li><a href="../classes/PLTE.html">PLTE</a></li>
@@ -85,11 +91,15 @@
             
                 <li><a href="../classes/sBIT.html">sBIT</a></li>
             
-                <li><a href="../classes/Scale.html">Scale</a></li>
+                <li><a href="../classes/Scaler.html">Scaler</a></li>
+            
+                <li><a href="../classes/Scanline Parser.html">Scanline Parser</a></li>
             
                 <li><a href="../classes/sPLT.html">sPLT</a></li>
             
                 <li><a href="../classes/sRGB.html">sRGB</a></li>
+            
+                <li><a href="../classes/stRT.html">stRT</a></li>
             
                 <li><a href="../classes/tEXt.html">tEXt</a></li>
             
@@ -101,6 +111,8 @@
             
                 <li><a href="../classes/zTXt.html">zTXt</a></li>
             
+                <li><a href="../classes/zzZz.html">zzZz</a></li>
+            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -110,6 +122,30 @@
                 <li><a href="../modules/PNG.html">PNG</a></li>
             
                 <li><a href="../modules/PNGChunks.html">PNGChunks</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- background {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false).html">PNGChunks
+
+Options:
+- gamma {boolean} - Should this chunk be applied to the image? (default: false)</a></li>
+            
+                <li><a href="../modules/PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true).html">PNGChunks
+
+Options:
+- transparent {boolean} - Should this chunk be applied to the image? (default: true)</a></li>
             
                 <li><a href="../modules/PNGCore.html">PNGCore</a></li>
             
@@ -156,7 +192,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/lib_png_chunks_IHDR.js.html#l8"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:8</code></a>
+            Defined in: <a href="../files/lib_png_chunks_IHDR.js.html#l17"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:17</code></a>
         </div>
     
 
@@ -200,9 +236,55 @@
 
                     <ul class="index-list methods">
                         
+                            <li class="index-item method private">
+                                <a href="#method__combine">_combine</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#method__separate">_separate</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_compose">compose</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method">
                                 <a href="#method_decode">decode</a>
 
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_decodeData">decodeData</a>
+
+                                
+                                    <span class="flag static">static</span>
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_encode">encode</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_encodeData">encodeData</a>
+
+                                
+                                    <span class="flag static">static</span>
                                 
                                 
                             </li>
@@ -292,6 +374,27 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_getScanLineLengthForWidth">getScanLineLengthForWidth</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getSequence">getSequence</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_getUnprocessedSamples">getUnprocessedSamples</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_getWidth">getWidth</a>
 
                                 
@@ -306,7 +409,21 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_hasPalette">hasPalette</a>
+                                <a href="#method_hasIndexedColor">hasIndexedColor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_hasScanLinePadding">hasScanLinePadding</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_hasScanLinePaddingWithWidth">hasScanLinePaddingWithWidth</a>
 
                                 
                                 
@@ -355,6 +472,20 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_isInterlaced">isInterlaced</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_parse">parse</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
                                 <a href="#method_postDecode">postDecode</a>
 
                                 
@@ -362,7 +493,70 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_preDecode">preDecode</a>
+                                <a href="#method_preEncode">preEncode</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_scanLinePaddingAt">scanLinePaddingAt</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_scanLinePaddingAt">scanLinePaddingAt</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setBitDepth">setBitDepth</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setColorType">setColorType</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setCompressionMethod">setCompressionMethod</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setFilterMethod">setFilterMethod</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setHeight">setHeight</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setInterlaceMethod">setInterlaceMethod</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_setWidth">setWidth</a>
 
                                 
                                 
@@ -384,8 +578,81 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_decode" class="method item">
-    <h3 class="name"><code>decode</code></h3>
+                    <div id="method__combine" class="method item private">
+    <h3 class="name"><code>_combine</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Buffer</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l580"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:580</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Combines all IDAT chunks into on buffer</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Buffer</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__separate" class="method item private">
+    <h3 class="name"><code>_separate</code></h3>
 
     
         <div class="args">
@@ -393,25 +660,97 @@
             
                 <li class="arg">
                     
-                        <code>data</code>
+                        <code>buffer</code>
                     
                 </li>
             
-                <li class="arg">
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l755"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:755</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Separates buffer into multiple IDAT</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
                     
-                        <code>offset</code>
+                        <code class="param-name">buffer</code>
+                        <span class="type">Buffer</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
                     
                 </li>
             
-                <li class="arg">
-                    
-                        <code>length</code>
-                    
-                </li>
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_compose" class="method item">
+    <h3 class="name"><code>compose</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
             
                 <li class="arg">
                     
-                        <code>strict</code>
+                        <code>stream</code>
                     
                 </li>
             
@@ -444,7 +783,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l35"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:35</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l737"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:737</code></a>
         
         </p>
 
@@ -455,7 +794,261 @@
     </div>
 
     <div class="description">
-        <p>Decoding of chunk data</p>
+        <p>Composing of chunk data</p>
+<p>Phase 4</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">stream</code>
+                        <span class="type"><a href="../classes/BufferedStream.html" class="crosslink">BufferedStream</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Data stream</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_decode" class="method item">
+    <h3 class="name"><code>decode</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>values</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>strict</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>options</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l476"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:476</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Decoding of chunk data before scaling</p>
+<p>Phase 2</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">strict</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Should parsing be strict?</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">options</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Decoding options</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_decodeData" class="method item">
+    <h3 class="name"><code>decodeData</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>strict</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>options</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l545"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:545</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gathers chunk-data from decoded chunks</p>
+<p>Phase 5</p>
 
     </div>
 
@@ -468,45 +1061,13 @@
                 <li class="param">
                     
                         <code class="param-name">data</code>
-                        <span class="type">Buffer</span>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Chunk data</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">offset</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Offset in chunk data</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">length</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Length of chunk data</p>
+                        <p>Data-object that will be used to export values</p>
 
                     </div>
 
@@ -522,7 +1083,23 @@
                     
 
                     <div class="param-description">
-                        <p>Should decoding be strict?</p>
+                        <p>Should parsing be strict?</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">options</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Decoding options</p>
 
                     </div>
 
@@ -533,6 +1110,245 @@
         </div>
     
 
+    
+
+    
+</div>
+
+                
+                    <div id="method_encode" class="method item">
+    <h3 class="name"><code>encode</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>image</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Buffer</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l705"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:705</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Encoding of chunk data</p>
+<p>Phase 3</p>
+<p>Note:
+Use this method to add data to the image after scaling.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">image</code>
+                        <span class="type">Buffer</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Buffer</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_encodeData" class="method item">
+    <h3 class="name"><code>encodeData</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>image</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Chunk.html" class="crosslink">Chunk[]</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l608"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:608</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a list of chunks to be added to the data-stream</p>
+<p>Phase 1</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">image</code>
+                        <span class="type">Buffer</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Image data</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">data</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Object that will be used to import data to the chunk</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/Chunk.html" class="crosslink">Chunk[]</a></span>:
+                    
+                    <p>List of chunks to encode</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -575,7 +1391,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l146"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:146</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l83"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:83</code></a>
         
         </p>
 
@@ -646,7 +1462,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l228"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:228</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l245"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:245</code></a>
         
         </p>
 
@@ -717,7 +1533,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l156"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:156</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l107"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:107</code></a>
         
         </p>
 
@@ -788,7 +1604,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l166"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:166</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l132"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:132</code></a>
         
         </p>
 
@@ -859,7 +1675,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l176"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:176</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l156"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:156</code></a>
         
         </p>
 
@@ -930,7 +1746,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l135"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:135</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l59"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:59</code></a>
         
         </p>
 
@@ -1001,7 +1817,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l279"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:279</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l365"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:365</code></a>
         
         </p>
 
@@ -1012,7 +1828,7 @@
     </div>
 
     <div class="description">
-        <p>Gets the number of bytes in a pixel for images in edit-mode</p>
+        <p>Gets the number of bytes in a pixel for images after scaling</p>
 
     </div>
 
@@ -1072,7 +1888,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l269"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:269</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l355"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:355</code></a>
         
         </p>
 
@@ -1143,7 +1959,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l186"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:186</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l180"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:180</code></a>
         
         </p>
 
@@ -1214,7 +2030,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l249"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:249</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l276"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:276</code></a>
         
         </p>
 
@@ -1285,7 +2101,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l239"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:239</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l256"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:256</code></a>
         
         </p>
 
@@ -1356,7 +2172,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l259"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:259</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l286"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:286</code></a>
         
         </p>
 
@@ -1368,6 +2184,252 @@
 
     <div class="description">
         <p>Determines the scan-line length</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getScanLineLengthForWidth" class="method item">
+    <h3 class="name"><code>getScanLineLengthForWidth</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>width</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l296"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:296</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Determines the scan-line length for a specified width</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">width</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getSequence" class="method item">
+    <h3 class="name"><code>getSequence</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l24"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:24</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the sequence</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getUnprocessedSamples" class="method item">
+    <h3 class="name"><code>getUnprocessedSamples</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l266"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:266</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the number of samples for the color-type (unprocessed - palette not applied yet)</p>
 
     </div>
 
@@ -1427,7 +2489,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l125"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:125</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l35"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:35</code></a>
         
         </p>
 
@@ -1498,7 +2560,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l217"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:217</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l224"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:224</code></a>
         
         </p>
 
@@ -1533,8 +2595,8 @@
 </div>
 
                 
-                    <div id="method_hasPalette" class="method item">
-    <h3 class="name"><code>hasPalette</code></h3>
+                    <div id="method_hasIndexedColor" class="method item">
+    <h3 class="name"><code>hasIndexedColor</code></h3>
 
     
         <span class="paren">()</span>
@@ -1569,7 +2631,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l197"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:197</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l204"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:204</code></a>
         
         </p>
 
@@ -1580,10 +2642,185 @@
     </div>
 
     <div class="description">
-        <p>Does image have a color palette?</p>
+        <p>Does image have a an indexed color palette?</p>
 
     </div>
 
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_hasScanLinePadding" class="method item">
+    <h3 class="name"><code>hasScanLinePadding</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l307"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:307</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Determines if the data requires padding for scanlines</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_hasScanLinePaddingWithWidth" class="method item">
+    <h3 class="name"><code>hasScanLinePaddingWithWidth</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>width</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l317"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:317</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Determines if the data requires padding for scanlines</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">width</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -1640,7 +2877,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l207"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:207</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l214"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:214</code></a>
         
         </p>
 
@@ -1711,7 +2948,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l290"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:290</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l376"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:376</code></a>
         
         </p>
 
@@ -1782,7 +3019,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l320"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:320</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l406"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:406</code></a>
         
         </p>
 
@@ -1853,7 +3090,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l310"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:310</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l396"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:396</code></a>
         
         </p>
 
@@ -1924,7 +3161,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l300"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:300</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l386"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:386</code></a>
         
         </p>
 
@@ -1995,7 +3232,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l330"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:330</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l416"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:416</code></a>
         
         </p>
 
@@ -2030,8 +3267,79 @@
 </div>
 
                 
-                    <div id="method_postDecode" class="method item">
-    <h3 class="name"><code>postDecode</code></h3>
+                    <div id="method_isInterlaced" class="method item">
+    <h3 class="name"><code>isInterlaced</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l234"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:234</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Is the image interlaced?</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_parse" class="method item">
+    <h3 class="name"><code>parse</code></h3>
 
     
         <div class="args">
@@ -2039,13 +3347,7 @@
             
                 <li class="arg">
                     
-                        <code>data</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>offset</code>
+                        <code>stream</code>
                     
                 </li>
             
@@ -2058,6 +3360,12 @@
                 <li class="arg">
                     
                         <code>strict</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>options</code>
                     
                 </li>
             
@@ -2090,7 +3398,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l56"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:56</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l427"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:427</code></a>
         
         </p>
 
@@ -2101,7 +3409,8 @@
     </div>
 
     <div class="description">
-        <p>Validates all decoded data</p>
+        <p>Parsing of chunk data</p>
+<p>Phase 1</p>
 
     </div>
 
@@ -2113,30 +3422,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">data</code>
-                        <span class="type">Buffer</span>
+                        <code class="param-name">stream</code>
+                        <span class="type"><a href="../classes/BufferedStream.html" class="crosslink">BufferedStream</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Chunk data</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">offset</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Offset in chunk data</p>
+                        <p>Data stream</p>
 
                     </div>
 
@@ -2168,7 +3461,23 @@
                     
 
                     <div class="param-description">
-                        <p>Should decoding be strict?</p>
+                        <p>Should parsing be strict?</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">options</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Decoding options</p>
 
                     </div>
 
@@ -2185,8 +3494,8 @@
 </div>
 
                 
-                    <div id="method_preDecode" class="method item">
-    <h3 class="name"><code>preDecode</code></h3>
+                    <div id="method_postDecode" class="method item">
+    <h3 class="name"><code>postDecode</code></h3>
 
     
         <div class="args">
@@ -2194,25 +3503,438 @@
             
                 <li class="arg">
                     
-                        <code>data</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>offset</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>length</code>
+                        <code>values</code>
                     
                 </li>
             
                 <li class="arg">
                     
                         <code>strict</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>options</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Buffer</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l520"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:520</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Decoding of chunk data after scaling</p>
+<p>Phase 3</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">values</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">strict</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Should parsing be strict?</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">options</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Decoding options</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Buffer</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_preEncode" class="method item">
+    <h3 class="name"><code>preEncode</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>image</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Buffer</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l634"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:634</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Before encoding of chunk data</p>
+<p>Phase 2</p>
+<p>Note:
+Use this method to gather image-data before scaling.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">image</code>
+                        <span class="type">Buffer</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Buffer</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_scanLinePaddingAt" class="method item">
+    <h3 class="name"><code>scanLinePaddingAt</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l330"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:330</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Determines position of scanline pixel</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_scanLinePaddingAt" class="method item">
+    <h3 class="name"><code>scanLinePaddingAt</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>width</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l340"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:340</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Determines position of scanline pixel with width</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">width</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_setBitDepth" class="method item">
+    <h3 class="name"><code>setBitDepth</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>bitDepth</code>
                     
                 </li>
             
@@ -2245,7 +3967,7 @@
             
         
         
-        <a href="../files/lib_png_chunks_IHDR.js.html#l15"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:15</code></a>
+        <a href="../files/lib_png_chunks_IHDR.js.html#l93"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:93</code></a>
         
         </p>
 
@@ -2256,7 +3978,7 @@
     </div>
 
     <div class="description">
-        <p>Makes sure that all required information is available before decoding</p>
+        <p>Sets the bit-depth of the image data</p>
 
     </div>
 
@@ -2268,63 +3990,542 @@
             
                 <li class="param">
                     
-                        <code class="param-name">data</code>
-                        <span class="type">Buffer</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Chunk data</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">offset</code>
+                        <code class="param-name">bitDepth</code>
                         <span class="type">Int</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Offset in chunk data</p>
-
+                         
                     </div>
 
                     
                 </li>
             
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setColorType" class="method item">
+    <h3 class="name"><code>setColorType</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>colorType</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l117"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:117</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the color-type of the image data</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
                 <li class="param">
                     
-                        <code class="param-name">length</code>
+                        <code class="param-name">colorType</code>
                         <span class="type">Int</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Length of chunk data</p>
-
+                         
                     </div>
 
                     
                 </li>
             
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setCompressionMethod" class="method item">
+    <h3 class="name"><code>setCompressionMethod</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>method</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l142"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:142</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the compression method of the image data</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
                 <li class="param">
                     
-                        <code class="param-name">strict</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                        <code class="param-name">method</code>
+                        <span class="type">Int</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Should decoding be strict?</p>
+                         
+                    </div>
 
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setFilterMethod" class="method item">
+    <h3 class="name"><code>setFilterMethod</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>method</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l166"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:166</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the filter method of the image data</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">method</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setHeight" class="method item">
+    <h3 class="name"><code>setHeight</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>height</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l69"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:69</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the height of the image</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">height</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setInterlaceMethod" class="method item">
+    <h3 class="name"><code>setInterlaceMethod</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>method</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l190"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:190</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the interlace method of the image data</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">method</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_setWidth" class="method item">
+    <h3 class="name"><code>setWidth</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>width</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/lib_png_chunks_IHDR.js.html#l45"><code>lib&#x2F;png&#x2F;chunks&#x2F;IHDR.js:45</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Sets the width of the image</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">width</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
                     </div>
 
                     
