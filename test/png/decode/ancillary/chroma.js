@@ -25,24 +25,28 @@ describe('Chroma', function () {
 			interlace: 0
 		});
 
+		it('should have volatile data', function () {
+			expect(this.data.volatile).to.be.not.undefined;
+		});
+
 		it('should have white-point', function () {
-			expect(this.data.chromaticities.whitePointX).to.be.equal(0.3127);
-			expect(this.data.chromaticities.whitePointY).to.be.equal(0.3290);
+			expect(this.data.volatile.chromaticities.whitePointX).to.be.equal(0.3127);
+			expect(this.data.volatile.chromaticities.whitePointY).to.be.equal(0.3290);
 		});
 
 		it('should have red', function () {
-			expect(this.data.chromaticities.redX).to.be.equal(0.64);
-			expect(this.data.chromaticities.redY).to.be.equal(0.33);
+			expect(this.data.volatile.chromaticities.redX).to.be.equal(0.64);
+			expect(this.data.volatile.chromaticities.redY).to.be.equal(0.33);
 		});
 
 		it('should have green', function () {
-			expect(this.data.chromaticities.greenX).to.be.equal(0.30);
-			expect(this.data.chromaticities.greenY).to.be.equal(0.60);
+			expect(this.data.volatile.chromaticities.greenX).to.be.equal(0.30);
+			expect(this.data.volatile.chromaticities.greenY).to.be.equal(0.60);
 		});
 
 		it('should have blue', function () {
-			expect(this.data.chromaticities.blueX).to.be.equal(0.15);
-			expect(this.data.chromaticities.blueY).to.be.equal(0.06);
+			expect(this.data.volatile.chromaticities.blueX).to.be.equal(0.15);
+			expect(this.data.volatile.chromaticities.blueY).to.be.equal(0.06);
 		});
 	});
 
@@ -65,24 +69,28 @@ describe('Chroma', function () {
 			interlace: 0
 		});
 
+		it('should have volatile data', function () {
+			expect(this.data.volatile).to.be.not.undefined;
+		});
+
 		it('should have white-point', function () {
-			expect(this.data.chromaticities.whitePointX).to.be.equal(0.3127);
-			expect(this.data.chromaticities.whitePointY).to.be.equal(0.3290);
+			expect(this.data.volatile.chromaticities.whitePointX).to.be.equal(0.3127);
+			expect(this.data.volatile.chromaticities.whitePointY).to.be.equal(0.3290);
 		});
 
 		it('should have red', function () {
-			expect(this.data.chromaticities.redX).to.be.equal(0.64);
-			expect(this.data.chromaticities.redY).to.be.equal(0.33);
+			expect(this.data.volatile.chromaticities.redX).to.be.equal(0.64);
+			expect(this.data.volatile.chromaticities.redY).to.be.equal(0.33);
 		});
 
 		it('should have green', function () {
-			expect(this.data.chromaticities.greenX).to.be.equal(0.30);
-			expect(this.data.chromaticities.greenY).to.be.equal(0.60);
+			expect(this.data.volatile.chromaticities.greenX).to.be.equal(0.30);
+			expect(this.data.volatile.chromaticities.greenY).to.be.equal(0.60);
 		});
 
 		it('should have blue', function () {
-			expect(this.data.chromaticities.blueX).to.be.equal(0.15);
-			expect(this.data.chromaticities.blueY).to.be.equal(0.06);
+			expect(this.data.volatile.chromaticities.blueX).to.be.equal(0.15);
+			expect(this.data.volatile.chromaticities.blueY).to.be.equal(0.06);
 		});
 	});
 });

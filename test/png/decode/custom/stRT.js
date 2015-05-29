@@ -26,30 +26,31 @@ describe('stRT', function () {
 		});
 
 		it('should have structured data', function () {
-			expect(this.data.structures).to.be.not.undefined;
-			expect(this.data.structures.length).to.be.not.equal(0);
+			expect(this.data.volatile).to.be.not.undefined;
+			expect(this.data.volatile.structures).to.be.not.undefined;
+			expect(this.data.volatile.structures.length).to.be.not.equal(0);
 		});
 
 		describe('Structured Data', function () {
 
 			it('should have one entry data', function () {
-				expect(this.data.structures.length).to.be.equal(1);
+				expect(this.data.volatile.structures.length).to.be.equal(1);
 			});
 
 			it('should have type', function () {
-				expect(this.data.structures[0].type).to.be.equal("test");
+				expect(this.data.volatile.structures[0].type).to.be.equal("test");
 			});
 
 			it('should have major', function () {
-				expect(this.data.structures[0].major).to.be.equal(3);
+				expect(this.data.volatile.structures[0].major).to.be.equal(3);
 			});
 
 			it('should have minor', function () {
-				expect(this.data.structures[0].minor).to.be.equal(7);
+				expect(this.data.volatile.structures[0].minor).to.be.equal(7);
 			});
 
 			it('should have content', function () {
-				expect(this.data.structures[0].content).to.be.deep.equal({
+				expect(this.data.volatile.structures[0].content).to.be.deep.equal({
 					answer: 42
 				});
 			});

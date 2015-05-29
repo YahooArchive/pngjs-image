@@ -54,7 +54,7 @@ describe('Text', function () {
 		});
 
 		it('should have plain text', function () {
-			expect(this.data.volatile && this.data.volatile.texts).to.be.deep.equal([
+			expect(this.data.texts).to.be.deep.equal([
 				{
 					"content": "PngSuite",
 					"keyword": "Title"
@@ -83,7 +83,7 @@ describe('Text', function () {
 		});
 
 		it('should have no compressed text', function () {
-			expect(this.data.volatile && this.data.volatile.compressedTexts).to.be.undefined;
+			expect(this.data.compressedTexts).to.be.undefined;
 		});
 	});
 
@@ -107,7 +107,7 @@ describe('Text', function () {
 		});
 
 		it('should have plain text', function () {
-			expect(this.data.volatile && this.data.volatile.texts).to.be.deep.equal([
+			expect(this.data.texts).to.be.deep.equal([
 				{
 					"content": "PngSuite",
 					"keyword": "Title"
@@ -120,7 +120,7 @@ describe('Text', function () {
 		});
 
 		it('should have compressed text', function () {
-			expect(this.data.volatile && this.data.volatile.compressedTexts).to.be.deep.equal([
+			expect(this.data.compressedTexts).to.be.deep.equal([
 				{
 					"content": "Copyright Willem van Schaik, Singapore 1995-96",
 					"keyword": "Copyright"

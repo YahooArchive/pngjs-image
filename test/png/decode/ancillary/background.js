@@ -30,7 +30,8 @@ describe('Background', function () {
 				});
 
 				it('should have no background color', function () {
-					expect(this.data.backgroundColor).to.be.undefined;
+					expect(this.data.volatile).to.be.not.undefined;
+					expect(this.data.volatile.backgroundColor).to.be.undefined;
 				});
 			});
 
@@ -54,7 +55,8 @@ describe('Background', function () {
 				});
 
 				it('should have no background color', function () {
-					expect(this.data.backgroundColor).to.be.undefined;
+					expect(this.data.volatile).to.be.not.undefined;
+					expect(this.data.volatile.backgroundColor).to.be.undefined;
 				});
 			});
 		});
@@ -81,7 +83,8 @@ describe('Background', function () {
 				});
 
 				it('should have no background color', function () {
-					expect(this.data.backgroundColor).to.be.undefined;
+					expect(this.data.volatile).to.be.not.undefined;
+					expect(this.data.volatile.backgroundColor).to.be.undefined;
 				});
 			});
 
@@ -105,7 +108,8 @@ describe('Background', function () {
 				});
 
 				it('should have no background color', function () {
-					expect(this.data.backgroundColor).to.be.undefined;
+					expect(this.data.volatile).to.be.not.undefined;
+					expect(this.data.volatile.backgroundColor).to.be.undefined;
 				});
 			});
 		});
@@ -136,13 +140,14 @@ describe('Background', function () {
 				});
 
 				it('should have no background color', function () {
-					expect(this.data.backgroundColor).to.be.not.undefined;
+					expect(this.data.volatile).to.be.not.undefined;
+					expect(this.data.volatile.backgroundColor).to.be.not.undefined;
 				});
 
 				it('should have black as a background color', function () {
-					expect(this.data.backgroundColor.red).to.be.equal(0);
-					expect(this.data.backgroundColor.green).to.be.equal(0);
-					expect(this.data.backgroundColor.blue).to.be.equal(0);
+					expect(this.data.volatile.backgroundColor.red).to.be.equal(0);
+					expect(this.data.volatile.backgroundColor.green).to.be.equal(0);
+					expect(this.data.volatile.backgroundColor.blue).to.be.equal(0);
 				});
 			});
 
@@ -166,13 +171,14 @@ describe('Background', function () {
 				});
 
 				it('should have no background color', function () {
-					expect(this.data.backgroundColor).to.be.not.undefined;
+					expect(this.data.volatile).to.be.not.undefined;
+					expect(this.data.volatile.backgroundColor).to.be.not.undefined;
 				});
 
 				it('should have black as a background color', function () {
-					expect(this.data.backgroundColor.red).to.be.equal(170);
-					expect(this.data.backgroundColor.green).to.be.equal(170);
-					expect(this.data.backgroundColor.blue).to.be.equal(170);
+					expect(this.data.volatile.backgroundColor.red).to.be.equal(170);
+					expect(this.data.volatile.backgroundColor.green).to.be.equal(170);
+					expect(this.data.volatile.backgroundColor.blue).to.be.equal(170);
 				});
 			});
 		});
@@ -199,13 +205,14 @@ describe('Background', function () {
 				});
 
 				it('should have no background color', function () {
-					expect(this.data.backgroundColor).to.be.not.undefined;
+					expect(this.data.volatile).to.be.not.undefined;
+					expect(this.data.volatile.backgroundColor).to.be.not.undefined;
 				});
 
 				it('should have black as a background color', function () {
-					expect(this.data.backgroundColor.red).to.be.equal(255);
-					expect(this.data.backgroundColor.green).to.be.equal(255);
-					expect(this.data.backgroundColor.blue).to.be.equal(255);
+					expect(this.data.volatile.backgroundColor.red).to.be.equal(255);
+					expect(this.data.volatile.backgroundColor.green).to.be.equal(255);
+					expect(this.data.volatile.backgroundColor.blue).to.be.equal(255);
 				});
 			});
 
@@ -230,13 +237,14 @@ describe('Background', function () {
 				});
 
 				it('should have no background color', function () {
-					expect(this.data.backgroundColor).to.be.not.undefined;
+					expect(this.data.volatile).to.be.not.undefined;
+					expect(this.data.volatile.backgroundColor).to.be.not.undefined;
 				});
 
 				it('should have black as a background color', function () {
-					expect(this.data.backgroundColor.red).to.be.equal(255);
-					expect(this.data.backgroundColor.green).to.be.equal(255);
-					expect(this.data.backgroundColor.blue).to.be.equal(0);
+					expect(this.data.volatile.backgroundColor.red).to.be.equal(255);
+					expect(this.data.volatile.backgroundColor.green).to.be.equal(255);
+					expect(this.data.volatile.backgroundColor.blue).to.be.equal(0);
 				});
 			});
 		});

@@ -25,23 +25,27 @@ describe('Histogram', function () {
 			interlace: 0
 		});
 
+		it('should have volatile data', function () {
+			expect(this.data.volatile).to.be.not.undefined;
+		});
+
 		it('should have a histogram', function () {
-			expect(this.data.histogram).to.be.not.undefined;
+			expect(this.data.volatile.histogram).to.be.not.undefined;
 		});
 
 		it('should have a length of 15 histogram values', function () {
-			expect(this.data.histogram).to.be.an('array');
-			expect(this.data.histogram.length).to.be.equal(15);
+			expect(this.data.volatile.histogram).to.be.an('array');
+			expect(this.data.volatile.histogram.length).to.be.equal(15);
 		});
 
 		it('should have histogram values', function () {
-			expect(this.data.histogram).to.be.deep.equal([
+			expect(this.data.volatile.histogram).to.be.deep.equal([
 				64, 112, 48, 96, 96, 32, 32, 80, 16, 128, 64, 16, 48, 80, 112
 			]);
 		});
 
 		it('should have the same length as the PLTE chunk', function () {
-			expect(this.data.histogram.length).to.be.equal(this.data.volatile.paletteColors.length);
+			expect(this.data.volatile.histogram.length).to.be.equal(this.data.volatile.paletteColors.length);
 		});
 	});
 
@@ -64,17 +68,21 @@ describe('Histogram', function () {
 			interlace: 0
 		});
 
+		it('should have volatile data', function () {
+			expect(this.data.volatile).to.be.not.undefined;
+		});
+
 		it('should have a histogram', function () {
-			expect(this.data.histogram).to.be.not.undefined;
+			expect(this.data.volatile.histogram).to.be.not.undefined;
 		});
 
 		it('should have a length of 256 histogram values', function () {
-			expect(this.data.histogram).to.be.an('array');
-			expect(this.data.histogram.length).to.be.equal(256);
+			expect(this.data.volatile.histogram).to.be.an('array');
+			expect(this.data.volatile.histogram.length).to.be.equal(256);
 		});
 
 		it('should have the same length as the PLTE chunk', function () {
-			expect(this.data.histogram.length).to.be.equal(this.data.volatile.paletteColors.length);
+			expect(this.data.volatile.histogram.length).to.be.equal(this.data.volatile.paletteColors.length);
 		});
 	});
 });

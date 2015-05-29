@@ -26,16 +26,16 @@ describe('Physical Dimensions', function () {
 		});
 
 		it('should have physical data', function () {
-			expect(this.data.volatile && this.data.volatile.physical).to.be.not.undefined;
+			expect(this.data.physical).to.be.not.undefined;
 		});
 
 		it('should have unit', function () {
-			expect(this.data.volatile && this.data.volatile.physical.unit).to.be.equal(0);
+			expect(this.data.physical.unit).to.be.equal(0);
 		});
 
 		it('should have extend', function () {
-			expect(this.data.volatile && this.data.volatile.physical.xPixelPerUnit).to.be.equal(1);
-			expect(this.data.volatile && this.data.volatile.physical.yPixelPerUnit).to.be.equal(4);
+			expect(this.data.physical.xPixelPerUnit).to.be.equal(1);
+			expect(this.data.physical.yPixelPerUnit).to.be.equal(4);
 		});
 	});
 
@@ -59,16 +59,16 @@ describe('Physical Dimensions', function () {
 		});
 
 		it('should have physical data', function () {
-			expect(this.data.volatile && this.data.volatile.physical).to.be.not.undefined;
+			expect(this.data.physical).to.be.not.undefined;
 		});
 
 		it('should have unit', function () {
-			expect(this.data.volatile && this.data.volatile.physical.unit).to.be.equal(0);
+			expect(this.data.physical.unit).to.be.equal(0);
 		});
 
 		it('should have extend', function () {
-			expect(this.data.volatile && this.data.volatile.physical.xPixelPerUnit).to.be.equal(4);
-			expect(this.data.volatile && this.data.volatile.physical.yPixelPerUnit).to.be.equal(1);
+			expect(this.data.physical.xPixelPerUnit).to.be.equal(4);
+			expect(this.data.physical.yPixelPerUnit).to.be.equal(1);
 		});
 	});
 
@@ -92,16 +92,16 @@ describe('Physical Dimensions', function () {
 		});
 
 		it('should have physical data', function () {
-			expect(this.data.volatile && this.data.volatile.physical).to.be.not.undefined;
+			expect(this.data.physical).to.be.not.undefined;
 		});
 
 		it('should have unit', function () {
-			expect(this.data.volatile && this.data.volatile.physical.unit).to.be.equal(0);
+			expect(this.data.physical.unit).to.be.equal(0);
 		});
 
 		it('should have extend', function () {
-			expect(this.data.volatile && this.data.volatile.physical.xPixelPerUnit).to.be.equal(1);
-			expect(this.data.volatile && this.data.volatile.physical.yPixelPerUnit).to.be.equal(1);
+			expect(this.data.physical.xPixelPerUnit).to.be.equal(1);
+			expect(this.data.physical.yPixelPerUnit).to.be.equal(1);
 		});
 	});
 
@@ -125,16 +125,16 @@ describe('Physical Dimensions', function () {
 		});
 
 		it('should have physical data', function () {
-			expect(this.data.volatile && this.data.volatile.physical).to.be.not.undefined;
+			expect(this.data.physical).to.be.not.undefined;
 		});
 
 		it('should have unit', function () {
-			expect(this.data.volatile && this.data.volatile.physical.unit).to.be.equal(1);
+			expect(this.data.physical.unit).to.be.equal(1);
 		});
 
 		it('should have extend', function () {
-			expect(this.data.volatile && this.data.volatile.physical.xPixelPerUnit).to.be.equal(1000);
-			expect(this.data.volatile && this.data.volatile.physical.yPixelPerUnit).to.be.equal(1000);
+			expect(this.data.physical.xPixelPerUnit).to.be.equal(1000);
+			expect(this.data.physical.yPixelPerUnit).to.be.equal(1000);
 		});
 	});
 });

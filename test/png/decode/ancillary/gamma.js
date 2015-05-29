@@ -32,8 +32,11 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -57,8 +60,11 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -82,8 +88,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 	});
@@ -114,8 +124,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -138,8 +152,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -163,8 +181,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 	});
@@ -195,8 +217,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -220,8 +246,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -244,8 +274,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 	});
@@ -275,8 +309,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -300,8 +338,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -325,8 +367,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 	});
@@ -356,8 +402,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -380,8 +430,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -405,8 +459,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 	});
@@ -437,8 +495,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -462,8 +524,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 
@@ -487,8 +553,12 @@ describe('Gamma', function () {
 				interlace: 0
 			});
 
+			it('should have volatile data', function () {
+				expect(this.data.volatile).to.be.not.undefined;
+			});
+
 			it('should have gamma', function () {
-				expect(this.data.gamma).to.be.equal(this.gamma);
+				expect(this.data.volatile.gamma).to.be.equal(this.gamma);
 			});
 		});
 	});
