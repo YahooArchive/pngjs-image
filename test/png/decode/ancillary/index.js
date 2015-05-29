@@ -35,4 +35,7 @@ describe('Ancillary Chunks', function () {
 
 	// Suggested Palette
 	require('./suggestedPalette');
+
+	// Intent
+	require('./intent');
 });

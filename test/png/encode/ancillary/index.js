@@ -5,4 +5,5 @@ describe('Ancillary Chunks', function () {
 	require('./tEXt');
 	require('./zTXt');
 	require('./tIME');
+	require('./sRGB');
 });
