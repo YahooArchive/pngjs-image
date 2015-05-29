@@ -92,4 +92,33 @@ describe('Modification Time', function () {
 			expect(dateStr).to.be.equal("Fri, 31 Dec 1999 23:59:59 GMT");
 		});
 	});
+
+	describe('Fri, 29 May 2015 06:32:11 GMT', function () {
+
+		testGen.addDecodeTests({
+			resourceGroup: ['ancillary', 'time'],
+			resourceFile: 'tIME_single',
+			imageCheck: true,
+
+			chunkTypes: ['tIME'],
+
+			headerCheck: true,
+			width: 32,
+			height: 32,
+			bitDepth: 8,
+			colorType: 6,
+			filter: 0,
+			compression: 0,
+			interlace: 0
+		});
+
+		it('should have a date', function () {
+			expect(this.data.volatile && this.data.volatile.modificationDate).to.be.not.undefined;
+		});
+
+		it('should have the UTC date', function () {
+			var dateStr = this.data.volatile && this.data.volatile.modificationDate.toUTCString();
+			expect(dateStr).to.be.equal("Fri, 29 May 2015 06:32:11 GMT");
+		});
+	});
 });
