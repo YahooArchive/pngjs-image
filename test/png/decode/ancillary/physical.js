@@ -13,7 +13,7 @@ describe('Physical Dimensions', function () {
 			resourceFile: 'cdfn2c08',
 			imageCheck: true,
 
-			chunkTypes: ['gAMA', 'pHYs', 'sBIT'],
+			chunkTypes: ['gAMA', 'pHYs', 'zzZz'],
 
 			headerCheck: true,
 			width: 8,
@@ -46,7 +46,7 @@ describe('Physical Dimensions', function () {
 			resourceFile: 'cdhn2c08',
 			imageCheck: true,
 
-			chunkTypes: ['gAMA', 'pHYs', 'sBIT'],
+			chunkTypes: ['gAMA', 'pHYs', 'zzZz'],
 
 			headerCheck: true,
 			width: 32,
@@ -79,7 +79,7 @@ describe('Physical Dimensions', function () {
 			resourceFile: 'cdsn2c08',
 			imageCheck: true,
 
-			chunkTypes: ['gAMA', 'pHYs', 'sBIT'],
+			chunkTypes: ['gAMA', 'pHYs', 'zzZz'],
 
 			headerCheck: true,
 			width: 8,
@@ -112,7 +112,7 @@ describe('Physical Dimensions', function () {
 			resourceFile: 'cdun2c08',
 			imageCheck: true,
 
-			chunkTypes: ['gAMA', 'pHYs', 'sBIT'],
+			chunkTypes: ['gAMA', 'pHYs', 'zzZz'],
 
 			headerCheck: true,
 			width: 32,

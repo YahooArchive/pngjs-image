@@ -14,7 +14,7 @@ describe('Sizes', function () {
 				resourceFile: 's01i3p01',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 1,
@@ -32,7 +32,7 @@ describe('Sizes', function () {
 				resourceFile: 's01n3p01',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 1,
@@ -53,7 +53,7 @@ describe('Sizes', function () {
 				resourceFile: 's02i3p01',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 2,
@@ -71,7 +71,7 @@ describe('Sizes', function () {
 				resourceFile: 's02n3p01',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 2,
@@ -92,7 +92,7 @@ describe('Sizes', function () {
 				resourceFile: 's03i3p01',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 3,
@@ -110,7 +110,7 @@ describe('Sizes', function () {
 				resourceFile: 's03n3p01',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 3,
@@ -131,7 +131,7 @@ describe('Sizes', function () {
 				resourceFile: 's04i3p01',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 4,
@@ -149,7 +149,7 @@ describe('Sizes', function () {
 				resourceFile: 's04n3p01',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 4,
@@ -170,7 +170,7 @@ describe('Sizes', function () {
 				resourceFile: 's05i3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 5,
@@ -188,7 +188,7 @@ describe('Sizes', function () {
 				resourceFile: 's05n3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 5,
@@ -209,7 +209,7 @@ describe('Sizes', function () {
 				resourceFile: 's06i3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 6,
@@ -227,7 +227,7 @@ describe('Sizes', function () {
 				resourceFile: 's06n3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 6,
@@ -248,7 +248,7 @@ describe('Sizes', function () {
 				resourceFile: 's07i3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 7,
@@ -266,7 +266,7 @@ describe('Sizes', function () {
 				resourceFile: 's07n3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 7,
@@ -287,7 +287,7 @@ describe('Sizes', function () {
 				resourceFile: 's08i3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 8,
@@ -305,7 +305,7 @@ describe('Sizes', function () {
 				resourceFile: 's08n3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 8,
@@ -326,7 +326,7 @@ describe('Sizes', function () {
 				resourceFile: 's09i3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 9,
@@ -344,7 +344,7 @@ describe('Sizes', function () {
 				resourceFile: 's09n3p02',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 9,
@@ -365,7 +365,7 @@ describe('Sizes', function () {
 				resourceFile: 's32i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 32,
@@ -383,7 +383,7 @@ describe('Sizes', function () {
 				resourceFile: 's32n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 32,
@@ -404,7 +404,7 @@ describe('Sizes', function () {
 				resourceFile: 's33i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 33,
@@ -422,7 +422,7 @@ describe('Sizes', function () {
 				resourceFile: 's33n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 33,
@@ -443,7 +443,7 @@ describe('Sizes', function () {
 				resourceFile: 's34i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 34,
@@ -461,7 +461,7 @@ describe('Sizes', function () {
 				resourceFile: 's34n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 34,
@@ -482,7 +482,7 @@ describe('Sizes', function () {
 				resourceFile: 's35i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 35,
@@ -500,7 +500,7 @@ describe('Sizes', function () {
 				resourceFile: 's35n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 35,
@@ -521,7 +521,7 @@ describe('Sizes', function () {
 				resourceFile: 's36i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 36,
@@ -539,7 +539,7 @@ describe('Sizes', function () {
 				resourceFile: 's36n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 36,
@@ -560,7 +560,7 @@ describe('Sizes', function () {
 				resourceFile: 's37i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 37,
@@ -578,7 +578,7 @@ describe('Sizes', function () {
 				resourceFile: 's37n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 37,
@@ -599,7 +599,7 @@ describe('Sizes', function () {
 				resourceFile: 's38i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 38,
@@ -617,7 +617,7 @@ describe('Sizes', function () {
 				resourceFile: 's38n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 38,
@@ -638,7 +638,7 @@ describe('Sizes', function () {
 				resourceFile: 's39i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 39,
@@ -656,7 +656,7 @@ describe('Sizes', function () {
 				resourceFile: 's39n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 39,
@@ -677,7 +677,7 @@ describe('Sizes', function () {
 				resourceFile: 's40i3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 40,
@@ -695,7 +695,7 @@ describe('Sizes', function () {
 				resourceFile: 's40n3p04',
 				imageCheck: true,
 
-				chunkTypes: ['gAMA', 'PLTE', 'sBIT'],
+				chunkTypes: ['gAMA', 'PLTE', 'zzZz'],
 
 				headerCheck: true,
 				width: 40,
