@@ -3,4 +3,5 @@
 
 describe('Custom Chunks', function () {
 	require('./stRT');
+	require('./zzZz');
 });
