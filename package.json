@@ -1,7 +1,7 @@
 {
   "name": "pngjs-image",
-  "version": "0.11.4",
-  "description": "JavaScript-based PNG image encoder, decoder, and manipulater",
+  "version": "0.11.5",
+  "description": "JavaScript-based PNG image encoder, decoder, and manipulator",
   "license": "MIT",
   "main": "index.js",
   "homepage": "https://github.com/yahoo/pngjs-image",
