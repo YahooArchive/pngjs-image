@@ -3,5 +3,6 @@
 
 describe('Custom Chunks', function () {
 	require('./stRT');
+	require('./jsOn');
 	require('./zzZz');
 });
