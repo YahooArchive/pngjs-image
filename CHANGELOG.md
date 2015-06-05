@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+v0.11.6 - 06/05/15
+* Speed improvements
+* Convert processor arrays to internal 16-bit buffers
+
 v0.11.5 - 05/29/15
 * Various Bug-fixes for encoder and decoder
 * Encoder and decoder is stable - not anymore experimental
