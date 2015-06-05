@@ -2,13 +2,16 @@
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var PNGImage = require('../index');
-var fs = require('fs');
 
-//var image = PNGImage.readImageSync(__dirname + '/firefox  37.0 Windows 8.1 1.png');
-process.stdin.on('data', function (data) {
-	console.log('started');
-	console.time('image');
-	var image = PNGImage.readImageSync(__dirname + '/firefox  37.0 Windows 8.1 1.png');
-	console.timeEnd('image');
-	console.log('Done');
+var image = PNGImage.readImageSync(__dirname + '/eye.png');
+
+// Black-out an area
+image.fillRect(17, 10, 15, 20, {
+	red: 0, green: 0, blue: 0, alpha: 255
 });
+
+console.log('Modified!');
+
+image.writeImageSync(__dirname + '/eye_output.png');
+
+console.log('Done');
