@@ -17,6 +17,7 @@ describe('Encode', function () {
 	});
 
 	require('./filter');
+	require('./interlace');
 
 	require('./ancillary');
 	require('./custom');
