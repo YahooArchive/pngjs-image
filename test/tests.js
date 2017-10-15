@@ -5,6 +5,7 @@ var PNG = require('pngjs').PNG;
 var PNGImage = require('../index');
 var expect = require('chai').expect;
 var fs = require('fs');
+var nock = require('nock');
 
 /**
  * Generates an image
@@ -344,6 +345,43 @@ describe('Instance', function () {
 				expect(err).to.not.be.undefined;
 				done();
 			});
+		});
+
+		it('should read from an URL', function (done) {
+
+			var stat = fs.statSync(__dirname + '/test.png');
+
+			nock('http://mock.com')
+				.head('/test.png')
+				.reply(200, '', {
+					'Content-Type': 'image/png',
+					'Content-Length': stat.size
+				});
+			nock('http://mock.com')
+				.get('/test.png')
+				.reply(200, function(uri, requestBody) {
+					return fs.createReadStream(__dirname + '/test.png')
+				}, {
+					'Content-Type': 'image/png'
+				});
+
+			PNGImage.readImage('http://mock.com/test.png', function (err, image) {
+
+				if (err) {
+					done(err);
+				} else {
+
+					try {
+						expect(image.getBlob().length, this.instance.getBlob().length);
+						compareBuffers(image.getBlob(), this.instance.getBlob(), 0, 0, image.getBlob().length);
+
+						done();
+					} catch (err) {
+						done(err);
+					}
+				}
+
+			}.bind(this));
 		});
 
 		it('should load an image', function (done) {
@@ -750,4 +788,3 @@ describe('Instance', function () {
 		});
 	});
 });
-

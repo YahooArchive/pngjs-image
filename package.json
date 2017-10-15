@@ -27,19 +27,20 @@
     "docs": "yuidoc ."
   },
   "dependencies": {
+    "got": "^7.1.0",
     "iconv-lite": "^0.4.8",
     "pako": "^0.2.6",
     "pngjs": "2.3.1",
-    "request": "^2.55.0",
     "stream-buffers": "1.0.1",
     "underscore": "1.7.0"
   },
   "devDependencies": {
     "chai": "1.9.2",
-    "coveralls": "2.11.2",
     "codeclimate-test-reporter": "0.0.4",
+    "coveralls": "2.11.2",
     "istanbul": "0.3.2",
     "mocha": "1.21.4",
+    "nock": "^9.0.22",
     "sinon": "1.12.2",
     "sinon-chai": "2.7.0",
     "yuidocjs": "0.3.50"
