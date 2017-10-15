@@ -190,7 +190,7 @@ The following third-party libraries are used by this module:
 * pngjs: https://github.com/niegowski/node-pngjs
 * stream-buffers: https://github.com/samcday/node-stream-buffer
 * underscore: http://underscorejs.org
-* request: https://github.com/request/request
+* got: https://github.com/sindresorhus/got
 
 ###Dev-Dependencies
 * chai: http://chaijs.com

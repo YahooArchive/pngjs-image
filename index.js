@@ -10,7 +10,7 @@ var fs = require('fs'),
 	filters = require('./lib/filters'),
 	streamBuffers = require("stream-buffers"),
 	MemoryStream = require('./lib/memoryStream'),
-	request = require('request');
+	got = require('got');
 
 var Decoder = require('./lib/png/decoder');
 var Encoder = require('./lib/png/encoder');
@@ -136,29 +136,29 @@ PNGImage._readImageFromUrl = function (url, fn) {
 
 	var stream, req;
 
-	request.head(url, function (err, res) {
+	got.head(url).then(function (res) {
 
 		var contentType = (res.headers['content-type'] || '').toLowerCase();
 
 		if (contentType !== 'image/png') {
-			fn(new Error('Unsupported image format: ' + contentType));
-
-		} else {
-
-			stream = new MemoryStream({size: res.headers['content-length']});
-			req = request(url).pipe(stream);
-
-			req.on('error', function (err) {
-				fn(err);
-			});
-
-			req.on('finish', function () {
-				var buffer = stream.getBuffer();
-
-				PNGImage.loadImage(buffer, fn);
-			});
+			throw new Error('Unsupported image format: ' + contentType);
 		}
-	});
+
+		stream = new MemoryStream({size: res.headers['content-length']});
+		req = got.stream(url);
+		req.pipe(stream);
+
+		req.on('error', function (err) {
+			fn(err);
+		});
+
+		req.on('end', function () {
+			var buffer = stream.getBuffer();
+
+			PNGImage.loadImage(buffer, fn);
+		});
+
+	}).catch(fn);
 
 	return null; // This will be deprecated
 };
