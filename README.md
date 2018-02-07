@@ -63,8 +63,8 @@ var image = PNGImage.createImage(100, 300);
 console.log(image.getWidth());
 console.log(image.getHeight());
 
-// Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)
-image.setAt(20, 30, { red:255, green:0, blue:0, alpha:100 });
+// Set a pixel at (20, 30) with red, having an alpha value of 128 (half-transparent)
+image.setAt(20, 30, { red:255, green:0, blue:0, alpha:128 });
 
 // Get index of coordinate in the image buffer
 var index = image.getIndex(20, 30);
@@ -90,8 +90,8 @@ PNGImage.readImage('path/to/file', function (err, image) {
     console.log(image.getWidth());
     console.log(image.getHeight());
 
-    // Set a pixel at (20, 30) with red, having an alpha value of 100 (half-transparent)
-    image.setAt(20, 30, { red:255, green:0, blue:0, alpha:100 });
+    // Set a pixel at (20, 30) with red, having an alpha value of 128 (half-transparent)
+    image.setAt(20, 30, { red:255, green:0, blue:0, alpha:128 });
 });
 ```
 
