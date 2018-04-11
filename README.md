@@ -32,7 +32,7 @@ JavaScript-based PNG image encoder, decoder, and manipulator
 * [License](#license)
 
 
-##Installation
+## Installation
 
 Install this module with the following command:
 ```shell
@@ -53,7 +53,7 @@ Require the module in your source-code:
 var PNGImage = require('pngjs-image');
 ```
 
-##Usage
+## Usage
 
 **Example:** Creating a new image
 ```javascript
@@ -104,14 +104,14 @@ PNGImage.readImage('https://s.yimg.com/rz/l/yahoo_en-US_f_p_142x37_2x.png', func
 });
 ```
 
-###Static-Methods
+### Static-Methods
 * ```<PNGImage> = PNGImage.addFilter(key, fn)``` Adds the ```fn``` filter with identifier ```key``` to the filter-list
 * ```<PNGImage> = PNGImage.createImage(width, height)``` Creates an image with the given size
 * ```<PNGImage> = PNGImage.copyImage(image)``` Copies an image into a new container
 * ```PNGImage.readImage(path, fn)``` Loads an image from the file or url, calling the ```fn``` function when done
 * ```PNGImage.loadImage(blob, fn)``` Loads an image from memory, calling the ```fn``` function when done
 
-###Instance-Methods
+### Instance-Methods
 * ```<pngjs> = image.getImage()``` Gets the ```pngjs``` instance
 * ```<Buffer> = image.getBlob()``` Gets the data as a buffer object
 * ```<int> = image.getWidth()``` Gets the width of the image
@@ -123,7 +123,7 @@ PNGImage.readImage('https://s.yimg.com/rz/l/yahoo_en-US_f_p_142x37_2x.png', func
 * ```image.writeImage(path, fn)``` Writes the image to the filesystem and calling the ```fn``` function when done
 * ```image.toBlob(fn)``` Exports data to a buffer and calling the ```fn``` function when done
 
-####Pixel manipulation
+#### Pixel manipulation
 * ```<uint32> = image.getAtIndex(idx)``` Gets complete 32-bit pixel at index ```idx```
 * ```<uint32> = image.getAt(x, y)``` Gets complete 32-bit pixel at the x and y coordinate
 * ```<uint32> = image.getPixel(x, y)``` Gets complete 32-bit pixel at the x and y coordinate
@@ -141,7 +141,7 @@ PNGImage.readImage('https://s.yimg.com/rz/l/yahoo_en-US_f_p_142x37_2x.png', func
 * ```<uint8> = image.getAlpha(idx)``` Gets the alpha intensity at an index
 * ```image.setAlpha(idx, value, opacity)``` Sets the alpha intensity at an index
 
-####Pixel conversion
+#### Pixel conversion
 * ```<uint32> = image.getBlurPixelAt(idx, funcName)``` Gets the blurred color of a pixel at index ```idx```
 * ```<uint32> = image.getYIQAtIndex(idx)``` Gets the YIQ-value of a pixel at index ```idx```
 * ```<uint32> = image.getYIQ(x, y)``` Gets the YIQ-value of a pixel at the x and y coordinate
@@ -156,7 +156,7 @@ PNGImage.readImage('https://s.yimg.com/rz/l/yahoo_en-US_f_p_142x37_2x.png', func
 * ```<uint32> = image.getGrayScaleAtIndex(idx)``` Gets the grayscale-value of a pixel at index ```idx```
 * ```<uint32> = image.getGrayScale(x, y)``` Gets the grayscale-value of a pixel at the x and y coordinate
 
-###Filters
+### Filters
 Following filters can be applied to an image:
 * blur
 * grayScale
@@ -165,7 +165,7 @@ Following filters can be applied to an image:
 * luminosity
 * sepia
 
-##API-Documentation
+## API-Documentation
 
 Generate the documentation with following command:
 ```shell
@@ -173,7 +173,7 @@ npm run docs
 ```
 The documentation will be generated in the ```docs``` folder of the module root.
 
-##Tests
+## Tests
 
 Run the tests with the following command:
 ```shell
@@ -181,18 +181,18 @@ npm run test
 ```
 The code-coverage will be written to the ```coverage``` folder in the module root.
 
-##Third-party libraries
+## Third-party libraries
 
 The following third-party libraries are used by this module:
 
-###Dependencies
+### Dependencies
 * pako: https://github.com/nodeca/pako
 * pngjs: https://github.com/niegowski/node-pngjs
 * stream-buffers: https://github.com/samcday/node-stream-buffer
 * underscore: http://underscorejs.org
 * request: https://github.com/request/request
 
-###Dev-Dependencies
+### Dev-Dependencies
 * chai: http://chaijs.com
 * coveralls: https://github.com/cainus/node-coveralls
 * codeclimate-test-reporter: https://github.com/codeclimate/javascript-test-reporter
@@ -202,7 +202,7 @@ The following third-party libraries are used by this module:
 * sinon-chai: https://github.com/domenic/sinon-chai
 * yuidocjs: https://github.com/yui/yuidoc
 
-##License
+## License
 
 The MIT License
 
